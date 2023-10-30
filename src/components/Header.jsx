@@ -72,7 +72,7 @@ const Header = () => {
         <nav className="navbar navbar-expand-lg">
           <div className="container">
             <Link href="/" className="navbar-brand" >
-              Navbar
+              Logo
             </Link>
             <button
               style={{ padding: "8px 12px !important" }}
