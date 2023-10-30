@@ -1,4 +1,11 @@
-:root {
+@import url("../../assets/css/colors.min.css");
+/* @import url("../../assets/css/vendors.min.css"); */
+@import url("../../assets/css/components.min.css");
+@import url("../../assets/css/bootstrap.min.css");
+@import url("../../assets/css/bootstrap-extended.min.css");
+@import url("../../assets/css/index.css");
+
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
@@ -104,4 +111,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
