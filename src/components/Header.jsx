@@ -1,54 +1,11 @@
 "use client";
 import Link from "next/link";
-import { Icon } from "@iconify/react";
 import "./header.css";
 import { useEffect, useRef } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
+import { navLinks } from "@/utils/data";
 
 const Header = () => {
-  const navLinks = [
-    {
-      title: "Home",
-      url: "/",
-      icon: "",
-    },
-    {
-      title: "About",
-      url: "/about",
-      icon: "",
-    },
-    {
-      title: "Media",
-      url: "/media",
-      icon: "",
-    },
-    {
-      title: "Events",
-      url: "/events",
-      icon: "",
-    },
-    {
-      title: "Merchandise",
-      url: "/merchandise",
-      icon: "",
-    },
-    {
-      title: "Booking",
-      url: "/booking",
-      icon: "",
-    },
-    {
-      title: "Blog",
-      url: "/blog",
-      icon: "",
-    },
-    {
-      title: "Contact",
-      url: "/contact",
-      icon: "",
-    },
-  ];
-
   const headerRef = useRef();
   useEffect(() => {
     let yAxis, top, header;
@@ -68,10 +25,13 @@ const Header = () => {
 
   return (
     <>
-      <div ref={headerRef} className="fixed-top bg-white shadow header__one">
-        <nav className="navbar navbar-expand-lg">
+      <div
+        ref={headerRef}
+        className="fixed-top bg-white shadow header__one"
+      >
+        <nav className="navbar navbar-expand-lg p-1">
           <div className="container">
-            <Link href="/" className="navbar-brand" >
+            <Link href="/" className="navbar-brand">
               Logo
             </Link>
             <button
@@ -91,16 +51,23 @@ const Header = () => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav m-auto ">
-                {navLinks.map((navLink) => (
-                  <li key={navLink} className="nav-item me-3 my-1">
-                    <Link href={navLink.url} className="nav-Link active" aria-current="page" >
+                {navLinks.map((navLink, index) => (
+                  <li
+                    key={navLink.title + index}
+                    className="nav-item me-3 my-1"
+                  >
+                    <Link
+                      href={navLink.url}
+                      className="nav-Link active"
+                      aria-current="page"
+                    >
                       {navLink.title}
                     </Link>
                   </li>
                 ))}
               </ul>
               <div className="d-flex">
-                <Link href="" className="btn btn-outline-primary" >
+                <Link href="" className="btn btn-outline-primary">
                   Led to Give
                 </Link>
               </div>

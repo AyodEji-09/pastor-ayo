@@ -1,11 +1,15 @@
-import styles from './page.module.css'
+import Image from "next/image";
+import './page.css'
+import About from "@/components/HomeComponents/About";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-     <div className='vh-100 d-flex justify-content-center align-items-center'>
-          <h2>Home Page</h2>
-      </div>
+    <main>
+      <section id="hero">
+        <div className="">
+        </div>
+      </section>
+      <About></About>
     </main>
-  )
+  );
 }
