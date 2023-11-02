@@ -22,18 +22,21 @@ const About = () => {
                   content creator and marriage counselor, he runs a YouTube
                   channel called Great Father, Great Husband...
                 </p>
-                <Link href="/about" className="btn btn-outline-primary rounded-pill">
-                  Read More <HiOutlineArrowNarrowRight/>
+                <Link
+                  href="/about"
+                  className="btn btn-outline-primary rounded-pill"
+                >
+                  Read More <HiOutlineArrowNarrowRight />
                 </Link>
               </div>
             </div>
           </div>
           <div className="col-lg-6 mb-2 d-flex justify-content-lg-end">
-            <div>
+            <div className="rounded">
               <Image
                 src={about}
                 alt="pastor ayo picture"
-                className="img-thumbnail"
+                className="img-thumbnail rounded shadow"
               />
             </div>
           </div>
