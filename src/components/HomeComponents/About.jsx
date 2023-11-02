@@ -28,7 +28,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="col-lg-5 mb-2">
+          <div className="col-lg-6 mb-2 d-flex justify-content-lg-end">
             <div>
               <Image
                 src={about}

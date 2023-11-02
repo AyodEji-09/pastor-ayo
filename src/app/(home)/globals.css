@@ -21,30 +21,25 @@ section.section {
 #section__header {
   text-align: center;
 }
-#section__header h2 {
+#section__header header h2 {
   font-size: 3rem;
   position: relative;
 }
-#section__header h2::before {
-  position: absolute;
-  display: inline-block;
-  content: "";
+#section__header header span {
   background-color: red;
-  height: 5px;
-  width: 50px;
-
+  height: 4px;
+  width: 45px;
   border-radius: 4px;
-  left: 30%;
-  bottom: 50%;
 }
-#section__header h2::after {
-  position: absolute;
-  display: inline-block;
-  content: "";
-  background-color: red;
-  height: 5px;
-  width: 50px;
-  border-radius: 4px;
-  right: 30%;
-  bottom: 50%;
+
+/* home page style  */
+/* about section  */
+#about__section{
+  background: url('../../assets/images/bg/blob-scene-haikei.svg') no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#about__section .about__section-desc p {
+  line-height: 2;
+  font-size: 1.25rem;
 }
