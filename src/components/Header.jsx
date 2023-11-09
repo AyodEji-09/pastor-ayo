@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <>
-      <div ref={headerRef} className="position-fixed top-0 bg-white shadow header__one w-100">
+      <div ref={headerRef} className="bg-transparent shadow header__one">
         <nav className="navbar navbar-expand-lg p-1">
           <div className="container">
             <Link href="/" className="navbar-brand">
