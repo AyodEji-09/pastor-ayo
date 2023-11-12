@@ -355,7 +355,7 @@ textarea.form-control-lg {
 
 .input-group:not(.bootstrap-touchspin):focus-within .form-control.is-invalid,
 .input-group:not(.bootstrap-touchspin):focus-within .input-group-text.is-invalid {
-	border-color: #EA5455
+	border-color: #9c0404
 }
 
 .input-group.is-valid .input-group-text {
@@ -367,11 +367,11 @@ textarea.form-control-lg {
 }
 
 .input-group.is-invalid .input-group-text {
-	border-color: #EA5455 !important
+	border-color: #9c0404 !important
 }
 
 .input-group.is-invalid:not(.bootstrap-touchspin):focus-within .input-group-text {
-	border-color: #EA5455
+	border-color: #9c0404
 }
 
 .input-group.disabled .input-group-text {
