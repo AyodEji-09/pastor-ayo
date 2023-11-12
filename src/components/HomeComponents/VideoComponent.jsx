@@ -14,9 +14,8 @@ const VideoComponent = () => {
     },
   };
   const _onReady = (event) => {
-    // event.target.pauseVideo();
+    event.target.pauseVideo();
     setLoading(false);
-    console.log("ready");
   };
 
   const videoId = ["PhC1z6QeEIY", "qy1SgtVYsV8", "MniBCLz8oss", "8Yszohoh35g"];
