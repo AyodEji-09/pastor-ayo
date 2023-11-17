@@ -34,9 +34,4 @@ export const navLinks = [
       url: "/blog",
       icon: "",
     },
-    {
-      title: "Contact",
-      url: "/contact",
-      icon: "",
-    },
   ];

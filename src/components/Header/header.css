@@ -1,0 +1,22 @@
+.slideUp {
+  transform: translateY(-200px);
+  transition: transform 1s ease-out;
+}
+
+.slideDown {
+  transform: translateY(0);
+  transition: transform 1s ease-out;
+}
+
+.nav-Link {
+ font-size: 1.1rem !important;
+}
+.nav-Link:hover {
+  color: var(--red) !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .header__one {
+    background: white !important;
+  }
+}

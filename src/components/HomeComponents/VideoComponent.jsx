@@ -1,5 +1,5 @@
 "use client";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../Common/SectionHeader";
 import YouTube from "react-youtube";
 import { useState } from "react";
 import Link from "next/link";
@@ -7,18 +7,24 @@ import Link from "next/link";
 const VideoComponent = () => {
   const [loading, setLoading] = useState(true);
   const opts = {
-    height: "180",
-    width: "320",
+    height: "270",
+    frameborder: 0,
     playerVars: {
       autoplay: 0,
     },
   };
-  const _onReady = (event) => {
-    event.target.pauseVideo();
+  const _onReady = () => {
     setLoading(false);
   };
 
-  const videoId = ["PhC1z6QeEIY", "qy1SgtVYsV8", "MniBCLz8oss", "8Yszohoh35g"];
+  const videoId = [
+    "5VrNUQlqPd8",
+    "GxL23JkhrhA",
+    "PhC1z6QeEIY",
+    "qy1SgtVYsV8",
+    "MniBCLz8oss",
+    "8Yszohoh35g",
+  ];
 
   return (
     <section id="video__section" className="section">
@@ -29,19 +35,19 @@ const VideoComponent = () => {
         />
         <div className="row mt-5">
           {videoId.map((id) => (
-            <div key={id} className="col-lg-3 col-md-6 mb-2">
+            <div key={id} className="col-lg-4 col-md-6 mb-2">
               {loading ? (
                 <>
                   <div
-                    class="spinner-border text-danger text-center"
+                    className="spinner-border text-danger text-center"
                     role="status"
                   ></div>
                 </>
               ) : null}
               <YouTube
+                iframeClassName={"w-100 rounded shadow"}
                 videoId={id}
                 opts={opts}
-                className="rounded shadow"
                 onReady={_onReady}
               />
             </div>

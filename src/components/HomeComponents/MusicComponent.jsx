@@ -1,6 +1,6 @@
 "use client";
 import YouTube from "react-youtube";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../Common/SectionHeader";
 import Link from "next/link";
 import { useState } from "react";
 import { BsSpotify, BsYoutube } from "react-icons/bs";
@@ -8,24 +8,29 @@ import { BsSpotify, BsYoutube } from "react-icons/bs";
 const MusicComponent = () => {
   const [loading, setLoading] = useState(true);
   const opts = {
-    height: "180",
-    width: "320",
-    frameborder: "0",
+    height: "270",
+    frameborder: 0,
     playerVars: {
       autoplay: 0,
     },
   };
-  const _onReady = (event) => {
-    event.target.pauseVideo();
+  const _onReady = () => {
     setLoading(false);
   };
-  const videoId = ["pn03QzHY_bE", "NwpN3V6QnTY", "tpHcPihf2Yg", "6MpCcYBQKqU"];
+  const videoId = [
+    "pn03QzHY_bE",
+    "NwpN3V6QnTY",
+    "SY1tzBPa-vI",
+    "tpHcPihf2Yg",
+    "HH0K_eozE14",
+    "6MpCcYBQKqU",
+  ];
   return (
     <section id="music__section" className="section">
       <div className="container">
         <SectionHeader
           header={"Music"}
-          desc={"Get all albums and singles on Spotify and Youtube."}
+          desc="Get all my albums and singles on Spotify and Youtube."
         />
         <div className="gap-2 d-flex">
           <a
@@ -47,19 +52,17 @@ const MusicComponent = () => {
         </div>
         <div className="row mt-5">
           {videoId.map((id) => (
-            <div key={id} className="col-lg-3 col-md-6 mb-2">
+            <div key={id} className="col-lg-4 col-md-6 mb-2">
               {loading ? (
-                <>
-                  <div
-                    class="spinner-border text-danger text-center"
-                    role="status"
-                  ></div>
-                </>
+                <div
+                  className="spinner-border text-danger text-center"
+                  role="status"
+                ></div>
               ) : null}
               <YouTube
+                iframeClassName={"w-100 rounded shadow"}
                 videoId={id}
                 opts={opts}
-                className="rounded shadow-sm"
                 onReady={_onReady}
               />
             </div>

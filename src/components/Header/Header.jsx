@@ -10,26 +10,31 @@ import Image from "next/image";
 const Header = () => {
   const headerRef = useRef();
   useEffect(() => {
-    let yAxis, top, header;
-    top = 0;
-    header = headerRef.current;
-    window.addEventListener("scroll", function (t) {
-      yAxis = window.scrollY;
-      top < yAxis && yAxis > 80
-        ? (header.classList.remove("slideDown"),
-          header.classList.add("slideUp"))
-        : top > yAxis &&
-          (header.classList.remove("slideUp"),
-          header.classList.add("slideDown")),
-        (top = yAxis);
+    let e, o, n;
+    o = 0;
+    n = document.querySelector(".header__one");
+    document.body.addEventListener("scroll", function (t) {
+      // e = window.scrollY;
+      e = t.target.scrollTop;
+      o < e && e > 80
+        ? (n.classList.remove("slideDown", "bg-white"),
+          n.classList.add("slideUp", "bg-transparent"))
+        : o > e &&
+          (n.classList.remove("slideUp", "bg-transparent"),
+          n.classList.add("slideDown", "bg-white")),
+        (o = e);
+      if (e < 80) {
+        n.classList.add("slideUp", "bg-transparent");
+      }
     });
   });
 
   return (
     <>
       <div
+        style={{ zIndex: 1000000 }}
         ref={headerRef}
-        className="bg-white fixed-top w-100 shadow header__one"
+        className="header__one shadow position-fixed w-100"
       >
         <nav className="navbar navbar-expand-lg p-1">
           <div className="container">
@@ -69,8 +74,8 @@ const Header = () => {
                 ))}
               </ul>
               <div className="d-flex">
-                <Link href="" className="btn btn-danger">
-                  Led to Give
+                <Link href="/contact" className="btn btn-danger">
+                  Contact
                 </Link>
               </div>
             </div>

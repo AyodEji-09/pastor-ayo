@@ -29,7 +29,7 @@ const Hero = () => {
                 src={heroImage}
                 width={500}
                 alt="Pastor Ayo"
-                className="rounded-pill img-thumbnail"
+                className="rounded-pill img-thumbnail shadow"
               />
               <div className="hero__image-desc">
                 <h2 className="my-0 py-0">Ayodeji Anifowose</h2>

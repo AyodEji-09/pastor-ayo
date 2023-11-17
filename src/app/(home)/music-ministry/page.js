@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Music Ministry | Ayodeji Anifowose",
+};
+
 const page = () => {
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">

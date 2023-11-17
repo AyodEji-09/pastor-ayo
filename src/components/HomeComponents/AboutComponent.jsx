@@ -1,6 +1,6 @@
 import about from "@/assets/images/about.png";
 import Image from "next/image";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../Common/SectionHeader";
 import Link from "next/link";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 

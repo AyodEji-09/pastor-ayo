@@ -1,9 +1,15 @@
+export const metadata = {
+  title: "About | Ayodeji Anifowose",
+};
+
 const page = () => {
-    return (
-      <div className='vh-100 d-flex justify-content-center align-items-center'>
-          <h2>About Page</h2>
+  return (
+    <>
+      <div className="vh-100 d-flex justify-content-center align-items-center">
+        <h2>About Page</h2>
       </div>
-    )
-  }
-  
-  export default page
+    </>
+  );
+};
+
+export default page;
