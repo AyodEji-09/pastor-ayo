@@ -1,0 +1,88 @@
+footer {
+  padding: 5rem 0 1.5rem 0;
+}
+
+#footer {
+  background: url("../../assets/images/bg/footer-bg.svg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #839192;
+}
+
+#footer .footer-top h4 {
+  color: #d8d8d8;
+  position: relative;
+  padding-bottom: 1.3rem;
+  letter-spacing: 1.2;
+  margin: 1.3rem 0;
+}
+
+#footer .footer-top h4::before,
+#footer .footer-top h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3.5px;
+}
+
+#footer .footer-top h4::before {
+  right: 0;
+  background: var(--grey-1);
+}
+
+#footer .footer-top h4::after {
+  background: var(--red-10);
+  width: 6rem;
+}
+
+
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer .footer-top .footer-links ul li {
+  padding: 0 0 1.5rem 0;
+}
+
+#footer .footer-top .footer-links ul a {
+  transition: 0.3s;
+  color: #737a7a;
+}
+
+#footer .footer-top .footer-links ul a:hover {
+  color: var(--red-10);
+}
+
+#footer .footer-top .footer-contact p {
+  /* line-height: 2.5rem; */
+}
+
+#footer .social-links svg {
+  fill: rgba(150, 150, 150, 0.7);
+  stroke: rgba(150, 150, 150, 0.7);
+  box-shadow: var(--shadow-1);
+}
+
+#footer .social-links svg:hover {
+  fill: var(--yellow-2);
+  stroke: var(--yellow-2);
+}
+
+#footer .copyright {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+#footer .credits {
+  padding-top: 0.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #585858;
+}
+
+#footer .credits a {
+    color: #585858;
+}

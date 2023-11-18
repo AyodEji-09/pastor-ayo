@@ -3,6 +3,7 @@ import SectionHeader from "../Common/SectionHeader";
 import YouTube from "react-youtube";
 import { useState } from "react";
 import Link from "next/link";
+import { FaEye } from "react-icons/fa";
 
 const VideoComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -55,7 +56,7 @@ const VideoComponent = () => {
         </div>
         <div className="mt-2">
           <Link className="btn btn-danger" href="/marriage-ministry">
-            View More
+            View More <FaEye />
           </Link>
         </div>
       </div>

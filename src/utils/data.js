@@ -20,8 +20,8 @@ export const navLinks = [
       icon: "",
     },
     {
-      title: "Merchandise",
-      url: "/merchandise",
+      title: "Shop",
+      url: "/shop",
       icon: "",
     },
     {

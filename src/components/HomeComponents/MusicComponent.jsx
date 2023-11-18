@@ -4,6 +4,7 @@ import SectionHeader from "../Common/SectionHeader";
 import Link from "next/link";
 import { useState } from "react";
 import { BsSpotify, BsYoutube } from "react-icons/bs";
+import { FaEye } from "react-icons/fa";
 
 const MusicComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -70,7 +71,7 @@ const MusicComponent = () => {
         </div>
         <div className="mt-2">
           <Link className="btn btn-danger" href="/music-ministry">
-            View More
+            View More <FaEye />
           </Link>
         </div>
       </div>

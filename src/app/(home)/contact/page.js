@@ -1,5 +1,6 @@
+import { title } from "@/utils/metaData";
 export const metadata = {
-  title: "Contact | Ayodeji Anifowose",
+  title: title("Contact"),
 };
 
 const page = () => {

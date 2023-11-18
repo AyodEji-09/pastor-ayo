@@ -14,7 +14,7 @@ const Header = () => {
     o = 0;
     n = document.querySelector(".header__one");
     document.body.addEventListener("scroll", function (t) {
-      // e = window.scrollY;
+      e = window.scrollY;
       e = t.target.scrollTop;
       o < e && e > 80
         ? (n.classList.remove("slideDown", "bg-white"),
