@@ -1,4 +1,4 @@
-import about from "@/assets/images/about.png";
+import about from "@/assets/images/about.jpg";
 import Image from "next/image";
 import SectionHeader from "../Common/SectionHeader";
 import Link from "next/link";
@@ -15,6 +15,7 @@ const About = () => {
                 src={about}
                 alt="pastor ayo picture"
                 className="img-thumbnail rounded shadow"
+                width={450}
               />
             </div>
           </div>

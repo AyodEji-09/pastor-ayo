@@ -6,6 +6,7 @@ footer {
   background: url("../../assets/images/bg/footer-bg.svg") no-repeat;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   color: #839192;
 }
 
@@ -54,10 +55,7 @@ footer {
 
 #footer .footer-top .footer-links ul a:hover {
   color: var(--red-10);
-}
-
-#footer .footer-top .footer-contact p {
-  /* line-height: 2.5rem; */
+  transform: translateX(5px);
 }
 
 #footer .social-links svg {

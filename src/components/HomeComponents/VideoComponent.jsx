@@ -22,9 +22,9 @@ const VideoComponent = () => {
     "5VrNUQlqPd8",
     "GxL23JkhrhA",
     "PhC1z6QeEIY",
-    "qy1SgtVYsV8",
-    "MniBCLz8oss",
-    "8Yszohoh35g",
+    // "qy1SgtVYsV8",
+    // "MniBCLz8oss",
+    // "8Yszohoh35g",
   ];
 
   return (
