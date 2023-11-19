@@ -1,3 +1,4 @@
+"use client";
 import about from "@/assets/images/about.jpg";
 import Image from "next/image";
 import SectionHeader from "../Common/SectionHeader";

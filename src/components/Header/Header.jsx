@@ -45,8 +45,8 @@ const Header = () => {
               <Image src={logo} alt="logo" height={55} />
             </Link>
             <button
-              style={{ padding: "8px 12px !important" }}
-              className="d-lg-none btn btn-outline-danger d-flex justify-content-center align-items-center"
+              style={{ padding: "5px 10px" }}
+              className="d-lg-none fs-2 btn btn-outline-danger d-flex justify-content-center align-items-center"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"

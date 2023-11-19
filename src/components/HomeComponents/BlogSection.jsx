@@ -1,3 +1,4 @@
+"use client";
 import SectionHeader from "@/components/Common/SectionHeader";
 import Link from "next/link";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
@@ -18,15 +19,18 @@ const BlogComponent = () => {
 
         <div className="row mt-5">
           {blogs.map((blog) => (
-            <div key={blog.id} class="col-lg-4 col-md-6">
-              <div class="card">
+            <div
+              key={blog.id}
+              className="col-lg-4 col-md-6 d-flex align-items-stretch"
+            >
+              <div className="card">
                 <Image
                   src={image}
                   height={250}
-                  class="card-img-top"
+                  className="card-img-top"
                   alt={blog.title}
                 />
-                <div class="card-body">
+                <div className="card-body">
                   <div className="d-flex gap-2 mb-1">
                     <small
                       className="text-secondary d-flex align-items-center"
@@ -41,9 +45,11 @@ const BlogComponent = () => {
                       <FaRegUserCircle /> {blog.author}
                     </small>
                   </div>
-                  <h5 class="card-title fw-bold text-primary">{blog.title}</h5>
-                  <p class="card-text">{blog.description}</p>
-                  <a href="#" class="btn btn-outline-danger">
+                  <h5 className="card-title fw-bold text-primary">
+                    {blog.title}
+                  </h5>
+                  <p className="card-text">{blog.description}</p>
+                  <a href="#" className="btn btn-outline-danger">
                     Read More <FaArrowRight />
                   </a>
                 </div>

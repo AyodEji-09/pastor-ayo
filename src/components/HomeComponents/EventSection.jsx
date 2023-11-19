@@ -29,25 +29,25 @@ const EventComponent = () => {
         <div className="row mt-5 d-flex justify-content-center">
           <div className="col-lg-8">
             <div className="form my-1 bg-white shadow-sm p-1 rounded">
-              <form class="row">
-                <div class="col-lg-4 col-6 col-md-6" style={{margin: '5px 0'}}>
+              <form className="row">
+                <div className="col-lg-4 col-6 col-md-6" style={{margin: '5px 0'}}>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="keyword"
                     placeholder="keywords"
                   />
                 </div>
-                <div class="col-lg-4 col-6 col-md-6" style={{margin: '5px 0'}}>
+                <div className="col-lg-4 col-6 col-md-6" style={{margin: '5px 0'}}>
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     id="location"
                     placeholder="Location"
                   />
                 </div>
-                <div class="col-lg-4 col-12 col-md-6" style={{margin: '5px 0'}}>
-                  <button type="submit" class="btn btn-primary w-100">
+                <div className="col-lg-4 col-12 col-md-6" style={{margin: '5px 0'}}>
+                  <button type="submit" className="btn btn-primary w-100">
                     Search
                   </button>
                 </div>
@@ -66,14 +66,14 @@ const EventComponent = () => {
             </div>
             {/* no event message  */}
             <hr />
-            <div class="alert alert-danger p-1 my-1" role="alert">
+            <div className="alert alert-danger p-1 my-1" role="alert">
               <p className="lead d-flex align-items-center">
                 <ImPointRight style={{ marginRight: "10px" }} /> No upcoming
                 events for the selected days.
               </p>
             </div>
             {/* success  */}
-            {/* <div class="alert alert-success p-1 my-1" role="alert">
+            {/* <div className="alert alert-success p-1 my-1" role="alert">
               <p className="fs-4 fw-bold mb-1">Well done!</p>
               <p>
                 Aww yeah, you successfully read this important alert message.
@@ -81,7 +81,7 @@ const EventComponent = () => {
                 see how spacing within an alert works with this kind of content.
               </p>
               <hr />
-              <p class="mb-0">
+              <p className="mb-0">
                 Whenever you need to, be sure to use margin utilities to keep
                 things nice and tidy.
               </p>
