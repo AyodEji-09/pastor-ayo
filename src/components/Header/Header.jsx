@@ -6,9 +6,12 @@ import { HiMenuAlt1 } from "react-icons/hi";
 import { navLinks } from "@/utils/data";
 import logo from "@/assets/images/logo/logo.png";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const headerRef = useRef();
+  const currentRoute = usePathname();
+
   useEffect(() => {
     let e, o, n;
     o = 0;
@@ -65,7 +68,11 @@ const Header = () => {
                   >
                     <Link
                       href={navLink.url}
-                      className="nav-Link text-dark"
+                      className={
+                        currentRoute === navLink.url
+                          ? "nav-Link text-dark active"
+                          : "nav-Link text-dark"
+                      }
                       aria-current="page"
                     >
                       {navLink.title}

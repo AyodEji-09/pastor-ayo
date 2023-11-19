@@ -9,10 +9,15 @@
 }
 
 .nav-Link {
- font-size: 1.1rem !important;
+  font-size: 1.1rem !important;
+}
+.nav-Link.active {
+  color: var(--red) !important;
+  border-bottom: 2px solid var(--red);
 }
 .nav-Link:hover {
   color: var(--red) !important;
+  border-bottom: 2px solid var(--red);
 }
 
 @media only screen and (max-width: 992px) {

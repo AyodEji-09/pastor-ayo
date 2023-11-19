@@ -48,7 +48,7 @@ export const blogs = [
   },
   {
     id: "2",
-    title: "Understanding Neural Networks: A Beginner's Guide",
+    title: "Understanding Neural Networks",
     author: "John Smith",
     date: "November 10, 2023",
     tags: ["Artificial Intelligence", "Machine Learning", "Neural Networks"],

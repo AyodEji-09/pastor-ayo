@@ -39,3 +39,6 @@ body {
 img{
   object-fit: cover;
 }
+.btn{
+  text-transform: uppercase !important;
+}
