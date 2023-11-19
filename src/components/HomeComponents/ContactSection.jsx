@@ -67,7 +67,7 @@ const ContactComponent = () => {
 
         <div className="row mt-2 d-flex justify-content-center">
           <div className="col-lg-5 col-md-6 col-sm-12 my-1 text-center">
-            <p className="text-light">Marriage Minstry</p>
+            <p className="text-light lead">Marriage Minstry</p>
             <div className="d-flex justify-content-center align-items-center flex-wrap gap-lg-2 gap-1 shadow rounded">
               <a
                 style={{ padding: "5px" }}
@@ -181,7 +181,7 @@ const ContactComponent = () => {
             </div>
           </div>
           <div className="col-lg-5 col-md-6 col-sm-12 my-1 text-center">
-            <p className="text-light">Music Minstry</p>
+            <p className="text-light lead">Music Minstry</p>
             <div className="d-flex justify-content-center align-items-center flex-wrap gap-lg-2 gap-1 shadow rounded">
               {/* youtube  */}
               <a
