@@ -1,0 +1,107 @@
+section.section {
+  padding: 5rem 0;
+}
+
+#section__header header h2 {
+  font-size: 1.8rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: relative;
+  background-color: var(--red-1);
+}
+#section__header header span {
+  background-color: var(--red);
+  height: 5px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+/* hero section  */
+#hero {
+  background: url("../../assets/images/bg/hero2.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 2rem 0;
+}
+.hero__image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.hero__image .hero__image-desc {
+  position: absolute;
+  bottom: 50px;
+  color: var(--red-1);
+}
+.hero__image .hero__image-desc h2 {
+  color: var(--red-1);
+  font-size: 1.55rem;
+  font-weight: bolder;
+}
+.hero__image img {
+  border: 3px solid var(--red-2);
+  padding: 5px;
+}
+.hero__desc-two p,
+.hero__desc-two h1,
+.hero__desc-one p,
+.hero__desc-one h1 {
+  line-height: 1.8;
+}
+.hero__desc-two h1,
+.hero__desc-one h1 {
+  font-weight: bolder;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--font-poppins);
+}
+
+.hero__desc-two,
+.hero__desc-one {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+@media screen and (max-device-width: 768px) {
+  #hero {
+    background-position: top;
+  }
+}
+
+/* home page style  - about section*/
+#about__section {
+  background-position: center;
+  background-size: cover;
+}
+#about__section .about__section-desc p {
+  line-height: 2;
+  font-size: 1.25rem;
+}
+/* video section  */
+#video__section {
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../../assets/images/bg/video-bg.jpg") no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+#video__section #section__header p {
+  color: rgb(211, 211, 211);
+  letter-spacing: 1px;
+}
+/* music section  */
+#music__section {
+  background: url("../../assets/images/bg/bg.svg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+/* contact section  */
+#contact__section {
+  background: url("../../assets/images/bg/contact-bg.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}

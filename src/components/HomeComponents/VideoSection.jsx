@@ -8,7 +8,7 @@ import { FaEye } from "react-icons/fa";
 const VideoComponent = () => {
   const [loading, setLoading] = useState(true);
   const opts = {
-    height: "270",
+    height: "250",
     frameborder: 0,
     playerVars: {
       autoplay: 0,
@@ -34,9 +34,10 @@ const VideoComponent = () => {
           header={"Videos"}
           desc={"From Marriage Ministry - `Great Father Great Husband`"}
         />
+        
         <div className="row mt-5">
           {videoId.map((id) => (
-            <div key={id} className="col-lg-4 col-md-6 mb-2">
+            <div style={{ height: "250px" }} key={id} className="col-lg-4 col-md-6 mb-2">
               {loading ? (
                 <>
                   <div
@@ -54,8 +55,8 @@ const VideoComponent = () => {
             </div>
           ))}
         </div>
-        <div className="mt-2">
-          <Link className="btn btn-danger" href="/marriage-ministry">
+        <div className="mt-1 text-center">
+          <Link className="btn btn-lg btn-danger" href="/marriage-ministry">
             View More <FaEye />
           </Link>
         </div>

@@ -30,8 +30,8 @@ export const navLinks = [
       icon: "",
     },
     {
-      title: "Blog",
-      url: "/blog",
+      title: "Blogs",
+      url: "/blogs",
       icon: "",
     },
   ];

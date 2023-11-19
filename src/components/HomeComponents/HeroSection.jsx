@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import heroImage from "@/assets/images/hero4.jpg";
-import "./hero.css";
 import Link from "next/link";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 

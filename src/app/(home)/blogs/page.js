@@ -6,7 +6,7 @@ export const metadata = {
 const page = () => {
     return (
       <div className='vh-100 d-flex justify-content-center align-items-center'>
-          <h2>Booking Page</h2>
+          <h2>Blogs Page</h2>
       </div>
     )
   }

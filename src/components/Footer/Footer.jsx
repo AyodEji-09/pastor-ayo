@@ -88,11 +88,11 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="d-flex align-items-center" href="/blog">
+                    <Link className="d-flex align-items-center" href="/blogs">
                       <VscDebugBreakpointLogUnverified
                         style={{ marginRight: "4px" }}
                       />{" "}
-                      Blog
+                      Blogs
                     </Link>
                   </li>
                 </ul>
@@ -104,7 +104,7 @@ const Footer = () => {
               <p className="lead">
                 <VscDebugBreakpointLogUnverified
                   style={{ marginRight: "4px" }}
-                />{" "}
+                />
                 Music Ministry
               </p>
               <div className="gap-2 d-flex mb-2">

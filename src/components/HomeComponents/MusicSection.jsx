@@ -1,6 +1,6 @@
 "use client";
 import YouTube from "react-youtube";
-import SectionHeader from "../Common/SectionHeader";
+import SectionHeader from "@/components/Common/SectionHeader";
 import Link from "next/link";
 import { useState } from "react";
 import { BsSpotify, BsYoutube } from "react-icons/bs";
@@ -35,7 +35,7 @@ const MusicComponent = () => {
           header={"Music"}
           desc="Get all my albums and singles on Spotify and Youtube."
         />
-        <div className="gap-2 d-flex">
+        <div className="gap-2 d-flex justify-content-center">
           <a
             target="_blank"
             style={{ padding: "5px 10px" }}
@@ -53,11 +53,16 @@ const MusicComponent = () => {
             <BsYoutube />
           </a>
         </div>
+        
         <div className="row mt-5 d-flex justify-content-between">
           <div className="col-lg-8 mb-2">
             <div className="row">
               {videoId.map((id) => (
-                <div key={id} className="col-lg-6 col-md-6 mb-2">
+                <div
+                  style={{ height: "250px" }}
+                  key={id}
+                  className="col-lg-6 col-md-6 mb-2"
+                >
                   {loading ? (
                     <div
                       className="spinner-border text-danger text-center"
@@ -73,8 +78,8 @@ const MusicComponent = () => {
                 </div>
               ))}
             </div>
-            <div className="my-1">
-              <Link className="btn btn-danger" href="/music-ministry">
+            <div className="my-1 text-center">
+              <Link className="btn btn-lg btn-danger" href="/music-ministry">
                 View More <FaEye />
               </Link>
             </div>
@@ -90,7 +95,7 @@ const MusicComponent = () => {
               />
               <div className="card-body">
                 <h5 className="card-title fw-bold" style={{ margin: "4px 0" }}>
-                  I`ll Praise you Lord
+                  I&apos;ll Praise you Lord
                 </h5>
                 <p className="card-text m-0 p-0 small text-secondary">
                   By Ayodeji Anifowose

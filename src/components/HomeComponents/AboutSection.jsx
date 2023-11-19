@@ -15,7 +15,6 @@ const About = () => {
                 src={about}
                 alt="pastor ayo picture"
                 className="img-thumbnail rounded shadow"
-                width={450}
               />
             </div>
           </div>

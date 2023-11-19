@@ -35,51 +35,7 @@ html,
 body {
   overflow-x: hidden;
 }
-section.section {
-  padding: 6rem 0;
-}
+
 img{
   object-fit: cover;
-}
-#section__header header h2 {
-  font-size: 1.8rem;
-  padding: 5px 10px;
-  border-radius: 5px;
-  position: relative;
-  background-color: var(--red-1);
-}
-#section__header header span {
-  background-color: var(--red);
-  height: 5px;
-  width: 40px;
-  border-radius: 5px;
-}
-
-/* home page style  - about section*/
-#about__section {
-  /* background: url("../../assets/images/bg/about-bg.png") no-repeat; */
-  background-position: center;
-  background-size: cover;
-}
-#about__section .about__section-desc p {
-  line-height: 2;
-  font-size: 1.25rem;
-}
-/* video section  */
-#video__section {
-  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
-    url("../../assets/images/bg/video-bg.jpg") no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-}
-#video__section #section__header p {
-  color: rgb(211, 211, 211);
-  letter-spacing: 1px;
-}
-/* audio section  */
-#music__section {
-  /* background: url("../../assets/images/bg/music-bg.png") no-repeat; */
-  background-position: center;
-  background-size: cover;
 }
