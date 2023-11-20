@@ -1,6 +1,6 @@
 import { title } from "@/utils/metaData";
 import PageHeader from "@/components/Common/PageHeader";
-import aboutImage from "@/assets/images/about2.jpg";
+import aboutImage from "@/assets/images/aboutpage.jpg";
 import Image from "next/image";
 import { FaPodcast } from "react-icons/fa";
 export const metadata = {
