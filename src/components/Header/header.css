@@ -2,20 +2,20 @@
   transform: translateY(-200px);
   transition: transform 1s ease-out;
 }
-
 .slideDown {
   transform: translateY(0);
   transition: transform 1s ease-out;
 }
-
-.nav-Link {
+.nav-link {
   font-size: 1.1rem !important;
+  border-bottom: 2px solid transparent;
+  display: inline-block;
 }
-.nav-Link.active {
+.nav-link.active {
   color: var(--red) !important;
   border-bottom: 2px solid var(--red);
 }
-.nav-Link:hover {
+.nav-link:hover {
   color: var(--red) !important;
   border-bottom: 2px solid var(--red);
 }

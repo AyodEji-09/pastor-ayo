@@ -3,36 +3,55 @@ export const navLinks = [
     title: "Home",
     url: "/",
     icon: "",
+    dropdown: false,
   },
   {
     title: "About",
     url: "/about",
     icon: "",
-  },
-  {
-    title: "Media",
-    url: "/media",
-    icon: "",
+    dropdown: false,
   },
   {
     title: "Events",
     url: "/events",
     icon: "",
+    dropdown: false,
   },
   {
     title: "Shop",
     url: "/shop",
     icon: "",
+    dropdown: false,
   },
   {
     title: "Booking",
     url: "/booking",
     icon: "",
+    dropdown: false,
   },
   {
     title: "Blogs",
     url: "/blogs",
     icon: "",
+    dropdown: false,
+  },
+  {
+    title: "Ministry",
+    url: "#",
+    icon: "",
+    dropdown: true,
+    dropdownItem: [
+      {
+        title: "Music Ministry",
+        url: "/music-ministry",
+        icon: "",
+      },
+      {
+        title: "Marriage Ministry",
+        url: "/marriage-ministry",
+        icon: "",
+      },
+    ],
   },
 ];
 

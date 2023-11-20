@@ -1,9 +1,8 @@
-@import url("../../assets/css/colors.min.css");
 /* @import url("../../assets/css/vendors.min.css"); */
+/* @import url("../../assets/css/colors.min.css"); */
 @import url("../../assets/css/components.min.css");
 @import url("../../assets/css/bootstrap.min.css");
 @import url("../../assets/css/bootstrap-extended.min.css");
-@import url("../../assets/css/index.css");
 
 * {
   box-sizing: border-box;
@@ -29,6 +28,9 @@
   --red-3: #e1b4b4;
   --red-2: #ebcdcd;
   --red-1: #f5e6e6;
+  --shadow-1: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  --shadow-2: 5px 5px 11px #ebebeb, -5px -5px 11px #fff;
+  --shadow-3: 20px 38px 34px -26px hsl;
 }
 
 html,
@@ -56,6 +58,6 @@ img {
   justify-content: end;
   padding-bottom: 3rem;
 }
-#page__header h1{
+#page__header h1 {
   font-size: 2.5rem;
 }

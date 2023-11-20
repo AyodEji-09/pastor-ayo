@@ -29,7 +29,7 @@ footer {
 
 #footer .footer-top h4::before {
   right: 0;
-  background: var(--grey-1);
+  background: var(--red-2);
 }
 
 #footer .footer-top h4::after {

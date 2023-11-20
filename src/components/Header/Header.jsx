@@ -64,19 +64,39 @@ const Header = () => {
                 {navLinks.map((navLink, index) => (
                   <li
                     key={navLink.title + index}
-                    className="nav-item me-3 my-1"
+                    className={
+                      navLink.dropdown
+                        ? "nav-item dropdown me-3 my-1"
+                        : "nav-item me-3 my-1"
+                    }
                   >
                     <Link
                       href={navLink.url}
+                      role={navLink.dropdown ? "button" : null}
+                      data-bs-toggle={navLink.dropdown && "dropdown"}
+                      aria-expanded={navLink.dropdown && "false"}
                       className={
                         currentRoute === navLink.url
-                          ? "nav-Link text-black active"
-                          : "nav-Link text-black"
+                          ? "nav-link text-black active"
+                          : navLink.dropdown
+                          ? "nav-link dropdown-toggle text-black"
+                          : "nav-link text-black"
                       }
                       aria-current="page"
                     >
                       {navLink.title}
                     </Link>
+                    {navLink.dropdown && (
+                      <ul className="dropdown-menu">
+                        {navLink.dropdownItem.map((item) => (
+                          <li key={item.url}>
+                            <Link className="dropdown-item" href={item.url}>
+                              {item.title}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
