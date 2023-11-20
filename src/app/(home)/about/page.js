@@ -84,7 +84,7 @@ const page = () => {
                   Opeyemi and three lovely daughters Esther, Ayomide and Imole.
                 </p>
               </div>
-              <div className="d-flex flex-wrap gap-lg-3 gap-2 rounded bg-white shadow-sm p-1 justify-content-center align-items-center">
+              <div className="d-flex flex-wrap gap-lg-3 gap-2 rounded bg-white shadow-sm p-1 justify-content-lg-center align-items-center">
                 <a
                   style={{ padding: "5px" }}
                   title="Youtube"
