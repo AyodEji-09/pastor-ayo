@@ -218,7 +218,7 @@ const ContactComponent = () => {
               {/* spotify  */}
               <a
                 style={{ padding: "5px" }}
-                title="Youtube"
+                title="Spotify"
                 className="rounded-circle shadow border-2 border btn btn-md btn-outline-light"
                 target="_blank"
                 href="https://open.spotify.com/artist/5MlFGqT2jAHgt9Zc95TImb/discography
