@@ -36,9 +36,26 @@ body {
   overflow-x: hidden;
 }
 
-img{
+img {
   object-fit: cover;
 }
-.btn{
+.btn {
   text-transform: uppercase !important;
+}
+
+/* page header  */
+/* , */
+#page__header {
+  height: 400px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.9)),
+    url("../../assets/images/bg/page-header.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding-bottom: 3rem;
+}
+#page__header h1{
+  font-size: 2.5rem;
 }

@@ -1,12 +1,19 @@
+import PageHeader from "@/components/Common/PageHeader";
 import { title } from "@/utils/metaData";
 export const metadata = {
   title: title("Shop"),
 };
 const page = () => {
     return (
-      <div className='vh-100 d-flex justify-content-center align-items-center'>
-          <h2>Merchandise Page</h2>
-      </div>
+      <main id="shop__page">
+        <PageHeader page="Shop" />
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6"></div>
+            <div className="col-lg-6"></div>
+          </div>
+        </div>
+      </main>
     )
   }
   

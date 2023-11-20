@@ -70,8 +70,8 @@ const Header = () => {
                       href={navLink.url}
                       className={
                         currentRoute === navLink.url
-                          ? "nav-Link text-dark active"
-                          : "nav-Link text-dark"
+                          ? "nav-Link text-black active"
+                          : "nav-Link text-black"
                       }
                       aria-current="page"
                     >

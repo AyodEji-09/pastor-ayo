@@ -1,3 +1,4 @@
+import PageHeader from "@/components/Common/PageHeader";
 import { title } from "@/utils/metaData";
 export const metadata = {
   title: title("Contact"),
@@ -5,9 +6,15 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className='vh-100 d-flex justify-content-center align-items-center'>
-        <h2>Contact Page</h2>
+    <main id="contact__page">
+    <PageHeader page="Contact Me" />
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-6"></div>
+        <div className="col-lg-6"></div>
+      </div>
     </div>
+  </main>
   )
 }
 
