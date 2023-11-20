@@ -3,11 +3,9 @@ footer {
 }
 
 #footer {
-  background: url("../../assets/images/bg/footer-bg.svg") no-repeat;
+  background: #242424;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  color: #839192;
 }
 
 #footer .footer-top h4 {
@@ -36,7 +34,6 @@ footer {
   background: var(--red-10);
   width: 6rem;
 }
-
 
 #footer .footer-top .footer-links ul {
   list-style: none;
@@ -82,5 +79,5 @@ footer {
 }
 
 #footer .credits a {
-    color: #585858;
+  color: #585858;
 }

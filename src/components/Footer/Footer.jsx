@@ -4,7 +4,7 @@ import "./footer.css";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import { BsFacebook, BsInstagram, BsSpotify, BsYoutube } from "react-icons/bs";
 import { RiTwitterXFill } from "react-icons/ri";
-import logo from "@/assets/images/logo/logo2.png";
+import logo from "@/assets/images/logo/logo3.png";
 import Image from "next/image";
 
 const year = new Date().getFullYear();

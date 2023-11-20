@@ -12,8 +12,8 @@ const page = () => {
     <>
       <main id="about__page">
         <PageHeader page="About Me" />
-        <div className="container">
-          <div className="row my-5">
+        <div className="container my-5">
+          <div className="row ">
             <div className="col-lg-5 my-1">
               <div>
                 <Image

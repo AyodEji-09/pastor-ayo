@@ -8,7 +8,7 @@ const page = () => {
     return (
       <main id="booking__page">
         <PageHeader page="Booking" />
-        <div className="container">
+        <div className="container my-5">
           <div className="row">
             <div className="col-lg-6"></div>
             <div className="col-lg-6"></div>

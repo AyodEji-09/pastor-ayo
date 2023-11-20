@@ -16,8 +16,8 @@ const page = () => {
   return (
     <main id="blog__page">
       <PageHeader page="Blogs" />
-     <div className="container">
-      <div className="row my-5">
+     <div className="container my-5">
+      <div className="row">
       {blogs.map((blog) => (
             <div
               key={blog.id}

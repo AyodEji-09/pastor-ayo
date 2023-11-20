@@ -1,3 +1,4 @@
+import EventsComponent from "@/components/Common/EventsComponent";
 import PageHeader from "@/components/Common/PageHeader";
 import { title } from "@/utils/metaData";
 export const metadata = {
@@ -5,17 +6,14 @@ export const metadata = {
 };
 
 const page = () => {
-    return (
-      <main id="event__page">
-        <PageHeader page="Events" />
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-6"></div>
-            <div className="col-lg-6"></div>
-          </div>
-        </div>
-      </main>
-    )
-  }
-  
-  export default page
+  return (
+    <main id="event__page">
+      <PageHeader page="Events" />
+      <div className="container my-5">
+        <EventsComponent />
+      </div>
+    </main>
+  );
+};
+
+export default page;
