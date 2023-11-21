@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { navLinks } from "@/utils/data";
 import logo from "@/assets/images/logo/logo.png";
+import marriageMininstrylogo from "@/assets/images/logo/gfgh-logo.png";
+import musicMininstrylogo from "@/assets/images/logo/music-logo.jpg";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
@@ -42,7 +44,17 @@ const Header = () => {
         <nav className="navbar navbar-expand-lg p-1">
           <div className="container">
             <Link href="/" className="navbar-brand">
-              <Image src={logo} alt="logo" height={55} />
+              <Image
+                src={
+                  currentRoute === "/marriage-ministry"
+                    ? marriageMininstrylogo
+                    : currentRoute === "/music-ministry"
+                    ? musicMininstrylogo
+                    : logo
+                }
+                alt="logo"
+                height={55}
+              />
             </Link>
             <button
               style={{ padding: "5px 10px" }}

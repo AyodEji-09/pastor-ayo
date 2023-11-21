@@ -1,20 +1,3 @@
-section.section {
-  padding: 5rem 0;
-}
-
-#section__header header h2 {
-  font-size: 1.8rem;
-  padding: 5px 10px;
-  border-radius: 5px;
-  position: relative;
-  background-color: var(--red-1);
-}
-#section__header header span {
-  background-color: var(--red);
-  height: 5px;
-  width: 40px;
-  border-radius: 5px;
-}
 
 /* hero section  */
 #hero {
