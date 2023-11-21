@@ -9,7 +9,7 @@ footer {
 }
 
 #footer .footer-top h4 {
-  color: #d8d8d8;
+  color: #e8e8e8;
   position: relative;
   padding-bottom: 1.3rem;
   letter-spacing: 1.2;
@@ -47,7 +47,7 @@ footer {
 
 #footer .footer-top .footer-links ul a {
   transition: 0.3s;
-  color: #737a7a;
+  color: #979696;
 }
 
 #footer .footer-top .footer-links ul a:hover {

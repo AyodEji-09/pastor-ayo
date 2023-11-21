@@ -13,7 +13,7 @@
 }
 .nav-link.active {
   color: var(--red) !important;
-  border-bottom: 2px solid var(--red);
+  border-bottom: 2px solid var(--red) !important;
 }
 .nav-link:hover {
   color: var(--red) !important;
