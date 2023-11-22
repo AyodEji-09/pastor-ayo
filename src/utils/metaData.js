@@ -46,6 +46,8 @@ export const icons = [
 export const title = (string) => {
   if (string.includes("Ayodeji Anifowose")) {
     return `${string} | Lead Pastor, RCCG, Arise Church.`;
+  } else if (string.includes("Admin")) {
+    return `${string} | Ayodeji Anifowose`;
   } else {
     return `${string} | Ayodeji Anifowose`;
   }

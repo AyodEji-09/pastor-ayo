@@ -54,6 +54,32 @@ export const navLinks = [
     ],
   },
 ];
+export const adminNavLinks = [
+  {
+    title: "Dashboard",
+    url: "/admin",
+    icon: "bx bxs-dashboard",
+    dropdown: false,
+  },
+  {
+    title: "Bookings",
+    url: "/admin/bookings",
+    icon: "bx bx-calendar-event",
+    dropdown: false,
+  },
+  {
+    title: "Music",
+    url: "/admin/music",
+    icon: "bx bx-video",
+    dropdown: false,
+  },
+  {
+    title: "Video",
+    url: "/admin/video",
+    icon: "bx bx-music",
+    dropdown: false,
+  },
+];
 
 export const blogs = [
   {
