@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import YouTube from "react-youtube";
-import SectionHeader from "./SectionHeader";
-import Link from "next/link";
+import SectionHeader from "../Common/SectionHeader";
 
 const MarriageComponent = () => {
   const [loading, setLoading] = useState(true);
@@ -196,20 +195,6 @@ const MarriageComponent = () => {
             />
           </div>
         ))}
-      </div>
-
-      <div className="row my-5 booking_section text-center rounded">
-        <div className="py-3">
-          <p className="lead text-light my-2">
-            Click here to book a counseling session
-          </p>
-          <Link
-            className="btn d-inline btn-outline-light rounded-pill shadow "
-            href="/booking"
-          >
-            Booking
-          </Link>
-        </div>
       </div>
     </>
   );

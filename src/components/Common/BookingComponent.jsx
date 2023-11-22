@@ -472,9 +472,9 @@ const BookingComponent = () => {
           )}
 
           {bookingType === "counseling" && (
-            <div className="col-md-12">
+            <div className="col-md-6">
               <label htmlFor="counseling_groups" className="form-label">
-                counseling session groups
+                Counseling session groups
               </label>
               <select
                 onChange={handleChange}

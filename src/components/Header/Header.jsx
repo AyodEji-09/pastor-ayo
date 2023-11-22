@@ -13,6 +13,8 @@ import { usePathname } from "next/navigation";
 const Header = () => {
   const headerRef = useRef();
   const currentRoute = usePathname();
+  const MARRIAGE_URL = "/marriage-ministry";
+  const MUSIC_URL = "/music-ministry";
 
   useEffect(() => {
     let e, o, n;
@@ -46,14 +48,21 @@ const Header = () => {
             <Link href="/" className="navbar-brand">
               <Image
                 src={
-                  currentRoute === "/marriage-ministry"
+                  currentRoute === MARRIAGE_URL
                     ? marriageMininstrylogo
-                    : currentRoute === "/music-ministry"
+                    : currentRoute === MUSIC_URL
                     ? musicMininstrylogo
                     : logo
                 }
                 alt="logo"
-                height={55}
+                className={currentRoute === MUSIC_URL ? "rounded" : null}
+                height={
+                  currentRoute === MUSIC_URL
+                    ? 40
+                    : currentRoute === MARRIAGE_URL
+                    ? 60
+                    : 55
+                }
               />
             </Link>
             <button

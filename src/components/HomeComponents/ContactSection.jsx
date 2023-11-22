@@ -254,4 +254,4 @@ const ContactComponent = () => {
   );
 };
 
-export default ContactComponent;
+export default ContactSection;

@@ -1,7 +1,8 @@
 import PageHeader from "@/components/Common/PageHeader";
 import { title } from "@/utils/metaData";
 import "./page.css";
-import MarriageComponent from "@/components/Common/MarriageComponent";
+import MarriageComponent from "@/components/Ministry/MarriageComponent";
+import Link from "next/link";
 
 export const metadata = {
   title: title("Marriage Ministry"),
@@ -18,19 +19,23 @@ const page = () => {
           >
             Great Father, Great Husband
           </h1>
-          {/* <p
-            className="fs-3 fw-bold text-black p-1 px-lg-5 mx-lg-5 m-1"
-            style={{ lineHeight: 1.5 }}
-          >
-            <q>
-              And the man and his wife were both naked and were not embarrassed
-              or ashamed in each other`s presence. -{" "}
-            </q>{" "}
-            <span>Genesis 2:25 AMPC</span>
-          </p> */}
         </div>
 
         <MarriageComponent />
+      </div>
+
+      <div className="mt-5 booking_section text-center">
+        <div className="pb-3 pt-1">
+          <p className="lead text-light my-2 fs-4">
+            Click here to book a counseling session
+          </p>
+          <Link
+            className="btn d-inline btn-outline-light rounded-pill shadow "
+            href="/booking"
+          >
+            Booking
+          </Link>
+        </div>
       </div>
     </main>
   );
