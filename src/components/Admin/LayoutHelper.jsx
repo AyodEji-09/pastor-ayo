@@ -2,81 +2,55 @@
 
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import { useEffect } from "react";
+import { useState } from "react";
 
 const LayoutHelper = ({ children }) => {
-  useEffect(() => {
-    const sideLinks = document.querySelectorAll(
-      ".sidebar .side-menu li a:not(.logout)"
-    );
+  const [open, setOpen] = useState(false);
 
-    sideLinks.forEach((item) => {
-      const li = item.parentElement;
-      item.addEventListener("click", () => {
-        sideLinks.forEach((i) => {
-          i.parentElement.classList.remove("active");
-        });
-        li.classList.add("active");
-      });
-    });
-
-    const menuBar = document.querySelector(".content nav .bx.bx-menu");
-    const sideBar = document.querySelector(".sidebar");
-
-    menuBar.addEventListener("click", () => {
-      sideBar.classList.toggle("close");
-    });
-
-    // const searchBtn = document.querySelector(
-    //   ".content nav form .form-input button"
-    // );
-    // const searchBtnIcon = document.querySelector(
-    //   ".content nav form .form-input button .bx"
-    // );
-    // const searchForm = document.querySelector(".content nav form");
-
-    // searchBtn.addEventListener("click", function (e) {
-    //   if (window.innerWidth < 576) {
-    //     e.preventDefault;
-    //     searchForm.classList.toggle("show");
-    //     if (searchForm.classList.contains("show")) {
-    //       searchBtnIcon.classList.replace("bx-search", "bx-x");
-    //     } else {
-    //       searchBtnIcon.classList.replace("bx-x", "bx-search");
-    //     }
-    //   }
-    // });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth < 768) {
-        sideBar.classList.add("close");
-      } else {
-        sideBar.classList.remove("close");
-      }
-      //   if (window.innerWidth > 576) {
-      //     searchBtnIcon.classList.replace("bx-x", "bx-search");
-      //     searchForm.classList.remove("show");
-      //   }
-    });
-
-    const toggler = document.getElementById("theme-toggle");
-
-    toggler.addEventListener("change", function () {
-      if (this.checked) {
-        //   if (document.body.classList.contains("dark")) {
-        document.body.classList.remove("dark");
-      } else {
-        document.body.classList.add("dark");
-      }
-    });
-  });
   return (
     <>
-      <Sidebar />
-      <div className="content">
-        <Header />
-        {/* <!-- Main Content --> */}
-        {children}
+      <div className="container-fluid position-relative bg-white d-flex p-0">
+        <Sidebar open={open} />
+
+        <div className={open ? "content open" : "content"}>
+          <Header setOpen={setOpen} />
+
+          {/* <!-- Sale & Revenue Start --> */}
+          <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+              <div class="col-sm-6  col-lg-4 ">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                  <i class="fa fa-calendar fa-3x text-primary"></i>
+                  <div class="ms-3">
+                    <p class="mb-2">Bookings</p>
+                    <h6 class="mb-0">1234</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-4 ">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                  <i class="fa fa-music fa-3x text-primary"></i>
+                  <div class="ms-3">
+                    <p class="mb-2">Music</p>
+                    <h6 class="mb-0">234</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-4 ">
+                <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                  <i class="fa fa-video fa-3x text-primary"></i>
+                  <div class="ms-3">
+                    <p class="mb-2">Video</p>
+                    <h6 class="mb-0">234</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <!-- Sale & Revenue End --> */}
+
+          {children}
+        </div>
       </div>
     </>
   );

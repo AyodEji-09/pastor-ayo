@@ -58,25 +58,25 @@ export const adminNavLinks = [
   {
     title: "Dashboard",
     url: "/admin",
-    icon: "bx bxs-dashboard",
+    icon: "fa fa-tachometer-alt me-2",
     dropdown: false,
   },
   {
     title: "Bookings",
     url: "/admin/bookings",
-    icon: "bx bx-calendar-event",
+    icon: "fa fa-calendar me-2",
     dropdown: false,
   },
   {
     title: "Music",
     url: "/admin/music",
-    icon: "bx bx-video",
+    icon: "fa fa-music me-2",
     dropdown: false,
   },
   {
     title: "Video",
     url: "/admin/video",
-    icon: "bx bx-music",
+    icon: "fa fa-video me-2",
     dropdown: false,
   },
 ];
