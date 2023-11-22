@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
-const ContactComponent = () => {
+const ContactSection = () => {
   return (
     <div className="container">
       <section
