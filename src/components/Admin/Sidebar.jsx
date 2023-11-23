@@ -12,35 +12,35 @@ const Sidebar = ({ open }) => {
   return (
     <>
       {/* <!-- Sidebar Start --> */}
-      <div className={open ? "sidebar shadow-sm pe-4 pb-3 open" : "sidebar pe-4 pb-3 shadow-sm"}>
-        <nav className="navbar bg-light navbar-light">
-          <Link href="/admin" className="navbar-brand mx-4 mb-3">
+      <div className={open ? "sidebar shadow open" : "sidebar shadow"}>
+        <nav className="navbar bg-white">
+          <Link href="/admin" className="navbar-brand ms-2">
             <Image src={logo} alt="logo" width={"auto"} height={60} />
           </Link>
-          <div className="d-flex align-items-center ms-4 mb-4">
+          {/* <div className="d-flex align-items-center ms-4 mb-4">
             <div className="position-relative">
-              {/* <Image
+              <Image
                 className="rounded-circle"
                 src={logo}
                 alt="logo"
                 style={{ width: "40px; height: 40px;" }}
-              /> */}
+              />
               <div className="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
             </div>
             <div className="ms-3">
               <h6 className="mb-0">Admin</h6>
               <span>Admin</span>
             </div>
-          </div>
-          <div className="navbar-nav w-100">
+          </div> */}
+          <div className="navbar-nav w-100 mt-2">
             {adminNavLinks.map((link) => (
               <Link
                 key={link.title}
                 href={link.url}
                 className={
                   currentRoute === link.url
-                    ? "nav-item nav-link active my-2"
-                    : "nav-item nav-link my-2"
+                    ? "nav-item nav-link active mt-1"
+                    : "nav-item nav-link mt-1"
                 }
               >
                 <i className={link.icon}></i>

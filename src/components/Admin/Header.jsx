@@ -13,7 +13,7 @@ const Header = ({ setOpen }) => {
   return (
     <>
       {/* <!-- Navbar Start --> */}
-      <nav className="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-2">
+      <nav className="navbar navbar-expand bg-white shadow-sm navbar-light sticky-top px-4 py-2">
         <Link href="/admin" className="navbar-brand d-flex d-lg-none me-4">
           <Image src={logo} alt="logo" width={"auto"} height={50} />
         </Link>
