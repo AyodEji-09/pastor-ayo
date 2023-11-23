@@ -4,9 +4,6 @@ import { blogs } from "@/utils/data";
 import { FaArrowRight, FaRegUserCircle } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
 import Image from "next/image";
-import image from "@/assets/images/latest-track.jpg";
-
-
 
 export const metadata = {
   title: title("Blogs"),
@@ -16,17 +13,18 @@ const page = () => {
   return (
     <main id="blog__page">
       <PageHeader page="Blogs" />
-     <div className="container my-5">
-      <div className="row">
-      {blogs.map((blog) => (
+      <div className="container my-5">
+        <div className="row">
+          {blogs.map((blog) => (
             <div
               key={blog.id}
               className="col-lg-4 col-md-6 d-flex align-items-stretch"
             >
               <div className="card">
                 <Image
-                  src={image}
+                  src={blog.image_url}
                   height={250}
+                  width={500}
                   className="card-img-top"
                   alt={blog.title}
                 />
@@ -45,19 +43,23 @@ const page = () => {
                       <FaRegUserCircle /> {blog.author}
                     </small>
                   </div>
-                  <h5 className="card-title fw-bold text-primary">
+                  <h5 className="card-title fw-bolder text-primary">
                     {blog.title}
                   </h5>
                   <p className="card-text">{blog.description}</p>
-                  <a href="#" className="btn btn-outline-danger">
+                  <a
+                    href={blog.url}
+                    target="_blank"
+                    className="btn btn-outline-danger"
+                  >
                     Read More <FaArrowRight />
                   </a>
                 </div>
               </div>
             </div>
           ))}
+        </div>
       </div>
-     </div>
     </main>
   );
 };

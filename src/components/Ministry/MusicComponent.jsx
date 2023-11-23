@@ -37,7 +37,7 @@ const MusicComponent = () => {
   return (
     <>
       <div className="row my-5 d-flex justify-content-center">
-        <div className="col-lg-5 my-1">
+        <div className="col-lg-5 col-md-6 my-1">
           <div style={{ height: "360px" }}>
             {loading ? (
               <>
@@ -55,7 +55,7 @@ const MusicComponent = () => {
             />
           </div>
         </div>
-        <div className="col-lg-5 my-1 d-flex align-items-center">
+        <div className="col-lg-5 col-md-6 my-1 d-flex align-items-center">
           <div className="p-2 bg-white rounded shadow-sm">
             <p className="lead">
               <span>

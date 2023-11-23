@@ -84,30 +84,35 @@ export const adminNavLinks = [
 export const blogs = [
   {
     id: "1",
-    title: "The Art of Productive Procrastination",
-    author: "Jane Doe",
-    date: "November 15, 2023",
-    tags: ["Productivity", "Time Management", "Creativity"],
+    title: "GOD AT WORK",
+    author: "Ayodeji Anifowose",
+    date: "2 October 2019",
     description:
-      "Exploring how strategic procrastination can enhance productivity and foster creativity.",
+      "In my 35 years of life, I have had the opportunity to travel to different places. I noticed that when there’s ongoing construction, the company blocks off the building premises (hiding the view) for various purposes, including security",
+    url: "https://greatfathergreathusband.blogspot.com/2019/10/god-at-work.html",
+    image_url:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi3TlOMfAztiftiUaojdTTjWhfW3JpjVa_2zGmqNdxiXDBrDDtKubrAPb_lsyFU9FkpoT_XcrFHgV1-kblRZY6auD77H5yDvjrnu7xwktGviFgxHU0IDDdq92ymPmpuRzhGEQhFUmb6i_ABQ631ihUeqKE514Hhbc6HJU19J8Qxl_tvDzi3i8qCN667dMxj/s1600/God%20at%20work%201.png",
   },
   {
     id: "2",
-    title: "Understanding Neural Networks",
-    author: "John Smith",
-    date: "November 10, 2023",
-    tags: ["Artificial Intelligence", "Machine Learning", "Neural Networks"],
+    title: "GOD IS STILL AT WORK",
+    author: "Ayodeji Anifowose",
+    date: "4 October 2019",
     description:
-      "An introductory dive into the world of neural networks, demystifying its concepts for beginners.",
+      "After writing the previous post, I thought I was done with this topic but God still has a lot for us. One of my friends pointed out one of the many reasons God doesn’t want us to see the process of His work.",
+    image_url:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCvD9qLT02Uk86zslKFqmPhCJ4u8YdD7SqjzRTS9LK-EYLA5Q59JPmWN_bZYz4eb-4a_02zhlegPG624r7EpCN6GOWXT3R8nkLQIbFKzYktvObrdYxUq6gknN6koPop4Chs1Zy01C0Jwsh6U3HsSceI0mtlRgIu_G8FVmjgoqYlDh-Pi8vBdGVvSAEMmeW/s1600/God%20is%20still%20at%20work.webp",
+    url: "https://greatfathergreathusband.blogspot.com/2019/10/god-is-still-at-work.html",
   },
   {
     id: "3",
-    title: "The Power of Storytelling in Marketing",
-    author: "Emily Rogers",
-    date: "November 5, 2023",
-    tags: ["Marketing", "Content Strategy", "Branding"],
+    title: "TAKE MY LIFE",
+    author: "Ayodeji Anifowose",
+    date: "29 November 2015",
     description:
-      "Examining how compelling storytelling can revolutionize marketing strategies and brand engagement.",
+      "After accepting the life of Christ as far back as November 1998, I started as a zealous brother in the Lord. I led Bible study for Scripture Union Nigeria in my secondary school.",
+      url:'https://greatfathergreathusband.blogspot.com/2015/11/take-my-life_29.html',
+      image_url: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcB9MnRMjFahhF-W2neeqnK70sdW-1apRall92P8HLxtmSgNhAdJyw-PBuOazlcj0n63kSoTxrIrmwilFLelKEwESN5hjR_Utlm6jgTjwhmBGxO5sbjVOLHa5XQB-XhfmH3_45hVw58TTKqZNBJ_LkFbpOdjfunLhAPEaZCfI5TCXGyDa1PO-MbTBIyJUZ/s1600/Take-My-Life.webp'
   },
 ];
 export const books = [

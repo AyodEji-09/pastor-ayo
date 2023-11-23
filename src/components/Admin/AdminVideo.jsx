@@ -9,7 +9,80 @@ const AdminVideo = () => {
 
   const [loading, setLoading] = useState();
   const [loadingPublish, setLoadingPublish] = useState();
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([
+    {
+      kind: "youtube#searchResult",
+      etag: "USJvVmXe3y96gEunhDZCDDCBYnE",
+      id: {
+        kind: "youtube#video",
+        videoId: "mag1p_QiA18",
+      },
+      snippet: {
+        publishedAt: "2023-11-22T14:00:07Z",
+        channelId: "UCdrjoaHlqhZzhWbXyR_QS6g",
+        title:
+          "Pastor Philip Olabisi |  60 Days Pray with me Challenge for Children | Day 22",
+        description:
+          "Join APastor Philip Olabisi today for the 60 Days Pray with Me Challenge for Children! This is an incredible opportunity for parents ...",
+        thumbnails: {
+          default: {
+            url: "https://i.ytimg.com/vi/mag1p_QiA18/default.jpg",
+            width: 120,
+            height: 90,
+          },
+          medium: {
+            url: "https://i.ytimg.com/vi/mag1p_QiA18/mqdefault.jpg",
+            width: 320,
+            height: 180,
+          },
+          high: {
+            url: "https://i.ytimg.com/vi/mag1p_QiA18/hqdefault.jpg",
+            width: 480,
+            height: 360,
+          },
+        },
+        channelTitle: "Great Father, Great Husband",
+        liveBroadcastContent: "none",
+        publishTime: "2023-11-22T14:00:07Z",
+      },
+    },
+    {
+      kind: "youtube#searchResult",
+      etag: "cqOqQ7DwfQg0aREinRBCjvxSZvw",
+      id: {
+        kind: "youtube#video",
+        videoId: "BDIMHz3H9Uc",
+      },
+      snippet: {
+        publishedAt: "2023-11-22T07:40:11Z",
+        channelId: "UCdrjoaHlqhZzhWbXyR_QS6g",
+        title:
+          "Pastor Philip Olabisi |  60 Days Pray with me Challenge for Children | Day 23",
+        description:
+          "Join Pastor Philip Olabisi today for the 60 Days Pray with Me Challenge for Children! This is an incredible opportunity for parents ...",
+        thumbnails: {
+          default: {
+            url: "https://i.ytimg.com/vi/BDIMHz3H9Uc/default_live.jpg",
+            width: 120,
+            height: 90,
+          },
+          medium: {
+            url: "https://i.ytimg.com/vi/BDIMHz3H9Uc/mqdefault_live.jpg",
+            width: 320,
+            height: 180,
+          },
+          high: {
+            url: "https://i.ytimg.com/vi/BDIMHz3H9Uc/hqdefault_live.jpg",
+            width: 480,
+            height: 360,
+          },
+        },
+        channelTitle: "Great Father, Great Husband",
+        liveBroadcastContent: "upcoming",
+        publishTime: "2023-11-22T07:40:11Z",
+      },
+    },
+  ]);
   const [publishedVideos, setPublishedVideos] = useState([]);
   const [error, setError] = useState("");
   const [form, setForm] = useState([]);

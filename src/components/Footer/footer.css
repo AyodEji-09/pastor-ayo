@@ -81,3 +81,9 @@ footer {
 #footer .credits a {
   color: #585858;
 }
+
+.booking_section{
+  background: url("../../assets/images/bg/bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}

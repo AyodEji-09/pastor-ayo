@@ -5,7 +5,6 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { blogs } from "@/utils/data";
 import { FaArrowRight, FaRegUserCircle } from "react-icons/fa";
 import Image from "next/image";
-import image from "@/assets/images/latest-track.jpg";
 import { MdDateRange } from "react-icons/md";
 
 const BlogComponent = () => {
@@ -25,8 +24,9 @@ const BlogComponent = () => {
             >
               <div className="card">
                 <Image
-                  src={image}
+                  src={blog.image_url}
                   height={250}
+                  width={500}
                   className="card-img-top"
                   alt={blog.title}
                 />
@@ -45,11 +45,11 @@ const BlogComponent = () => {
                       <FaRegUserCircle /> {blog.author}
                     </small>
                   </div>
-                  <h5 className="card-title fw-bold text-primary">
+                  <h5 className="card-title fw-bolder text-primary">
                     {blog.title}
                   </h5>
                   <p className="card-text">{blog.description}</p>
-                  <a href="#" className="btn btn-outline-danger">
+                  <a target="_blank" href={blog.url} className="btn btn-outline-danger">
                     Read More <FaArrowRight />
                   </a>
                 </div>

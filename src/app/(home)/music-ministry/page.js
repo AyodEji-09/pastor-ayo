@@ -24,19 +24,6 @@ const page = () => {
         <MusicComponent />
       </div>
 
-      <div className="mt-5 booking_section text-center">
-        <div className="pb-3 pt-1">
-          <p className="lead text-light my-2 fs-4">
-            Click here to request an invitation to minister in words or songs.
-          </p>
-          <Link
-            className="btn d-inline btn-outline-light rounded-pill shadow "
-            href="/booking"
-          >
-            Booking
-          </Link>
-        </div>
-      </div>
     </main>
   );
 };
