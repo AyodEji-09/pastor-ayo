@@ -4,7 +4,7 @@ let theBaseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 const Api = axios.create({
   baseURL: theBaseUrl,
-  //withCredentials: true,
+  withCredentials: true,
   withXSRFToken: true,
   // credentials: "include",
   headers: {
