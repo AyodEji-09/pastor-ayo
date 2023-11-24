@@ -7,7 +7,7 @@ import { FaArrowRight, FaRegUserCircle } from "react-icons/fa";
 import Image from "next/image";
 import { MdDateRange } from "react-icons/md";
 
-const BlogComponent = () => {
+const BlogSection = () => {
   return (
     <section id="blog__section" className="section">
       <div className="container">
@@ -76,4 +76,4 @@ const BlogComponent = () => {
   );
 };
 
-export default BlogComponent;
+export default BlogSection;
