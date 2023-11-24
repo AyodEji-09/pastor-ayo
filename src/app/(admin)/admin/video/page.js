@@ -1,5 +1,5 @@
 import AdminVideo from "@/components/Admin/AdminVideo";
-import { db } from "@/lib/db";
+import { db } from "@/database";
 
 const page = async () => {
   const result = await db.query.users.findMany();
