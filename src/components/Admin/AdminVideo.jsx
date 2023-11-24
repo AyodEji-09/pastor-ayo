@@ -7,6 +7,9 @@ const AdminVideo = () => {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
   const channelId = process.env.NEXT_PUBLIC_GHGF_CHANNEL_ID;
 
+
+  
+
   const [loading, setLoading] = useState();
   const [loadingPublish, setLoadingPublish] = useState();
   const [videos, setVideos] = useState([
@@ -90,23 +93,25 @@ const AdminVideo = () => {
   const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=200&type=video`;
 
   const fetchData = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(url);
-      const results = await response.json();
-      setLoading(false);
-      if (results.items.length > 0) {
-        setVideos(results.items);
-        setError("");
-      } else {
-        setError("No Videos found");
-      }
-    } catch (error) {
-      setLoading(false);
-      toast.error("Unable to fetch videos", {
-        duration: 5000,
-      });
-    }
+    const result = await db.query.users.findMany()
+    console.log({result})
+    // try {
+    //   setLoading(true);
+    //   const response = await fetch(url);
+    //   const results = await response.json();
+    //   setLoading(false);
+    //   if (results.items.length > 0) {
+    //     setVideos(results.items);
+    //     setError("");
+    //   } else {
+    //     setError("No Videos found");
+    //   }
+    // } catch (error) {
+    //   setLoading(false);
+    //   toast.error("Unable to fetch videos", {
+    //     duration: 5000,
+    //   });
+    // }
   };
 
   const handleOnChange = (e, video) => {
@@ -155,7 +160,7 @@ const AdminVideo = () => {
   };
 
   useEffect(() => {
-    fetchPublishedVideos();
+    // fetchPublishedVideos();
   }, []);
 
   return (

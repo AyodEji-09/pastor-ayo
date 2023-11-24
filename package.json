@@ -8,11 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "introspect": "drizzle-kit introspect:mysql",
-    "migrations:generate": "drizzle-kit generate:mysql",
-    "migrations:push": "drizzle-kit push:mysql",
+    "generate": "drizzle-kit generate:mysql",
+    "push": "drizzle-kit push:mysql",
     "migrations:drop": "drizzle-kit drop"
   },
   "dependencies": {
+    "@planetscale/database": "^1.11.0",
     "axios": "^1.6.2",
     "country-state-city": "^3.2.1",
     "date-fns": "^2.30.0",
