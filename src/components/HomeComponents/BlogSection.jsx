@@ -49,7 +49,11 @@ const BlogComponent = () => {
                     {blog.title}
                   </h5>
                   <p className="card-text">{blog.description}</p>
-                  <a target="_blank" href={blog.url} className="btn btn-outline-danger">
+                  <a
+                    target="_blank"
+                    href={blog.url}
+                    className="btn btn-outline-danger"
+                  >
                     Read More <FaArrowRight />
                   </a>
                 </div>
@@ -59,9 +63,13 @@ const BlogComponent = () => {
         </div>
 
         <div className="my-1 text-center">
-          <Link className="btn btn-lg btn-danger" href="/blogs">
+          <a
+            target="_blank"
+            className="btn btn-lg btn-danger"
+            href="https://greatfathergreathusband.blogspot.com/"
+          >
             See All Blogs <HiOutlineArrowNarrowRight />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

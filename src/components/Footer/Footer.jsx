@@ -22,7 +22,7 @@ const Footer = () => {
             className="btn d-inline btn-outline-light rounded-pill shadow "
             href="/booking"
           >
-            Booking
+            Book
           </Link>
         </div>
       </div>

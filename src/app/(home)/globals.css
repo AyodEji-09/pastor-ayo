@@ -69,7 +69,6 @@ section.section {
   border-radius: 5px;
 }
 /* page header  */
-/* , */
 #page__header {
   height: 400px;
   background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.9)),
@@ -78,7 +77,7 @@ section.section {
   background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   padding-bottom: 3rem;
 }
 #page__header h1 {
