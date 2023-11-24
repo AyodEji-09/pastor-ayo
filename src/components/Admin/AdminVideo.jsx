@@ -164,7 +164,7 @@ const AdminVideo = () => {
       <div className="my-1 rounded shadow-sm bg-white p-2">
         <h5 className="text-primary">YouTube Videos</h5>
         <p>Publish videos from `Great Father Great Husband` YouTube Channel</p>
-        <button onClick={fetchData} className="btn btn-primary">
+        <button onClick={fetchData} className="btn btn-primary mb-1">
           {loading && (
             <span
               className="spinner-border spinner-border-sm mx-1"
@@ -175,7 +175,7 @@ const AdminVideo = () => {
           <span>Get Videos</span>
         </button>
         {form.length > 0 && (
-          <button onClick={handleOnSubmit} className="btn btn-success mx-2">
+          <button onClick={handleOnSubmit} className="btn btn-success mx-lg-2 mb-1">
             {loadingPublish && (
               <span
                 className="spinner-border spinner-border-sm mx-1"

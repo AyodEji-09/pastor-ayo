@@ -11,7 +11,7 @@ const Api = axios.create({
     Accept: "application/json",
     "Content-type": "application/json",
     "Access-Control-Allow-Origin": true,
-    "Set-Cookie": `JSESSIONID=${new Date().toString()} SameSite=None; Secure`,
+    // "Set-Cookie": `JSESSIONID=${new Date().toString()} SameSite=None; Secure`,
   },
 });
 
