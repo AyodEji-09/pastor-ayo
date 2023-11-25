@@ -1,5 +1,5 @@
 {
-  "name": "project",
+  "name": "ayodeji_anifowose",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "introspect": "drizzle-kit introspect:mysql",
-    "generate": "drizzle-kit generate:mysql",
-    "push": "drizzle-kit push:mysql",
-    "migrations:drop": "drizzle-kit drop"
+    "db:gen": "drizzle-kit generate:mysql --config=drizzle.config.ts",
+    "db:push": "drizzle-kit push:mysql --config=drizzle.config.ts",
+    "db:drop": "drizzle-kit drop"
   },
   "dependencies": {
     "@planetscale/database": "^1.11.0",

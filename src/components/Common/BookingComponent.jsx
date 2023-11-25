@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { Country, State } from "country-state-city";
 import { hours } from "@/utils/data";
+import Api from "@/Api/api";
+import toast, { Toaster } from "react-hot-toast";
 
 const BookingComponent = () => {
   const [bookingType, setBookingType] = useState("ministry");
@@ -56,14 +58,23 @@ const BookingComponent = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let country = Country.getCountryByCode(form.event_country);
-    console.log({ ...form, event_country: country.name });
+    try {
+      let country = Country.getCountryByCode(form.event_country);
+      const res = await Api.post("/api/booking", {
+        ...form,
+        event_country: country.name,
+      });
+      toast.success("Videos have been published succesfully", {
+        duration: 5000,
+      });
+    } catch (error) {}
   };
 
   return (
     <>
+      <Toaster />
       <div className="my-2 bg-white rounded shadow-sm">
         <ul className="nav nav-tabs">
           <li className="nav-item">

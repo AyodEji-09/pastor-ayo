@@ -130,9 +130,7 @@ const AdminVideo = () => {
   const handleOnSubmit = async () => {
     try {
       setLoadingPublish(true);
-      await Api.get("/sanctum/csrf-cookie");
-      const res = await Api.post("/api/videos", form);
-      console.log({ res });
+      const res = await Api.post("/api/booking", form);
       toast.success("Videos have been published succesfully", {
         duration: 5000,
       });
@@ -149,7 +147,7 @@ const AdminVideo = () => {
   };
 
   const fetchPublishedVideos = async () => {
-    const res = await Api.get("/api/video");
+    const res = await Api.get("/api/booking");
     setPublishedVideos(res.data.data);
   };
 
@@ -163,7 +161,7 @@ const AdminVideo = () => {
       <div className="my-1 rounded shadow-sm bg-white p-2">
         <h5 className="text-primary">YouTube Videos</h5>
         <p>Publish videos from `Great Father Great Husband` YouTube Channel</p>
-        <button onClick={fetchData} className="btn btn-primary mb-1">
+        <button onClick={fetchData} className="btn btn-primary me-2 mb-1">
           {loading && (
             <span
               className="spinner-border spinner-border-sm mx-1"
@@ -176,7 +174,7 @@ const AdminVideo = () => {
         {form.length > 0 && (
           <button
             onClick={handleOnSubmit}
-            className="btn btn-success mx-lg-2 mb-1"
+            className="btn btn-success mb-1"
           >
             {loadingPublish && (
               <span
