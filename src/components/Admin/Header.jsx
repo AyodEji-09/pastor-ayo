@@ -26,6 +26,10 @@ const Header = ({ setOpen }) => {
           <i className="fa fa-bars"></i>
           {""}
         </a>
+
+        <Link onClick={toggleSidebar} href="/" className="mx-2 flex-shrink-0">
+          Home
+        </Link>
         {/* <form className="d-none d-md-flex ms-4">
               <input
                 className="form-control border-0"

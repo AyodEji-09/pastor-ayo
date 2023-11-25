@@ -8,6 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 const BookingComponent = () => {
   const [bookingType, setBookingType] = useState("ministry");
   const [form, setForm] = useState({
+    booking_type: bookingType,
     first_name: "",
     last_name: "",
     personal_email: "",

@@ -10,7 +10,7 @@ const page = () => {
     <main id="event__page">
       <PageHeader page="Events" />
       <div className="container my-5">
-        <EventsComponent />
+        <EventsComponent page={true} />
       </div>
     </main>
   );

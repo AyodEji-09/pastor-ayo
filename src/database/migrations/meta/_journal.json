@@ -15,6 +15,13 @@
       "when": 1700870895896,
       "tag": "0001_gorgeous_kinsey_walden",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1700872782446,
+      "tag": "0002_useful_yellow_claw",
+      "breakpoints": true
     }
   ]
 }

@@ -9,6 +9,8 @@ import {
 
 export const BOOKINGS = mysqlTable("bookings", {
   id: serial("id").primaryKey().notNull(),
+  //booking type
+  booking_type: varchar("booking_type", { length: 256 }),
   // personal
   first_name: varchar("first_name", { length: 256 }),
   last_name: varchar("last_name", { length: 256 }),

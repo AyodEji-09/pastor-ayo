@@ -1,12 +1,19 @@
 "use client";
-import { addDays } from "date-fns";
-import { DateRangePicker } from "react-date-range";
+import EventDisplay from "../Common/EventDisplay";
 import { ImPointRight } from "react-icons/im";
-import { useState } from "react";
+import { DateRangePicker } from "react-date-range";
+import { addDays } from "date-fns";
+import { useState, useEffect } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import Api from "@/Api/api";
+import moment from "moment";
 
-const EventsComponent = () => {
+const EventsComponent = ({ page }) => {
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [openDate, setOpenDate] = useState(false);
+  const [location, setLocation] = useState("");
   const [state, setState] = useState([
     {
       startDate: new Date(),
@@ -14,46 +21,87 @@ const EventsComponent = () => {
       key: "selection",
     },
   ]);
+  const handleOpenDate = () => {
+    setOpenDate(!openDate);
+  };
+  const searchMinistryBookings = async () => {
+    setLoading(true);
+    let start_date = moment(state[0].startDate).format("YYYY-MM-DD");
+    let end_date = moment(state[0].endDate).format("YYYY-MM-DD");
+    try {
+      const res = await Api.post(`/api/booking/search`, {
+        start_date,
+        end_date,
+        location,
+      });
+      setLoading(false);
+      setBookings(res.data.data.splice(0, 3));
+    } catch (error) {
+      setLoading(false);
+      setBookings([]);
+    }
+  };
+
+  useEffect(() => {
+    searchMinistryBookings();
+  }, []);
 
   return (
     <div className="row mt-5 d-flex justify-content-center">
-      <div className="col-lg-8">
-        <div className="form my-1 bg-white shadow-sm p-1 rounded">
-          <form className="row">
-            <div
-              className="col-lg-4 col-6 col-md-6"
-              style={{ margin: "5px 0" }}
+    <div className="col-lg-8">
+      <div className="form mb-1 bg-white shadow-sm p-1 rounded">
+        <form className="row">
+          <div
+            className="col-lg-4 col-6 col-md-6 position-relative"
+            style={{ margin: "5px 0" }}
+          >
+            <button
+              type="button"
+              onClick={handleOpenDate}
+              className="btn w-100 btn-outline-primary"
             >
-              <input
-                type="text"
-                className="form-control"
-                id="keyword"
-                placeholder="keywords"
-              />
-            </div>
-            <div
-              className="col-lg-4 col-6 col-md-6"
-              style={{ margin: "5px 0" }}
-            >
-              <input
-                type="text"
-                className="form-control"
-                id="location"
-                placeholder="Location"
-              />
-            </div>
-            <div
-              className="col-lg-4 col-12 col-md-6"
-              style={{ margin: "5px 0" }}
-            >
-              <button type="submit" className="btn btn-primary w-100">
-                Search
-              </button>
-            </div>
-          </form>
-        </div>
+              Select Date
+            </button>
+          </div>
 
-        <div className="my-1 text-center" style={{ overflowX: "scroll" }}>
+          <div
+            className="col-lg-4 col-6 col-md-6"
+            style={{ margin: "5px 0" }}
+          >
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Country, State, or City"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </div>
+          <div
+            className="col-lg-4 col-12 col-md-12"
+            style={{ margin: "5px 0" }}
+          >
+            <button
+              onClick={searchMinistryBookings}
+              type="button"
+              disabled={loading}
+              className="btn btn-primary w-100"
+            >
+              {loading && (
+                <span
+                  style={{ margin: "0px 5px" }}
+                  className="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              )}
+              <span>Search</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {openDate && (
+        <div className="my-2 text-center" style={{ overflowX: "auto" }}>
           <DateRangePicker
             onChange={(item) => setState([item.selection])}
             showSelectionPreview={true}
@@ -63,31 +111,25 @@ const EventsComponent = () => {
             direction="horizontal"
           />
         </div>
-        {/* no event message  */}
-        <hr />
+      )}
+
+      {/* no event message  */}
+      <hr />
+      <h2 className="fw-bolder fw-3">Events</h2>
+      {bookings.length > 0 ? (
+        bookings.map((booking) => (
+          <EventDisplay event={booking} key={booking.id} />
+        ))
+      ) : (
         <div className="alert alert-danger p-1 my-1" role="alert">
           <p className="lead d-flex align-items-center">
-            <ImPointRight style={{ marginRight: "10px" }} /> No upcoming events
-            for the selected days.
+            <ImPointRight style={{ marginRight: "10px" }} /> No upcoming
+            events for the selected days and location.
           </p>
         </div>
-        {/* success  */}
-        {/* <div className="alert alert-success p-1 my-1" role="alert">
-              <p className="fs-4 fw-bold mb-1">Well done!</p>
-              <p>
-                Aww yeah, you successfully read this important alert message.
-                This example text is going to run a bit longer so that you can
-                see how spacing within an alert works with this kind of content.
-              </p>
-              <hr />
-              <p className="mb-0">
-                Whenever you need to, be sure to use margin utilities to keep
-                things nice and tidy.
-              </p>
-            </div> */}
-        <hr />
-      </div>
+      )}
     </div>
+  </div>
   );
 };
 

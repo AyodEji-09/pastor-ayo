@@ -13,6 +13,9 @@ const Api = axios.create({
     Accept: "application/json",
     "Content-type": "application/json",
     "Access-Control-Allow-Origin": true,
+    "Cache-Control": "no-cache",
+    Pragma: "no-cache",
+    Expires: "0",
   },
 });
 

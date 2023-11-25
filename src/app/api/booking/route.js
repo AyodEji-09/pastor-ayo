@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 import { db } from "@/database";
 import { BOOKINGS } from "@/database/schema";
+import { eq } from "drizzle-orm";
 
-export async function GET() {
+export async function GET(request) {
   try {
-    const bookings = await db.select().from(BOOKINGS);
-    return NextResponse.json({ data: bookings });
+    const bookings = await db
+      .select()
+      .from(BOOKINGS)
+      .where(eq(BOOKINGS.booking_type, "ministry"));
+    return NextResponse.json({ data: searchParams });
   } catch (error) {
     return NextResponse.json({ data: error });
   }
