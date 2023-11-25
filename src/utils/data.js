@@ -111,8 +111,9 @@ export const blogs = [
     date: "29 November 2015",
     description:
       "After accepting the life of Christ as far back as November 1998, I started as a zealous brother in the Lord. I led Bible study for Scripture Union Nigeria in my secondary school.",
-      url:'https://greatfathergreathusband.blogspot.com/2015/11/take-my-life_29.html',
-      image_url: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcB9MnRMjFahhF-W2neeqnK70sdW-1apRall92P8HLxtmSgNhAdJyw-PBuOazlcj0n63kSoTxrIrmwilFLelKEwESN5hjR_Utlm6jgTjwhmBGxO5sbjVOLHa5XQB-XhfmH3_45hVw58TTKqZNBJ_LkFbpOdjfunLhAPEaZCfI5TCXGyDa1PO-MbTBIyJUZ/s1600/Take-My-Life.webp'
+    url: "https://greatfathergreathusband.blogspot.com/2015/11/take-my-life_29.html",
+    image_url:
+      "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcB9MnRMjFahhF-W2neeqnK70sdW-1apRall92P8HLxtmSgNhAdJyw-PBuOazlcj0n63kSoTxrIrmwilFLelKEwESN5hjR_Utlm6jgTjwhmBGxO5sbjVOLHa5XQB-XhfmH3_45hVw58TTKqZNBJ_LkFbpOdjfunLhAPEaZCfI5TCXGyDa1PO-MbTBIyJUZ/s1600/Take-My-Life.webp",
   },
 ];
 export const books = [
@@ -188,3 +189,8 @@ export const hours = [
   "22:00",
   "23:00",
 ];
+
+export const BASE_URL =
+  process.env.NODE_ENV === "development"
+    ? process.env.NEXT_PUBLIC_BASE_URL_DEV
+    : process.env.NEXT_PUBLIC_BASE_URL_LIVE;

@@ -449,7 +449,7 @@ const BookingComponent = () => {
               <div className="col-md-12">
                 <label htmlFor="recording_available" className="form-label">
                   Pastor Ayodeji Anifowose`s Team usually requests a video and
-                  audio recording of her ministration. Will, there be a
+                  audio recording of his ministration. Will, there be a
                   recording of the event available for Ayodeji Anifowose`s media
                   team?*
                 </label>
@@ -461,7 +461,7 @@ const BookingComponent = () => {
                   id="recording_available"
                   name="recording_available"
                   placeholder="Pastor Ayodeji Anifowose`s Team usually requests a video and
-                audio recording of her ministration. Will, there be a recording
+                audio recording of his ministration. Will, there be a recording
                 of the event available for Ayodeji Anifowose`s media team?"
                 />
               </div>

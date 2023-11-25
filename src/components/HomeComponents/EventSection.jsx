@@ -16,7 +16,7 @@ const EventSection = () => {
 
         <EventsComponent />
 
-        <div className="my-1 text-center">
+        <div className="my-2 text-center">
           <Link className="btn btn-lg btn-danger" href="/events">
             View More <FaEye />
           </Link>

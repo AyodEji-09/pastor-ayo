@@ -8,6 +8,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import Api from "@/Api/api";
 import moment from "moment";
+import SkeletonLoader from "./SkeletonLoader";
 
 const EventsComponent = ({ page }) => {
   const [bookings, setBookings] = useState([]);
@@ -17,7 +18,7 @@ const EventsComponent = ({ page }) => {
   const [state, setState] = useState([
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), 7),
+      endDate: addDays(new Date(), page ? 30 : 7),
       key: "selection",
     },
   ]);
@@ -26,6 +27,7 @@ const EventsComponent = ({ page }) => {
   };
   const searchMinistryBookings = async () => {
     setLoading(true);
+    setBookings([]);
     let start_date = moment(state[0].startDate).format("YYYY-MM-DD");
     let end_date = moment(state[0].endDate).format("YYYY-MM-DD");
     try {
@@ -35,9 +37,13 @@ const EventsComponent = ({ page }) => {
         location,
       });
       setLoading(false);
-      setBookings(res.data.data.splice(0, 3));
+      setOpenDate(false);
+      page
+        ? setBookings(res.data.data)
+        : setBookings(res.data.data.splice(0, 5));
     } catch (error) {
       setLoading(false);
+      setOpenDate(false);
       setBookings([]);
     }
   };
@@ -47,89 +53,97 @@ const EventsComponent = ({ page }) => {
   }, []);
 
   return (
-    <div className="row mt-5 d-flex justify-content-center">
-    <div className="col-lg-8">
-      <div className="form mb-1 bg-white shadow-sm p-1 rounded">
-        <form className="row">
-          <div
-            className="col-lg-4 col-6 col-md-6 position-relative"
-            style={{ margin: "5px 0" }}
-          >
-            <button
-              type="button"
-              onClick={handleOpenDate}
-              className="btn w-100 btn-outline-primary"
+    <div className="row my-5 d-flex justify-content-center">
+      <div className="col-lg-8 position-relative">
+        <div className="form border-1 bg-white shadow p-1 rounded">
+          <form className="row">
+            <div
+              className="col-lg-4 col-6 col-md-6 position-relative"
+              style={{ margin: "5px 0" }}
             >
-              Select Date
-            </button>
-          </div>
+              <button
+                type="button"
+                onClick={handleOpenDate}
+                className="btn w-100 btn-outline-primary"
+              >
+                Select Date
+              </button>
+            </div>
 
+            <div
+              className="col-lg-4 col-6 col-md-6"
+              style={{ margin: "5px 0" }}
+            >
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Country, State, or City"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
+            <div
+              className="col-lg-4 col-12 col-md-12"
+              style={{ margin: "5px 0" }}
+            >
+              <button
+                onClick={searchMinistryBookings}
+                type="button"
+                disabled={loading}
+                className="btn btn-primary w-100"
+              >
+                {loading && (
+                  <span
+                    style={{ margin: "0px 5px" }}
+                    className="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                )}
+                <span>Search</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {openDate && (
           <div
-            className="col-lg-4 col-6 col-md-6"
-            style={{ margin: "5px 0" }}
+            className="text-center my-2 shadow position-absolute right-0"
+            style={{ overflowX: "scroll", zIndex: 10000 }}
           >
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Country, State, or City"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
+            <DateRangePicker
+              onChange={(item) => setState([item.selection])}
+              showSelectionPreview={true}
+              moveRangeOnFirstSelection={false}
+              months={1}
+              ranges={state}
+              direction="horizontal"
             />
           </div>
-          <div
-            className="col-lg-4 col-12 col-md-12"
-            style={{ margin: "5px 0" }}
-          >
-            <button
-              onClick={searchMinistryBookings}
-              type="button"
-              disabled={loading}
-              className="btn btn-primary w-100"
-            >
-              {loading && (
-                <span
-                  style={{ margin: "0px 5px" }}
-                  className="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
+        )}
+
+        <div className="my-2 border-1 rounded shadow bg-white p-1">
+          <h2 className="fw-bolder text-primary fs-3">Events</h2>
+          {loading && (
+            <div className="text-center">
+              <SkeletonLoader count={2} height={50} className={"mb-1"} />
+            </div>
+          )}
+          {bookings.length > 0
+            ? bookings.map((booking) => (
+                <EventDisplay event={booking} key={booking.id} />
+              ))
+            : !loading && (
+                <div className="alert alert-danger p-1 my-1" role="alert">
+                  <p className="lead d-flex align-items-center">
+                    <ImPointRight style={{ marginRight: "10px" }} /> No upcoming
+                    events for the selected days and location.
+                  </p>
+                </div>
               )}
-              <span>Search</span>
-            </button>
-          </div>
-        </form>
+        </div>
       </div>
-
-      {openDate && (
-        <div className="my-2 text-center" style={{ overflowX: "auto" }}>
-          <DateRangePicker
-            onChange={(item) => setState([item.selection])}
-            showSelectionPreview={true}
-            moveRangeOnFirstSelection={false}
-            months={2}
-            ranges={state}
-            direction="horizontal"
-          />
-        </div>
-      )}
-
-      {/* no event message  */}
-      <hr />
-      <h2 className="fw-bolder fw-3">Events</h2>
-      {bookings.length > 0 ? (
-        bookings.map((booking) => (
-          <EventDisplay event={booking} key={booking.id} />
-        ))
-      ) : (
-        <div className="alert alert-danger p-1 my-1" role="alert">
-          <p className="lead d-flex align-items-center">
-            <ImPointRight style={{ marginRight: "10px" }} /> No upcoming
-            events for the selected days and location.
-          </p>
-        </div>
-      )}
     </div>
-  </div>
   );
 };
 
