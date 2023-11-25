@@ -3,7 +3,7 @@ const page = () => {
   return (
     <div className="container-fluid">
       <div className="row rounded shadow-sm bg-white my-1 p-2">
-        <div className="col-lg-6  my-2">
+        {/* <div className="col-lg-6  my-2">
           {videos.length > 0 && (
             <div className="my-1 p-2 d-flex flex-column flex-wrap gap-1">
               {error && <p className="text-danger">{error}</p>}
@@ -43,7 +43,7 @@ const page = () => {
               ))}
             </ul>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );
