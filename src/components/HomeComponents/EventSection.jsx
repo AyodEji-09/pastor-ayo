@@ -1,10 +1,10 @@
-"use client";
 import SectionHeader from "@/components/Common/SectionHeader";
-import Link from "next/link";
-import { FaEye } from "react-icons/fa";
 import EventsComponent from "../Common/EventsComponent";
+import { searchMinistryBookings } from "@/Api/seachAPi";
 
-const EventSection = () => {
+const EventSection = async () => {
+  let bookings = await searchMinistryBookings();
+
   return (
     <section id="event__section" className="section">
       <div className="container">
@@ -12,7 +12,7 @@ const EventSection = () => {
           header={"Events"}
           desc="See me at any of the following events."
         />
-        <EventsComponent />
+        <EventsComponent BOOKINGS={bookings} />
       </div>
     </section>
   );

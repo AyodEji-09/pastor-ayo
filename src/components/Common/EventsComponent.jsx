@@ -10,16 +10,21 @@ import Api from "@/Api/api";
 import moment from "moment";
 import SkeletonLoader from "./SkeletonLoader";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { BsFillCalendar2EventFill } from "react-icons/bs";
 
 const EventsComponent = ({ BOOKINGS }) => {
-  const [bookings, setBookings] = useState(BOOKINGS);
+  const route = usePathname();
+  const page = route === "/events" ? true : false;
+
+  const [bookings, setBookings] = useState(BOOKINGS || []);
   const [loading, setLoading] = useState(false);
   const [openDate, setOpenDate] = useState(false);
   const [location, setLocation] = useState("");
   const [state, setState] = useState([
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), 7),
+      endDate: addDays(new Date(), page ? 30 : 7),
       key: "selection",
     },
   ]);
@@ -59,9 +64,9 @@ const EventsComponent = ({ BOOKINGS }) => {
               <button
                 type="button"
                 onClick={handleOpenDate}
-                className="btn w-100 btn-outline-primary"
+                className="btn w-100 btn-outline-primary  d-block"
               >
-                Select Date
+                <span>Select Date</span>
               </button>
             </div>
 
@@ -104,13 +109,13 @@ const EventsComponent = ({ BOOKINGS }) => {
         {openDate && (
           <div
             className="text-center mt-2 mb-5 shadow position-absolute right-0"
-            style={{ overflowX: "scroll", zIndex: 10000 }}
+            style={{ overflowX: "scroll", zIndex: 100 }}
           >
             <DateRangePicker
               onChange={(item) => setState([item.selection])}
               showSelectionPreview={true}
               moveRangeOnFirstSelection={false}
-              months={1}
+              months={2}
               ranges={state}
               direction="horizontal"
             />
@@ -139,12 +144,16 @@ const EventsComponent = ({ BOOKINGS }) => {
                   </p>
                 </div>
               )}
-          <hr />
-          <div className="mt-2">
-            <Link className="btn btn-outline-danger" href="/events">
-              View More
-            </Link>
-          </div>
+          {!page && (
+            <>
+              <hr />
+              <div className="mt-2">
+                <Link className="btn btn-outline-danger" href="/events">
+                  View More
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
