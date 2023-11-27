@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/database";
 import { BOOKINGS } from "@/database/schema";
 import { asc, desc, eq } from "drizzle-orm";
-import { bookingConfirmationMail } from "@/lib/email_templates/contact_mail";
+import { bookingConfirmationMail } from "@/lib/email_templates/booking_confirmation_mail";
 
 export async function DELETE(request, { params }) {
   const bookingId = params.id;
