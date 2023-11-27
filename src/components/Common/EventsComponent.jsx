@@ -11,7 +11,6 @@ import moment from "moment";
 import SkeletonLoader from "./SkeletonLoader";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BsFillCalendar2EventFill } from "react-icons/bs";
 
 const EventsComponent = ({ BOOKINGS }) => {
   const route = usePathname();
@@ -37,7 +36,7 @@ const EventsComponent = ({ BOOKINGS }) => {
     let start_date = moment(state[0].startDate).format("YYYY-MM-DD");
     let end_date = moment(state[0].endDate).format("YYYY-MM-DD");
     try {
-      const res = await Api.post(`/api/booking/search`, {
+      const res = await Api.post(`/api/bookings/search`, {
         start_date,
         end_date,
         location,

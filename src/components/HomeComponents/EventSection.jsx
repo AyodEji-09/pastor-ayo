@@ -1,6 +1,6 @@
 import SectionHeader from "@/components/Common/SectionHeader";
 import EventsComponent from "../Common/EventsComponent";
-import { searchMinistryBookings } from "@/Api/seachAPi";
+import { searchMinistryBookings } from "@/Api/bookingApi";
 
 const EventSection = async () => {
   let bookings = await searchMinistryBookings();

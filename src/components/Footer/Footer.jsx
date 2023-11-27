@@ -20,7 +20,7 @@ const Footer = () => {
           </p>
           <Link
             className="btn d-inline btn-outline-light rounded-pill shadow "
-            href="/booking"
+            href="/bookings"
           >
             Book
           </Link>
@@ -68,7 +68,7 @@ const Footer = () => {
                     <li>
                       <Link
                         className="d-flex align-items-center"
-                        href="/booking"
+                        href="/bookings"
                       >
                         <VscDebugBreakpointLogUnverified
                           style={{ marginRight: "4px" }}

@@ -1,7 +1,7 @@
 import EventsComponent from "@/components/Common/EventsComponent";
 import PageHeader from "@/components/Common/PageHeader";
 import { title } from "@/utils/metaData";
-import { searchMinistryBookings } from "@/Api/seachAPi";
+import { searchMinistryBookings } from "@/Api/bookingApi";
 
 
 export const metadata = {

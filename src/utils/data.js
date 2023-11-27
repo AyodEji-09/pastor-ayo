@@ -24,14 +24,14 @@ export const navLinks = [
     dropdown: false,
   },
   {
-    title: "Booking",
-    url: "/booking",
+    title: "Bookings",
+    url: "/bookings",
     icon: "",
     dropdown: false,
   },
   {
-    title: "Blogs",
-    url: "/blogs",
+    title: "Blog",
+    url: "/blog",
     icon: "",
     dropdown: false,
   },
@@ -194,3 +194,15 @@ export const BASE_URL =
   process.env.NODE_ENV === "development"
     ? process.env.NEXT_PUBLIC_BASE_URL_DEV
     : process.env.NEXT_PUBLIC_BASE_URL_LIVE;
+
+export const counseling = (str) => {
+  return str === "premarital_counseling"
+    ? "Premarital Counseling"
+    : str === "marital_counseling"
+    ? "Marital Counseling"
+    : str === "marriage_coaching"
+    ? "Marriage Coaching"
+    : str === "life_coaching"
+    ? "Life Coaching"
+    : null;
+};

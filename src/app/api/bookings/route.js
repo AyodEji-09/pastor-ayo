@@ -1,18 +1,17 @@
 import { NextResponse } from "next/server";
 import { db } from "@/database";
 import { BOOKINGS } from "@/database/schema";
-import { desc, eq } from "drizzle-orm";
+import { asc, desc, eq } from "drizzle-orm";
 import { sendMail } from "@/lib/mail";
 import { BASE_URL } from "@/utils/data";
 import { contactMail } from "@/lib/email_templates/contact_mail";
 
-export async function GET(request) {
+export async function GET() {
   try {
-    const bookings = await db
-      .select()
-      .from(BOOKINGS)
-      .where(eq(BOOKINGS.booking_type, "ministry"))
-      .orderBy(desc(BOOKINGS.event_date));
+    const bookings = await db.query.BOOKINGS.findMany({
+      orderBy: [asc(BOOKINGS.event_date)],
+    });
+
     return NextResponse.json(
       {
         data: bookings,
@@ -24,12 +23,13 @@ export async function GET(request) {
     return NextResponse.json(
       {
         data: [],
-        message: "Error",
+        message: error,
       },
       { status: 500 }
     );
   }
 }
+
 export async function POST(request) {
   const body = await request.json();
   const {
@@ -107,7 +107,7 @@ export async function POST(request) {
       event_slug,
     });
 
-    let bookingURL = `${BASE_URL}/admin/bookings#${event_slug}`;
+    let bookingURL = `${BASE_URL}/admin/bookings?open=${event_slug}#${event_slug}`;
     let adminEmail = process.env.ADMIN_EMAIL;
 
     const response = sendMail(

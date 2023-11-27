@@ -130,7 +130,7 @@ const AdminVideo = () => {
   const handleOnSubmit = async () => {
     try {
       setLoadingPublish(true);
-      const res = await Api.post("/api/booking", form);
+      const res = await Api.post("/api/bookings", form);
       toast.success("Videos have been published succesfully", {
         duration: 5000,
       });
@@ -147,12 +147,12 @@ const AdminVideo = () => {
   };
 
   const fetchPublishedVideos = async () => {
-    const res = await Api.get("/api/booking");
+    const res = await Api.get("/api/bookings");
     setPublishedVideos(res.data.data);
   };
 
   useEffect(() => {
-    fetchPublishedVideos();
+    // fetchPublishedVideos();
   }, []);
 
   return (

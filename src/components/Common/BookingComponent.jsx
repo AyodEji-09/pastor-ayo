@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Country, State } from "country-state-city";
 import { hours } from "@/utils/data";
 import Api from "@/Api/api";
@@ -14,6 +14,7 @@ const BookingComponent = () => {
   const [bookingType, setBookingType] = useState("ministry");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const checkbox = useRef();
   const [form, setForm] = useState({
     booking_type: "",
     first_name: "",
@@ -84,7 +85,7 @@ const BookingComponent = () => {
         event_slug: slugify(`${form.first_name} ${form.last_name}`),
         booking_type: bookingType,
       };
-      const res = await Api.post("/api/booking", formData);
+      const res = await Api.post("/api/bookings", formData);
       toast.success(
         `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed. If you have any urgent inquiries, please don't hesitate to contact me.`,
         {
@@ -92,6 +93,7 @@ const BookingComponent = () => {
         }
       );
       setLoading(false);
+      checkbox.current.checked = false;
       setForm({
         first_name: "",
         last_name: "",
@@ -683,6 +685,7 @@ const BookingComponent = () => {
                 type="checkbox"
                 id="consent"
                 name="consent"
+                ref={checkbox}
                 value={form.consent}
                 onChange={handleChange}
               />
