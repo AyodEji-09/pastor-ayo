@@ -14,7 +14,10 @@ export async function sendMail(message, subject, to) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: process.env.MAIL_FROM, // sender address
+    from: {
+      name: "Ayodeji Anifowose",
+      address: process.env.MAIL_FROM, // sender address
+    },
     to, // []
     subject, // Subject line
     html: `<div>${message}</div>`, // html body

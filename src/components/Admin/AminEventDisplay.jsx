@@ -2,7 +2,7 @@
 import moment from "moment";
 import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { FaCheckDouble, FaRegAddressCard } from "react-icons/fa";
-import { MdAccessTime } from "react-icons/md";
+import { MdAccessTime, MdDelete } from "react-icons/md";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -59,20 +59,38 @@ const AdminEventDisplay = ({ event }) => {
         id="accordionFlushExample"
       >
         <div
-          className="d-flex justify-content-between p-1 bg-danger bg-opacity-10 bg-gradient border-2 border rounded-top border-bottom-0"
+          className="d-flex justify-content-between align-items-center p-1 bg-danger bg-opacity-10 bg-gradient border-2 border rounded-top border-bottom-0"
           style={{ margin: "0" }}
         >
           <p className="my-0 py-0 fw-bold">
             {event.booking_type === "ministry" ? "Ministration" : "Counseling"}
           </p>
-          <Button
-            loading={loading}
-            type="submit"
-            className="btn btn-outline-danger btn-sm"
-            text="Delete"
-            func={() => handleDelete(event.id)}
-            disabled={loading}
-          />
+          <div className="d-flex justify-content-between gap-2 align-items-center">
+            {event.booking_confirmed ? (
+              <p className="text-success mb-0 pb-0">
+                <FaCheckDouble />
+              </p>
+            ) : (
+              <Button
+                loading={loadingUpdate}
+                type="button"
+                className="btn btn-sm btn-success"
+                func={() => handleUpdate(event)}
+                disabled={loadingUpdate}
+                text="Confirm"
+              />
+            )}
+            <Button
+              loading={loading}
+              type="submit"
+              className="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center"
+              style={{ padding: "5px" }}
+              func={() => handleDelete(event.id)}
+              disabled={loading}
+            >
+              <MdDelete />
+            </Button>
+          </div>
         </div>
         <div id={event.event_slug} className="accordion-item border-2">
           <button
@@ -108,48 +126,25 @@ const AdminEventDisplay = ({ event }) => {
             data-bs-parent="#accordionFlushExample"
           >
             <div className="accordion-body">
-              <p
-                style={{ margin: "5px 0" }}
-                className="d-flex align-items-center fw-normal small"
-              >
-                <CgProfile className="me-1" />
-                {event.event_name}
+              <p style={{ margin: "5px 0" }} className="fw-normal small">
+                <CgProfile style={{ marginRight: "10px" }} />
+                {event.event_name || `${event.first_name} ${event.last_name}`}
               </p>
-              <p
-                style={{ margin: "5px 0" }}
-                className="d-flex align-items-center fw-normal small"
-              >
-                <VscDebugBreakpointLogUnverified className="me-1" />
+              <p style={{ margin: "5px 0" }} className="fw-normal small">
+                <VscDebugBreakpointLogUnverified
+                  style={{ marginRight: "10px" }}
+                />
                 {event.event_nature}
               </p>
-              <p
-                style={{ margin: "5px 0" }}
-                className="d-flex align-items-center fw-normal small"
-              >
-                <FaRegAddressCard className="me-1" />
+              <p style={{ margin: "5px 0" }} className="fw-normal small">
+                <FaRegAddressCard style={{ marginRight: "10px" }} />
                 {event.event_address}, {event.event_city}, {event.event_state},{" "}
                 {event.event_country}.
               </p>
-              <p
-                style={{ margin: "5px 0" }}
-                className="d-flex align-items-center fw-normal small"
-              >
-                <MdAccessTime className="me-1" /> {event.event_time}
+              <p style={{ margin: "5px 0" }} className="fw-normal small">
+                <MdAccessTime style={{ marginRight: "10px" }} />{" "}
+                {event.event_time}
               </p>
-              {event.booking_confirmed ? (
-                <p className="text-success mb-0 pb-0">
-                  Confirmed <FaCheckDouble />
-                </p>
-              ) : (
-                <Button
-                  loading={loadingUpdate}
-                  type="button"
-                  className="btn btn-sm btn-success"
-                  func={() => handleUpdate(event)}
-                  disabled={loadingUpdate}
-                  text="Confirm booking"
-                />
-              )}
             </div>
           </div>
         </div>

@@ -1,6 +1,23 @@
-export const Button = ({ loading, type, className, text, func, disabled }) => {
+import { Children } from "react";
+
+export const Button = ({
+  loading,
+  type,
+  className,
+  text,
+  func,
+  disabled,
+  children,
+  style,
+}) => {
   return (
-    <button onClick={func} type={type} disabled={disabled} className={className}>
+    <button
+      onClick={func}
+      type={type}
+      disabled={disabled}
+      style={style}
+      className={className}
+    >
       {loading && (
         <span
           style={{ margin: "0px 5px" }}
@@ -9,7 +26,8 @@ export const Button = ({ loading, type, className, text, func, disabled }) => {
           aria-hidden="true"
         ></span>
       )}
-      <span>{text}</span>
+      {text && <span style={{ marginRight: "4px" }}>{text}</span>}
+      {children && !loading && children}
     </button>
   );
 };
