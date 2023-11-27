@@ -15,6 +15,7 @@ export async function POST(request) {
   const body = await request.json();
 
   const { start_date, end_date, location } = body;
+  console.log({ start_date, end_date, location })
 
   try {
     const bookings = await db

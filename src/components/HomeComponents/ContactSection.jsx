@@ -11,7 +11,7 @@ const ContactSection = () => {
         <Link
           title="Go to contact page"
           href={"/contact"}
-          className="btn fs-3 btn-lg btn-outline-light"
+          className="btn btn-lg btn-outline-light rounded-pill mb-1"
         >
           Contact Me <FaArrowRight />
         </Link>

@@ -4,11 +4,18 @@ import { Country, State } from "country-state-city";
 import { hours } from "@/utils/data";
 import Api from "@/Api/api";
 import toast, { Toaster } from "react-hot-toast";
+import { slugify } from "@/utils/helper";
+import { Button } from "../UI/Button";
+import moment from "moment";
+import Link from "next/link";
+import Error from "../UI/Error";
 
 const BookingComponent = () => {
   const [bookingType, setBookingType] = useState("ministry");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [form, setForm] = useState({
-    booking_type: bookingType,
+    booking_type: "",
     first_name: "",
     last_name: "",
     personal_email: "",
@@ -20,6 +27,7 @@ const BookingComponent = () => {
     org_facebook: "",
     org_youtube: "",
     event_name: "",
+    event_slug: "",
     event_nature: "",
     event_address: "",
     event_country: "",
@@ -35,7 +43,9 @@ const BookingComponent = () => {
     additional_info: "",
     counseling_groups: "",
     consent: false,
+    booking_confirmed: false,
   });
+
   const [states, setStates] = useState([]);
 
   const countries = Country.getAllCountries();
@@ -61,16 +71,64 @@ const BookingComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
     try {
-      let country = Country.getCountryByCode(form.event_country);
-      const res = await Api.post("/api/booking", {
+      let country =
+        form.event_country.length > 0
+          ? Country.getCountryByCode(form.event_country).name
+          : "";
+      let formData = {
         ...form,
-        event_country: country.name,
+        event_country: country,
+        event_slug: slugify(`${form.first_name} ${form.last_name}`),
+        booking_type: bookingType,
+      };
+      const res = await Api.post("/api/booking", formData);
+      toast.success(
+        `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed. If you have any urgent inquiries, please don't hesitate to contact me.`,
+        {
+          duration: 7000,
+        }
+      );
+      setLoading(false);
+      setForm({
+        first_name: "",
+        last_name: "",
+        personal_email: "",
+        personal_phone: "",
+        org_name: "",
+        org_email: "",
+        org_phone: "",
+        org_website: "",
+        org_facebook: "",
+        org_youtube: "",
+        event_name: "",
+        event_slug: "",
+        event_nature: "",
+        event_address: "",
+        event_country: "",
+        event_state: "",
+        event_city: "",
+        event_time: "",
+        event_date: "",
+        prog_type: "",
+        ministers_list: "",
+        ticket: "",
+        venue_capacity: "",
+        recording_available: "",
+        additional_info: "",
+        counseling_groups: "",
+        consent: false,
+        booking_confirmed: false,
       });
-      toast.success("Videos have been published succesfully", {
-        duration: 5000,
+    } catch (error) {
+      setLoading(false);
+      setError(error.response.data.message);
+      toast.error(error.response.data.message, {
+        duration: 7000,
       });
-    } catch (error) {}
+    }
   };
 
   return (
@@ -107,8 +165,11 @@ const BookingComponent = () => {
           </li>
         </ul>
       </div>
+
+      {error && <Error error={error} />}
+
       <main className="my-2 p-1 bg-white rounded shadow-sm">
-        <form className="row g-2" onSubmit={handleSubmit}>
+        <form className="row g-2">
           <div className="col-md-6">
             <label htmlFor="first_name" className="form-label">
               First Name*
@@ -461,7 +522,7 @@ const BookingComponent = () => {
                   id="recording_available"
                   name="recording_available"
                   placeholder="Pastor Ayodeji Anifowose`s Team usually requests a video and
-                audio recording of his ministration. Will, there be a recording
+                audio recording of her ministration. Will, there be a recording
                 of the event available for Ayodeji Anifowose`s media team?"
                 />
               </div>
@@ -484,26 +545,63 @@ const BookingComponent = () => {
           )}
 
           {bookingType === "counseling" && (
-            <div className="col-md-6">
-              <label htmlFor="counseling_groups" className="form-label">
-                Counseling session groups
-              </label>
-              <select
-                onChange={handleChange}
-                value={form.counseling_groups}
-                name="counseling_groups"
-                className="form-select"
-                id="counseling_groups"
-              >
-                <option value="premarital_counseling">
-                  Premarital counseling
-                </option>
-                <option value="marital_counseling">Marital counseling</option>
-                <option value="marriage_coaching">Marriage coaching</option>
-                <option value="life_coaching">Life coaching</option>
-              </select>
-            </div>
+            <>
+              <div className="col-md-6">
+                <label htmlFor="event_date" className="form-label">
+                  Counseling session date*
+                </label>
+                <input
+                  type="date"
+                  value={form.event_date}
+                  onChange={handleChange}
+                  className="form-control"
+                  id="event_date"
+                  name="event_date"
+                  placeholder="Event Date"
+                />
+              </div>
+              <div className="col-md-6">
+                <label htmlFor="event_time" className="form-label">
+                  Counseling session time*
+                </label>
+                <select
+                  className="form-select"
+                  value={form.event_time}
+                  onChange={handleChange}
+                  id="event_time"
+                  name="event_time"
+                  placeholder="Event Time"
+                >
+                  {hours.map((hour, index) => (
+                    <option key={hour + index} value={hour}>
+                      {hour}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="col-md-6">
+                <label htmlFor="counseling_groups" className="form-label">
+                  Counseling session groups
+                </label>
+                <select
+                  onChange={handleChange}
+                  value={form.counseling_groups}
+                  name="counseling_groups"
+                  className="form-select"
+                  id="counseling_groups"
+                >
+                  <option value="premarital_counseling">
+                    Premarital counseling
+                  </option>
+                  <option value="marital_counseling">Marital counseling</option>
+                  <option value="marriage_coaching">Marriage coaching</option>
+                  <option value="life_coaching">Life coaching</option>
+                </select>
+              </div>
+            </>
           )}
+
           <hr />
           {bookingType === "ministry" && (
             <div>
@@ -580,7 +678,6 @@ const BookingComponent = () => {
 
           <div className="col-12">
             <div className="form-check">
-              {/* */}
               <input
                 className="form-check-input"
                 type="checkbox"
@@ -597,13 +694,14 @@ const BookingComponent = () => {
           </div>
 
           <div className="col-12 mt-3">
-            <button
-              disabled={form.consent ? false : true}
+            <Button
+              loading={loading}
               type="submit"
               className="btn btn-primary px-5"
-            >
-              Submit
-            </button>
+              text="Submit"
+              func={handleSubmit}
+              disabled={!form.consent || loading}
+            />
           </div>
         </form>
       </main>

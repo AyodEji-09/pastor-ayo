@@ -1,22 +1,22 @@
 import moment from "moment";
-import { BsCalendar4Event, BsFillCalendar2EventFill } from "react-icons/bs";
+import { BsFillCalendar2EventFill } from "react-icons/bs";
 import { FaRegAddressCard } from "react-icons/fa";
-import { IoTimeOutline } from "react-icons/io";
 import { MdAccessTime } from "react-icons/md";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
+import { CgProfile } from "react-icons/cg";
 
 const EventDisplay = ({ event }) => {
   return (
     <div className="accordion my-2 " id="accordionFlushExample">
-      <div className="accordion-item border-2">
+      <div id={event.event_slug} className="accordion-item border-2">
         <button
-          id={`flush-heading${event.id}`}
+          id={`flush-heading${event.event_slug}`}
           className="accordion-button collapsed d-flex align-items-start"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target={`#flush-collapse${event.id}`}
+          data-bs-target={`#flush-collapse${event.event_slug}`}
           aria-expanded="false"
-          aria-controls={`flush-collapse${event.id}`}
+          aria-controls={`flush-collapse${event.event_slug}`}
         >
           <BsFillCalendar2EventFill
             style={{ fontSize: "2.6rem" }}
@@ -32,18 +32,38 @@ const EventDisplay = ({ event }) => {
           </span>
         </button>
         <div
-          id={`flush-collapse${event.id}`}
+          id={`flush-collapse${event.event_slug}`}
           className="accordion-collapse collapse"
-          aria-labelledby={`flush-heading${event.id}`}
+          aria-labelledby={`flush-heading${event.event_slug}`}
           data-bs-parent="#accordionFlushExample"
         >
           <div className="accordion-body">
-            <p style={{margin: '5px 0'}} className="d-flex align-items-center">
+            <p
+              style={{ margin: "5px 0" }}
+              className="d-flex align-items-center fw-normal"
+            >
+              <CgProfile className="me-1" />
+              {event.event_name}
+            </p>
+            <p
+              style={{ margin: "5px 0" }}
+              className="d-flex align-items-center fw-normal"
+            >
+              <VscDebugBreakpointLogUnverified className="me-1" />
+              {event.event_nature}
+            </p>
+            <p
+              style={{ margin: "5px 0" }}
+              className="d-flex align-items-center fw-normal"
+            >
               <FaRegAddressCard className="me-1" />
               {event.event_address}, {event.event_city}, {event.event_state},{" "}
               {event.event_country}.
             </p>
-            <p style={{margin: '5px 0'}} className="d-flex align-items-center">
+            <p
+              style={{ margin: "5px 0" }}
+              className="d-flex align-items-center fw-normal"
+            >
               <MdAccessTime className="me-1" /> {event.event_time}
             </p>
           </div>
@@ -52,5 +72,4 @@ const EventDisplay = ({ event }) => {
     </div>
   );
 };
-
 export default EventDisplay;

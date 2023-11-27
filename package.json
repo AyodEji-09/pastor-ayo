@@ -30,7 +30,8 @@
     "react-icons": "^4.11.0",
     "react-loading-skeleton": "^3.3.1",
     "react-responsive-carousel": "^3.2.23",
-    "react-youtube": "^10.1.0"
+    "react-youtube": "^10.1.0",
+    "typed.js": "^2.1.0"
   },
   "devDependencies": {
     "drizzle-kit": "^0.20.4",

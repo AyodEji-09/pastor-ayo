@@ -3,22 +3,23 @@ import EventDisplay from "../Common/EventDisplay";
 import { ImPointRight } from "react-icons/im";
 import { DateRangePicker } from "react-date-range";
 import { addDays } from "date-fns";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import Api from "@/Api/api";
 import moment from "moment";
 import SkeletonLoader from "./SkeletonLoader";
+import Link from "next/link";
 
-const EventsComponent = ({ page }) => {
-  const [bookings, setBookings] = useState([]);
+const EventsComponent = ({ BOOKINGS }) => {
+  const [bookings, setBookings] = useState(BOOKINGS);
   const [loading, setLoading] = useState(false);
   const [openDate, setOpenDate] = useState(false);
   const [location, setLocation] = useState("");
   const [state, setState] = useState([
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), page ? 30 : 7),
+      endDate: addDays(new Date(), 7),
       key: "selection",
     },
   ]);
@@ -38,19 +39,13 @@ const EventsComponent = ({ page }) => {
       });
       setLoading(false);
       setOpenDate(false);
-      page
-        ? setBookings(res.data.data)
-        : setBookings(res.data.data.splice(0, 5));
+      setBookings(res.data.data);
     } catch (error) {
       setLoading(false);
       setOpenDate(false);
       setBookings([]);
     }
   };
-
-  useEffect(() => {
-    searchMinistryBookings();
-  }, []);
 
   return (
     <div className="row my-5 d-flex justify-content-center">
@@ -108,7 +103,7 @@ const EventsComponent = ({ page }) => {
 
         {openDate && (
           <div
-            className="text-center my-2 shadow position-absolute right-0"
+            className="text-center mt-2 mb-5 shadow position-absolute right-0"
             style={{ overflowX: "scroll", zIndex: 10000 }}
           >
             <DateRangePicker
@@ -122,7 +117,10 @@ const EventsComponent = ({ page }) => {
           </div>
         )}
 
-        <div className="my-2 border-1 rounded shadow bg-white p-1">
+        <div
+          data-aos="fade-up"
+          className="mt-2 mb-5 border-1 rounded shadow bg-white p-1"
+        >
           <h2 className="fw-bolder text-primary fs-3">Events</h2>
           {loading && (
             <div className="text-center">
@@ -141,6 +139,12 @@ const EventsComponent = ({ page }) => {
                   </p>
                 </div>
               )}
+          <hr />
+          <div className="mt-2">
+            <Link className="btn btn-outline-danger" href="/events">
+              View More
+            </Link>
+          </div>
         </div>
       </div>
     </div>

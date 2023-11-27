@@ -10,7 +10,7 @@ const About = () => {
     <section id="about__section" className="section">
       <div className="container">
         <div className="row">
-          <div className="col-lg-6 mb-2 d-flex justify-content-lg-center">
+          <div  className="col-lg-6 mb-2 d-flex justify-content-lg-center">
             <div className="rounded">
               <Image
                 src={about}

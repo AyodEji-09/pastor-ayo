@@ -22,6 +22,27 @@
       "when": 1700872782446,
       "tag": "0002_useful_yellow_claw",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1701011601499,
+      "tag": "0003_massive_aqueduct",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1701046042199,
+      "tag": "0004_military_runaways",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1701046527406,
+      "tag": "0005_tense_invaders",
+      "breakpoints": true
     }
   ]
 }

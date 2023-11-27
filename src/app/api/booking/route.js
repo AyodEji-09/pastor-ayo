@@ -1,19 +1,33 @@
 import { NextResponse } from "next/server";
 import { db } from "@/database";
 import { BOOKINGS } from "@/database/schema";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { sendMail } from "@/lib/mail";
 import { BASE_URL } from "@/utils/data";
+import { contactMail } from "@/lib/email_templates/contact_mail";
 
 export async function GET(request) {
   try {
     const bookings = await db
       .select()
       .from(BOOKINGS)
-      .where(eq(BOOKINGS.booking_type, "ministry"));
-    return NextResponse.json({ data: searchParams });
+      .where(eq(BOOKINGS.booking_type, "ministry"))
+      .orderBy(desc(BOOKINGS.event_date));
+    return NextResponse.json(
+      {
+        data: bookings,
+        message: "Successful",
+      },
+      { status: 200 }
+    );
   } catch (error) {
-    return NextResponse.json({ data: error });
+    return NextResponse.json(
+      {
+        data: [],
+        message: "Error",
+      },
+      { status: 500 }
+    );
   }
 }
 export async function POST(request) {
@@ -45,8 +59,23 @@ export async function POST(request) {
     recording_available,
     additional_info,
     counseling_groups,
+    booking_confirmed,
+    event_slug,
   } = body;
   try {
+    const alreadyBookedDate = await db.query.BOOKINGS.findFirst({
+      where: eq(BOOKINGS.event_date, event_date),
+    });
+    if (alreadyBookedDate) {
+      return NextResponse.json(
+        {
+          data: [],
+          message:
+            "The date you selected has already been booked, Please select another date or contact me.",
+        },
+        { status: 406 }
+      );
+    }
     await db.insert(BOOKINGS).values({
       booking_type,
       first_name,
@@ -74,21 +103,23 @@ export async function POST(request) {
       recording_available,
       additional_info,
       counseling_groups,
+      booking_confirmed,
+      event_slug,
     });
-    const message = `<h3> Good news, </h3>
-                      <p> ${first_name} ${last_name} has booked an appointment with you,</p>
-                      <p><a href="mailto:${personal_email}">Click Here</a> to reply directly. </p>
-                      `;
-    // <p><a href="${BASE_URL}/admin/bookings">Click Here</a> to see booking details.  </p>
-    //  <p><b>Product Id:</b> ${req.body.id} </p>
-    //  <p><b>Message:</b> ${req.body.request}</p>
+
+    let bookingURL = `${BASE_URL}/admin/bookings#${event_slug}`;
+    let adminEmail = process.env.ADMIN_EMAIL;
+
     const response = sendMail(
-      message,
+      contactMail(`${first_name} ${last_name}`, personal_email, bookingURL),
       "New Booking Alert!!!",
-      process.env.ADMIN_EMAIL
+      adminEmail
     );
-    return NextResponse.json({ data: "success" }, { status: 201 });
+    return NextResponse.json({ data: [], message: "success" }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ data: error });
+    return NextResponse.json(
+      { data: error, message: "error" },
+      { status: 400 }
+    );
   }
 }

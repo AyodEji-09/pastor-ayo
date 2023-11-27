@@ -39,7 +39,7 @@ const Header = () => {
   return (
     <>
       <div
-        style={{ zIndex: 1000000 }}
+        style={{ zIndex: 1000 }}
         ref={headerRef}
         className="header__one shadow position-fixed w-100"
       >
