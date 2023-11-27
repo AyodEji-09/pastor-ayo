@@ -23,6 +23,7 @@ const AdminEventDisplay = ({ event }) => {
     setLoadingUpdate(true);
     const res = await updateBookings(event);
     setLoadingUpdate(false);
+    console.log(res)
     if (res.status == 201) {
       router.refresh();
       toast.success("Booking details has been confirmed", {
