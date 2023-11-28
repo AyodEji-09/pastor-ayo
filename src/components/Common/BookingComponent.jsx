@@ -87,7 +87,7 @@ const BookingComponent = () => {
       };
       const res = await Api.post("/api/bookings", formData);
       toast.success(
-        `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed. If you have any urgent inquiries, please don't hesitate to contact me.`,
+        `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed.`,
         {
           duration: 7000,
         }

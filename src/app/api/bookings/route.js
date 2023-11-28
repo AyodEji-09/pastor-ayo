@@ -4,7 +4,7 @@ import { BOOKINGS } from "@/database/schema";
 import { asc, desc, eq } from "drizzle-orm";
 import { sendMail } from "@/lib/mail";
 import { BASE_URL } from "@/utils/data";
-import { contactMail } from "@/lib/email_templates/contact_mail";
+import { bookingMail } from "@/lib/email_templates/booking_mail";
 
 export async function GET() {
   try {
@@ -111,7 +111,7 @@ export async function POST(request) {
     let adminEmail = process.env.ADMIN_EMAIL;
 
     const response = sendMail(
-      contactMail(`${first_name} ${last_name}`, personal_email, bookingURL),
+      bookingMail(`${first_name} ${last_name}`, personal_email, bookingURL),
       "New Booking Alert!!!",
       adminEmail
     );

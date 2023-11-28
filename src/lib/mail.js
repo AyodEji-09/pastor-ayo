@@ -20,7 +20,7 @@ export async function sendMail(message, subject, to) {
     },
     to, // []
     subject, // Subject line
-    html: `<div>${message}</div>`, // html body
+    html: message, // html body
   });
   return info;
 }
