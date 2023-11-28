@@ -9,7 +9,9 @@ export async function GET() {
     const channelId = process.env.GHGF_CHANNEL_ID;
     const videoMaxResults = process.env.MAX_RESULTS;
     const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=${videoMaxResults}&type=video`;
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      next: { revalidate: 60 }, // Revalidate every 60 seconds
+    });
     const data = await res.json();
     const videos = data.items;
     let videoData = [];
