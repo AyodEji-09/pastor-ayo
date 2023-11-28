@@ -81,6 +81,7 @@ const AdminMusic = ({ musics }) => {
         duration: 5000,
       });
       uncheck();
+      setForm([]);
     } catch (error) {
       toast.error("Unable to unpublish selected musics", {
         duration: 5000,
@@ -110,6 +111,7 @@ const AdminMusic = ({ musics }) => {
         duration: 5000,
       });
       uncheck();
+      setForm([]);
     } catch (error) {
       toast.error("Unable to publish selected musics", {
         duration: 5000,

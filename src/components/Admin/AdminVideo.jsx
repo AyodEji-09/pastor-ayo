@@ -63,6 +63,7 @@ const AdminVideo = ({ videos }) => {
       toast.success("All selected videos has been unpublished successfully", {
         duration: 5000,
       });
+      setForm([])
     } catch (error) {
       toast.error("Unable to unpublish selected videos", {
         duration: 5000,
@@ -84,6 +85,7 @@ const AdminVideo = ({ videos }) => {
       toast.success("All selected videos has been published successfully", {
         duration: 5000,
       });
+      setForm([])
       uncheck();
     } catch (error) {
       toast.error("Unable to publish selected videos", {
