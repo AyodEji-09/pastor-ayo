@@ -1,7 +1,8 @@
 import { getAllMusics } from "@/Api/musicApi";
 import AdminMusic from "@/components/Admin/AdminMusic";
 
-export const revalidate = 1;
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 const page = async () => {
   const musics = await getAllMusics();
   return (

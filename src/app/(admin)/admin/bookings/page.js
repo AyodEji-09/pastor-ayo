@@ -1,7 +1,8 @@
 import { getAllBookings } from "@/Api/bookingApi";
 import AdminEventDisplay from "@/components/Admin/AdminEventDisplay";
 
-export const revalidate = 1;
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 const page = async () => {
   const events = await getAllBookings();
   return (
