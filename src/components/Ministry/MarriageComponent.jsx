@@ -3,8 +3,9 @@ import { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import YouTube from "react-youtube";
 import SectionHeader from "../Common/SectionHeader";
+import ErrorDisplay from "../UI/ErrorDisplay";
 
-const MarriageComponent = () => {
+const MarriageComponent = ({ videos }) => {
   const [loading, setLoading] = useState(true);
   const opts = {
     height: 360,
@@ -24,24 +25,16 @@ const MarriageComponent = () => {
     setLoading(false);
   };
   const introVideo = "s0Ghipw3sDA";
-  const videoId = [
-    "5VrNUQlqPd8",
-    "GxL23JkhrhA",
-    "PhC1z6QeEIY",
-    "qy1SgtVYsV8",
-    "MniBCLz8oss",
-    "8Yszohoh35g",
-  ];
 
   return (
     <>
       <div className="row my-5 d-flex justify-content-center">
-        <div className="col-lg-5 col-md-6 my-1">
+        <div className="col-lg-5 col-md-6 my-1 position-relative">
           <div style={{ height: "360px" }}>
             {loading ? (
               <>
                 <div
-                  className="spinner-border text-danger text-center"
+                  className="spinner-border text-danger position-absolute top-50 start-50"
                   role="status"
                 ></div>
               </>
@@ -173,28 +166,32 @@ const MarriageComponent = () => {
         }
       />
       <div className="row my-5">
-        {videoId.map((id) => (
-          <div
-            style={{ height: "250px" }}
-            key={id}
-            className="col-lg-4 col-md-6 my-1"
-          >
-            {loading ? (
-              <>
-                <div
-                  className="spinner-border text-danger text-center"
-                  role="status"
-                ></div>
-              </>
-            ) : null}
-            <YouTube
-              iframeClassName={"w-100 rounded shadow"}
-              videoId={id}
-              opts={opts2}
-              onReady={_onReady}
-            />
-          </div>
-        ))}
+        {videos.length > 0 ? (
+          videos.splice(0, 6).map((video, index) => (
+            <div
+              style={{ height: "250px" }}
+              key={video.id + index + video.videoId}
+              className="col-lg-4 col-md-6 my-1 position-relative"
+            >
+              {loading ? (
+                <>
+                  <div
+                    className="spinner-border text-danger position-absolute top-50 start-50"
+                    role="status"
+                  ></div>
+                </>
+              ) : null}
+              <YouTube
+                iframeClassName={"w-100 rounded shadow"}
+                videoId={video.videoId}
+                opts={opts2}
+                onReady={_onReady}
+              />
+            </div>
+          ))
+        ) : (
+          <ErrorDisplay error="No videos published" />
+        )}
       </div>
     </>
   );

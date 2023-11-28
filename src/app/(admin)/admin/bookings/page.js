@@ -1,5 +1,5 @@
 import { getAllBookings } from "@/Api/bookingApi";
-import AdminEventDisplay from "@/components/Admin/AminEventDisplay";
+import AdminEventDisplay from "@/components/Admin/AdminEventDisplay";
 
 const page = async () => {
   const events = await getAllBookings();

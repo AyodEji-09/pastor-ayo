@@ -18,7 +18,6 @@ const ContactComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
     setError(false);
     if (
       !form.name.trim().length ||
@@ -31,13 +30,19 @@ const ContactComponent = () => {
         duration: 5000,
       });
     }
-
+    setLoading(true);
     try {
       const res = await Api.post("/api/contact", form);
       toast.success("Your message has been sent successfully", {
         duration: 5000,
       });
       setLoading(false);
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
       setLoading(false);
       setError(true);

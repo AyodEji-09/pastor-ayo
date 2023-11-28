@@ -21,6 +21,7 @@ export async function sendMail(message, subject, to) {
     to, // []
     subject, // Subject line
     html: message, // html body
+    text: message,
   });
   return info;
 }

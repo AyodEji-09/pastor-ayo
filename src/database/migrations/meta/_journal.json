@@ -43,6 +43,34 @@
       "when": 1701046527406,
       "tag": "0005_tense_invaders",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1701140661150,
+      "tag": "0006_sticky_tomas",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1701143894091,
+      "tag": "0007_small_alice",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1701155903971,
+      "tag": "0008_puzzling_ben_parker",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1701164384662,
+      "tag": "0009_sloppy_rage",
+      "breakpoints": true
     }
   ]
 }

@@ -6,14 +6,28 @@ import MusicSection from "@/components/HomeComponents/MusicSection";
 import VideoSection from "@/components/HomeComponents/VideoSection";
 import ContactSection from "@/components/HomeComponents/ContactSection";
 import BlogSection from "@/components/HomeComponents/BlogSection";
+import Api from "@/Api/api";
 
-export default function Home() {
+const getAllPublishedMedia = async () => {
+  try {
+    const res = await Api.get(`/api/publishedMedia?video=3&music=4`);
+    return res.data;
+  } catch (error) {
+    return [];
+  }
+};
+
+export default async function Home() {
+  const res = await getAllPublishedMedia();
   return (
     <main>
       <HeroSection />
       <AboutSection />
-      <VideoSection />
-      <MusicSection />
+      <VideoSection videos={res?.videos ? res.videos : []} />
+      <MusicSection
+        musics={res?.musics ? res.musics : []}
+        latestTrack={res?.latestTrack ? res.latestTrack : {}}
+      />
       <EventSection />
       <ContactSection />
       <BlogSection />

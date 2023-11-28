@@ -3,11 +3,23 @@ import { title } from "@/utils/metaData";
 import "./page.css";
 import MusicComponent from "@/components/Ministry/MusicComponent";
 import Link from "next/link";
+import Api from "@/Api/api";
 
 export const metadata = {
   title: title("Music Ministry"),
 };
-const page = () => {
+
+const getAllMusics = async () => {
+  try {
+    const res = await Api.get(`/api/music`);
+    return res.data.data;
+  } catch (error) {
+    return [];
+  }
+};
+
+const page = async () => {
+  const musics = await getAllMusics();
   return (
     <main id="music__page">
       <PageHeader page="Music Ministry" />
@@ -21,9 +33,8 @@ const page = () => {
           </h1>
         </div>
 
-        <MusicComponent />
+        <MusicComponent musics={musics || []} />
       </div>
-
     </main>
   );
 };

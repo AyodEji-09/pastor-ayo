@@ -3,8 +3,9 @@ import { useState } from "react";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import YouTube from "react-youtube";
 import SectionHeader from "../Common/SectionHeader";
+import ErrorDisplay from "../UI/ErrorDisplay";
 
-const MusicComponent = () => {
+const MusicComponent = ({ musics }) => {
   const [loading, setLoading] = useState(true);
   const opts = {
     height: 360,
@@ -37,12 +38,12 @@ const MusicComponent = () => {
   return (
     <>
       <div className="row my-5 d-flex justify-content-center">
-        <div className="col-lg-5 col-md-6 my-1">
+        <div className="col-lg-5 col-md-6 my-1 position-relative">
           <div style={{ height: "360px" }}>
             {loading ? (
               <>
                 <div
-                  className="spinner-border text-danger text-center"
+                  className="spinner-border text-danger text-center position-absolute top-50 start-50"
                   role="status"
                 ></div>
               </>
@@ -137,28 +138,33 @@ const MusicComponent = () => {
         desc={"Collection of music videos."}
       />
       <div className="row my-5">
-        {videoId.map((id) => (
-          <div
-            style={{ height: "250px" }}
-            key={id}
-            className="col-lg-4 col-md-6 my-1"
-          >
-            {loading ? (
-              <>
-                <div
-                  className="spinner-border text-danger text-center"
-                  role="status"
-                ></div>
-              </>
-            ) : null}
-            <YouTube
-              iframeClassName={"w-100 rounded shadow"}
-              videoId={id}
-              opts={opts2}
-              onReady={_onReady}
-            />
-          </div>
-        ))}
+        {musics.length > 0 ? (
+          musics.map((music, index) => (
+            <div
+              style={{ height: "250px" }}
+              key={music.id + index + music.videoId}
+              className="col-lg-4 col-md-6 my-1 position-relative"
+            >
+              {loading ? (
+                <>
+                  <div
+                    className="spinner-border text-danger text-center position-absolute top-50 start-50"
+                    role="status"
+                  ></div>
+                </>
+              ) : null}
+              <YouTube
+                iframeClassName={"w-100 rounded shadow"}
+                videoId={music.videoId}
+                opts={opts2}
+                onReady={_onReady}
+              />
+            </div>
+          ))
+        ) : (
+          <ErrorDisplay error="No music published" />
+        )}
+        {}
       </div>
     </>
   );

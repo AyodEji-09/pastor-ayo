@@ -49,3 +49,48 @@ export const BOOKINGS = mysqlTable("bookings", {
   createdAt: timestamp("createdAt", { mode: "string" }).defaultNow(),
   updatedAt: timestamp("updatedAt", { mode: "string" }).defaultNow(),
 });
+
+export const VIDEOS = mysqlTable("videos", {
+  id: serial("id").primaryKey().notNull(),
+  videoId: varchar("videoId", { length: 256 }).unique().notNull(),
+  title: varchar("title", { length: 256 }).default(""),
+  description: text("description").default(""),
+  thumbnail: varchar("thumbnail", { length: 256 }).default(""),
+  publishedTime: varchar("publishedTime", { length: 256 }).default(""),
+  published: boolean("published").default(false),
+  createdAt: timestamp("createdAt", { mode: "string" }).defaultNow(),
+  updatedAt: timestamp("updatedAt", { mode: "string" }).defaultNow(),
+});
+
+export const MUSICS = mysqlTable("musics", {
+  id: serial("id").primaryKey().notNull(),
+  videoId: varchar("musicId", { length: 256 }).unique().notNull(),
+  title: varchar("title", { length: 256 }).default(""),
+  description: text("description").default(""),
+  thumbnail: varchar("thumbnail", { length: 256 }).default(""),
+  publishedTime: varchar("publishedTime", { length: 256 }).default(""),
+  published: boolean("published").default(false),
+  createdAt: timestamp("createdAt", { mode: "string" }).defaultNow(),
+  updatedAt: timestamp("updatedAt", { mode: "string" }).defaultNow(),
+});
+
+export const LATESTTRACKS = mysqlTable("latesttracks", {
+  id: serial("id").primaryKey().notNull(),
+  banner: text("banner").default(""),
+  title: varchar("title", { length: 256 }).default(""),
+  author: varchar("author", { length: 256 }).default(""),
+
+  spotify: text("spotify").default(""),
+  youtube: text("youtube").default(""),
+  iTunes: text("iTunes").default(""),
+  soundCloud: text("soundCloud").default(""),
+  appleMusic: text("appleMusic").default(""),
+  amazonMusic: text("amazonMusic").default(""),
+  boomPlay: text("boomPlay").default(""),
+  googlePlay: text("googlePlay").default(""),
+  deezer: text("deezer").default(""),
+  netEase: text("netEase").default(""),
+
+  createdAt: timestamp("createdAt", { mode: "string" }).defaultNow(),
+  updatedAt: timestamp("updatedAt", { mode: "string" }).defaultNow(),
+});

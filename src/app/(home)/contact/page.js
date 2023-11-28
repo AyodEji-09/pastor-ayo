@@ -13,7 +13,7 @@ const page = () => {
       <div className="container my-5">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-7">
-            <div className="rounded shadow d-flex justify-content-between mb-2 bg-dark p-1 align-items-center flex-wrap gap-2">
+            <div className="rounded shadow d-flex justify-content-lg-between justify-content-md-between mb-2 bg-dark p-1 align-items-center flex-wrap gap-2">
               <a
                 style={{ padding: "5px" }}
                 title="Youtube"
