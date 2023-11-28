@@ -30,8 +30,8 @@ export const navLinks = [
     dropdown: false,
   },
   {
-    title: "Blog",
-    url: "/blog",
+    title: "Blogs",
+    url: "/blogs",
     icon: "",
     dropdown: false,
   },

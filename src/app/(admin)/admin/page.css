@@ -1,0 +1,9 @@
+.admin__home {
+  background: url("../../../assets/images//bg/admin-bg.jpg") no-repeat;
+  height: 90vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
