@@ -18,7 +18,7 @@ const EventsComponent = ({ BOOKINGS }) => {
 
   const [bookings, setBookings] = useState(BOOKINGS || []);
   const [loading, setLoading] = useState(false);
-  const [openDate, setOpenDate] = useState(false);
+  const [openDate, setOpenDate] = useState(page ? true : false);
   const [location, setLocation] = useState("");
   const [state, setState] = useState([
     {
@@ -107,7 +107,7 @@ const EventsComponent = ({ BOOKINGS }) => {
 
         {openDate && (
           <div
-            className="text-center mt-2 mb-5 shadow position-absolute right-0"
+            className="text-center my-1 shadow"
             style={{ overflowX: "scroll", zIndex: 100 }}
           >
             <DateRangePicker
@@ -123,7 +123,7 @@ const EventsComponent = ({ BOOKINGS }) => {
 
         <div
           data-aos="fade-up"
-          className="mt-2 mb-5 border-1 rounded shadow bg-white p-1"
+          className="my-2 border-1 rounded shadow bg-white p-1"
         >
           <h2 className="fw-bolder text-primary fs-3">Events</h2>
           {loading && (
