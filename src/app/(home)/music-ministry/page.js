@@ -8,6 +8,8 @@ import Api from "@/Api/api";
 export const metadata = {
   title: title("Music Ministry"),
 };
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 const getAllMusics = async () => {
   try {

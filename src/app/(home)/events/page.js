@@ -3,6 +3,8 @@ import PageHeader from "@/components/Common/PageHeader";
 import { title } from "@/utils/metaData";
 import { searchMinistryBookings } from "@/Api/bookingApi";
 
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: title("Events"),

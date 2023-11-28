@@ -2,9 +2,13 @@ import PageHeader from "@/components/Common/PageHeader";
 import { books } from "@/utils/data";
 import { title } from "@/utils/metaData";
 import Image from "next/image";
+
 export const metadata = {
   title: title("Shop"),
 };
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
+
 const page = () => {
   return (
     <main id="shop__page">

@@ -9,6 +9,9 @@ export const metadata = {
   title: title("Blogs"),
 };
 
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
+
 const page = () => {
   return (
     <main id="blog__page">

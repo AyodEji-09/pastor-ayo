@@ -8,6 +8,8 @@ import Api from "@/Api/api";
 export const metadata = {
   title: title("Marriage Ministry"),
 };
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 const getAllVideos = async () => {
   try {
