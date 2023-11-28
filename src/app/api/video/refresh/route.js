@@ -35,10 +35,10 @@ export async function GET() {
       videoData.push(data);
     });
 
-    await db
-      .insert(VIDEOS)
-      .values(videoData)
-      .onDuplicateKeyUpdate({ set: { id: sql`id` } });
+    // await db
+    //   .insert(VIDEOS)
+    //   .values(videoData)
+    //   .onDuplicateKeyUpdate({ set: { id: sql`id` } });
 
     return NextResponse.json(
       {
@@ -51,7 +51,7 @@ export async function GET() {
     return NextResponse.json(
       {
         data: [],
-        message: error,
+        error,
       },
       { status: 500 }
     );
