@@ -4,10 +4,8 @@ import { Country, State } from "country-state-city";
 import { hours } from "@/utils/data";
 import Api from "@/Api/api";
 import toast, { Toaster } from "react-hot-toast";
-import { slugify } from "@/utils/helper";
+import { slugify, randomString } from "@/utils/helper";
 import { Button } from "../UI/Button";
-import moment from "moment";
-import Link from "next/link";
 import Error from "../UI/Error";
 
 const BookingComponent = () => {
@@ -82,7 +80,7 @@ const BookingComponent = () => {
       let formData = {
         ...form,
         event_country: country,
-        event_slug: slugify(`${form.first_name} ${form.last_name}`),
+        event_slug: slugify(`${form.first_name} ${form.last_name} ${randomString(10)}`),
         booking_type: bookingType,
       };
       const res = await Api.post("/api/bookings", formData);

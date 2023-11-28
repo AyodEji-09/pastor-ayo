@@ -55,7 +55,7 @@ const AdminEventDisplay = ({ event }) => {
       <Toaster />
       <div
         key={event.event_slug}
-        className="accordion my-1 col-lg-4 col-md-6 col-12"
+        className="accordion my-1 col-lg-6 col-md-6 col-12"
         id="accordionFlushExample"
       >
         <div
