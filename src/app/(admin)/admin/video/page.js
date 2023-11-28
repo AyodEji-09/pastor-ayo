@@ -1,5 +1,7 @@
 import AdminVideo from "@/components/Admin/AdminVideo";
 import { getAllVideos } from "@/Api/videoApi";
+
+export const revalidate = 1;
 const page = async () => {
   const videos = await getAllVideos();
   return (
