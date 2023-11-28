@@ -58,7 +58,8 @@ section.section {
 #homepage__loader {
   height: 100vh;
   width: 100vw;
-  position: fixed;
+  position: relative;
+  /* position: fixed; */
   top: 0;
   left: 0;
   padding: 10px;

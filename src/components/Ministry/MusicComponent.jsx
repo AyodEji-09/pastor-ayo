@@ -26,14 +26,6 @@ const MusicComponent = ({ musics }) => {
   };
 
   const introVideo = "pn03QzHY_bE";
-  const videoId = [
-    "pn03QzHY_bE",
-    "NwpN3V6QnTY",
-    "SY1tzBPa-vI",
-    "tpHcPihf2Yg",
-    "HH0K_eozE14",
-    "6MpCcYBQKqU",
-  ];
 
   return (
     <>
