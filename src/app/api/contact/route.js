@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { sendMail } from "@/lib/mail";
 import { contactMail } from "@/lib/email_templates/contact_mail";
+import { test } from "@/lib/email_templates/test";
 
 export async function POST(request) {
   const body = await request.json();
@@ -17,11 +18,7 @@ export async function POST(request) {
   try {
     let adminEmail = process.env.ADMIN_EMAIL;
 
-    const response = sendMail(
-      contactMail(name, email, message),
-      subject,
-      adminEmail
-    );
+    const response = sendMail(test(name, email, message), subject, adminEmail);
     return NextResponse.json({ data: [], message: "success" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
