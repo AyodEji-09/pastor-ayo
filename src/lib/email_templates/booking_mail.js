@@ -375,10 +375,8 @@ export const bookingMail = (userName, userEmail, bookingURL) => {
               </table>
             </div>
             <!-- END FOOTER -->
-
           </div>
         </td>
-        <td>&nbsp;</td>
       </tr>
     </table>
   </body>
