@@ -4,7 +4,7 @@ import { BOOKINGS } from "@/database/schema";
 import { asc, desc, eq } from "drizzle-orm";
 import { sendMail } from "@/lib/mail";
 import { BASE_URL } from "@/utils/data";
-import { bookingMail } from "@/lib/email_templates/booking_mail";
+import { bookingMail } from "@/lib/emailTemplates/bookingMail";
 
 export async function GET() {
   try {
@@ -117,6 +117,7 @@ export async function POST(request) {
     );
     return NextResponse.json({ data: [], message: "success" }, { status: 201 });
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       { data: error, message: "error" },
       { status: 400 }
