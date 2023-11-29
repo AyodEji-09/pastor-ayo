@@ -1,5 +1,5 @@
-export const bookingConfirmationMail = () => {
-    return `
+export const bookingConfirmationMail = (name) => {
+  return `
       <!doctype html>
   <html>
     <head>
@@ -335,7 +335,7 @@ export const bookingConfirmationMail = () => {
       </style>
     </head>
     <body>
-      <span class="preheader">This is preheader text. Some clients will show this text as a preview.</span>
+      <span class="preheader">Booking Confirmation Mail.</span>
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
         <tr>
           <td>&nbsp;</td>
@@ -351,9 +351,9 @@ export const bookingConfirmationMail = () => {
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
-                          <h4>Hi There,</h2>
-                          <p>I hope this message finds you well. This is to confirm the successful booking of your appointment Pastor Ayodeji Anifowose.</p>
-                          <p>I look forward to meeting you</p>
+                          <h3 style="font-weight:bold; margin-bottom:10px;">Hi ${name},</h3>
+                          <p>I hope this message finds you well. This is to inform you that your appointment with Pastor Ayodeji Anifowose has been confirmed.</p>
+                          <p>I look forward to meeting you.</p>
                         </td>
                       </tr>
                     </table>
@@ -384,5 +384,4 @@ export const bookingConfirmationMail = () => {
     </body>
   </html>
       `;
-  };
-  
+};

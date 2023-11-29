@@ -37,6 +37,7 @@ export const updateBookings = async (event) => {
   try {
     const res = await Api.put(`/api/bookings/${event.id}`, {
       personal_email: event.personal_email,
+      name: `${event.first_name}`,
     });
     return res;
   } catch (error) {

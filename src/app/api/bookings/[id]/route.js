@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/database";
 import { BOOKINGS } from "@/database/schema";
 import { asc, desc, eq } from "drizzle-orm";
-import { bookingConfirmationMail } from "@/lib/emailTemplates/booking_confirmation_mail";
+import { bookingConfirmationMail } from "@/lib/emailTemplates/bookingConfirmationMail";
 import { sendMail } from "@/lib/mail";
 
 export async function DELETE(request, { params }) {
@@ -37,9 +37,9 @@ export async function DELETE(request, { params }) {
 }
 export async function PUT(request, { params }) {
   const body = await request.json();
-  const { personal_email } = body;
+  const { personal_email, name } = body;
   const bookingId = params.id;
-  if (!bookingId && !personal_email) {
+  if (!bookingId && !personal_email && !name) {
     return NextResponse.json(
       {
         data: [],
@@ -54,8 +54,8 @@ export async function PUT(request, { params }) {
       .set({ booking_confirmed: true })
       .where(eq(BOOKINGS.id, bookingId));
 
-    const response = sendMail(
-      bookingConfirmationMail(),
+    const response = await sendMail(
+      bookingConfirmationMail(name),
       "Booking Confirmation",
       personal_email
     );

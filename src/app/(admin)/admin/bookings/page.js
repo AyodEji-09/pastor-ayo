@@ -7,7 +7,7 @@ const page = async () => {
   const events = await getAllBookings();
   return (
     <div className="container-fluid">
-      <div className="row g-1 mt-1">
+      <div className="row g-1 mt-1 mb-4">
         {events.length > 0 ? (
           events.map((event) => (
             <AdminEventDisplay key={event.id} event={event} />
