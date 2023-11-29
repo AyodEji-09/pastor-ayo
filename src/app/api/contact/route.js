@@ -16,6 +16,7 @@ export async function POST(request) {
   }
   try {
     let adminEmail = process.env.ADMIN_EMAIL;
+    
     const res = await sendMail(
       contactMail(name, email, message),
       subject,
