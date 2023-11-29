@@ -110,14 +110,13 @@ export async function POST(request) {
     let bookingURL = `${BASE_URL}/admin/bookings?open=${event_slug}#${event_slug}`;
     let adminEmail = process.env.ADMIN_EMAIL;
 
-    const response = sendMail(
+    const response = await sendMail(
       bookingMail(`${first_name} ${last_name}`, personal_email, bookingURL),
       "New Booking Alert!!!",
       adminEmail
     );
     return NextResponse.json({ data: [], message: "success" }, { status: 201 });
   } catch (error) {
-    console.log(error)
     return NextResponse.json(
       { data: error, message: "error" },
       { status: 400 }
