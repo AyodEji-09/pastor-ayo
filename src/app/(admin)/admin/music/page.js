@@ -3,6 +3,7 @@ import AdminMusic from "@/components/Admin/AdminMusic";
 
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
+
 const page = async () => {
   const musics = await getAllMusics();
   return (

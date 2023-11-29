@@ -8,6 +8,9 @@ const loading = () => {
           alignItems: "center",
           height: "100vh",
           width: "100vw",
+          position: "relative",
+          top: 0,
+          left: 0,
         }}
       >
         <svg

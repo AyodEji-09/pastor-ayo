@@ -55,7 +55,7 @@ const AdminEventDisplay = ({ event }) => {
       <Toaster />
       <div
         key={event.event_slug}
-        className="accordion my-1 col-lg-6 col-md-6 col-12"
+        className="accordion col-lg-6 col-md-6 col-12"
         id="accordionFlushExample"
       >
         <div
@@ -130,17 +130,22 @@ const AdminEventDisplay = ({ event }) => {
                 <CgProfile style={{ marginRight: "10px" }} />
                 {event.event_name || `${event.first_name} ${event.last_name}`}
               </p>
-              <p style={{ margin: "5px 0" }} className="fw-normal small">
-                <VscDebugBreakpointLogUnverified
-                  style={{ marginRight: "10px" }}
-                />
-                {event.event_nature}
-              </p>
-              <p style={{ margin: "5px 0" }} className="fw-normal small">
-                <FaRegAddressCard style={{ marginRight: "10px" }} />
-                {event.event_address}, {event.event_city}, {event.event_state},{" "}
-                {event.event_country}.
-              </p>
+              {event.booking_type === "ministry" && (
+                <>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <VscDebugBreakpointLogUnverified
+                      style={{ marginRight: "10px" }}
+                    />
+                    {event.event_nature}
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <FaRegAddressCard style={{ marginRight: "10px" }} />
+                    {event.event_address}, {event.event_city},{" "}
+                    {event.event_state}, {event.event_country}.
+                  </p>
+                </>
+              )}
+
               <p style={{ margin: "5px 0" }} className="fw-normal small">
                 <MdAccessTime style={{ marginRight: "10px" }} />{" "}
                 {event.event_time}
