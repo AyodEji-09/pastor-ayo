@@ -1,4 +1,5 @@
 import { icons, description, title } from "@/utils/metaData";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
   icons,
@@ -17,7 +18,10 @@ export default function RootLayout({ children }) {
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
           crossOrigin="anonymous"
         ></link>
-        <body>{children}</body>
+        <body>
+          {children} 
+          <Analytics />
+        </body>
       </html>
     </>
   );
