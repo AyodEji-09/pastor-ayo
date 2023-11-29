@@ -16,7 +16,11 @@ export async function POST(request) {
   }
   try {
     let adminEmail = process.env.ADMIN_EMAIL;
-    sendMail(contactMail(name, email, message), subject, adminEmail);
+    const res = await sendMail(
+      contactMail(name, email, message),
+      subject,
+      adminEmail
+    );
 
     return NextResponse.json({ data: [], message: "success" }, { status: 200 });
   } catch (error) {

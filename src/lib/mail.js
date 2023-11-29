@@ -2,9 +2,9 @@
 // import nodemailer from "nodemailer";
 import { Resend } from "resend";
 
-export function sendMail(message, subject, to) {
+export async function sendMail(message, subject, to) {
   const resend = new Resend(process.env.RESEND_API_KEY);
-  resend.emails.send({
+  await resend.emails.send({
     from: "Ayodeji Anifowose <onboarding@resend.dev>",
     tags: [
       {
