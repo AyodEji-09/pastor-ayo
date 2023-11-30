@@ -59,38 +59,35 @@ const AdminEventDisplay = ({ event }) => {
         id="accordionFlushExample"
       >
         <div
-          className="d-flex justify-content-between align-items-center p-1 bg-danger bg-opacity-10 bg-gradient border-2 border rounded-top border-bottom-0"
-          style={{ margin: "0" }}
+          className="d-flex justify-content-between align-items-center px-1 bg-light bg-opacity-0 bg-gradient border-2 border rounded-top border-bottom-0"
+          style={{ margin: "0", padding: "10px 0" }}
         >
-          <p className="my-0 py-0 fw-bold">
-            {event.booking_type === "ministry" ? "Ministration" : "Counseling"}
-          </p>
-          <div className="d-flex justify-content-between gap-2 align-items-center">
-            {event.booking_confirmed ? (
-              <p className="text-success mb-0 pb-0">
-                <FaCheckDouble />
-              </p>
-            ) : (
-              <Button
-                loading={loadingUpdate}
-                type="button"
-                className="btn btn-sm btn-success"
-                func={() => handleUpdate(event)}
-                disabled={loadingUpdate}
-                text="Confirm"
-              />
-            )}
+          {event.booking_confirmed ? (
+            <p className="text-success mb-0 pb-0">
+              <FaCheckDouble />
+            </p>
+          ) : (
             <Button
-              loading={loading}
-              type="submit"
-              className="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center"
-              style={{ padding: "5px" }}
-              func={() => handleDelete(event.id)}
-              disabled={loading}
+              loading={loadingUpdate}
+              type="button"
+              className="btn btn-outline-success btn-sm d-flex justify-content-center align-items-center"
+              func={() => handleUpdate(event)}
+              disabled={loadingUpdate}
+              text="Confirm"
             >
-              <MdDelete />
+              <FaCheckDouble />
             </Button>
-          </div>
+          )}
+          <Button
+            loading={loading}
+            type="submit"
+            className="btn btn-outline-danger btn-sm d-flex justify-content-center align-items-center"
+            style={{ padding: "5px" }}
+            func={() => handleDelete(event.id)}
+            disabled={loading}
+          >
+            <MdDelete />
+          </Button>
         </div>
         <div id={event.event_slug} className="accordion-item border-2">
           <button
@@ -108,7 +105,9 @@ const AdminEventDisplay = ({ event }) => {
             />
             <span className="mx-2">
               <h1 className="my-0 py-0 lead fw-bold text-dark fs-5">
-                {event.event_name || counseling(event.counseling_groups)}
+                {event.booking_type === "ministry"
+                  ? "Ministration"
+                  : "Counseling"}
               </h1>
               <p className="small my-0 py-0 text-secondary">
                 {moment(event.event_date).format("Do MMM YYYY")}
@@ -125,31 +124,201 @@ const AdminEventDisplay = ({ event }) => {
             aria-labelledby={`flush-heading${event.event_slug}`}
             data-bs-parent="#accordionFlushExample"
           >
-            <div className="accordion-body">
-              <p style={{ margin: "5px 0" }} className="fw-normal small">
-                <CgProfile style={{ marginRight: "10px" }} />
-                {event.event_name || `${event.first_name} ${event.last_name}`}
-              </p>
-              {event.booking_type === "ministry" && (
+            <div style={{maxHeight: '500px', overflowY: 'auto'}} className="accordion-body">
+              {event.booking_type === "counseling" && (
                 <>
                   <p style={{ margin: "5px 0" }} className="fw-normal small">
-                    <VscDebugBreakpointLogUnverified
-                      style={{ marginRight: "10px" }}
-                    />
-                    {event.event_nature}
+                    <b style={{ marginRight: "10px" }}>Name: </b>
+                    <span>
+                      {event.first_name} {event.last_name}
+                    </span>
                   </p>
                   <p style={{ margin: "5px 0" }} className="fw-normal small">
-                    <FaRegAddressCard style={{ marginRight: "10px" }} />
-                    {event.event_address}, {event.event_city},{" "}
-                    {event.event_state}, {event.event_country}.
+                    <b style={{ marginRight: "10px" }}>Email: </b>
+                    <a href={`mailto:${event.personal_email}`}>
+                      {event.personal_email}
+                    </a>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Phone: </b>
+                    <a href={`tel:${event.personal_phone}`}>
+                      {event.personal_phone}
+                    </a>
+                  </p>
+                  <hr />
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Date: </b>
+                    <span>
+                      {moment(event.event_date).format("Do MMM YYYY")}
+                    </span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Time: </b>
+                    <span>{event.event_time}</span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Counseling Groups: </b>
+                    <span>{counseling(event.counseling_groups)}</span>
                   </p>
                 </>
               )}
+              {event.booking_type === "ministry" && (
+                <>
+                  <p className="small text-primary fw-bold">
+                    Personal Information
+                  </p>
 
-              <p style={{ margin: "5px 0" }} className="fw-normal small">
-                <MdAccessTime style={{ marginRight: "10px" }} />{" "}
-                {event.event_time}
-              </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Name: </b>
+                    <span>
+                      {event.first_name} {event.last_name}
+                    </span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Email: </b>
+                    <a href={`mailto:${event.personal_email}`}>
+                      {event.personal_email}
+                    </a>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Phone: </b>
+                    <a href={`tel:${event.personal_phone}`}>
+                      {event.personal_phone}
+                    </a>
+                  </p>
+                  <hr />
+                  <p className="small text-primary fw-bold">
+                    Organization Details
+                  </p>
+
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>
+                      Name of Church/Organization:{" "}
+                    </b>
+                    <span>{event.org_name}</span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>
+                      Email of Church/Organization:{" "}
+                    </b>
+                    <a href={`mailto:${event.org_email}`}>{event.org_email}</a>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>
+                      Phone Number of Church/Organization:{" "}
+                    </b>
+                    <a href={`tel:${event.org_phone}`}>{event.org_phone}</a>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Website: </b>
+                    <a target="_blank" href={event.org_website}>
+                      {event.org_website}
+                    </a>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Facebook Page: </b>
+                    <a target="_blank" href={event.org_facebook}>
+                      {event.org_facebook}
+                    </a>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>YouTube Page: </b>
+                    <a target="_blank" href={event.org_youtube}>
+                      {event.org_youtube}
+                    </a>
+                  </p>
+                  <hr />
+                  <p className="small text-primary fw-bold">Event Details</p>
+
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Event Name/Theme: </b>
+                    <span>{event.event_name}</span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Nature of Event: </b>
+                    <span>{event.event_name}</span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Event Address: </b>
+                    <span>
+                      {event.event_address} {event.event_city}
+                      {event.event_state} {event.event_country}
+                    </span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Event Time: </b>
+                    <span>{event.event_time}</span>
+                  </p>
+                  <p style={{ margin: "5px 0" }} className="fw-normal small">
+                    <b style={{ marginRight: "10px" }}>Event Date: </b>
+                    <span>
+                      {moment(event.event_date).format("Do MMM YYYY")}
+                    </span>
+                  </p>
+                  <hr />
+                  <p className="small text-primary fw-bold">
+                    Additional Information
+                  </p>
+
+                  {/* <ul> */}
+                  <p className="fw-normal small">
+                    <b>
+                      Is this a personal program or a program organised by the
+                      Church body?
+                    </b>
+                  </p>
+                  <ul className="fw-normal small">
+                    <li>{event.prog_type}</li>
+                  </ul>
+                  <p className="fw-normal small">
+                    <b>
+                      Who are the other ministers ministering at your program?
+                    </b>
+                  </p>
+                  <ul className="fw-normal small">
+                    <li style={{ marginTop: "5px" }}>{event.ministers_list}</li>
+                  </ul>
+                  <p className="fw-normal small">
+                    <b>Will it be a ticket (paid) entry event?</b>
+                  </p>
+                  <ul className="fw-normal small">
+                    <li style={{ marginTop: "5px" }}>{event.ticket}</li>
+                  </ul>
+
+                  <p className="fw-normal small">
+                    <b>
+                      What is the Capacity of the venue where your event is
+                      scheduled to hold?
+                    </b>
+                  </p>
+                  <ul className="fw-normal small">
+                    <li style={{ marginTop: "5px" }}>{event.venue_capacity}</li>
+                  </ul>
+
+                  <p className="fw-normal small">
+                    <b>
+                      Pastor Ayodeji Anifowose`s Team usually requests a video
+                      and audio recording of his ministration. Will, there be a
+                      recording of the event available for Ayodeji Anifowose`s
+                      media team?
+                    </b>
+                  </p>
+                  <ul className="fw-normal small">
+                    <li style={{ marginTop: "5px" }}>
+                      {event.recording_available}
+                    </li>
+                  </ul>
+
+                  <p className="fw-normal small">
+                    <b>Additional information about the event</b>
+                  </p>
+                  <ul className="fw-normal small">
+                    <li style={{ marginTop: "5px" }}>
+                      {event.additional_info}
+                    </li>
+                  </ul>
+                </>
+              )}
             </div>
           </div>
         </div>

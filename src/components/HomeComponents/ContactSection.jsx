@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
 
 const ContactSection = () => {
   return (
@@ -13,7 +12,7 @@ const ContactSection = () => {
           href={"/contact"}
           className="btn btn-lg btn-outline-light rounded-pill mb-1"
         >
-          Contact Me <FaArrowRight />
+          Contact Me
         </Link>
 
         <div className="row d-flex justify-content-center">
@@ -158,7 +157,7 @@ const ContactSection = () => {
               <a
                 style={{ padding: "6px" }}
                 title="Mail"
-                className="rounded-circle shadow border-2 border btn btn-md btn-outline-light"
+                className="rounded-circle text-white shadow border-2 border btn btn-md btn-outline-light"
                 target="_blank"
                 href="mailto:ayollc.company@gmail.com;"
               >

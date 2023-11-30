@@ -13,7 +13,7 @@ const Header = ({ setOpen }) => {
   return (
     <>
       {/* <!-- Navbar Start --> */}
-      <nav className="navbar navbar-expand bg-white shadow-sm navbar-light sticky-top px-4 py-2">
+      <nav className="navbar navbar-expand bg-white shadow-sm navbar-light sticky-top px-4 py-1">
         <Link href="/admin" className="navbar-brand d-flex d-lg-none me-4">
           <Image src={logo} alt="logo" width={"auto"} height={50} />
         </Link>
@@ -23,11 +23,11 @@ const Header = ({ setOpen }) => {
           href="#"
           className="sidebar-toggler flex-shrink-0"
         >
-          <i className="fa fa-bars"></i>
           {""}
+          <i className="fa fa-bars"></i>
         </a>
 
-        <Link onClick={toggleSidebar} href="/" className="mx-2 flex-shrink-0">
+        <Link href="/" className="mx-2 flex-shrink-0">
           Home
         </Link>
         {/* <form className="d-none d-md-flex ms-4">

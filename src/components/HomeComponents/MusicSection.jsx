@@ -49,7 +49,7 @@ const MusicComponent = ({ musics, latestTrack }) => {
 
         <div className="row mt-5 d-flex justify-content-between">
           <div className="col-lg-8 mb-2">
-            <div className="row">
+            <div className="row d-flex justify-content-center">
               {musics.length > 0 ? (
                 musics.map((music, index) => (
                   <div
@@ -72,7 +72,9 @@ const MusicComponent = ({ musics, latestTrack }) => {
                   </div>
                 ))
               ) : (
-                <ErrorDisplay error={"No musics published"} />
+                <div className="col-lg-6 col-md-6 mb-2 position-relative">
+                  <ErrorDisplay error={"No musics published"} />
+                </div>
               )}
             </div>
             <div className="my-1 text-center">

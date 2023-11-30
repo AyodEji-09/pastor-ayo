@@ -48,7 +48,7 @@ const BlogSection = () => {
                   <h5 className="card-title fw-bolder text-primary">
                     {blog.title}
                   </h5>
-                  <p className="card-text">{blog.description}</p>
+                  <p className="card-text fw-normal">{blog.description}</p>
                   <a
                     target="_blank"
                     href={blog.url}

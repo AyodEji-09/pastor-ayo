@@ -50,6 +50,9 @@ export const bookingConfirmationMail = (name) => {
           background-color: #f6f6f6;
           width: 100%; 
         }
+        .bold{
+          font-weight:bold;
+        }
   
         /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
         .container {
@@ -351,7 +354,7 @@ export const bookingConfirmationMail = (name) => {
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
-                          <h3 style="font-weight:bold; margin-bottom:10px;">Hi ${name},</h3>
+                          <h3 class="bold">Hi ${name},</h3>
                           <p>I hope this message finds you well. This is to inform you that your appointment with Pastor Ayodeji Anifowose has been confirmed.</p>
                           <p>I look forward to meeting you.</p>
                         </td>
