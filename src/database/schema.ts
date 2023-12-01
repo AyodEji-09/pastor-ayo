@@ -29,6 +29,7 @@ export const BOOKINGS = mysqlTable("bookings", {
   event_slug: text("event_slug").default(""),
   event_nature: text("event_nature").default(""),
   event_address: text("event_address").default(""),
+  event_banner: text("event_banner").default(""),
   event_country: varchar("event_country", { length: 256 }).default(""),
   event_state: varchar("event_state", { length: 256 }).default(""),
   event_city: varchar("event_city", { length: 256 }).default(""),

@@ -159,45 +159,43 @@ const AdminMusic = ({ musics }) => {
     <>
       <Toaster />
 
-      <div className="my-1 rounded shadow-sm bg-white p-2">
-        <h5 className="text-primary fw-bold fs-3">YouTube Musics</h5>
-        <p>Publish musics from YouTube Music Channel</p>
-        <Button
-          loading={loading}
-          type="button"
-          className="btn btn-primary  me-2 mb-1"
-          text="Refresh"
-          func={refreshMusics}
-          disabled={loading}
-        />
-        <Button
-          loading={loadingPublished}
-          type="button"
-          className="btn btn-success  me-2 mb-1"
-          text="Publish"
-          func={handlePublished}
-          disabled={loadingPublished}
-        />
-        <Button
-          loading={loadingUnpublished}
-          type="button"
-          className="btn btn-danger  me-2 mb-1"
-          text="Unpublish"
-          func={handleUnpublished}
-          disabled={loadingUnpublished}
-        />
-      </div>
+        <div className="my-1 p-1 border border-1 rounded shadow bg-white">
+          <h5 className="text-primary fw-bold fs-3">YouTube Musics</h5>
+          <p>Publish musics from YouTube Music Channel</p>
+          <Button
+            loading={loading}
+            type="button"
+            className="btn btn-primary  me-2 mb-1"
+            text="Refresh"
+            func={refreshMusics}
+            disabled={loading}
+          />
+          <Button
+            loading={loadingPublished}
+            type="button"
+            className="btn btn-success  me-2 mb-1"
+            text="Publish"
+            func={handlePublished}
+            disabled={loadingPublished}
+          />
+          <Button
+            loading={loadingUnpublished}
+            type="button"
+            className="btn btn-danger  me-2 mb-1"
+            text="Unpublish"
+            func={handleUnpublished}
+            disabled={loadingUnpublished}
+          />
+        </div>
 
-      <div className="container-fluid">
-        <div className="row rounded shadow-sm bg-white mt-1 mb-2 p-2">
+        <div className="shadow bg-white">
           <div className="table-responsive">
             {musics.length > 0 ? (
-              <table className="table table-striped table-hover">
+              <table className="table table-striped table-hover table-sm">
                 <thead className="table-dark">
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Select</th>
-                    <th scope="col">musicId</th>
                     <th scope="col">Title</th>
                     <th scope="col">Banner</th>
                     <th scope="col">Published</th>
@@ -211,19 +209,25 @@ const AdminMusic = ({ musics }) => {
                         <input
                           className="form-check-input"
                           type="checkbox"
-                          id="consent"
+                          id={`music${music.id}`}
                           name="music"
                           onChange={(e) => handleChange(e, music)}
                         />
                       </td>
-                      <td>{music.videoId}</td>
-                      <td>{music.title}</td>
+                      <td>
+                        <label
+                          className="form-check-label"
+                          htmlFor={`music${music.id}`}
+                        >
+                          {music.title}
+                        </label>
+                      </td>
                       <td className="text-center">
                         <Image
                           src={music.thumbnail}
                           alt="music banner"
-                          width={128}
-                          height={75}
+                          width={100}
+                          height={50}
                         />
                       </td>
                       <td className="text-center">
@@ -242,15 +246,15 @@ const AdminMusic = ({ musics }) => {
             )}
           </div>
         </div>
-      </div>
-      <div className="my-1 rounded shadow-sm bg-white p-2">
-        <h5 className="text-primary fw-bold fs-3">Latest Tracks</h5>
-        <p>Update latest tracks details</p>
-      </div>
 
-      <div className="container-fluid">
-        <div className="row rounded shadow-sm bg-white">
-          <form className="row py-1 g-1">
+        <div className="my-1 p-1 border border-1 rounded shadow bg-white">
+          <h5 className="text-primary fw-bold fs-3">Latest Tracks</h5>
+          <p>Update latest tracks details</p>
+        </div>
+
+        {/* <div className="container-fluid"> */}
+        <div className="p-1 mb-2 border border-1 rounded shadow bg-white">
+          <form className="row g-1">
             <div className="col-md-4 col-lg-3 col-6">
               <label htmlFor="title" className="form-label">
                 Title*
@@ -419,7 +423,7 @@ const AdminMusic = ({ musics }) => {
                 placeholder="deezer Url"
               />
             </div>
-            <div className="col-12 mt-1">
+            <div className="col-12">
               <Button
                 loading={loadingUpdateLatestTracks}
                 type="button"
@@ -431,7 +435,6 @@ const AdminMusic = ({ musics }) => {
             </div>
           </form>
         </div>
-      </div>
     </>
   );
 };

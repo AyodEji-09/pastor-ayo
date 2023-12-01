@@ -354,7 +354,7 @@ export const bookingConfirmationMail = (name) => {
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                       <tr>
                         <td>
-                          <h3 class="bold">Hi ${name},</h3>
+                          <p class="bold">Hi ${name},</p>
                           <p>I hope this message finds you well. This is to inform you that your appointment with Pastor Ayodeji Anifowose has been confirmed.</p>
                           <p>I look forward to meeting you.</p>
                         </td>

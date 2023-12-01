@@ -63,7 +63,7 @@ const AdminVideo = ({ videos }) => {
       toast.success("All selected videos has been unpublished successfully", {
         duration: 5000,
       });
-      setForm([])
+      setForm([]);
     } catch (error) {
       toast.error("Unable to unpublish selected videos", {
         duration: 5000,
@@ -85,7 +85,7 @@ const AdminVideo = ({ videos }) => {
       toast.success("All selected videos has been published successfully", {
         duration: 5000,
       });
-      setForm([])
+      setForm([]);
       uncheck();
     } catch (error) {
       toast.error("Unable to publish selected videos", {
@@ -98,7 +98,7 @@ const AdminVideo = ({ videos }) => {
   return (
     <>
       <Toaster />
-      <div className="my-1 rounded shadow-sm bg-white p-2">
+      <div className="p-1 my-1 border border-1 rounded shadow bg-white">
         <h5 className="text-primary fw-bold fs-3">YouTube Videos</h5>
         <p>Publish videos from `Great Father Great Husband` YouTube Channel</p>
         <Button
@@ -127,59 +127,62 @@ const AdminVideo = ({ videos }) => {
         />
       </div>
 
-      <div className="container-fluid">
-        <div className="row rounded shadow-sm bg-white my-1 p-2">
-          <div className="table-responsive">
-            {videos.length > 0 ? (
-              <table className="table table-striped table-hover">
-                <thead className="table-dark">
-                  <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Select</th>
-                    <th scope="col">VideoId</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Banner</th>
-                    <th scope="col">Published</th>
+      <div className="shadow bg-white my-1">
+        <div className="table-responsive">
+          {videos.length > 0 ? (
+            <table className="table table-striped table-hover table-sm">
+              <thead className="table-dark">
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Select</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Banner</th>
+                  <th scope="col">Published</th>
+                </tr>
+              </thead>
+              <tbody>
+                {videos.map((video, index) => (
+                  <tr key={video.id}>
+                    <th scope="row">{++index}</th>
+                    <td className="text-center">
+                      <input
+                        className="form-check-input"
+                        type="checkbox"
+                        id={`video${video.id}`}
+                        name="video"
+                        onChange={(e) => handleChange(e, video)}
+                      />
+                    </td>
+                    <td>
+                      <label
+                        className="form-check-label"
+                        htmlFor={`video${video.id}`}
+                      >
+                        {video.title}
+                      </label>
+                    </td>
+                    <td style={{ minHeight: "50px" }} className="text-center">
+                      <Image
+                        src={video.thumbnail}
+                        alt="video banner"
+                        width={100}
+                        height={50}
+                      />
+                    </td>
+                    <td className="text-center">
+                      {video.published ? (
+                        <FaCheck className="text-success" />
+                      ) : (
+                        <FaTimes className="text-danger" />
+                      )}
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {videos.map((video, index) => (
-                    <tr key={video.id}>
-                      <th scope="row">{++index}</th>
-                      <td className="text-center">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="consent"
-                          name="video"
-                          onChange={(e) => handleChange(e, video)}
-                        />
-                      </td>
-                      <td>{video.videoId}</td>
-                      <td>{video.title}</td>
-                      <td className="text-center">
-                        <Image
-                          src={video.thumbnail}
-                          alt="video banner"
-                          width={128}
-                          height={75}
-                        />
-                      </td>
-                      <td className="text-center">
-                        {video.published ? (
-                          <FaCheck className="text-success" />
-                        ) : (
-                          <FaTimes className="text-danger" />
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <ErrorDisplay error="No video" />
-            )}
-          </div>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <ErrorDisplay error="No video" />
+          )}
         </div>
       </div>
     </>

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 const page = async () => {
   const musics = await getAllMusics();
   return (
-    <div className="container-fluid p-2">
+    <div className="container-fluid">
       <AdminMusic musics={musics || []} />
     </div>
   );

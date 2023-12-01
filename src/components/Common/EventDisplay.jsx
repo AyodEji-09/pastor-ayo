@@ -24,7 +24,10 @@ const EventDisplay = ({ event }) => {
           />
           <span className="mx-2">
             <h1 className="my-0 py-0 lead fw-bold text-dark fs-4">
-              {event.event_name}
+              {event.booking_type === "ministry"
+                ? "Ministration"
+                : "Counseling"}{" "}
+              {/* at {event.org_name} */}
             </h1>
             <p className="small my-0 py-0 text-secondary">
               {moment(event.event_date).format("Do MMM YYYY")}
@@ -49,7 +52,7 @@ const EventDisplay = ({ event }) => {
               style={{ margin: "5px 0" }}
               className="d-flex align-items-center fw-normal"
             >
-              <VscDebugBreakpointLogUnverified className="me-1" />
+              <VscDebugBreakpointLogUnverified style={{fontSize: '1.3rem'}} className="me-1" />
               {event.event_nature}
             </p>
             <p

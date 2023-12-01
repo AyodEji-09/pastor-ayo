@@ -13,6 +13,7 @@ const BookingComponent = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const checkbox = useRef();
+  const fileRef = useRef();
   const [form, setForm] = useState({
     booking_type: "",
     first_name: "",
@@ -32,6 +33,7 @@ const BookingComponent = () => {
     event_country: "",
     event_state: "",
     event_city: "",
+    event_banner: "",
     event_time: "",
     event_date: "",
     prog_type: "",
@@ -52,10 +54,74 @@ const BookingComponent = () => {
     setStates(State.getStatesOfCountry(value));
   };
 
+  const validateFields = () => {
+    if (bookingType == "counseling") {
+      if (
+        !form.first_name.trim().length ||
+        !form.last_name.trim().length ||
+        !form.personal_email.trim().length ||
+        !form.personal_phone.trim().length ||
+        !form.counseling_groups.trim().length ||
+        !form.event_date.trim().length ||
+        !form.event_time.trim().length
+      ) {
+        toast.error("Error! Please ensure all mandatory fields are filled.", {
+          position: "bottom-center",
+        });
+        return null;
+      } else {
+        return true;
+      }
+    } else if (bookingType == "ministry") {
+      if (
+        !form.first_name.trim().length ||
+        !form.last_name.trim().length ||
+        !form.personal_email.trim().length ||
+        !form.personal_phone.trim().length ||
+        !form.org_name.trim().length ||
+        !form.org_website.trim().length ||
+        !form.org_youtube.trim().length ||
+        !form.event_name.trim().length ||
+        !form.event_nature.trim().length ||
+        !form.event_address.trim().length ||
+        !form.event_country.trim().length ||
+        !form.event_state.trim().length ||
+        !form.event_city.trim().length ||
+        !form.event_time.trim().length ||
+        !form.event_date.trim().length ||
+        !form.prog_type.trim().length ||
+        !form.ministers_list.trim().length ||
+        !form.ticket.trim().length ||
+        !form.recording_available.trim().length ||
+        !form.additional_info.trim().length
+      ) {
+        toast.error("Error! Please ensure all mandatory fields are filled.", {
+          position: "bottom-center",
+        });
+        return null;
+      } else {
+        return true;
+      }
+    }
+  };
+
   const handleChange = (e) => {
-    let { name, value, type } = e.target;
+    let { name, value, type, files } = e.target;
     if (type === "checkbox") {
       value = e.target.checked;
+    }
+    if (type === "file") {
+      let file = files[0];
+      let reader = new FileReader();
+      reader.onloadend = async function () {
+        setForm((prev) => {
+          return {
+            ...prev,
+            [name]: reader.result,
+          };
+        });
+      };
+      reader.readAsDataURL(file);
     }
     if (name === "event_country") {
       getCountryCode(value);
@@ -70,8 +136,11 @@ const BookingComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = validateFields();
+    if (!res) return;
     setLoading(true);
     setError(null);
+
     try {
       let country =
         form.event_country.length > 0
@@ -80,7 +149,9 @@ const BookingComponent = () => {
       let formData = {
         ...form,
         event_country: country,
-        event_slug: slugify(`${form.first_name} ${form.last_name} ${randomString(10)}`),
+        event_slug: slugify(
+          `${form.first_name} ${form.last_name} ${randomString(10)}`
+        ),
         booking_type: bookingType,
       };
       const res = await Api.post("/api/bookings", formData);
@@ -88,10 +159,13 @@ const BookingComponent = () => {
         `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed.`,
         {
           duration: 7000,
+          position: "bottom-center",
         }
       );
       setLoading(false);
       checkbox.current.checked = false;
+      if (fileRef.current) fileRef.current.value = null;
+
       setForm({
         first_name: "",
         last_name: "",
@@ -124,9 +198,10 @@ const BookingComponent = () => {
       });
     } catch (error) {
       setLoading(false);
-      setError(error.response.data.message);
-      toast.error(error.response.data.message, {
+      setError(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message, {
         duration: 7000,
+        position: "bottom-center",
       });
     }
   };
@@ -169,6 +244,7 @@ const BookingComponent = () => {
       {error && <Error error={error} />}
 
       <main className="my-2 p-1 bg-white rounded shadow-sm">
+        <p className="text-danger small">* fields are mandatory</p>
         <form className="row g-2">
           <div className="col-md-6">
             <label htmlFor="first_name" className="form-label">
@@ -226,6 +302,7 @@ const BookingComponent = () => {
               placeholder="Personal phone"
             />
           </div>
+
           <hr />
 
           {bookingType === "ministry" && (
@@ -246,7 +323,7 @@ const BookingComponent = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="org_email" className="form-label">
-                  Email Address of Organization*
+                  Email Address of Organization
                 </label>
                 <input
                   type="email"
@@ -260,7 +337,7 @@ const BookingComponent = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="org_phone" className="form-label">
-                  Phone Number of Organization*
+                  Phone Number of Organization
                 </label>
                 <input
                   type="tel"
@@ -274,7 +351,7 @@ const BookingComponent = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="org_website" className="form-label">
-                  Website
+                  Website*
                 </label>
                 <input
                   type="text"
@@ -302,7 +379,7 @@ const BookingComponent = () => {
               </div>
               <div className="col-md-6">
                 <label htmlFor="org_youtube" className="form-label">
-                  Youtube Page
+                  Youtube Page*
                 </label>
                 <input
                   type="text"
@@ -314,7 +391,9 @@ const BookingComponent = () => {
                   placeholder="YouTube page url"
                 />
               </div>
+
               <hr />
+
               <div className="col-md-12">
                 <label htmlFor="event_name" className="form-label">
                   Event Name & Theme*
@@ -447,7 +526,25 @@ const BookingComponent = () => {
                   placeholder="Event Date"
                 />
               </div>
+              <div className="col-md-6">
+                <label htmlFor="event_date" className="form-label">
+                  Event Banner
+                </label>
+                <div className="input-group mb-3">
+                  <input
+                    ref={fileRef}
+                    type="file"
+                    className="form-control"
+                    id="inputGroupFile02"
+                    name="event_banner"
+                    onChange={handleChange}
+                    accept=".png, .jpg, .jpeg"
+                  />
+                </div>
+              </div>
+
               <hr />
+
               <div className="col-md-12">
                 <label htmlFor="prog_type" className="form-label">
                   Is this a personal program or a program organised by the
@@ -495,7 +592,7 @@ const BookingComponent = () => {
               <div className="col-md-12">
                 <label htmlFor="venue_capacity" className="form-label">
                   What is the Capacity of the venue where your event is
-                  scheduled to hold?*
+                  scheduled to hold?
                 </label>
                 <input
                   type="text"
@@ -528,7 +625,7 @@ const BookingComponent = () => {
               </div>
               <div className="col-md-12">
                 <label htmlFor="additional_info" className="form-label">
-                  Additional information about the event
+                  Additional information about the event*
                 </label>
                 <textarea
                   className="form-control"
@@ -582,7 +679,7 @@ const BookingComponent = () => {
 
               <div className="col-md-6">
                 <label htmlFor="counseling_groups" className="form-label">
-                  Counseling session groups
+                  Counseling session groups*
                 </label>
                 <select
                   onChange={handleChange}
@@ -603,6 +700,7 @@ const BookingComponent = () => {
           )}
 
           <hr />
+
           {bookingType === "ministry" && (
             <div>
               <ul>

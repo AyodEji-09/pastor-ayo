@@ -7,6 +7,15 @@ import { BsSpotify, BsYoutube } from "react-icons/bs";
 import { FaEye } from "react-icons/fa";
 import Image from "next/image";
 import ErrorDisplay from "../UI/ErrorDisplay";
+import spotify from "@/assets/images/icons/spotify.png";
+import deezer from "@/assets/images/icons/deezer.png";
+import googlePlay from "@/assets/images/icons/google-play.png";
+import itunes from "@/assets/images/icons/itunes.png";
+import appleMusic from "@/assets/images/icons/music.png";
+import amazonMusic from "@/assets/images/icons/social.png";
+import soundCloud from "@/assets/images/icons/soundcloud.png";
+import youtube from "@/assets/images/icons/youtube.png";
+import boomPlay from "@/assets/images/icons/boomplay.png";
 
 const MusicComponent = ({ musics, latestTrack }) => {
   const [loading, setLoading] = useState(true);
@@ -84,7 +93,7 @@ const MusicComponent = ({ musics, latestTrack }) => {
             </div>
           </div>
           {latestTrack?.author && (
-            <div className="col-lg-3 col-12 col-md-6">
+            <div className="col-lg-4 col-12 col-md-6">
               <div className="card bg-white rounded shadow-sm">
                 <Image
                   src={latestTrack.banner}
@@ -104,46 +113,222 @@ const MusicComponent = ({ musics, latestTrack }) => {
                     By {latestTrack.author}
                   </p>
                   <hr />
-                  <div className="d-flex justify-content-between align-items-center my-1">
-                    <p className=" my-0 py-0">
-                      <span
-                        className="text-success fs-3"
-                        style={{ marginRight: "3px" }}
-                      >
-                        <BsSpotify />
-                      </span>
-                      <span className="text-success fs-4">Spotify</span>
-                    </p>
-                    <p className="my-0 py-0">
-                      <a
-                        href={latestTrack.spotify}
-                        target="_blank"
-                        className="btn btn-secondary rounded-pill shadow-sm"
-                      >
-                        Listen
-                      </a>
-                    </p>
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center my-1">
-                    <p className="my-0 py-0">
-                      <span
-                        className="text-danger fs-3"
-                        style={{ marginRight: "3px" }}
-                      >
-                        <BsYoutube />
-                      </span>
-                      <span className="text-secondary fs-4">YouTube</span>
-                    </p>
-                    <p className="my-0 py-0">
-                      <a
-                        target="_blank"
-                        href={latestTrack.youtube}
-                        className="btn btn-secondary rounded-pill shadow-sm"
-                      >
-                        Listen
-                      </a>
-                    </p>
-                  </div>
+                  {/* spotify  */}
+                  {latestTrack.spotify && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-success d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={spotify}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        Spotify
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.spotify}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* youtube  */}
+                  {latestTrack.youtube && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-danger d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={youtube}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        Youtube
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.youtube}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* itunes */}
+                  {latestTrack.iTunes && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={itunes}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        iTunes
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.iTunes}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* soundcloud  */}
+                  {latestTrack.soundCloud && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={soundCloud}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        SoundCloud
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.soundCloud}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* apple music  */}
+                  {latestTrack.appleMusic && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={appleMusic}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        Apple Music
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.appleMusic}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* amazon music */}
+                  {latestTrack.amazonMusic && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={amazonMusic}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        Amazon Music
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.amazonMusic}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* boomplay  */}
+                  {latestTrack.boomPlay && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={boomPlay}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        BoomPlay
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.boomPlay}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* google play  */}
+                  {latestTrack.googlePlay && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={googlePlay}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        GooglePlay
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.googlePlay}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
+                  {/* deezer  */}
+                  {latestTrack.deezer && (
+                    <div className="d-flex justify-content-between align-items-center mb-2">
+                      <p className="text-secondary d-flex align-items-center lead my-0 py-0">
+                        <Image
+                          src={deezer}
+                          height={28}
+                          width={28}
+                          alt={latestTrack.title}
+                          style={{ marginRight: "3px" }}
+                        />
+                        Deezer
+                      </p>
+                      <p className="my-0 py-0">
+                        <a
+                          href={latestTrack.deezer}
+                          target="_blank"
+                          className="btn btn-sm btn-secondary rounded-pill shadow-sm"
+                        >
+                          Listen
+                        </a>
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -71,6 +71,13 @@
       "when": 1701164384662,
       "tag": "0009_sloppy_rage",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1701416909543,
+      "tag": "0010_bumpy_jubilee",
+      "breakpoints": true
     }
   ]
 }
