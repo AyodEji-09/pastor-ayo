@@ -11,6 +11,7 @@ import { Button } from "../UI/Button";
 import { deleteBookings, updateBookings } from "@/Api/bookingApi";
 import toast, { Toaster } from "react-hot-toast";
 import { counseling } from "@/utils/data";
+import Image from "next/image";
 
 const AdminEventDisplay = ({ event }) => {
   const [loading, setLoading] = useState(false);
@@ -124,7 +125,10 @@ const AdminEventDisplay = ({ event }) => {
             aria-labelledby={`flush-heading${event.event_slug}`}
             data-bs-parent="#accordionFlushExample"
           >
-            <div style={{maxHeight: '500px', overflowY: 'auto'}} className="accordion-body">
+            <div
+              style={{ maxHeight: "500px", overflowY: "auto" }}
+              className="accordion-body"
+            >
               {event.booking_type === "counseling" && (
                 <>
                   <p style={{ margin: "5px 0" }} className="fw-normal small">
@@ -317,6 +321,15 @@ const AdminEventDisplay = ({ event }) => {
                       {event.additional_info}
                     </li>
                   </ul>
+                  <hr />
+                  {event.event_banner && (
+                    <Image
+                      width={500}
+                      height={500}
+                      src={event.event_banner}
+                      alt="event banner"
+                    />
+                  )}
                 </>
               )}
             </div>

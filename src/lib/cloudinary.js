@@ -17,8 +17,8 @@ export const upload = async (file) => {
   try {
     const uploadResponse = await cloud.uploader.upload(file, {
       upload_preset: "ayodeji_anifowose",
-      gravity: "auto",
-      crop: "fill",
+    //   gravity: "auto",
+    //   crop: "fill",
     });
 
     return {

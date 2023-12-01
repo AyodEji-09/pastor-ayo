@@ -81,7 +81,7 @@ export async function POST(request) {
 
     let res;
     if (booking_type == "ministry" && event_banner) {
-      const res = await upload(event_banner);
+      res = await upload(event_banner);
       if (res.success != "ok")
         return NextResponse.json(
           {
@@ -127,11 +127,12 @@ export async function POST(request) {
     let bookingURL = `${BASE_URL}/admin/bookings?open=${event_slug}#${event_slug}`;
     let adminEmail = process.env.ADMIN_EMAIL;
 
-    // const response = await sendMail(
-    //   bookingMail(`${first_name} ${last_name}`, personal_email, bookingURL),
-    //   "New Booking Alert!!!",
-    //   adminEmail
-    // );
+    const response = await sendMail(
+      bookingMail(`${first_name} ${last_name}`, personal_email, bookingURL),
+      "New Booking Alert!!!",
+      adminEmail
+    );
+
     return NextResponse.json({ data: [], message: "success" }, { status: 201 });
   } catch (error) {
     console.log(error);

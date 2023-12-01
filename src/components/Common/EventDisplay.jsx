@@ -4,6 +4,7 @@ import { FaRegAddressCard } from "react-icons/fa";
 import { MdAccessTime } from "react-icons/md";
 import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 import { CgProfile } from "react-icons/cg";
+import Image from "next/image";
 
 const EventDisplay = ({ event }) => {
   return (
@@ -52,7 +53,10 @@ const EventDisplay = ({ event }) => {
               style={{ margin: "5px 0" }}
               className="d-flex align-items-center fw-normal"
             >
-              <VscDebugBreakpointLogUnverified style={{fontSize: '1.3rem'}} className="me-1" />
+              <VscDebugBreakpointLogUnverified
+                style={{ fontSize: "1.3rem" }}
+                className="me-1"
+              />
               {event.event_nature}
             </p>
             <p
@@ -69,6 +73,15 @@ const EventDisplay = ({ event }) => {
             >
               <MdAccessTime className="me-1" /> {event.event_time}
             </p>
+
+            {event.event_banner && (
+              <Image
+                width={500}
+                height={500}
+                src={event.event_banner}
+                alt="event banner"
+              />
+            )}
           </div>
         </div>
       </div>
