@@ -57,7 +57,7 @@ const MusicComponent = ({ musics, latestTrack }) => {
         </div>
 
         <div className="row mt-5 d-flex justify-content-between">
-          <div className="col-lg-8 mb-2">
+          <div className="col-lg-8 mb-2 animate__animated animate__bounce">
             <div className="row d-flex justify-content-center">
               {musics.length > 0 ? (
                 musics.map((music, index) => (

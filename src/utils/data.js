@@ -134,6 +134,11 @@ export const books = [
         url: "https://www.amazon.com/EAGLE-WINNING-STRATEGY-Ayodeji-Anifowose/dp/B0CMK21LZK/ref=monarch_sidesheet",
         price: "$18.99",
       },
+      {
+        type: "Kindle Edition",
+        url: "https://a.co/d/7rNNp0K",
+        price: "$9.99",
+      },
     ],
     dop: "November 2, 2023",
     pages: "141 pages",
@@ -155,6 +160,11 @@ export const books = [
         type: "Paperback",
         url: "https://www.amazon.com/GODS-AGENDA-MAN-EMBRACING-MANHOOD/dp/B0CLVQK5Z7/ref=monarch_sidesheet",
         price: "$20.00",
+      },
+      {
+        type: "Kindle Edition",
+        url: "https://a.co/d/9pzoXOq",
+        price: "$9.99",
       },
     ],
     dop: "November 4, 2023",
