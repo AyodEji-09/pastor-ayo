@@ -5,7 +5,6 @@ import Link from "next/link";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import Typed from "typed.js";
 import { useEffect, useRef } from "react";
-import 'animate.css';
 
 const Hero = () => {
   const elOne = useRef(null);
@@ -49,7 +48,7 @@ const Hero = () => {
                 src={heroImage}
                 width={500}
                 alt="Pastor Ayo"
-                className="rounded-pill img-thumbnail shadow animate__animated animate__bounce"
+                className="rounded-pill img-thumbnail shadow bounce"
               />
               <div className="hero__image-desc">
                 <h2 ref={elOne} className="my-0 py-0">

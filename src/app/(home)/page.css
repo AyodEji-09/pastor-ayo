@@ -1,4 +1,3 @@
-
 /* hero section  */
 #hero {
   background: url("../../assets/images/bg/hero2.png") no-repeat;
@@ -49,6 +48,21 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+@keyframes bounceIn {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8.5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.bounce {
+  animation: bounceIn 2s infinite 2s;
+}
 @media screen and (max-device-width: 768px) {
   #hero {
     background-position: top;
@@ -56,6 +70,14 @@
 }
 
 /* home page style  - about section*/
+/* promo section  */
+#promo__section {
+  background: url("../../assets/images/bg/promo-bg.jpg") no-repeat;
+  background-position: 0;
+  background-size: cover;
+  margin-top: 4rem;
+}
+
 #about__section {
   background-position: center;
   background-size: cover;

@@ -7,6 +7,7 @@ import VideoSection from "@/components/HomeComponents/VideoSection";
 import ContactSection from "@/components/HomeComponents/ContactSection";
 import BlogSection from "@/components/HomeComponents/BlogSection";
 import Api from "@/Api/api";
+import PromoSection from "@/components/HomeComponents/PromoSection";
 
 const getAllPublishedMedia = async () => {
   try {
@@ -24,6 +25,7 @@ export default async function Home() {
   return (
     <main>
       <HeroSection />
+      <PromoSection />
       <AboutSection />
       <VideoSection videos={res?.videos ? res.videos : []} />
       <MusicSection
