@@ -10,7 +10,7 @@ const About = () => {
     <section id="about__section" className="section">
       <div className="container">
         <div className="row">
-          <div  className="col-lg-6 mb-2 d-flex justify-content-lg-center">
+          <div className="col-lg-6 mb-2 d-flex justify-content-lg-center">
             <div className="rounded">
               <Image
                 src={about}
@@ -22,7 +22,7 @@ const About = () => {
           <div className="col-lg-6 d-flex align-items-center mb-2">
             <div className="bg-transparent">
               <SectionHeader header="About" />
-              <div className="about__section-desc mt-2">
+              <div className="about__section-desc mt-2 text-center">
                 <p className="lead">
                   Ayodeji Anifowose is an author, content creator, training
                   facilitator, certified Life/ Marriage coach and Pastor. He

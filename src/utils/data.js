@@ -118,6 +118,24 @@ export const blogs = [
 ];
 export const books = [
   {
+    title: "BIBLICAL WAYS TO SUSTAIN LOVE AND ROMANCE IN YOUR MARRIAGE",
+    description:
+      "Love and Romance are core ingredients for a long and sustaining marriage. However, as time goes on, many couples lose touch with the initial belly fluttering love and romance their relationship began with, causing the marriage to become monotonous. In this book, “Biblical Ways to Sustain Love and Romance in Your Marriage”, we will explore biblical truths, and draw out practical wisdom from exemplary marriages in the bible to guide us in maintaining love and romance in our marriages. We will find principles on communication, love languages, forgiveness, and various elements and virtues that deepen the love and romance within a marriage. As you read this book, may your marital relationship receive new life. Amen.",
+    img_url: "https://m.media-amazon.com/images/I/61gLsnoaSJL._SY466_.jpg",
+    url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",
+    format: [
+      
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",
+        price: "$6.99",
+      },
+    ],
+    dop: "February 25, 2024",
+    pages: "105 pages",
+    language: "English",
+  },
+  {
     title: "THE EAGLE - THE WINNING STRATEGY",
     description:
       "Embracing the Skies: Soaring with the Eagle's Spirit is a transformative journey through the teachings of nature's majestic sentinel, the eagle. In this inspiring book, we delve into the symbolic wisdom of the eagle's flight and explore how its attributes can guide us toward personal growth, resilience, and success in our own lives. Through vivid narratives, relatable anecdotes, and thoughtful reflections, readers are invited to soar alongside the eagle, embracing its spirit as a source of inspiration and guidance. Whether you seek to overcome challenges, cultivate a stronger faith, or leave a lasting legacy, this book explores how the eagle's lessons can elevate your journey and empower you to reach new heights. Join us on this captivating expedition into the skies and discover the transformative power of Embracing the Skies: Soaring with the Eagle's Spirit.",

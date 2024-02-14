@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@planetscale/database": "^1.11.0",
     "@vercel/analytics": "^1.1.1",
+    "aos": "^2.3.4",
     "axios": "^1.6.2",
     "cloudinary": "^1.41.0",
     "country-state-city": "^3.2.1",
