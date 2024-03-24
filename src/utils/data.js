@@ -117,6 +117,189 @@ export const blogs = [
   },
 ];
 export const books = [
+  //new
+  {
+    title: "HEAVEN ON EARTH: Experiencing God in Your Marriage",
+    description: `Marriage is a sacred institution designed by God that brings a man and a woman together as one.
+    The marital union between a man and woman is a reflection of the unity between the Godhead – Father, Son and Holy Spirit; and the love shared between husband and wife mirrors God’s love for humanity.
+    "Heaven on Earth: Experiencing God in Your Marriage” explores the divine blueprint for marriage as revealed in God’s Word, drawing upon principles rooted in faith, love and unity that can transform a marital bond into an expression of heaven on earth.
+    As you read this book, may your marriage truly reflect God’s love for humanity, may your marital bond become stronger, and may you experience God in your marriage. Amen.`,
+    img_url: "https://m.media-amazon.com/images/I/717n4OySFWL._SY385_.jpg",
+    url: "https://www.amazon.com/HEAVEN-EARTH-Experiencing-Your-Marriage/dp/B0CVWXQ1B9/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/HEAVEN-EARTH-Experiencing-Your-Marriage-ebook/dp/B0CVV3B1YV/ref=monarch_sidesheet",
+        price: "$0.00",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/HEAVEN-EARTH-Experiencing-Your-Marriage/dp/B0CVWXQ1B9/ref=monarch_sidesheet",
+        price: "$16.99",
+      },
+    ],
+    dop: "February 25, 2024",
+    pages: "121 pages",
+    language: "English",
+  },
+  {
+    title: "PARENTING PRINCIPLES",
+    description: `Parenting is the most important job in the world. Unfortunately, there is no formal training for it. Parents play a critical role in shaping the lives of their children, and by extension, future generations.
+    More than a role and responsibility, parenting is a divine calling and assignment, as children are a gift from God. There are various principles passed down to us by God, the Master Parent, in the Bible to guide us in parenting.
+    In this book, “Parenting Principles”, you will learn important principles of parenting, according to God’s word, to guide you in raising children in line with godly standards. This book is a divine framework filled with biblical wisdom and practical advice to help you in your parenting journey, a journey I am also on.
+    As you read “Parenting Principles”, apply the principles written in it and become a star parent, raising, guiding and shaping future generations, one child at a time.`,
+    img_url: "https://m.media-amazon.com/images/I/61IVqUt4sOL._SY385_.jpg",
+    url: "https://www.amazon.com/LOVE-Essence-Christianity-AYODEJI-ANIFOWOSE/dp/B0CX1M237S/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/PARENTING-PRINCIPLES-AYODEJI-ANIFOWOSE-ebook/dp/B0CW1DWTLX/ref=monarch_sidesheet",
+        price: "$0.00",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/PARENTING-PRINCIPLES-AYODEJI-ANIFOWOSE/dp/B0CXXLL1XX/ref=monarch_sidesheet",
+        price: "$12.99",
+      },
+    ],
+    dop: "March 12, 2024",
+    pages: "85 pages",
+    language: "English",
+  },
+  {
+    title: "LOVE: The Essence of Christianity",
+    description: `Love’ is a popular concept with various wrong definitions. However, the Bible, which is the ever true and reliable word of God defines and explains what love is. “LOVE, The Essence of Christianity” sheds light on the unconditional love of God. It explains love as a sacrificial act by delving into the sacrificial love of Christ; it explores selflessness, true love and practical examples of sacrificial love. In this book, we will examine LOVE as explained in the bible as the core of Jesus’ message and the foundation of Christianity. As you read this book, may you understand God’s love for you, and become a channel of that love to everyone around you.`,
+    img_url: "https://m.media-amazon.com/images/I/610FUsQB92L._SY385_.jpg",
+    url: "https://www.amazon.com/LOVE-Essence-Christianity-AYODEJI-ANIFOWOSE/dp/B0CX1M237S/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/LOVE-Essence-Christianity-AYODEJI-ANIFOWOSE-ebook/dp/B0CWS57Q38/ref=monarch_sidesheet",
+        price: "$0.00",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/LOVE-Essence-Christianity-AYODEJI-ANIFOWOSE/dp/B0CX1M237S/ref=monarch_sidesheet",
+        price: "$13.99",
+      },
+    ],
+    dop: "March 10, 2024",
+    pages: "80 pages",
+    language: "English",
+  },
+  {
+    title: "THE 7 ULTIMATE LANGUAGES OF GOD",
+    description: `THE 7 ULTIMATE LANGUAGES OF GOD' is a book written to express the languages that can easily get God's attention. Each language, in addition to being a means of communication, reveals a unique aspect of God's character. The 7 Ultimate Languages of God will help you communicate better and more clearly with God. The book will serve a guide for every believer who desires growth in his or her individual walk with God`,
+    img_url: "https://m.media-amazon.com/images/I/61yL7-ovRRL._SY385_.jpg",
+    url: "https://www.amazon.com/7-ULTIMATE-LANGUAGES-GOD/dp/B0CX1813YK/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/7-ULTIMATE-LANGUAGES-GOD-ebook/dp/B0CW1HTN5H/ref=monarch_sidesheet",
+        price: "$4.99",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/7-ULTIMATE-LANGUAGES-GOD/dp/B0CX1813YK/ref=monarch_sidesheet",
+        price: "$15.99",
+      },
+    ],
+    dop: "March 2, 2024",
+    pages: "83 pages",
+    language: "English",
+  },
+  {
+    title: "THE POWER OF THE SECOND LOOK",
+    description: `The Power of The Second Look" is more than just a book; it is your guide for life. Have you ever wondered what it would take to live a glorious life? Have you ever asked yourself what it would take to avoid unnecessary mistakes and judgment? Of course, we have all pondered these questions, often only after making a significant mistake that we may end up regretting for life. This book, "The Power of the Second Look," serves as a shepherd whose goal is to guide you safely into God's best for you. It aims to ensure that in life, business, relationships, academics, and all your dealings, your mistakes are minimized because you've learned to go beyond the surface. You've learned to see with clarity, to gather facts, and to perceive as God does, enabling you to judge as God judges`,
+    img_url: "https://m.media-amazon.com/images/I/61ityGXrvVL._SY385_.jpg",
+    url: "https://www.amazon.com/POWER-SECOND-LOOK-AYODEJI-ANIFOWOSE/dp/B0CX8HYYJ1/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/POWER-SECOND-LOOK-AYODEJI-ANIFOWOSE-ebook/dp/B0CWZZ3C64/ref=monarch_sidesheet",
+        price: "$4.99",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/POWER-SECOND-LOOK-AYODEJI-ANIFOWOSE/dp/B0CX8HYYJ1/ref=monarch_sidesheet",
+        price: "$20.00",
+      },
+    ],
+    dop: "March 5, 2024",
+    pages: "163 pages",
+    language: "English",
+  },
+  {
+    title:
+      "THE ANOINTING AND THE ANOINTED: Sustaining the Power of God in the Life of a Man using the lives of Samuel, Elijah, and Elisha as case studies",
+    description: `It is important to remember that God's divine plan for all humankind at the very beginning was great. It serves as a reminder that we were created with purpose and intentionality by a loving Creator who desires that we live fulfilling lives in harmony, peace, health, and joy. The devil came and scattered the plan of God in the Garden of Eden; however, our loving God wouldn't give up on restoring man to his unique position and design. That's why He has been sending His anointed right from time to deliver His people from all works of the devil. This book, "The Anointing and the Anointed," therefore explores the life of some selected Anointed men of God, projecting their lives and drawing vital lessons that would go a long way in receiving and sustaining God's anointing upon the present day’s believers and servants of God. Are you a child of God, a believer, or a servant of God? This book is just for you! You can't afford to miss reading it. Get your own copy, read, apply, and share your testimonies.`,
+    img_url: "https://m.media-amazon.com/images/I/71WX8tSUy7L._SY385_.jpg",
+    url: "https://www.amazon.com/ANOINTING-ANOINTED-Sustaining-Samuel-studies/dp/B0CX1BX5ZT/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/ANOINTING-ANOINTED-Sustaining-Samuel-studies-ebook/dp/B0CW1HF4GH/ref=monarch_sidesheet",
+        price: "$0.00",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/ANOINTING-ANOINTED-Sustaining-Samuel-studies/dp/B0CX1BX5ZT/ref=monarch_sidesheet",
+        price: "$14.99",
+      },
+    ],
+    dop: "March 9, 2024",
+    pages: "85 pages",
+    language: "English",
+  },
+  {
+    title: "FATHERHOOD UNVEILED: (God's Blueprint Through Abraham)",
+    description: `Fatherhood is a profound and transformative experience that goes beyond biological ties. Dads play a pivotal role in the family, shaping the lives of their children and leaving a lasting impact on their development.
+      A father’s guidance and presence are irreplaceable; creating a strong foundation for his children to thrive. There are seven key dimensions that fathers represent. Do you care to know? That's why this book is just for you!
+      Get your own copy of this book "Fatherhood Unveiled", read, apply, and become the right father God designed for you, your family and posterity. I await your testimonies!`,
+    img_url: "https://m.media-amazon.com/images/I/61h8jUOx23L._SY385_.jpg",
+    url: "https://www.amazon.com/FATHERHOOD-UNVEILED-Blueprint-Through-Abraham/dp/B0CW9T5PF7/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/FATHERHOOD-UNVEILED-Blueprint-Through-Abraham-ebook/dp/B0CVXVRC8Q/ref=monarch_sidesheet",
+        price: "$0.00",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/FATHERHOOD-UNVEILED-Blueprint-Through-Abraham/dp/B0CW9T5PF7/ref=monarch_sidesheet",
+        price: "$15.00",
+      },
+    ],
+    dop: "March 9, 2024",
+    pages: "115 pages",
+    language: "English",
+  },
+  {
+    title:
+      "FIRE ON MY ALTAR: (A Guide To Maintaining A Prayerful Life For Men, Husbands, And Fathers)",
+    description: `As men, it’s very easy to get caught up in the busyness of life, and the responsibilities that come with masculinity, which could lead to a disconnect from God.
+      In this book, men, husbands and fathers will learn the significance of prayer in helping to shoulder the burden of these responsibilities, cultivating a deeper relationship with God, and providing nourishment for the soul.
+      “Fire on My Altar” is a practical guide for men, husbands, and fathers who desire to maintain a fervent prayerful life, draw closer to God, pass on the legacy of faith through prayer to their families, and fan the flames on their altar. May this book inspire you, and cause the fire on your altar to burn brightly in Jesus’ name. Amen!`,
+    img_url: "https://m.media-amazon.com/images/I/61z3uv3Uo4L._SY385_.jpg",
+    url: "https://www.amazon.com/FIRE-MY-ALTAR-Maintaining-Prayerful/dp/B0CVV1ZL3W/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/FIRE-MY-ALTAR-Maintaining-Prayerful-ebook/dp/B0CVSFF57G/ref=monarch_sidesheet",
+        price: "$6.99",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/FIRE-MY-ALTAR-Maintaining-Prayerful/dp/B0CVV1ZL3W/ref=monarch_sidesheet",
+        price: "$20.00",
+      },
+    ],
+    dop: "February 25, 2024",
+    pages: "115 pages",
+    language: "English",
+  },
+
+  //old
   {
     title: "BIBLICAL WAYS TO SUSTAIN LOVE AND ROMANCE IN YOUR MARRIAGE",
     description:
@@ -124,7 +307,6 @@ export const books = [
     img_url: "https://m.media-amazon.com/images/I/61gLsnoaSJL._SY466_.jpg",
     url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",
     format: [
-      
       {
         type: "Kindle Edition",
         url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",

@@ -9,6 +9,7 @@ import BlogSection from "@/components/HomeComponents/BlogSection";
 import Api from "@/Api/api";
 import PromoSection from "@/components/HomeComponents/PromoSection";
 
+
 const getAllPublishedMedia = async () => {
   try {
     const res = await Api.get(`/api/publishedMedia?video=3&music=4`);

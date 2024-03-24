@@ -4,6 +4,7 @@ import promo1 from "@/assets/images/promo1.jpg";
 import promo2 from "@/assets/images/promo2.jpg";
 import Link from "next/link";
 import AOSComponent from "../Common/AOS";
+
 const PromoSection = () => {
   return (
     <AOSComponent>

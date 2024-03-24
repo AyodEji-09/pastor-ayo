@@ -56,8 +56,9 @@ const ContactComponent = () => {
   };
 
   const handleChange = (e) => {
+    const { value, name } = e.target;
     setForm((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
+      return { ...prev, [name]: value };
     });
   };
 
