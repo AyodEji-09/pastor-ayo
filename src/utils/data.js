@@ -119,6 +119,29 @@ export const blogs = [
 export const books = [
   //new
   {
+    title: "A TRANSFORMED LIFE: The story of my Transformation",
+    description: `God transformed my life from a life of pains, ridicule, and mockery to a life of beauty and glory. Life is full of ups and downs. It is indeed 'not a bed of roses' as the saying goes. Every individual has one thing or the other to combat, regardless of age, sex, religion, education, etc. These challenges range from stammering, dumbness, deafness, blindness, etc.
+    However, every individual must have a positive attitude and be hopeful towards these challenges to live above them and thrive. This is the essence of this book, "The Transformed Life" - providing hope, succor, comfort, and solutions to victims of life's challenges.
+    Whatever your ugly condition might be, God can speak to you through the revelation contained in this book. Get your copy, read, apply the concepts, and be transformed!`,
+    img_url: "https://m.media-amazon.com/images/I/61eQutLu5jL._SY466_.jpg",
+    url: "https://www.amazon.com/dp/B0D3MDLQ25/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Kindle Edition",
+        url: "https://www.amazon.com/TRANSFORMED-LIFE-story-Transformation-ebook/dp/B0D3KLGLBP/ref=monarch_sidesheet",
+        price: "$0.00",
+      },
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/dp/B0D3MDLQ25/ref=monarch_sidesheet",
+        price: "$18.99",
+      },
+    ],
+    dop: "May 8, 2024",
+    pages: "107 pages",
+    language: "English",
+  },
+  {
     title: "HEAVEN ON EARTH: Experiencing God in Your Marriage",
     description: `Marriage is a sacred institution designed by God that brings a man and a woman together as one.
     The marital union between a man and woman is a reflection of the unity between the Godhead – Father, Son and Holy Spirit; and the love shared between husband and wife mirrors God’s love for humanity.
