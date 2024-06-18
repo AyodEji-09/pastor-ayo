@@ -119,6 +119,22 @@ export const blogs = [
 export const books = [
   //new
   {
+    title: "21 Days Devotional on Identity: Children Edition",
+    description: `The 21-day Devotional on Identity according to 1 Peter 2:9 is a spiritually enriching devotional designed to guide children on a transformative journey toward self-discovery in Christ. Each day features a theme rooted in Biblical principles, aiming to unveil the layers of our identity as defined by God's word, not by the world. The book's purpose is to provide readers with a structured path to understanding their unique identity through scripture, prayer, and reflection. It's for children who seek to deepen their relationship with God, and gain clarity on their purpose and calling as seen through the lens of their faith even at their tender age.`,
+    img_url: "https://m.media-amazon.com/images/I/61xpKuNqlbL._SY342_.jpg",
+    url: "https://www.amazon.com/21-Days-Devotional-Identity-Children/dp/B0D5LP7BHG/ref=monarch_sidesheet",
+    format: [
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/21-Days-Devotional-Identity-Children/dp/B0D5LP7BHG/ref=monarch_sidesheet",
+        price: "$20.00",
+      },
+    ],
+    dop: "June 9, 2024",
+    pages: "87 pages",
+    language: "English",
+  },
+  {
     title: "A TRANSFORMED LIFE: The story of my Transformation",
     description: `God transformed my life from a life of pains, ridicule, and mockery to a life of beauty and glory. Life is full of ups and downs. It is indeed 'not a bed of roses' as the saying goes. Every individual has one thing or the other to combat, regardless of age, sex, religion, education, etc. These challenges range from stammering, dumbness, deafness, blindness, etc.
     However, every individual must have a positive attitude and be hopeful towards these challenges to live above them and thrive. This is the essence of this book, "The Transformed Life" - providing hope, succor, comfort, and solutions to victims of life's challenges.
