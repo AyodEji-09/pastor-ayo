@@ -9,7 +9,7 @@ const DDday = () => {
         <div className="row justify-content-center">
           <div className="col-lg-4 my-1">
             <div className="info">
-              <h3 className="fw-bolder">Birthday Service/Party</h3>
+              <h3 className="fw-bolder text-primary">Birthday Service/Party</h3>
               <hr />
               <p className="lead d-flex align-items-start gap-1 my-1 p-0">
                 <CiCalendar className="text-primary" />
@@ -28,7 +28,7 @@ const DDday = () => {
           </div>
           <div className="col-lg-4 my-1">
             <div className="info">
-              <h3 className="fw-bolder">Special Thanksgiving Service</h3>
+              <h3 className="fw-bolder text-primary">Special Thanksgiving Service</h3>
               <hr />
               <p className="lead d-flex align-items-start gap-1 my-1 p-0">
                 <CiCalendar className="text-primary" />
@@ -48,7 +48,7 @@ const DDday = () => {
         </div>
         <div className="row mt-3 justify-content-center">
           <div className="col-lg-8 text-center">
-            <p className="lead fw-bold fs-3 text-center text-primary">
+            <p className="fw-bold fs-4 text-center">
               Please confirm your attendance by clicking this button.
             </p>
             <a

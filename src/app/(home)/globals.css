@@ -106,7 +106,7 @@ section.section {
 }
 #birthday .hero .hero-text h2 {
   /* color: #0144B1; */
-  color: #4169e1;
+  /* color: #4169e1; */
 }
 #birthday .hero .hero-img {
   height: 500px;
@@ -144,7 +144,7 @@ section.section {
 }
 #birthday .invited-box-counter h2 {
   /* color: #F5F5DC; */
-  color: #4169e1;
+  /* color: #4169e1; */
 }
 
 #birthday .information {
@@ -157,5 +157,5 @@ section.section {
 }
 
 #birthday .information h3 {
-  color: #4169e1;
+  /* color: #4169e1; */
 }

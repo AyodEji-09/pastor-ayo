@@ -52,7 +52,7 @@ const LandingPage = () => {
             </div>
             <div className="col-lg-4">
               <div className="d-flex flex-column justify-content-center hero-text mt-lg-5 pt-lg-5 mt-2 pt-2">
-                <h2 className="fw-bolder">
+                <h2 className="fw-bolder text-primary">
                   Welcome to a Grand Celebration of Life and Ministry!
                 </h2>
                 <p className="lead mt-1">
@@ -84,19 +84,19 @@ const LandingPage = () => {
             </div>
             <div className="invited-box-counter text-center rounded shadow">
               <div className="text-center rounded shadow">
-                <h2 className="fw-bolder m-0">{timeLeft.days || 0}</h2>
+                <h2 className="fw-bolder m-0 text-primary">{timeLeft.days || 0}</h2>
                 <p className="lead fw-bolder m-0"> Days</p>
               </div>
               <div className="text-center rounded shadow">
-                <h2 className="fw-bolder m-0">{timeLeft.hours || 0}</h2>
+                <h2 className="fw-bolder m-0 text-primary">{timeLeft.hours || 0}</h2>
                 <p className="lead fw-bolder m-0"> Hours</p>
               </div>
               <div className="text-center rounded shadow">
-                <h2 className="fw-bolder m-0">{timeLeft.minutes || 0}</h2>
+                <h2 className="fw-bolder m-0 text-primary">{timeLeft.minutes || 0}</h2>
                 <p className="lead fw-bolder m-0"> Minutes</p>
               </div>
               <div className="text-center rounded shadow">
-                <h2 className="fw-bolder m-0">{timeLeft.seconds || 0}</h2>
+                <h2 className="fw-bolder m-0 text-primary">{timeLeft.seconds || 0}</h2>
                 <p className="lead fw-bolder m-0"> Seconds</p>
               </div>
             </div>
