@@ -76,6 +76,17 @@ const Footer = () => {
                         Booking
                       </Link>
                     </li>
+                    <li>
+                      <Link
+                        className="d-flex align-items-center"
+                        href="/birthday-celebration"
+                      >
+                        <VscDebugBreakpointLogUnverified
+                          style={{ marginRight: "4px" }}
+                        />{" "}
+                        Birthday Celebration
+                      </Link>
+                    </li>
                   </ul>
                   <ul>
                     <li>
