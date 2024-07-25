@@ -1,5 +1,4 @@
 "use client";
-import img1 from "@/assets/images/birthday/gallery/1.JPG";
 import Image from "next/image";
 import { Gallery } from "react-grid-gallery";
 import { useEffect, useState } from "react";
@@ -15,7 +14,7 @@ const Momemt = () => {
   };
 
   let images = importAll(
-    require.context("../../assets/images/birthday/gallery/", false, /\.JPG$/)
+    require.context("../../assets/images/birthday/gallery/", false, /\.jpg$/)
   );
 
   images = Object.keys(images).map((key) => {
