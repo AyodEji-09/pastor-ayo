@@ -27,6 +27,7 @@
     "react": "^18",
     "react-date-range": "^1.4.0",
     "react-dom": "^18",
+    "react-grid-gallery": "^1.0.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-loading-skeleton": "^3.3.1",

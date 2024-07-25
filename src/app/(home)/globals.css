@@ -80,6 +80,82 @@ section.section {
   justify-content: flex-end;
   padding-bottom: 3rem;
 }
-#page__header h1 {
+#page__header-birthday {
+  height: 400px;
+  background: url("../../assets/images/birthday/birthday-bg.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 3rem;
+}
+#page__header h1,
+#page__header-birthday h1 {
   font-size: 2.5rem;
+}
+/* birthday  */
+#birthday .hero {
+  background: url("../../assets/images/birthday/bg.png") no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 5rem;
+}
+#birthday .hero .hero-text {
+  /* height: 500px; */
+}
+#birthday .hero .hero-text h2 {
+  /* color: #0144B1; */
+  color: #4169e1;
+}
+#birthday .hero .hero-img {
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+#birthday .invited {
+  background: url("../../assets/images/birthday/bg.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#birthday .invited-box {
+  background: url("../../assets/images/birthday/counter.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#birthday .invited-box h2 {
+  color: #ffffff;
+}
+#birthday .invited-box > p {
+  color: #f5f5dc;
+}
+#birthday .invited-box-counter {
+  display: flex;
+  padding: 6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#birthday .invited-box-counter div {
+  background-color: #f5f5dc;
+  padding: 2rem;
+  width: 130px;
+}
+#birthday .invited-box-counter h2 {
+  /* color: #F5F5DC; */
+  color: #4169e1;
+}
+
+#birthday .information {
+  background: url("../../assets/images/birthday/bg.png") no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  padding: 4rem;
+}
+
+#birthday .information h3 {
+  color: #4169e1;
 }
