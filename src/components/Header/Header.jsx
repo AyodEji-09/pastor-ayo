@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import "./header.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { HiMenuAlt1 } from "react-icons/hi";
 import { navLinks } from "@/utils/data";
 import logo from "@/assets/images/logo/logo.png";
@@ -15,6 +15,24 @@ const Header = () => {
   const currentRoute = usePathname();
   const MARRIAGE_URL = "/marriage-ministry";
   const MUSIC_URL = "/music-ministry";
+
+  const handleNavItemClick = () => {
+    var navBar = document.querySelector(".navbar-collapse");
+    navBar.classList.remove("show");
+  };
+
+  const handleOutsideClick = (event) => {
+    if (!event.target.closest(".navbar-collapse")) {
+      var navBar = document.querySelector(".navbar-collapse");
+      navBar.classList.remove("show");
+    }
+  };
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   useEffect(() => {
     let e, o, n;
@@ -84,6 +102,7 @@ const Header = () => {
               <ul className="navbar-nav m-auto">
                 {navLinks.map((navLink, index) => (
                   <li
+                    onClick={handleNavItemClick}
                     key={navLink.title + index}
                     className={
                       navLink.dropdown
@@ -122,7 +141,11 @@ const Header = () => {
                 ))}
               </ul>
               <div className="d-flex">
-                <Link href="/contact" className="btn btn-danger">
+                <Link
+                  onClick={handleNavItemClick}
+                  href="/contact"
+                  className="btn btn-danger"
+                >
                   Contact
                 </Link>
               </div>
