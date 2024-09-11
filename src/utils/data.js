@@ -119,6 +119,23 @@ export const blogs = [
 export const books = [
   //new
   {
+    title: "Opolo Eja (Fish Brain)",
+    description: `This story is not a work of fiction; it is a true account of my own journey in discovering and developing my identity in Christ. Through this book, you will learn who you are in Christ and understand that no matter the challenges you face, they do not change the fact that you are gifted by God. The words you speak have the power to change lives for good or bad. I encourage you not to read this book just once, but to revisit it over and over again until your heart is transformed into the person God has called you to be, according to His Word.`,
+    img_url: "https://m.media-amazon.com/images/I/61k-TdeDyVL._SY466_.jpg",
+    url: "https://www.amazon.com/Opolo-Fish-Brain-Ayodeji-Anifowose/dp/B0DFVGG9DH/ref=monarch_sidesheet_title",
+    url_2: "",
+    format: [
+      {
+        type: "Paperback",
+        url: "https://www.amazon.com/Opolo-Fish-Brain-Ayodeji-Anifowose/dp/B0DFVGG9DH/ref=monarch_sidesheet_title",
+        price: "$16.00",
+      },
+    ],
+    dop: "August 31, 2024",
+    pages: "24 pages",
+    language: "English",
+  },
+  {
     title: "21 Days Devotional on Identity: Children Edition",
     description: `The 21-day Devotional on Identity according to 1 Peter 2:9 is a spiritually enriching devotional designed to guide children on a transformative journey toward self-discovery in Christ. Each day features a theme rooted in Biblical principles, aiming to unveil the layers of our identity as defined by God's word, not by the world. The book's purpose is to provide readers with a structured path to understanding their unique identity through scripture, prayer, and reflection. It's for children who seek to deepen their relationship with God, and gain clarity on their purpose and calling as seen through the lens of their faith even at their tender age.`,
     img_url: "https://m.media-amazon.com/images/I/61xpKuNqlbL._SY342_.jpg",
