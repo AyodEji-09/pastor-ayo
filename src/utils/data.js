@@ -125,6 +125,8 @@ export const books = [
     img_url: "https://m.media-amazon.com/images/I/61EMsAWYt1L._SY466_.jpg",
     url: "https://www.amazon.com/21-Days-Devotion-Integrity-Children/dp/B0DHY47PGY/ref=monarch_sidesheet_title",
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     format: [
       {
         type: "Paperback",
@@ -142,6 +144,8 @@ export const books = [
     img_url: "https://m.media-amazon.com/images/I/61k-TdeDyVL._SY466_.jpg",
     url: "https://www.amazon.com/Opolo-Fish-Brain-Ayodeji-Anifowose/dp/B0DFVGG9DH/ref=monarch_sidesheet_title",
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     format: [
       {
         type: "Paperback",
@@ -160,6 +164,8 @@ export const books = [
     url: "https://www.amazon.com/21-Days-Devotional-Identity-Children/dp/B0D5LP7BHG/ref=monarch_sidesheet",
     url_2:
       "https://rhbooks.com.ng/product/21-days-children-devotional-on-identity/",
+    price_ngn: "5000",
+    price_usd: "25",
     format: [
       {
         type: "Paperback",
@@ -173,6 +179,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "A TRANSFORMED LIFE: The story of my Transformation",
     description: `God transformed my life from a life of pains, ridicule, and mockery to a life of beauty and glory. Life is full of ups and downs. It is indeed 'not a bed of roses' as the saying goes. Every individual has one thing or the other to combat, regardless of age, sex, religion, education, etc. These challenges range from stammering, dumbness, deafness, blindness, etc.
     However, every individual must have a positive attitude and be hopeful towards these challenges to live above them and thrive. This is the essence of this book, "The Transformed Life" - providing hope, succor, comfort, and solutions to victims of life's challenges.
@@ -197,6 +205,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "HEAVEN ON EARTH: Experiencing God in Your Marriage",
     description: `Marriage is a sacred institution designed by God that brings a man and a woman together as one.
     The marital union between a man and woman is a reflection of the unity between the Godhead – Father, Son and Holy Spirit; and the love shared between husband and wife mirrors God’s love for humanity.
@@ -222,6 +232,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "PARENTING PRINCIPLES",
     description: `Parenting is the most important job in the world. Unfortunately, there is no formal training for it. Parents play a critical role in shaping the lives of their children, and by extension, future generations.
     More than a role and responsibility, parenting is a divine calling and assignment, as children are a gift from God. There are various principles passed down to us by God, the Master Parent, in the Bible to guide us in parenting.
@@ -247,6 +259,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "LOVE: The Essence of Christianity",
     description: `Love’ is a popular concept with various wrong definitions. However, the Bible, which is the ever true and reliable word of God defines and explains what love is. “LOVE, The Essence of Christianity” sheds light on the unconditional love of God. It explains love as a sacrificial act by delving into the sacrificial love of Christ; it explores selflessness, true love and practical examples of sacrificial love. In this book, we will examine LOVE as explained in the bible as the core of Jesus’ message and the foundation of Christianity. As you read this book, may you understand God’s love for you, and become a channel of that love to everyone around you.`,
     img_url: "https://m.media-amazon.com/images/I/610FUsQB92L._SY385_.jpg",
@@ -269,6 +283,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "THE 7 ULTIMATE LANGUAGES OF GOD",
     description: `THE 7 ULTIMATE LANGUAGES OF GOD' is a book written to express the languages that can easily get God's attention. Each language, in addition to being a means of communication, reveals a unique aspect of God's character. The 7 Ultimate Languages of God will help you communicate better and more clearly with God. The book will serve a guide for every believer who desires growth in his or her individual walk with God`,
     img_url: "https://m.media-amazon.com/images/I/61yL7-ovRRL._SY385_.jpg",
@@ -291,6 +307,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "THE POWER OF THE SECOND LOOK",
     description: `The Power of The Second Look" is more than just a book; it is your guide for life. Have you ever wondered what it would take to live a glorious life? Have you ever asked yourself what it would take to avoid unnecessary mistakes and judgment? Of course, we have all pondered these questions, often only after making a significant mistake that we may end up regretting for life. This book, "The Power of the Second Look," serves as a shepherd whose goal is to guide you safely into God's best for you. It aims to ensure that in life, business, relationships, academics, and all your dealings, your mistakes are minimized because you've learned to go beyond the surface. You've learned to see with clarity, to gather facts, and to perceive as God does, enabling you to judge as God judges`,
     img_url: "https://m.media-amazon.com/images/I/61ityGXrvVL._SY385_.jpg",
@@ -313,6 +331,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title:
       "THE ANOINTING AND THE ANOINTED: Sustaining the Power of God in the Life of a Man using the lives of Samuel, Elijah, and Elisha as case studies",
     description: `It is important to remember that God's divine plan for all humankind at the very beginning was great. It serves as a reminder that we were created with purpose and intentionality by a loving Creator who desires that we live fulfilling lives in harmony, peace, health, and joy. The devil came and scattered the plan of God in the Garden of Eden; however, our loving God wouldn't give up on restoring man to his unique position and design. That's why He has been sending His anointed right from time to deliver His people from all works of the devil. This book, "The Anointing and the Anointed," therefore explores the life of some selected Anointed men of God, projecting their lives and drawing vital lessons that would go a long way in receiving and sustaining God's anointing upon the present day’s believers and servants of God. Are you a child of God, a believer, or a servant of God? This book is just for you! You can't afford to miss reading it. Get your own copy, read, apply, and share your testimonies.`,
@@ -336,6 +356,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title: "FATHERHOOD UNVEILED: (God's Blueprint Through Abraham)",
     description: `Fatherhood is a profound and transformative experience that goes beyond biological ties. Dads play a pivotal role in the family, shaping the lives of their children and leaving a lasting impact on their development.
       A father’s guidance and presence are irreplaceable; creating a strong foundation for his children to thrive. There are seven key dimensions that fathers represent. Do you care to know? That's why this book is just for you!
@@ -360,6 +382,8 @@ export const books = [
   },
   {
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     title:
       "FIRE ON MY ALTAR: (A Guide To Maintaining A Prayerful Life For Men, Husbands, And Fathers)",
     description: `As men, it’s very easy to get caught up in the busyness of life, and the responsibilities that come with masculinity, which could lead to a disconnect from God.
@@ -392,6 +416,8 @@ export const books = [
     img_url: "https://m.media-amazon.com/images/I/61gLsnoaSJL._SY466_.jpg",
     url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     format: [
       {
         type: "Kindle Edition",
@@ -406,6 +432,8 @@ export const books = [
   {
     title: "THE EAGLE - THE WINNING STRATEGY",
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
 
     description:
       "Embracing the Skies: Soaring with the Eagle's Spirit is a transformative journey through the teachings of nature's majestic sentinel, the eagle. In this inspiring book, we delve into the symbolic wisdom of the eagle's flight and explore how its attributes can guide us toward personal growth, resilience, and success in our own lives. Through vivid narratives, relatable anecdotes, and thoughtful reflections, readers are invited to soar alongside the eagle, embracing its spirit as a source of inspiration and guidance. Whether you seek to overcome challenges, cultivate a stronger faith, or leave a lasting legacy, this book explores how the eagle's lessons can elevate your journey and empower you to reach new heights. Join us on this captivating expedition into the skies and discover the transformative power of Embracing the Skies: Soaring with the Eagle's Spirit.",
@@ -435,6 +463,8 @@ export const books = [
   {
     title: "GOD'S AGENDA FOR MAN: EMBRACING TRUE MANHOOD",
     url_2: "",
+    price_ngn: "5000",
+    price_usd: "25",
     description:
       "God's Agenda for Man: Embracing True Manhood invites readers on a transformative journey of understanding and embracing their unique calling as men. Throughout this book, we will explore the Biblical principles and timeless truths that define true manhood according to God's design. We will discover the meaning and essence of true manhood as the book treats essential concerns such as identity, purpose, relationships, and responsibility, while embodying the character of Christ. The book also challenges cultural norms that often distort and devalue true manhood, offering instead a vision of masculinity grounded in God's Word. I’m assured this book will not only be part of your library collection but will truly change your life",
     img_url: "https://m.media-amazon.com/images/I/61MZgQP+AuL._SY466_.jpg",
