@@ -230,6 +230,7 @@ export const CheckoutForm = ({ product }) => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="NG">Nigeria</SelectItem>
                       <SelectItem value="US">United States</SelectItem>
                       <SelectItem value="CA">Canada</SelectItem>
                       <SelectItem value="UK">United Kingdom</SelectItem>
@@ -303,7 +304,7 @@ export const CheckoutForm = ({ product }) => {
           <div className="tw-border-t tw-pt-4">
             <div className="tw-flex tw-justify-between tw-items-center tw-mb-4">
               <span className="tw-text-muted-foreground">{product.title}</span>
-              <span className="tw-font-semibold">${product.price_ngn}</span>
+              <span className="tw-font-semibold">{product.displayPrice}</span>
             </div>
             <div className="tw-flex tw-justify-between tw-items-center tw-mb-4">
               <span className="tw-text-muted-foreground">Shipping</span>
@@ -312,7 +313,7 @@ export const CheckoutForm = ({ product }) => {
             <div className="tw-flex tw-justify-between tw-items-center tw-text-lg tw-font-bold tw-border-t tw-pt-4">
               <span>Total</span>
               <span className="tw-bg-gradient-primary tw-bg-clip-text">
-                ${product.price_ngn}
+                {product.displayPrice}
               </span>
             </div>
           </div>
@@ -330,7 +331,7 @@ export const CheckoutForm = ({ product }) => {
                 Processing Payment...
               </div>
             ) : (
-              `Complete Purchase - $${product.price_ngn}`
+              `Complete Purchase - ${product.displayPrice}`
             )}
           </Button>
 

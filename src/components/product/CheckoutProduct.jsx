@@ -41,7 +41,7 @@ export const CheckoutProduct = ({ product }) => {
 
         <div className="tw-flex tw-items-center tw-gap-3">
           <span className="tw-text-3xl tw-font-bold tw-bg-gradient-primary tw-bg-clip-text">
-            {product.price_ngn}
+            {product.displayPrice}
           </span>
           {product.price_ngn && (
             <>
