@@ -30,7 +30,7 @@ const Checkout = ({ params }) => {
   const product = books.find((b) => slugify(b.title) === book);
 
   const country = cookies().get("country")?.value || "US";
-  const displayPrice = country === "NG" ? product.price_ngn : product.price_usd;
+  const displayPrice = country === "NG" ? `NGN${product.price_ngn}` : `$${product.price_usd}`;
 
   const enrichedProduct = {
     ...product,
