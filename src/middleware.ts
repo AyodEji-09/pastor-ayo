@@ -1,15 +1,18 @@
-import { NextResponse } from "next/server";
+import { NextRequest as BaseNextRequest, NextResponse } from "next/server";
+
+interface ExtendedNextRequest extends BaseNextRequest {
+  geo?: Geo;
+}
+
+type NextRequest = ExtendedNextRequest;
 
 interface Geo {
   country?: string;
 }
 
-interface MiddlewareRequest {
-  geo?: Geo;
-}
-
-export function middleware(request: MiddlewareRequest): NextResponse {
+export function middleware(request: NextRequest): NextResponse {
   const country = request.geo?.country || "US";
+  console.log({ country })
   const response = NextResponse.next();
   response.cookies.set("country", country, { path: "/" });
   return response;

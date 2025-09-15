@@ -4,14 +4,23 @@ import { CheckoutForm } from "../../../components/ui/CheckoutForm";
 import { books } from '@/lib/data';
 import { slugify } from '@/lib/utils';
 
-const Checkout = ({ params }) => {
+interface CheckoutParams {
+  params: {
+    book: string;
+  };
+}
+
+const Checkout = async ({ params }: CheckoutParams) => {
   // const router = useRouter();
   const { book } = params;
   const product = books.find((b) => slugify(b.title) === book);
 
-  const country = cookies().get("country")?.value || "US";
+  const cookieStore = await cookies(); // no await needed
+  const country = cookieStore.get("country")?.value || "US";
+  console.log("Country from cookie:", country);
+  
   const displayPrice =
-    country === "NG" ? `NGN${product.price_ngn}` : `$${product.price_usd}`;
+    country === "NG" ? `NGN${product?.price_ngn}` : `$${product?.price_usd}`;
 
   const enrichedProduct = {
     ...product,
@@ -20,7 +29,7 @@ const Checkout = ({ params }) => {
 
   // const product = books.find((b) => slugify(b.title) === book);
 
-  if (!product) return <div>Book not found 😢</div>;
+  if (!product || !enrichedProduct) return <div>Book not found 😢</div>;
   return (
     // <main id="shop__page">
     <div className="bg-gradient-subtle">
