@@ -15,7 +15,7 @@ const Checkout = ({ params }: CheckoutParams) => {
   const { book } = params;
   const product = books.find((b) => slugify(b.title) === book);
 
-  const cookieStore = cookies(); // no await needed
+  const cookieStore = cookies();
   const country = cookieStore.get("country")?.value || "US";
   console.log("Country from cookie:", country);
   
