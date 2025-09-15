@@ -15,7 +15,7 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
   const { book } = await params;
   const product = books.find((b) => slugify(b.title) === book);
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const country = cookieStore.get("country")?.value || "US";
   console.log("Country from cookie:", country);
 
