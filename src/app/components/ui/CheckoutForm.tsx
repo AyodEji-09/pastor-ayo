@@ -57,31 +57,14 @@ export const CheckoutForm = ({ product }: { product: typeof books[0] }) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  interface HandleBuyFormData {
-    email: string;
-    firstName: string;
-    lastName: string;
-    address: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    country: string;
-  }
 
-  interface Book {
-    priceId: string;
-    title: string;
-    displayPrice: string;
-    // Add other properties of the book object if needed
-  }
-
-  async function handleBuy(formData: HandleBuyFormData, book: Book): Promise<void> {
+  async function handleBuy(formData: FormData, book: typeof books[0]): Promise<void> {
     console.log("buy book");
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId: book.priceId, book, data: formData }),
+        body: JSON.stringify({ priceId: book.displayPrice, book, data: formData }),
       });
 
       const data: { url: string } = await res.json();
