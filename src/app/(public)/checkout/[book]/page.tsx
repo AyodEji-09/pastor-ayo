@@ -10,12 +10,12 @@ interface CheckoutParams {
   };
 }
 
-const Checkout = async ({ params }: CheckoutParams) => {
+const Checkout = ({ params }: CheckoutParams) => {
   // const router = useRouter();
   const { book } = params;
   const product = books.find((b) => slugify(b.title) === book);
 
-  const cookieStore = await cookies(); // no await needed
+  const cookieStore = cookies(); // no await needed
   const country = cookieStore.get("country")?.value || "US";
   console.log("Country from cookie:", country);
   
