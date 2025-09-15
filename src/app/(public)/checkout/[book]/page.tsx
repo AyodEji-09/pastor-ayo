@@ -3,6 +3,7 @@ import { CheckoutProduct } from "../../../components/ui/CheckoutProduct";
 import { CheckoutForm } from "../../../components/ui/CheckoutForm";
 import { books } from "@/lib/data";
 import { slugify } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 interface CheckoutPageProps {
   params: {
@@ -15,6 +16,9 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
   const { book } = await params;
   const product = books.find((b) => slugify(b.title) === book);
 
+  if (!product) {
+    notFound()
+  }
   const cookieStore = await cookies();
   const country = cookieStore.get("country")?.value || "US";
   console.log("Country from cookie:", country);
@@ -29,7 +33,6 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
 
   // const product = books.find((b) => slugify(b.title) === book);
 
-  if (!product) return <div>Book not found 😢</div>;
   return (
     // <main id="shop__page">
     <div className="bg-gradient-subtle">
@@ -49,13 +52,13 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
           <div className="grid lg:grid-cols-2 gap-8 animate-slide-up">
             {/* Product Details */}
             <div>
-              <CheckoutProduct product={enrichedProduct} />
+              <CheckoutProduct product={enrichedProduct ?? null} />
             </div>
 
             {/* Checkout Form */}
             <div>
               <CheckoutForm
-                product={enrichedProduct}
+                product={enrichedProduct || null}
                 // onSuccess={handleSuccess}
                 // onError={handleError}
               />
