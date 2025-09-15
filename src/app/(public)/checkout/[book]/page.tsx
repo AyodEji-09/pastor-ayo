@@ -1,24 +1,24 @@
 import { cookies } from "next/headers";
 import { CheckoutProduct } from "../../../components/ui/CheckoutProduct";
 import { CheckoutForm } from "../../../components/ui/CheckoutForm";
-import { books } from '@/lib/data';
-import { slugify } from '@/lib/utils';
+import { books } from "@/lib/data";
+import { slugify } from "@/lib/utils";
 
-interface CheckoutParams {
+interface CheckoutPageProps {
   params: {
     book: string;
   };
 }
 
-const Checkout = ({ params }: CheckoutParams) => {
+const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
   // const router = useRouter();
-  const { book } = params;
+  const { book } = await params;
   const product = books.find((b) => slugify(b.title) === book);
 
   const cookieStore = cookies();
   const country = cookieStore.get("country")?.value || "US";
   console.log("Country from cookie:", country);
-  
+
   const displayPrice =
     country === "NG" ? `NGN${product?.price_ngn}` : `$${product?.price_usd}`;
 
@@ -29,7 +29,7 @@ const Checkout = ({ params }: CheckoutParams) => {
 
   // const product = books.find((b) => slugify(b.title) === book);
 
-  if (!product || !enrichedProduct) return <div>Book not found 😢</div>;
+  if (!product) return <div>Book not found 😢</div>;
   return (
     // <main id="shop__page">
     <div className="bg-gradient-subtle">
