@@ -20,7 +20,7 @@ export default function UnderConstruction() {
         🚧 Under Construction 🚧
       </h1>
       <p style={{ fontSize: "1.5rem", color: "#333", textAlign: "center" }}>
-        We're working hard to bring you something amazing.
+        We&apos;re working hard to bring you something amazing.
         <br />
         Please check back soon!
       </p>
