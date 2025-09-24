@@ -5,17 +5,19 @@ import {
   DrawerHeader,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GrMenu } from "react-icons/gr";
 import logo from "@/assets/images/logo/logo.png";
+import { Menubar } from "@radix-ui/react-menubar";
+import {
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger,
+} from "@/components/ui/menubar";
+import { ChevronDown } from "lucide-react";
 
 const Nav = () => {
   const pathname = usePathname();
@@ -37,7 +39,7 @@ const Nav = () => {
   ];
   return (
     <header className="bg-secondary">
-      <nav className="container mx-auto px-4 flex justify-between items-center font-regular py-2">
+      <Menubar className="container mx-auto px-4 flex justify-between items-center font-regular py-2">
         <div className="logo">
           <Link href={"/"}>
             <Image src={logo} alt="" className="w-40" />
@@ -45,19 +47,34 @@ const Nav = () => {
         </div>
         <div className="flex gap-4 items-center">
           <div className="menu md:flex items-center gap-8 hidden">
-            {routes.map((route) => (
-              <Link
-                key={route.id}
-                href={route.path}
-                className={`${
-                  pathname === route.path
-                    ? "text-primary font-medium"
-                    : "font-regular"
-                }`}
-              >
-                {route.name}
-              </Link>
-            ))}
+            {routes.map((route) =>
+              route.subRoutes ? (
+                <MenubarMenu key={route.id}>
+                  <MenubarTrigger className="flex items-center gap">
+                    {route.name} <ChevronDown size={12} />
+                  </MenubarTrigger>
+                  <MenubarContent>
+                    {route.subRoutes.map((subRoute) => (
+                      <MenubarItem key={subRoute.id}>
+                        <Link href={subRoute.path}>{subRoute.name}</Link>
+                      </MenubarItem>
+                    ))}
+                  </MenubarContent>
+                </MenubarMenu>
+              ) : (
+                <Link
+                  key={route.id}
+                  href={route.path}
+                  className={`${
+                    pathname === route.path
+                      ? "text-primary font-medium"
+                      : "font-regular"
+                  }`}
+                >
+                  {route.name}
+                </Link>
+              ),
+            )}
           </div>
           <div className={`action block md:hidden`}>
             <Drawer direction="left">
@@ -91,7 +108,7 @@ const Nav = () => {
             </Drawer>
           </div>
         </div>
-      </nav>
+      </Menubar>
     </header>
   );
 };
