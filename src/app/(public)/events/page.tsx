@@ -9,7 +9,7 @@ import moment from "moment";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SkeletonLoader from "@/app/components/ui/SkeletonLoader";
-import EventDisplay from "@/app/components/ui/EventDisplay";
+import EventDisplay, { BookingType } from "@/app/components/ui/EventDisplay";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -25,11 +25,7 @@ const Events = () => {
   const route = usePathname();
   const page = route === "/events" ? true : false;
 
-  const [bookings, setBookings] = useState<
-    {
-      id: string;
-    }[]
-  >([]);
+  const [bookings, setBookings] = useState<BookingType[]>([]);
   const [loading, setLoading] = useState(false);
   const [openDate, setOpenDate] = useState(page ? true : false);
   const [location, setLocation] = useState("");
