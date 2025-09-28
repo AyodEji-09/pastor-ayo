@@ -185,7 +185,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
   ) => {
     const { name, type } = e.target;
     if (type === "checkbox") {
-      setForm((prev) => ({ ...prev, [name]: e.target.checked }));
+      setForm((prev) => ({ ...prev, consent: !prev.consent }));
     } else if (type === "file") {
       const file = e.target.files?.[0];
       if (file) {
