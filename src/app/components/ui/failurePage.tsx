@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { XCircle, RefreshCw, CreditCard, Phone, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { books } from "@/lib/data";
 import { product as prd } from "./successPage";
 
 const PaymentFailed = ({ product }: { product: typeof prd }) => {
@@ -15,7 +14,7 @@ const PaymentFailed = ({ product }: { product: typeof prd }) => {
     if (!product) {
       router.push("/checkout");
     }
-  }, [product]);
+  }, [product, router]);
 
   if (!product) return null;
 

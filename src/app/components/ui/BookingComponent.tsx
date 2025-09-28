@@ -1,9 +1,8 @@
 "use client";
 import { useRef, useState } from "react";
-import { Country, State } from "country-state-city";
+import { Country, IState, State } from "country-state-city";
 import toast, { Toaster } from "react-hot-toast";
 import { slugify, randomString } from "@/lib/utils";
-import { hours } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -123,10 +122,10 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
   const fileRef = useRef<HTMLInputElement>(null);
   const [form, setForm] = useState(defaultData);
 
-  const [states, setStates] = useState([]);
+  const [states, setStates] = useState<IState[]>([]);
 
   const countries = Country.getAllCountries();
-  const getCountryCode = (value: any) => {
+  const getCountryCode = (value: string) => {
     setStates(State.getStatesOfCountry(value));
   };
 
@@ -138,7 +137,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
         !form.personal_email.trim().length ||
         !form.personal_phone.trim().length ||
         !form.counseling_groups.trim().length ||
-        !form.event_date.trim().length ||
+        !form?.event_date ||
         !form.event_time.trim().length
       ) {
         toast.error("Error! Please ensure all mandatory fields are filled.", {
@@ -197,7 +196,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
         reader.readAsDataURL(file);
       }
     } else {
-      let value = (e.target as HTMLInputElement).value;
+      const value = (e.target as HTMLInputElement).value;
       if (name === "event_country") {
         getCountryCode(value);
       }
@@ -217,7 +216,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
     try {
       const country =
         form.event_country.length > 0
-          ? Country.getCountryByCode(form.event_country).name
+          ? Country?.getCountryByCode(form.event_country)?.name
           : "";
       const formData = {
         ...form,
@@ -236,8 +235,8 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
         },
       );
       setLoading(false);
-      checkbox.current.checked = false;
-      if (fileRef.current) fileRef.current.value = null;
+      checkbox?.current.checked = false;
+      if (fileRef.current) fileRef.current.value = "";
 
       setForm(defaultData);
     } catch (error) {
