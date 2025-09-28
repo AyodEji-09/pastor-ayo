@@ -12,7 +12,25 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const EventDisplay = ({ event }) => {
+const EventDisplay = ({
+  event,
+}: {
+  event: {
+    event_slug: string;
+    event_date: Date;
+    event_time: string;
+    event_location: string;
+    event_description: string;
+    event_name: string;
+    event_nature: string;
+    booking_type: string;
+    event_address: string;
+    event_city: string;
+    event_state: string;
+    event_country: string;
+    event_banner: string;
+  };
+}) => {
   return (
     <div className="accordion my-2 " id="accordionFlushExample">
       <div id={event.event_slug} className="accordion-item border-2">

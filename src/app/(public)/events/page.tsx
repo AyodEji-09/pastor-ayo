@@ -25,7 +25,11 @@ const Events = () => {
   const route = usePathname();
   const page = route === "/events" ? true : false;
 
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState<
+    {
+      id: string;
+    }[]
+  >([]);
   const [loading, setLoading] = useState(false);
   const [openDate, setOpenDate] = useState(page ? true : false);
   const [location, setLocation] = useState("");
