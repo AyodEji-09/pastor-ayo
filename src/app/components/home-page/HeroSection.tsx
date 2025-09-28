@@ -1,6 +1,7 @@
 import { Carousel } from "antd";
 import Image from "next/image";
-import hero from "../../../assets/images/hero-marriage.png";
+import heroOne from "../../../assets/images/marriage2.jpg";
+import heroTwo from "../../../assets/images/music.jpg";
 
 const contentStyle: React.CSSProperties = {
   color: "#fff",
@@ -11,55 +12,52 @@ const contentStyle: React.CSSProperties = {
 };
 const HeroSection = () => {
   return (
-    <section>
+    <section className="relative">
       <Carousel autoplay={{ dotDuration: true }} autoplaySpeed={5000}>
-        <div className="h-[500px] relative">
+        <div className="h-[550px] relative">
           <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden bg-accent-foreground/60 z-10"></div>
             <Image
-              src={hero}
+              src={heroOne}
               alt="Hero"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
           </div>
-          <div style={contentStyle} className="max-w-sm mx-auto space-y-2">
+          <div
+            style={contentStyle}
+            className="max-w-sm mx-auto space-y-2 z-20 p-4"
+          >
             <HeaderStyleComponent variant="white" title="Marriage Ministry" />
             <div className="space-y-2">
-              <p className="text-sm">
-                At Cook & Serve, we bring you premium-quality kitchen and dining
-                essentials designed for effortless cooking and elegant serving.
-                From durable cookware to stylish tableware, our products blend
-                functionality with aesthetics to enhance every meal. Whether
-                you’re a home cook or a professional chef, our thoughtfully
-                crafted utensils make food preparation a breeze. We believe
-                great meals start with great tools, and we’re here to help you
-                cook, serve, and enjoy every moment in your kitchen.
+              <p className="text-lg">
+                “And the man and his wife were both naked and were not
+                embarrassed or ashamed in each other`s presence.” - Genesis 2:25
               </p>
-              <p className="text-sm">Elevate your kitchen with Cook & Serve!</p>
             </div>
           </div>
         </div>
-        <div className="h-[500px] relative">
+        <div className="h-[550px] relative">
+          <div className="absolute inset-0 overflow-hidden bg-accent-foreground/60 z-10"></div>
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src={hero}
+              src={heroTwo}
               alt="Hero"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
           </div>
-          <div style={contentStyle} className="max-w-sm mx-auto space-y-2">
+          <div
+            style={contentStyle}
+            className="max-w-sm mx-auto space-y-2 z-20 p-4"
+          >
             <HeaderStyleComponent variant="white" title="Music Ministry" />
             <div className="space-y-2">
-              <p className="text-sm">
-                At Cook & Serve, we bring you premium-quality kitchen and dining
-                essentials designed for effortless cooking and elegant serving.
-                From durable cookware to stylish tableware, our products blend
-                functionality with aesthetics to enhance every meal. Whether
-                you’re a home cook or a professional chef, our thoughtfully
-                crafted utensils make food preparation a breeze. We believe
-                great meals start with great tools, and we’re here to help you
-                cook, serve, and enjoy every moment in your kitchen.
+              <p className="text-lg">
+                “I think the amazing thing about Gospel music is that not only
+                does it lift up the death and resurrection of our Lord, which is
+                consistent with the Gospel, but it is uniquely communicated
+                depending upon generation” - T.D. Jakes
               </p>
-              <p className="text-sm">Elevate your kitchen with Cook & Serve!</p>
+              {/*<p className="text-sm">Elevate your kitchen with Cook & Serve!</p>*/}
             </div>
           </div>
         </div>
@@ -83,7 +81,7 @@ export const HeaderStyleComponent = ({
         variant === "white" ? `border-white` : "border-primary"
       }  border w-12`}
     ></div>
-    <div className="bg-secondary text-text text-sm font-semibold p-2">
+    <div className="bg-secondary text-text text-2xl font-semibold p-2 px-4 rounded">
       {title}
     </div>
     <div

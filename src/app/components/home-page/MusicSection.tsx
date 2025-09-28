@@ -3,7 +3,7 @@ import bg from "../../../assets/images/music-bg.jpg";
 import { HeaderStyleComponent } from "./HeroSection";
 import spotify from "@/assets/images/icons/spotify.png";
 import youtube from "@/assets/images/icons/youtube.png";
-import { Empty, Typography } from "antd";
+import { Empty } from "antd";
 
 const MusicSection = () => {
   return (
@@ -20,7 +20,7 @@ const MusicSection = () => {
           <Empty
             image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
             styles={{
-            //   image: { height: 60, },
+              //   image: { height: 60, },
               description: { color: "white" },
             }}
             className="flex justify-center flex-col items-center"

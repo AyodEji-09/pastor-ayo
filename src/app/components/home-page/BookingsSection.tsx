@@ -3,7 +3,7 @@ import { HeaderStyleComponent } from "./HeroSection";
 
 const BookingsSection = () => {
   return (
-    <section className="py-12 flex justify-center items-center">
+    <section className="py-12 flex justify-center items-center px-4">
       <div className="space-y-2 relative z-10">
         <HeaderStyleComponent variant="dark" title="Bookings" />
         <p className="text-center text-text">

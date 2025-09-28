@@ -26,6 +26,7 @@ const Nav = () => {
     { id: "2", name: "About", path: "/about" },
     { id: "3", name: "Events", path: "/events" },
     { id: "4", name: "Shop", path: "/shop" },
+    { id: "4", name: "Blog", path: "/blogs" },
     { id: "5", name: "Bookings", path: "/bookings" },
     {
       id: "6",
@@ -55,9 +56,9 @@ const Nav = () => {
                   </MenubarTrigger>
                   <MenubarContent>
                     {route.subRoutes.map((subRoute) => (
-                      <MenubarItem key={subRoute.id}>
-                        <Link href={subRoute.path}>{subRoute.name}</Link>
-                      </MenubarItem>
+                      <Link key={subRoute.id} href={subRoute.path}>
+                        <MenubarItem>{subRoute.name}</MenubarItem>
+                      </Link>
                     ))}
                   </MenubarContent>
                 </MenubarMenu>
