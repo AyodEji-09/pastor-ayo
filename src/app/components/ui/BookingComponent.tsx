@@ -213,40 +213,40 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
     setLoading(true);
     setError(null);
 
-    try {
-      const country =
-        form.event_country.length > 0
-          ? Country?.getCountryByCode(form.event_country)?.name
-          : "";
-      const formData = {
-        ...form,
-        event_country: country,
-        event_slug: slugify(
-          `${form.first_name} ${form.last_name} ${randomString(10)}`,
-        ),
-        booking_type: bookingType,
-      };
-      // const res = await Api.post("/api/bookings", formData);
-      toast.success(
-        `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed.`,
-        {
-          duration: 7000,
-          position: "bottom-center",
-        },
-      );
-      setLoading(false);
-      checkbox?.current.checked = false;
-      if (fileRef.current) fileRef.current.value = "";
+    // try {
+    //   const country =
+    //     form.event_country.length > 0
+    //       ? Country?.getCountryByCode(form.event_country)?.name
+    //       : "";
+    //   const formData = {
+    //     ...form,
+    //     event_country: country,
+    //     event_slug: slugify(
+    //       `${form.first_name} ${form.last_name} ${randomString(10)}`,
+    //     ),
+    //     booking_type: bookingType,
+    //   };
+    //   // const res = await Api.post("/api/bookings", formData);
+    //   toast.success(
+    //     `Thank you! We've received your booking details, we'll review your request shortly and send a confirmation once it's been confirmed.`,
+    //     {
+    //       duration: 7000,
+    //       position: "bottom-center",
+    //     },
+    //   );
+    //   setLoading(false);
+    //   checkbox?.current.checked = false;
+    //   if (fileRef.current) fileRef.current.value = "";
 
-      setForm(defaultData);
-    } catch (error) {
-      setLoading(false);
-      setError(error?.response?.data?.message);
-      toast.error(error?.response?.data?.message, {
-        duration: 7000,
-        position: "bottom-center",
-      });
-    }
+    //   setForm(defaultData);
+    // } catch (error) {
+    //   setLoading(false);
+    //   setError(error?.response?.data?.message);
+    //   toast.error(error?.response?.data?.message, {
+    //     duration: 7000,
+    //     position: "bottom-center",
+    //   });
+    // }
   };
   return (
     <main className="my-2 bg-white rounded shadow-sm p-4 text-sm text-gray-500">
@@ -651,7 +651,6 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
                 className="form-control"
                 id="additional_info"
                 value={form.additional_info}
-                onChange={handleChange}
                 name="additional_info"
                 cols={30}
                 rows={5}
@@ -670,7 +669,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
                 </label>
                 <Input
                   type="date"
-                  value={form.event_date}
+                  // value={form.event_date}
                   onChange={handleChange}
                   className="form-control"
                   id="event_date"
@@ -820,7 +819,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
             // loading={loading}
             type="submit"
             className="btn btn-primary px-5"
-            onClick={handleSubmit}
+            // onClick={handleSubmit}
             disabled={!form.consent || loading}
           >
             Submit
