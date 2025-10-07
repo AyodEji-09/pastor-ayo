@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { HeaderStyleComponent } from "./HeroSection";
 import BlogCard from "../ui/BlogCard";
 import { FaArrowRight } from "react-icons/fa";
-import { blogs } from "@/lib/data";
 import { useRouter } from "next/navigation";
+import { blogs } from "@/lib/data";
 
 const BlogSection = () => {
   const router = useRouter();

@@ -1,9 +1,9 @@
 import { cookies } from "next/headers";
 import { CheckoutProduct } from "../../../components/ui/CheckoutProduct";
 import { CheckoutForm } from "../../../components/ui/CheckoutForm";
-import { books } from "@/lib/data";
 import { slugify } from "@/lib/utils";
 import { notFound } from "next/navigation";
+import { books } from "@/lib/data";
 
 interface CheckoutPageProps {
   params: {

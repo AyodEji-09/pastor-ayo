@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { Card } from "@/components/ui/card";
-import { books } from "@/lib/data";
+import { BookType } from "@/lib/data";
 import Image from "next/image";
 
 // interface CheckoutProductProps {
@@ -16,16 +16,25 @@ import Image from "next/image";
 //   };
 // }
 
-export const CheckoutProduct = ({ product }: {product: typeof books[0]}) => {
+export const CheckoutProduct = ({
+  product,
+}: {
+  product: BookType
+}) => {
   return (
     <Card className="overflow-hidden bg-gradient-card shadow-elegant pt-0">
       <div className="aspect-video w-full overflow-hidden">
         <Image
-          src={product.img_url}
+          src={
+            product.img
+              ? `/assets/images/book-covers/${product.img}`
+              : product.img_url || "/book-covers/fallback-image.jpg"
+          }
           alt={product.title}
           // fill
           width={200}
-          height={200}
+          height={300}
+          objectFit="cover"
           className="h-full w-full object-cover transition-smooth hover:scale-105 duration-300"
         />
       </div>

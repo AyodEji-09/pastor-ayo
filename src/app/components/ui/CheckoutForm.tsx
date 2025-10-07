@@ -13,10 +13,10 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Lock, MapPin, User } from "lucide-react";
-import { books } from "@/lib/data";
+import { books, BookType } from "@/lib/data";
 
 
-export const CheckoutForm = ({ product }: { product: typeof books[0] }) => {
+export const CheckoutForm = ({ product }: { product: BookType }) => {
   // const product = books.find((b) => slugify(b.title) === book);
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -58,7 +58,7 @@ export const CheckoutForm = ({ product }: { product: typeof books[0] }) => {
   };
 
 
-  async function handleBuy(formData: FormData, book: typeof books[0]): Promise<void> {
+  async function handleBuy(formData: FormData, book: BookType): Promise<void> {
     console.log("buy book");
     try {
       const res = await fetch("/api/checkout", {

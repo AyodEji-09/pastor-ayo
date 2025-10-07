@@ -25,7 +25,11 @@ const BookCard = ({
     <Card className="w-full max-w-sm pt-0 overflow-hidden">
       <div className="h-[250px] overflow-hidden">
         <Image
-          src={book.img_url}
+          src={
+            book.img
+              ? `/book-covers/${book.img}`
+              : book.img_url || "/book-covers/fallback-image.jpg"
+          }
           alt=""
           width={311}
           height={426}
