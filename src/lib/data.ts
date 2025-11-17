@@ -1,4 +1,4 @@
-import { BlogPost } from "@/sanity/queries/blogs";
+import { BlockContent, BlogPost } from "@/sanity/queries/blogs";
 
 export type BookType = {
   title: string;
@@ -707,7 +707,7 @@ export const mockBlogPosts: BlogPost[] = [
       "Explore the latest trends and best practices in modern web development. Learn about frameworks, tools, and techniques that will help you build better websites.",
     author: {
       name: "Sarah Johnson",
-      image: null,
+      image: undefined,
     },
     categories: [
       {
@@ -730,7 +730,7 @@ export const mockBlogPosts: BlogPost[] = [
           },
         ],
       },
-    ],
+    ] as BlockContent[],
   },
   {
     _id: "mock-2",
@@ -743,7 +743,7 @@ export const mockBlogPosts: BlogPost[] = [
       "Discover how AI is transforming industries and shaping the future. From machine learning to neural networks, explore the possibilities.",
     author: {
       name: "Michael Chen",
-      image: null,
+      image: undefined,
     },
     categories: [
       {
@@ -766,7 +766,7 @@ export const mockBlogPosts: BlogPost[] = [
           },
         ],
       },
-    ],
+    ] as BlockContent[],
   },
   {
     _id: "mock-3",
@@ -779,7 +779,7 @@ export const mockBlogPosts: BlogPost[] = [
       "Learn the fundamental principles of good design and how to create intuitive, user-friendly interfaces that delight your users.",
     author: {
       name: "Emma Rodriguez",
-      image: null,
+      image: undefined,
     },
     categories: [
       {
@@ -802,6 +802,6 @@ export const mockBlogPosts: BlogPost[] = [
           },
         ],
       },
-    ],
+    ] as BlockContent[],
   },
 ];
