@@ -22,9 +22,9 @@ export async function generateStaticParams() {
 export default async function BlogPost({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   let post: BlogPostType | null = null;
   try {
