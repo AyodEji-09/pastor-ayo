@@ -1,3 +1,5 @@
+import { BlogPost } from "@/sanity/queries/blogs";
+
 export type BookType = {
   title: string;
   description: string;
@@ -692,3 +694,114 @@ export const counseling = (str: string) => {
           ? "Life Coaching"
           : null;
 };
+
+export const mockBlogPosts: BlogPost[] = [
+  {
+    _id: "mock-1",
+    _createdAt: "2024-01-15T10:00:00Z",
+    title: "Getting Started with Modern Web Development",
+    slug: {
+      current: "getting-started-modern-web-dev",
+    },
+    excerpt:
+      "Explore the latest trends and best practices in modern web development. Learn about frameworks, tools, and techniques that will help you build better websites.",
+    author: {
+      name: "Sarah Johnson",
+      image: null,
+    },
+    categories: [
+      {
+        _id: "cat-1",
+        title: "Development",
+      },
+      {
+        _id: "cat-2",
+        title: "Tutorial",
+      },
+    ],
+    publishedAt: "2024-01-15T10:00:00Z",
+    body: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "This is a sample blog post to preview the design. Connect your Sanity project to see real content with images and rich text.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: "mock-2",
+    _createdAt: "2024-01-10T14:30:00Z",
+    title: "The Future of Artificial Intelligence",
+    slug: {
+      current: "future-of-ai",
+    },
+    excerpt:
+      "Discover how AI is transforming industries and shaping the future. From machine learning to neural networks, explore the possibilities.",
+    author: {
+      name: "Michael Chen",
+      image: null,
+    },
+    categories: [
+      {
+        _id: "cat-3",
+        title: "Technology",
+      },
+      {
+        _id: "cat-4",
+        title: "AI",
+      },
+    ],
+    publishedAt: "2024-01-10T14:30:00Z",
+    body: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "This is a sample blog post to preview the design. Connect your Sanity project to see real content with images and rich text.",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _id: "mock-3",
+    _createdAt: "2024-01-05T09:15:00Z",
+    title: "Design Principles for Better User Experience",
+    slug: {
+      current: "design-principles-ux",
+    },
+    excerpt:
+      "Learn the fundamental principles of good design and how to create intuitive, user-friendly interfaces that delight your users.",
+    author: {
+      name: "Emma Rodriguez",
+      image: null,
+    },
+    categories: [
+      {
+        _id: "cat-5",
+        title: "Design",
+      },
+      {
+        _id: "cat-6",
+        title: "UX",
+      },
+    ],
+    publishedAt: "2024-01-05T09:15:00Z",
+    body: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "This is a sample blog post to preview the design. Connect your Sanity project to see real content with images and rich text.",
+          },
+        ],
+      },
+    ],
+  },
+];
