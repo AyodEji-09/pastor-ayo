@@ -32,28 +32,40 @@ const components: PortableTextComponents = {
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-4xl font-extrabold my-5">{children}</h1>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold my-5 leading-tight">
+        {children}
+      </h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-3xl font-bold my-4">{children}</h2>
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold my-4 leading-tight">
+        {children}
+      </h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-2xl font-bold my-3">{children}</h3>
+      <h3 className="text-lg sm:text-xl md:text-2xl font-bold my-3 leading-tight">
+        {children}
+      </h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-xl font-semibold my-2">{children}</h4>
+      <h4 className="text-base sm:text-lg md:text-xl font-semibold my-2 leading-snug">
+        {children}
+      </h4>
     ),
     h5: ({ children }) => (
-      <h5 className="text-lg font-semibold my-2">{children}</h5>
+      <h5 className="text-sm sm:text-base md:text-lg font-semibold my-2 leading-snug">
+        {children}
+      </h5>
     ),
     h6: ({ children }) => (
-      <h6 className="text-base font-semibold my-2">{children}</h6>
+      <h6 className="text-sm md:text-base font-semibold my-2 leading-snug">
+        {children}
+      </h6>
     ),
     normal: ({ children }) => (
-      <p className="my-2 leading-relaxed">{children}</p>
+      <p className="my-2 leading-relaxed text-base md:text-lg">{children}</p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-600 my-4">
+      <blockquote className="border-l-4 border-gray-300 pl-4 sm:pl-6 italic text-gray-600 my-4 text-sm md:text-base lg:text-lg">
         {children}
       </blockquote>
     ),

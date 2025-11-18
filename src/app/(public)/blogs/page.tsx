@@ -15,7 +15,6 @@ const Blogs = () => {
     const fetchPosts = async () => {
       try {
         const fetchedPosts = await getAllPosts();
-        console.log({ fetchedPosts });
         // Use mock data if no posts from Sanity
         setPosts(fetchedPosts.length > 0 ? fetchedPosts : mockBlogPosts);
       } catch (error) {

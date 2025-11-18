@@ -9,6 +9,9 @@ import {
 } from "@/sanity/queries/blogs";
 import { mockBlogPosts } from "@/lib/data";
 import { PortableTextRenderer } from "@/app/components/ui/PortableTextRenderer";
+import { Badge } from "@/components/ui/badge";
+import { Avatar } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
 // This function generates static pages at build time
 export async function generateStaticParams() {
@@ -45,7 +48,10 @@ export default async function BlogPost({
     notFound();
   }
 
-  const imageUrl = post.mainImage ? post.mainImage.asset.url : null;
+  // const imageUrl = post.mainImage ? post.mainImage.asset.url : null;
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(600).url()
+    : null;
 
   const formattedDate = post.publishedAt
     ? new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -64,7 +70,7 @@ export default async function BlogPost({
       {/* Back Button */}
       <div className="max-w-4xl mx-auto px-4 pt-8">
         <Link
-          href="/blog"
+          href="/blogs"
           className="btn btn-ghost btn-sm inline-flex items-center"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -93,9 +99,9 @@ export default async function BlogPost({
         {post.categories && post.categories.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-6">
             {post.categories.map((category) => (
-              <span key={category._id} className="badge badge-secondary">
+              <Badge key={category._id} variant="secondary" className="text-xs">
                 {category.title}
-              </span>
+              </Badge>
             ))}
           </div>
         )}
@@ -104,7 +110,7 @@ export default async function BlogPost({
           {post.title}
         </h1>
 
-        <div className="flex items-center gap-6 text-muted-foreground">
+        <div className="flex items-center gap-6 text-muted-foreground whitespace-nowrap flex-wrap">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
             <time dateTime={post.publishedAt || post._createdAt}>
@@ -113,7 +119,7 @@ export default async function BlogPost({
           </div>
           {post.author && (
             <div className="flex items-center gap-2">
-              {post.author.image && (
+              {post.author.image ? (
                 <Image
                   src={post.author.image.asset.url}
                   alt={post.author.name}
@@ -121,6 +127,8 @@ export default async function BlogPost({
                   width={40}
                   height={40}
                 />
+              ) : (
+                <Avatar icon={<UserOutlined />} />
               )}
               <span className="font-medium">{post.author.name}</span>
             </div>

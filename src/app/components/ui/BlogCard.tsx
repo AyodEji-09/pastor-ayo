@@ -82,13 +82,17 @@ import { BlogPost } from "@/sanity/queries/blogs";
 import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
+import { urlFor } from "@/sanity/client";
 
 interface BlogCardProps {
   post: BlogPost;
 }
 
 export function BlogCard({ post }: BlogCardProps) {
-  const imageUrl = post.mainImage ? post.mainImage.asset.url : null;
+  // const imageUrl = post.mainImage ? post.mainImage.asset.url : null;
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(600).url()
+    : null;
 
   const formattedDate = post.publishedAt
     ? new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -104,17 +108,20 @@ export function BlogCard({ post }: BlogCardProps) {
 
   return (
     <Link href={`/blogs/${post.slug.current}`}>
-      <Card className="group h-full overflow-hidden border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+      <Card className="group h-full overflow-hidden border-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1 pt-0">
         {imageUrl && (
-          <div className="overflow-hidden">
+          <div className="overflow-hidden aspect-squar">
             <Image
               src={imageUrl}
+              width={1200}
+              height={600}
+              objectFit="cover"
               alt={post.title}
-              className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-fullobject-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
         )}
-        <CardHeader className="space-y-3">
+        <CardHeader className="space--3">
           {post.categories && post.categories.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {post.categories.map((category) => (
@@ -128,13 +135,15 @@ export function BlogCard({ post }: BlogCardProps) {
               ))}
             </div>
           )}
-          <h3 className="text-2xl font-bold leading-tight group-hover:text-primary transition-colors">
+          <h3 className="text-xl font-bold leading-tight group-hover:text-primary transition-colors">
             {post.title}
           </h3>
         </CardHeader>
         <CardContent>
           {post.excerpt && (
-            <p className="text-muted-foreground line-clamp-3">{post.excerpt}</p>
+            <p className="text-muted-foreground text-sm line-clamp-3">
+              {post.excerpt}
+            </p>
           )}
         </CardContent>
         <CardFooter className="flex items-center gap-2 text-sm text-muted-foreground">

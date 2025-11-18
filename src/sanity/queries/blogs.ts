@@ -9,7 +9,7 @@ export interface BlogPost {
     current: string;
   };
   excerpt?: string;
-  mainImage?: SanityImage;
+  mainImage?: string;
   body?: BlockContent[]; // Portable Text content
   author?: {
     name: string;
