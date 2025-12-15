@@ -9,14 +9,14 @@ module.exports = {
   reactStrictMode: true,
   images: {
     // Keep `domains` as a fallback for older Next.js versions or simpler setups.
-    domains: ['cdn.sanity.io'],
+    domains: ["cdn.sanity.io", "m.media-amazon.com"],
     // Prefer `remotePatterns` for more fine-grained control over allowed external images.
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-        port: '',
-        pathname: '/images/**',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/images/**",
       },
     ],
   },

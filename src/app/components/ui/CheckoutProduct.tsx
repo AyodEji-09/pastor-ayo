@@ -16,18 +16,14 @@ import Image from "next/image";
 //   };
 // }
 
-export const CheckoutProduct = ({
-  product,
-}: {
-  product: BookType
-}) => {
+export const CheckoutProduct = ({ product }: { product: BookType }) => {
   return (
     <Card className="overflow-hidden bg-gradient-card shadow-elegant pt-0">
       <div className="aspect-video w-full overflow-hidden">
         <Image
           src={
             product.img
-              ? `/assets/images/book-covers/${product.img}`
+              ? `/book-covers/${product.img}`
               : product.img_url || "/book-covers/fallback-image.jpg"
           }
           alt={product.title}
