@@ -5,9 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { XCircle, RefreshCw, CreditCard, Phone, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { product as prd } from "./successPage";
+import { BookType } from "@/lib/data";
+import { SaleBundle } from "@/lib/saleBooks";
 
-const PaymentFailed = ({ product }: { product: typeof prd }) => {
+const PaymentFailed = ({
+  product,
+}: {
+  product: BookType | SaleBundle | undefined;
+}) => {
   const router = useRouter();
   useEffect(() => {
     // Redirect to home if no product data
@@ -73,14 +78,14 @@ const PaymentFailed = ({ product }: { product: typeof prd }) => {
                   className="tw-w-16 tw-h-16 tw-object-cover tw-rounded-lg"
                 /> */}
                 <div className="tw-flex-1">
-                  <h3 className="tw-font-semibold">{product.name}</h3>
+                  <h3 className="tw-font-semibold">{product.title}</h3>
                   <p className="tw-text-muted-foreground tw-text-sm">
                     Attempted payment amount
                   </p>
                 </div>
                 <div className="tw-text-right">
                   <span className="tw-text-xl tw-font-bold">
-                    ${product.price}
+                    ${product.price_ngn}
                   </span>
                 </div>
               </div>
@@ -170,7 +175,7 @@ const PaymentFailed = ({ product }: { product: typeof prd }) => {
                       href="mailto:support@example.com"
                       className="tw-text-sm tw-text-primary hover:tw-underline"
                     >
-                      support@example.com
+                      info@ayodejianifowose.com
                     </a>
                   </div>
                 </div>

@@ -247,23 +247,6 @@ export const books = [
     pages: "91 pages",
     language: "English",
   },
-  // {
-  //   title: "The Ultimate Languages of God",
-  //   description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
-  //   img: "the-ultimate-languages-of-god.jpg",
-  //   price_ngn: "10000",
-  //   price_usd: "25",
-  //   format: [
-  //     {
-  //       type: "Paperback",
-  //       url: "https://www.amazon.com/21-Days-Devotion-Integrity-Children/dp/B0DHY47PGY/ref=monarch_sidesheet_title",
-  //       price: "$25.00",
-  //     },
-  //   ],
-  //   dop: "September 24, 2024",
-  //   pages: "91 pages",
-  //   language: "English",
-  // },
   {
     title: "Just Before you get Married",
     description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
