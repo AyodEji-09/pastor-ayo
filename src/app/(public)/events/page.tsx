@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/breadcrumb";
 import Image from "next/image";
 import aboutImage from "@/assets/images/aboutpage.jpg";
+import AdPlaceholder from "@/app/components/AdPlaceholder";
+import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 const Events = () => {
   const route = usePathname();
@@ -89,6 +91,14 @@ const Events = () => {
           </Breadcrumb>
         </div>
       </div>
+
+      {/* Ad placeholder below hero */}
+      <div className="container mx-auto px-4 my-6">
+        <AdPlaceholder variant="banner" className="mx-auto">
+          <BundlesCarousel />
+        </AdPlaceholder>
+      </div>
+
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="bg-white shadow p-1 rounded">
           <form className="grid grid-cols-3 gap-4">

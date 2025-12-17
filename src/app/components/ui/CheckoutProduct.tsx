@@ -4,18 +4,6 @@ import { Card } from "@/components/ui/card";
 import { BookType } from "@/lib/data";
 import Image from "next/image";
 
-// interface CheckoutProductProps {
-//   product: {
-//     id: string;
-//     name: string;
-//     price: number;
-//     originalPrice?: number;
-//     description: string;
-//     features: string[];
-//     image: string;
-//   };
-// }
-
 export const CheckoutProduct = ({ product }: { product: BookType }) => {
   return (
     <Card className="overflow-hidden bg-gradient-card shadow-elegant pt-0">

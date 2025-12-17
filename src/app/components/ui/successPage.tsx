@@ -1,35 +1,23 @@
-'use client'
+"use client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { BookType } from "@/lib/data";
+import { SaleBundle } from "@/lib/saleBooks";
 import { CheckCircle, Download, Package, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-export const product = {
-    id: "wireless-headphones-pro",
-    name: "Wireless Headphones Pro",
-    price: 199,
-    originalPrice: 299,
-    description:
-      "Experience premium sound quality with our latest wireless headphones featuring advanced noise cancellation and 30-hour battery life.",
-    features: [
-      "Active Noise Cancellation",
-      "30-hour battery life",
-      "Premium drivers for superior sound",
-      "Comfortable over-ear design",
-      "Quick charge - 5 min for 2 hours",
-      "Bluetooth 5.2 connectivity",
-      "Voice assistant integration",
-      "1-year warranty included",
-    ],
-  };
 
-const PaymentSuccess = () => {
-    const router = useRouter()
+const PaymentSuccess = ({
+  product,
+}: {
+  product: BookType | SaleBundle | undefined;
+}) => {
+  const router = useRouter();
   const orderNumber = `ORD-${Math.random()
     .toString(36)
     .substr(2, 9)
     .toUpperCase()}`;
   const estimatedDelivery = new Date(
-    Date.now() + 5 * 24 * 60 * 60 * 1000
+    Date.now() + 5 * 24 * 60 * 60 * 1000,
   ).toLocaleDateString();
 
   return (
@@ -67,13 +55,13 @@ const PaymentSuccess = () => {
 
                 <div className="tw-flex tw-justify-between tw-items-center tw-py-2 tw-border-b">
                   <span className="tw-text-muted-foreground">Product</span>
-                  <span className="tw-font-semibold">{product?.name}</span>
+                  <span className="tw-font-semibold">{product?.title}</span>
                 </div>
 
                 <div className="tw-flex tw-justify-between tw-items-center tw-py-2 tw-border-b">
                   <span className="tw-text-muted-foreground">Amount Paid</span>
                   <span className="tw-font-semibold text-success">
-                    ${product?.price}
+                    ${product?.price_ngn}
                   </span>
                 </div>
 

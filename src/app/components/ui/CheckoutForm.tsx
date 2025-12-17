@@ -15,8 +15,13 @@ import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Lock, MapPin, User } from "lucide-react";
 import { books, BookType } from "@/lib/data";
 
-
-export const CheckoutForm = ({ product }: { product: BookType }) => {
+export const CheckoutForm = ({
+  product,
+  country,
+}: {
+  product: BookType;
+  country: string;
+}) => {
   // const product = books.find((b) => slugify(b.title) === book);
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -57,14 +62,17 @@ export const CheckoutForm = ({ product }: { product: BookType }) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-
   async function handleBuy(formData: FormData, book: BookType): Promise<void> {
     console.log("buy book");
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId: book.displayPrice, book, data: formData }),
+        body: JSON.stringify({
+          priceId: book.displayPrice,
+          book,
+          data: formData,
+        }),
       });
 
       const data: { url: string } = await res.json();
@@ -76,7 +84,9 @@ export const CheckoutForm = ({ product }: { product: BookType }) => {
     }
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ): Promise<void> => {
     e.preventDefault();
     setIsProcessing(true);
     console.log({ formData });
@@ -245,64 +255,6 @@ export const CheckoutForm = ({ product }: { product: BookType }) => {
             </div>
           </div>
 
-          {/* Payment Information */}
-          {/* <div className="space-y-4">
-            <h3 className="font-medium flex items-center gap-2">
-              <Lock className="w-4 h-4" />
-              Payment Information
-            </h3>
-            <div className="grid gap-4">
-              <div>
-                <Label htmlFor="nameOnCard">Name on Card</Label>
-                <Input
-                  id="nameOnCard"
-                  placeholder="John Doe"
-                  value={formData.nameOnCard}
-                  onChange={(e) =>
-                    handleInputChange("nameOnCard", e.target.value)
-                  }
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor="cardNumber">Card Number</Label>
-                <Input
-                  id="cardNumber"
-                  placeholder="1234 5678 9012 3456"
-                  value={formData.cardNumber}
-                  onChange={(e) =>
-                    handleInputChange("cardNumber", e.target.value)
-                  }
-                  required
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="expiryDate">Expiry Date</Label>
-                  <Input
-                    id="expiryDate"
-                    placeholder="MM/YY"
-                    value={formData.expiryDate}
-                    onChange={(e) =>
-                      handleInputChange("expiryDate", e.target.value)
-                    }
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="cvv">CVV</Label>
-                  <Input
-                    id="cvv"
-                    placeholder="123"
-                    value={formData.cvv}
-                    onChange={(e) => handleInputChange("cvv", e.target.value)}
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-          </div> */}
-
           {/* Order Summary */}
           <div className="border-t pt-4">
             <div className="flex justify-between items-center mb-4">
@@ -311,7 +263,13 @@ export const CheckoutForm = ({ product }: { product: BookType }) => {
             </div>
             <div className="flex justify-between items-center mb-4">
               <span className="text-muted-foreground">Shipping</span>
-              <span className="font-semibold text-success">FREE</span>
+              <span className="font-semibold text-success">
+                <ul className="list-dis list-inside">
+                  {country === "US" && <li>United States: $5</li>}
+                  {country === "NG" && <li>Lagos: N5000</li>}
+                  {country === "Other" && <li>Shipping is not free</li>}
+                </ul>
+              </span>
             </div>
             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
               <span>Total</span>

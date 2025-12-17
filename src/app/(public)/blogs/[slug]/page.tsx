@@ -12,6 +12,8 @@ import { PortableTextRenderer } from "@/app/components/ui/PortableTextRenderer";
 import { Badge } from "@/components/ui/badge";
 import { Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import AdPlaceholder from "@/app/components/AdPlaceholder";
+import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 // This function generates static pages at build time
 export async function generateStaticParams() {
@@ -135,6 +137,13 @@ export default async function BlogPost({
           )}
         </div>
       </header>
+
+      {/* Inline ad between header and article content */}
+      <div className="max-w-3xl mx-auto px-4">
+        <AdPlaceholder variant="responsive" aspectRatio={6.4} className="my-6">
+          <BundlesCarousel />
+        </AdPlaceholder>
+      </div>
 
       {/* Article Content */}
       <div className="max-w-3xl mx-auto px-4 pb-20">

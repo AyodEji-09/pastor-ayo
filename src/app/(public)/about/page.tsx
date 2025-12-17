@@ -9,6 +9,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import AdPlaceholder from "@/app/components/AdPlaceholder";
+import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 const About = () => {
   return (
@@ -42,6 +44,12 @@ const About = () => {
         </div>
       </div>
       <div className="container mx-auto my-8">
+        {/* Ad placeholder below hero */}
+        <div className="my-6 flex justify-center">
+          <AdPlaceholder variant="banner" className="mx-auto">
+            <BundlesCarousel />
+          </AdPlaceholder>
+        </div>
         <div className="grid md:grid-cols-2 gap-8 text-sm text-gray-600">
           <div className="col-lg-5 my-1">
             <div className="p-3 rounded border overflow-hidden">

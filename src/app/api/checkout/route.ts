@@ -12,7 +12,8 @@ export async function POST(req: Request) {
 
   const price = isNigeria ? book.price_ngn : book.price_usd;
   const currency = isNigeria ? "ngn" : "usd";
-  const slug = slugify(book.title);
+  const slug =
+    (book && book.slug && String(book.slug).trim()) || slugify(book.title);
 
   console.log("📦 Creating Stripe session for:", book.title, {
     country,
@@ -23,8 +24,8 @@ export async function POST(req: Request) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
-      success_url: `http://localhost:5000/checkout/${slug}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `http://localhost:5000/checkout/${slug}/failure`,
+      success_url: `${process.env.BASE_URL}/checkout/${slug}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.BASE_URL}/checkout/${slug}/failure`,
       line_items: [
         {
           price_data: {
@@ -48,7 +49,7 @@ export async function POST(req: Request) {
     console.error("Stripe Error", error);
     return NextResponse.json(
       { message: "Something went wrong", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
