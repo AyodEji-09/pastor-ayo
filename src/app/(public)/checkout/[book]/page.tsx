@@ -42,17 +42,7 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
       price_usd: bundle.price_usd ?? "",
       displayPrice,
       // Represent bundle members as `format` entries so UI shows them (type=member title)
-      format: bundle.items.map((it) => ({
-        type: it.title ?? it.slug,
-        url: it.img_url ?? it.img ?? "",
-        price: it.price_usd
-          ? `$${it.price_usd}`
-          : it.price_ngn
-            ? `NGN${it.price_ngn}`
-            : "",
-      })),
       dop: bundle.dop ?? bundle.createdAt ?? "",
-      pages: `${bundle.items.length} items`,
       language: "Mixed",
     } as BookType;
   } else {
