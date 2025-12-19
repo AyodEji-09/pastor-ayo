@@ -271,6 +271,10 @@ export const CheckoutForm = ({
                 </ul>
               </span>
             </div>
+            <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
+              The shipping fee is not included in the total price. For other
+              countries, the shipping fee will be communicated.
+            </span>
             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
               <span>Total</span>
               <span className="bg-gradient-primary bg-clip-text">
