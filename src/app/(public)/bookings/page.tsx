@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/breadcrumb";
 import Image from "next/image";
 import aboutImage from "@/assets/images/aboutpage.jpg";
-import AdPlaceholder from "@/app/components/AdPlaceholder";
-import BundlesCarousel from "@/app/components/BundlesCarousel";
+// import AdPlaceholder from "@/app/components/AdPlaceholder";
+// import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 export const metadata: Metadata = {
   title: "Booking",
@@ -62,11 +62,11 @@ const Bookings = () => {
           </div>
 
           {/* Ad placeholder inserted above the booking form */}
-          <div className="my-6 flex justify-center">
+          {/*<div className="my-6 flex justify-center">
             <AdPlaceholder variant="box" className="my-6">
               <BundlesCarousel />
             </AdPlaceholder>
-          </div>
+          </div>*/}
 
           <BookingComponent />
         </div>

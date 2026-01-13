@@ -140,90 +140,90 @@ export const blogs = [
 ];
 export const books = [
   // Promo
-  {
-    id: "devotion-on-obedience-bundle",
-    slug: "devotion-on-obedience-bundle",
-    title: "Devotion on Obedience Bundle",
-    description:
-      "A curated trio for families: inspirational and child-friendly titles bundled at a special price.",
-    img: "21-days-children-devotion-on-obedience-bundle.jpg",
-    img_url: "21-days-children-devotion-on-obedience-bundle-landscape.jpg",
-    url: "",
-    url_2: "",
-    price_ngn: "20000",
-    price_usd: "70",
-    // discounted bundle price
-    sale_price_ngn: "20000",
-    sale_price_usd: "60",
-    onSale: true,
-    stock: 25,
-    dop: "September 2024",
-    createdAt: "2024-09-10",
-    displayPrice: "",
-    format: [] as {
-      type: string;
-      url: string;
-      price: string;
-    }[],
-    pages: "",
-    language: "",
-  },
+  // {
+  //   id: "devotion-on-obedience-bundle",
+  //   slug: "devotion-on-obedience-bundle",
+  //   title: "Devotion on Obedience Bundle",
+  //   description:
+  //     "A curated trio for families: inspirational and child-friendly titles bundled at a special price.",
+  //   img: "21-days-children-devotion-on-obedience-bundle.jpg",
+  //   img_url: "21-days-children-devotion-on-obedience-bundle-landscape.jpg",
+  //   url: "",
+  //   url_2: "",
+  //   price_ngn: "20000",
+  //   price_usd: "70",
+  //   // discounted bundle price
+  //   sale_price_ngn: "20000",
+  //   sale_price_usd: "60",
+  //   onSale: true,
+  //   stock: 25,
+  //   dop: "September 2024",
+  //   createdAt: "2024-09-10",
+  //   displayPrice: "",
+  //   format: [] as {
+  //     type: string;
+  //     url: string;
+  //     price: string;
+  //   }[],
+  //   pages: "",
+  //   language: "",
+  // },
 
-  {
-    id: "devotion-on-identity-bundle",
-    slug: "devotion-on-identity-bundle",
-    title: "Devotion on Identity Bundle",
-    description:
-      "Three selected children's devotionals bundled at a special price for families and Sunday Schools.",
-    img: "21-days-children-devotion-on-identity-bundle.jpg",
-    img_url: "21-days-children-devotion-on-identity-bundle-landscape.jpg",
-    url: "",
-    url_2: "",
-    price_ngn: "24000",
-    price_usd: "80",
-    sale_price_ngn: "20000",
-    sale_price_usd: "60",
-    onSale: true,
-    stock: 15,
-    dop: "September 2024",
-    createdAt: "2024-09-10",
-    displayPrice: "",
-    format: [] as {
-      type: string;
-      url: string;
-      price: string;
-    }[],
-    pages: "",
-    language: "",
-  },
+  // {
+  //   id: "devotion-on-identity-bundle",
+  //   slug: "devotion-on-identity-bundle",
+  //   title: "Devotion on Identity Bundle",
+  //   description:
+  //     "Three selected children's devotionals bundled at a special price for families and Sunday Schools.",
+  //   img: "21-days-children-devotion-on-identity-bundle.jpg",
+  //   img_url: "21-days-children-devotion-on-identity-bundle-landscape.jpg",
+  //   url: "",
+  //   url_2: "",
+  //   price_ngn: "24000",
+  //   price_usd: "80",
+  //   sale_price_ngn: "20000",
+  //   sale_price_usd: "60",
+  //   onSale: true,
+  //   stock: 15,
+  //   dop: "September 2024",
+  //   createdAt: "2024-09-10",
+  //   displayPrice: "",
+  //   format: [] as {
+  //     type: string;
+  //     url: string;
+  //     price: string;
+  //   }[],
+  //   pages: "",
+  //   language: "",
+  // },
 
-  {
-    id: "devotion-on-integrity-bundle",
-    slug: "devotion-on-integrity-bundle",
-    title: "Devotion on Integrity Bundle",
-    description:
-      "Three books focused on integrity, offered together at a promotional price.",
-    img: "21-days-children-devotion-on-integrity-bundle.jpg",
-    img_url: "21-days-children-devotion-on-integrity-bundle-landscape.jpg",
-    url: "",
-    url_2: "",
-    price_ngn: "26000",
-    price_usd: "90",
-    sale_price_ngn: "20000",
-    sale_price_usd: "60",
-    onSale: true,
-    stock: 10,
-    dop: "September 2024",
-    createdAt: "2024-09-10",
-    displayPrice: "",
-    format: [] as {
-      type: string;
-      url: string;
-      price: string;
-    }[],
-    pages: "",
-    language: "",
-  },
+  // {
+  //   id: "devotion-on-integrity-bundle",
+  //   slug: "devotion-on-integrity-bundle",
+  //   title: "Devotion on Integrity Bundle",
+  //   description:
+  //     "Three books focused on integrity, offered together at a promotional price.",
+  //   img: "21-days-children-devotion-on-integrity-bundle.jpg",
+  //   img_url: "21-days-children-devotion-on-integrity-bundle-landscape.jpg",
+  //   url: "",
+  //   url_2: "",
+  //   price_ngn: "26000",
+  //   price_usd: "90",
+  //   sale_price_ngn: "20000",
+  //   sale_price_usd: "60",
+  //   onSale: true,
+  //   stock: 10,
+  //   dop: "September 2024",
+  //   createdAt: "2024-09-10",
+  //   displayPrice: "",
+  //   format: [] as {
+  //     type: string;
+  //     url: string;
+  //     price: string;
+  //   }[],
+  //   pages: "",
+  //   language: "",
+  // },
   // new
   {
     title: "Tommy too can win",

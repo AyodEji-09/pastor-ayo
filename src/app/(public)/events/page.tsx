@@ -93,11 +93,11 @@ const Events = () => {
       </div>
 
       {/* Ad placeholder below hero */}
-      <div className="container mx-auto px-4 my-6">
+      {/*<div className="container mx-auto px-4 my-6">
         <AdPlaceholder variant="banner" className="mx-auto">
           <BundlesCarousel />
         </AdPlaceholder>
-      </div>
+      </div>*/}
 
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="bg-white shadow p-1 rounded">

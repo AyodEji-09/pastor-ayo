@@ -1,7 +1,7 @@
 "use client";
 import UtilityBanner from "@/app/components/layout/UtilityBanner";
-import AdPlaceholder from "@/app/components/AdPlaceholder";
-import BundlesCarousel from "@/app/components/BundlesCarousel";
+// import AdPlaceholder from "@/app/components/AdPlaceholder";
+// import BundlesCarousel from "@/app/components/BundlesCarousel";
 import { BlogCard } from "@/app/components/ui/BlogCard";
 import { mockBlogPosts } from "@/lib/data";
 import { BlogPost, getAllPosts } from "@/sanity/queries/blogs";
@@ -35,11 +35,11 @@ const Blogs = () => {
       <UtilityBanner page="Blogs" />
       <div className="container mx-auto px-4">
         {/* Top responsive ad for Blogs */}
-        <div className="my-6">
+        {/*<div className="my-6">
           <AdPlaceholder variant="responsive" aspectRatio={6.4}>
             <BundlesCarousel />
           </AdPlaceholder>
-        </div>
+        </div>*/}
 
         {/*<div className="flex flex-wrap gap-4">
           {blogs.map((blog) => (

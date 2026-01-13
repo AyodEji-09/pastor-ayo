@@ -10,8 +10,8 @@ import { slugify } from "@/lib/utils";
 import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import { Content } from "antd/es/layout/layout";
 import Link from "next/link";
-import AdPlaceholder from "@/app/components/AdPlaceholder";
-import BundlesCarousel from "@/app/components/BundlesCarousel";
+// import AdPlaceholder from "@/app/components/AdPlaceholder";
+// import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 const metadata = {
   title: "Shop",
@@ -42,11 +42,11 @@ export default function Page() {
       </Content>
 
       {/* Top banner ad for the shop page */}
-      <div className="container mx-auto px-4 my-6">
+      {/*<div className="container mx-auto px-4 my-6">
         <AdPlaceholder variant="banner" className="mx-auto">
           <BundlesCarousel />
         </AdPlaceholder>
-      </div>
+      </div>*/}
 
       <div className="container mx-auto px-4 my-5">
         <div className="grid md:grid-cols-3 gap-4">
