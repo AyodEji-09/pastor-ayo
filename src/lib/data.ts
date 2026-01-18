@@ -139,95 +139,15 @@ export const blogs = [
   },
 ];
 export const books = [
-  // Promo
-  // {
-  //   id: "devotion-on-obedience-bundle",
-  //   slug: "devotion-on-obedience-bundle",
-  //   title: "Devotion on Obedience Bundle",
-  //   description:
-  //     "A curated trio for families: inspirational and child-friendly titles bundled at a special price.",
-  //   img: "21-days-children-devotion-on-obedience-bundle.jpg",
-  //   img_url: "21-days-children-devotion-on-obedience-bundle-landscape.jpg",
-  //   url: "",
-  //   url_2: "",
-  //   price_ngn: "20000",
-  //   price_usd: "70",
-  //   // discounted bundle price
-  //   sale_price_ngn: "20000",
-  //   sale_price_usd: "60",
-  //   onSale: true,
-  //   stock: 25,
-  //   dop: "September 2024",
-  //   createdAt: "2024-09-10",
-  //   displayPrice: "",
-  //   format: [] as {
-  //     type: string;
-  //     url: string;
-  //     price: string;
-  //   }[],
-  //   pages: "",
-  //   language: "",
-  // },
-
-  // {
-  //   id: "devotion-on-identity-bundle",
-  //   slug: "devotion-on-identity-bundle",
-  //   title: "Devotion on Identity Bundle",
-  //   description:
-  //     "Three selected children's devotionals bundled at a special price for families and Sunday Schools.",
-  //   img: "21-days-children-devotion-on-identity-bundle.jpg",
-  //   img_url: "21-days-children-devotion-on-identity-bundle-landscape.jpg",
-  //   url: "",
-  //   url_2: "",
-  //   price_ngn: "24000",
-  //   price_usd: "80",
-  //   sale_price_ngn: "20000",
-  //   sale_price_usd: "60",
-  //   onSale: true,
-  //   stock: 15,
-  //   dop: "September 2024",
-  //   createdAt: "2024-09-10",
-  //   displayPrice: "",
-  //   format: [] as {
-  //     type: string;
-  //     url: string;
-  //     price: string;
-  //   }[],
-  //   pages: "",
-  //   language: "",
-  // },
-
-  // {
-  //   id: "devotion-on-integrity-bundle",
-  //   slug: "devotion-on-integrity-bundle",
-  //   title: "Devotion on Integrity Bundle",
-  //   description:
-  //     "Three books focused on integrity, offered together at a promotional price.",
-  //   img: "21-days-children-devotion-on-integrity-bundle.jpg",
-  //   img_url: "21-days-children-devotion-on-integrity-bundle-landscape.jpg",
-  //   url: "",
-  //   url_2: "",
-  //   price_ngn: "26000",
-  //   price_usd: "90",
-  //   sale_price_ngn: "20000",
-  //   sale_price_usd: "60",
-  //   onSale: true,
-  //   stock: 10,
-  //   dop: "September 2024",
-  //   createdAt: "2024-09-10",
-  //   displayPrice: "",
-  //   format: [] as {
-  //     type: string;
-  //     url: string;
-  //     price: string;
-  //   }[],
-  //   pages: "",
-  //   language: "",
-  // },
-  // new
   {
     title: "Tommy too can win",
-    description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
+    description: `“Tommy Can Win Too!” is more than just a short fun story about soccer. It's an opportunity to discuss important life lessons with your child;
+    - Believing in oneself
+    - The value of trying something new
+    - Understanding that everyone has unique talents
+    - The importance of supporting others
+    - Overcoming self-doubt
+`,
     img: "tommy-too-can-win.jpg",
     img_url: "",
     url: "",
@@ -248,7 +168,7 @@ export const books = [
   },
   {
     title: "Bible jobs for little gems",
-    description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
+    description: `This book is designed to introduce young children; ages 6months- 4 years to different professions and characters from the Bible. Through colorful illustrations and simple rhyming text, your child will learn about various Bible heroes and their occupations.`,
     img: "bible-jobs-for-little-gems.jpg",
     price_ngn: "6000",
     price_usd: "25",
@@ -265,7 +185,7 @@ export const books = [
   },
   {
     title: "Bible Heroes",
-    description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
+    description: `Meet the hidden heroes of the Bible. "Bible heroes for kids" ia an amazing book that brings to life the cool stories and characters of the bible. With fun activities and story ideas, children will become a part of the Bible's adventure! This book is perfect for curious kids who want to explore the bible and have fun at the same time.`,
     img: "bible-heroes.jpg",
     price_ngn: "7000",
     price_usd: "25",
@@ -282,7 +202,10 @@ export const books = [
   },
   {
     title: "Little Alfie, How are you?",
-    description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
+    description: `God gave you something amazing - emotions! Just like the colors of a rainbow, emotions are vibrant, complex, and incredibly special. Sometimes your feelings can seem big and overwhelming, and that's okay. This book is your friendly guide to understanding and embracing every single emotion you experience.
+
+    Imagine your heart as a beautiful garden where different emotions are like different flowers. Some flowers bloom brightly in the sunshine, while others need extra care during rainy days. All of these emotions are important, and all of them matter to God.
+`,
     img: "little-alfie.jpg",
     price_ngn: "8000",
     price_usd: "25",
@@ -299,7 +222,7 @@ export const books = [
   },
   {
     title: "14 days of Affirmation and Declaration",
-    description: `14 Days of Affirmation and Declaration is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of affirming and declaring their faith in God. Each day of the 14-day journey invites young readers to discover what it means to live with faith, hope, and love in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of affirming and declaring their faith and how to apply it to their daily choices. Why 14 Days? Research shows that it takes 14 days to form a habit. This devotional is crafted to help children build the habit of living with faith by guiding them through two weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of faith and develop a character that reflects truth and righteousness.`,
+    description: `14 Days of Affirmation and Declaration is a tranformative and empowering guide designed to instill positive beliefs and values in young hearts. This 14 days journey is filled with daily affirmations and declarations tailored to help your children understand thier worth, embrace their uniqueness and grow in confidence and faith. With simple, uplifting statements rooted in biblical truths, this edition encourages children to speak life over themselves, bulding self-esteem, and recognize their divine purpose. Perfect for parents and guardians looking to nuture a positive mindset and godly character in the next generation!`,
     img: "14-days-of-affirmation-and-declaration.png",
     price_ngn: "6000",
     price_usd: "25",
@@ -317,7 +240,9 @@ export const books = [
 
   {
     title: "The reality of a Christian Marriage",
-    description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
+    description: `"The Reality of Christian Marriage", offers insight, guadiance and encouragement to help you navigate the unique terrain of Christian matrimony. It investigates enduring truths  and practical wisdom that can help you build a strong, faith-centered, and loving marriage.
+    Throughout this book. we will look into the different aspects of Vhristian marriage, from the importance of setting priorities to the challenges of communication, finance, and intimacy. We will address the balance between individuality and unity, investigat the dynamics of shared ministry, and offer insight into building a harmonious, God-centered marriage.
+    Whether you are newly weds starting on this path or seasoned couples looking to strengthen your bond, this something in these pages for everyone.`,
     img: "the-reality-of-christian-marriage.jpg",
     price_ngn: "10000",
     price_usd: "25",
@@ -334,7 +259,8 @@ export const books = [
   },
   {
     title: "Just Before you get Married",
-    description: `21 Days of Integrity is a beautifully illustrated devotional designed specifically for children, helping them understand the power and importance of integrity in everyday life. Each day of the 21-day journey invites young readers to discover what it means to live with honesty, honor, and truthfulness in all situations—whether at school, with friends, or at home. Through fun, engaging stories, Bible verses, and illustrations/ activities that bring each lesson to life, this book teaches children the foundational value of integrity and how to apply it to their daily choices. Why 21 Days? Research shows that it takes 21 days to form a habit. This devotional is crafted to help children build the habit of living with integrity by guiding them through three weeks of intentional learning, reflection, and application. By focusing on one virtue every day, children will grow in their understanding of integrity and develop a character that reflects truth and righteousness.`,
+    description: `Before you walk down the isle and say 'I Do', there are many decisions to be made and lessons to be learned. There's a difference between the glitz and glamor of a wedding and a lifetime commitment of a marriage. 'Just Before You Get Married' is here to unravel that distinction, to help you peek beneath the wrapping paper and discover the true treasure that is marriage.
+    The wisdom shared in this book, through the exploration of various topics, serves as a guiding light, reminding you to prioritize the depth and strength of your relationship, even amidst the allure of the wedding day.`,
     img: "just-before-you-get-married.jpg",
     price_ngn: "10000",
     price_usd: "25",
