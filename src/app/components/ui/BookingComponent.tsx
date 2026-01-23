@@ -655,6 +655,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
                 cols={30}
                 rows={5}
                 placeholder="Additional information about the event"
+                onChange={handleChange}
               />
             </div>
           </div>
