@@ -124,9 +124,9 @@ export function BlogCard({ post }: BlogCardProps) {
         <CardHeader className="space--3">
           {post.categories && post.categories.length > 0 && (
             <div className="flex flex-wrap gap-2">
-              {post.categories.map((category) => (
+              {post.categories.map((category, idx) => (
                 <Badge
-                  key={category._id}
+                  key={`${category._id}-${idx}`}
                   variant="secondary"
                   className="text-xs"
                 >

@@ -1,6 +1,7 @@
 import AboutSection from "@/app/components/home-page/AboutSection";
 import BlogSection from "@/app/components/home-page/BlogSection";
 import BookingsSection from "@/app/components/home-page/BookingsSection";
+import EmailMarketingSection from "@/app/components/home-page/EmailMarketingSection";
 import HeroSection from "@/app/components/home-page/HeroSection";
 import MusicSection from "@/app/components/home-page/MusicSection";
 import VideosSection from "@/app/components/home-page/VideosSection";
@@ -40,6 +41,7 @@ const Home = () => {
 
       <BookingsSection />
       <BlogSection />
+      <EmailMarketingSection />
 
       {/* Floating square ad (desktop only) */}
       {/*<div className="hidden md:block">
