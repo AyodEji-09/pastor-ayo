@@ -50,7 +50,7 @@ export interface BlockContent {
 
 // Fetch all blog posts
 export async function getAllPosts(): Promise<BlogPost[]> {
-  const query = `*[_type == "post"] | order(publishedAt desc) {
+  const query = `*[_type == "post"] | order(_createdAt desc) {
     _id,
     _createdAt,
     title,

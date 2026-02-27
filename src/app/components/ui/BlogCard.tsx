@@ -148,7 +148,7 @@ export function BlogCard({ post }: BlogCardProps) {
         </CardContent>
         <CardFooter className="flex items-center gap-2 text-sm text-muted-foreground">
           <Calendar className="w-4 h-4" />
-          <time dateTime={post.publishedAt || post._createdAt}>
+          <time dateTime={post._createdAt || post.publishedAt}>
             {formattedDate}
           </time>
         </CardFooter>
