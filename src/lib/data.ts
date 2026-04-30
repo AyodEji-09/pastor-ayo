@@ -141,7 +141,7 @@ export const blogs = [
 export const books = [
   {
     title: "Tommy too can win",
-    description: `“Tommy Can Win Too!” is more than just a short fun story about soccer. It's an opportunity to discuss important life lessons with your child;
+    description: `"Tommy Can Win Too!" is more than just a short fun story about soccer. It's an opportunity to discuss important life lessons with your child;
     - Believing in oneself
     - The value of trying something new
     - Understanding that everyone has unique talents
@@ -153,7 +153,7 @@ export const books = [
     url: "",
     url_2: "",
     price_ngn: "7000",
-    price_usd: "25",
+    price_usd: "17.99",
     displayPrice: "",
     format: [
       {
@@ -171,7 +171,7 @@ export const books = [
     description: `This book is designed to introduce young children; ages 6months- 4 years to different professions and characters from the Bible. Through colorful illustrations and simple rhyming text, your child will learn about various Bible heroes and their occupations.`,
     img: "bible-jobs-for-little-gems.jpg",
     price_ngn: "6000",
-    price_usd: "25",
+    price_usd: "17.00",
     format: [
       {
         type: "Paperback",
@@ -188,7 +188,7 @@ export const books = [
     description: `Meet the hidden heroes of the Bible. "Bible heroes for kids" ia an amazing book that brings to life the cool stories and characters of the bible. With fun activities and story ideas, children will become a part of the Bible's adventure! This book is perfect for curious kids who want to explore the bible and have fun at the same time.`,
     img: "bible-heroes.jpg",
     price_ngn: "7000",
-    price_usd: "25",
+    price_usd: "20.00",
     format: [
       {
         type: "Paperback",
@@ -208,7 +208,7 @@ export const books = [
 `,
     img: "little-alfie.jpg",
     price_ngn: "8000",
-    price_usd: "25",
+    price_usd: "20.00",
     format: [
       {
         type: "Paperback",
@@ -225,7 +225,7 @@ export const books = [
     description: `14 Days of Affirmation and Declaration is a tranformative and empowering guide designed to instill positive beliefs and values in young hearts. This 14 days journey is filled with daily affirmations and declarations tailored to help your children understand thier worth, embrace their uniqueness and grow in confidence and faith. With simple, uplifting statements rooted in biblical truths, this edition encourages children to speak life over themselves, bulding self-esteem, and recognize their divine purpose. Perfect for parents and guardians looking to nuture a positive mindset and godly character in the next generation!`,
     img: "14-days-of-affirmation-and-declaration.png",
     price_ngn: "6000",
-    price_usd: "25",
+    price_usd: "18.00",
     format: [
       {
         type: "Paperback",
@@ -245,7 +245,7 @@ export const books = [
     Whether you are newly weds starting on this path or seasoned couples looking to strengthen your bond, this something in these pages for everyone.`,
     img: "the-reality-of-christian-marriage.jpg",
     price_ngn: "10000",
-    price_usd: "25",
+    price_usd: "20.00",
     format: [
       {
         type: "Paperback",
@@ -263,7 +263,7 @@ export const books = [
     The wisdom shared in this book, through the exploration of various topics, serves as a guiding light, reminding you to prioritize the depth and strength of your relationship, even amidst the allure of the wedding day.`,
     img: "just-before-you-get-married.jpg",
     price_ngn: "10000",
-    price_usd: "25",
+    price_usd: "20.00",
     format: [
       {
         type: "Paperback",
@@ -284,7 +284,7 @@ export const books = [
     url: "https://www.amazon.com/21-Days-Devotion-Integrity-Children/dp/B0DHY47PGY/ref=monarch_sidesheet_title",
     url_2: "",
     price_ngn: "9000",
-    price_usd: "25",
+    price_usd: "20.00",
     displayPrice: "",
     format: [
       {
@@ -304,7 +304,7 @@ export const books = [
     url: "https://www.amazon.com/Opolo-Fish-Brain-Ayodeji-Anifowose/dp/B0DFVGG9DH/ref=monarch_sidesheet_title",
     url_2: "",
     price_ngn: "6000",
-    price_usd: "15",
+    price_usd: "15.00",
     displayPrice: "",
     format: [
       {
@@ -325,7 +325,7 @@ export const books = [
     url_2:
       "https://rhbooks.com.ng/product/21-days-children-devotional-on-identity/",
     price_ngn: "9000",
-    price_usd: "25",
+    price_usd: "20.00",
     displayPrice: "",
     format: [
       {
@@ -396,7 +396,7 @@ export const books = [
   {
     url_2: "",
     price_ngn: "6000",
-    price_usd: "12.99",
+    price_usd: "14.99",
     displayPrice: "",
     title: "PARENTING PRINCIPLES",
     description: `Parenting is the most important job in the world. Unfortunately, there is no formal training for it. Parents play a critical role in shaping the lives of their children, and by extension, future generations.
@@ -424,7 +424,7 @@ export const books = [
   {
     url_2: "",
     price_ngn: "6000",
-    price_usd: "13.99",
+    price_usd: "14.99",
     displayPrice: "",
     title: "LOVE: The Essence of Christianity",
     description: `Love’ is a popular concept with various wrong definitions. However, the Bible, which is the ever true and reliable word of God defines and explains what love is. “LOVE, The Essence of Christianity” sheds light on the unconditional love of God. It explains love as a sacrificial act by delving into the sacrificial love of Christ; it explores selflessness, true love and practical examples of sacrificial love. In this book, we will examine LOVE as explained in the bible as the core of Jesus’ message and the foundation of Christianity. As you read this book, may you understand God’s love for you, and become a channel of that love to everyone around you.`,
@@ -474,7 +474,7 @@ export const books = [
   {
     url_2: "",
     price_ngn: "6000",
-    price_usd: "20",
+    price_usd: "20.00",
     displayPrice: "",
     title: "THE POWER OF THE SECOND LOOK",
     description: `The Power of The Second Look" is more than just a book; it is your guide for life. Have you ever wondered what it would take to live a glorious life? Have you ever asked yourself what it would take to avoid unnecessary mistakes and judgment? Of course, we have all pondered these questions, often only after making a significant mistake that we may end up regretting for life. This book, "The Power of the Second Look," serves as a shepherd whose goal is to guide you safely into God's best for you. It aims to ensure that in life, business, relationships, academics, and all your dealings, your mistakes are minimized because you've learned to go beyond the surface. You've learned to see with clarity, to gather facts, and to perceive as God does, enabling you to judge as God judges`,
@@ -552,7 +552,7 @@ export const books = [
   {
     url_2: "",
     price_ngn: "6000",
-    price_usd: "20",
+    price_usd: "20.00",
     displayPrice: "",
     title:
       "FIRE ON MY ALTAR: (A Guide To Maintaining A Prayerful Life For Men, Husbands, And Fathers)",
@@ -580,12 +580,12 @@ export const books = [
   {
     title: "BIBLICAL WAYS TO SUSTAIN LOVE AND ROMANCE IN YOUR MARRIAGE",
     description:
-      "Love and Romance are core ingredients for a long and sustaining marriage. However, as time goes on, many couples lose touch with the initial belly fluttering love and romance their relationship began with, causing the marriage to become monotonous. In this book, “Biblical Ways to Sustain Love and Romance in Your Marriage”, we will explore biblical truths, and draw out practical wisdom from exemplary marriages in the bible to guide us in maintaining love and romance in our marriages. We will find principles on communication, love languages, forgiveness, and various elements and virtues that deepen the love and romance within a marriage. As you read this book, may your marital relationship receive new life. Amen.",
+      "Love and Romance are core ingredients for a long and sustaining marriage. However, as time goes on, many couples lose touch with the initial belly fluttering love and romance their relationship began with, causing the marriage to become monotonous. In this book, \"Biblical Ways to Sustain Love and Romance in Your Marriage\", we will explore biblical truths, and draw out practical wisdom from exemplary marriages in the bible to guide us in maintaining love and romance in our marriages. We will find principles on communication, love languages, forgiveness, and various elements and virtues that deepen the love and romance within a marriage. As you read this book, may your marital relationship receive new life. Amen.",
     img_url: "https://m.media-amazon.com/images/I/61gLsnoaSJL._SY466_.jpg",
     url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",
     url_2: "",
     price_ngn: "6000",
-    price_usd: "20",
+    price_usd: "20.00",
     displayPrice: "",
     format: [
       {
@@ -634,7 +634,7 @@ export const books = [
     title: "GOD'S AGENDA FOR MAN: EMBRACING TRUE MANHOOD",
     url_2: "",
     price_ngn: "10000",
-    price_usd: "27",
+    price_usd: "27.00",
     displayPrice: "",
     description:
       "God's Agenda for Man: Embracing True Manhood invites readers on a transformative journey of understanding and embracing their unique calling as men. Throughout this book, we will explore the Biblical principles and timeless truths that define true manhood according to God's design. We will discover the meaning and essence of true manhood as the book treats essential concerns such as identity, purpose, relationships, and responsibility, while embodying the character of Christ. The book also challenges cultural norms that often distort and devalue true manhood, offering instead a vision of masculinity grounded in God's Word. I’m assured this book will not only be part of your library collection but will truly change your life",

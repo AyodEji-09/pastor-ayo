@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import BookCard from "@/app/components/ui/BookCard";
 import {
   Breadcrumb,
@@ -13,7 +14,7 @@ import Link from "next/link";
 // import AdPlaceholder from "@/app/components/AdPlaceholder";
 // import BundlesCarousel from "@/app/components/BundlesCarousel";
 
-const metadata = {
+export const metadata: Metadata = {
   title: "Shop",
 };
 

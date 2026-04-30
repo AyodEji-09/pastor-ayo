@@ -23,14 +23,35 @@ function headerCountry(request: NextRequest) {
 }
 
 export function middleware(request: NextRequest): NextResponse {
-  const country = request.geo?.country ?? headerCountry(request) ?? "US";
+  // Check if country cookie already exists
+  const existingCountry = request.cookies.get("country")?.value;
+  
+  // Only detect country if no existing cookie
+  let country: string;
+  if (existingCountry) {
+    country = existingCountry;
+  } else {
+    country = request.geo?.country ?? headerCountry(request) ?? "US";
+  }
 
-  console.log({ country, geo: request.geo });
+  console.log({ country, geo: request.geo, existingCountry });
   const response = NextResponse.next();
-  response.cookies.set("country", country, { path: "/" });
+  
+  // Set cookie with 1 year expiration (30 * 365 days in seconds)
+  response.cookies.set("country", country, {
+    path: "/",
+    maxAge: 30 * 365 * 24 * 60 * 60,
+    httpOnly: false, // Must be false so client-side can read it
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+  });
+  
   return response;
 }
 
 export const config = {
-  matcher: ["/", "/shop/:path*", "/checkout/:path*"],
+  matcher: [
+    // Match all pages to ensure country detection happens everywhere
+    "/((?!_next/static|_next/image|favicon.ico).*)",
+  ],
 };
