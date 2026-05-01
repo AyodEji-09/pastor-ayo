@@ -3,8 +3,43 @@
 import { Card } from "@/components/ui/card";
 import { BookType } from "@/lib/data";
 import Image from "next/image";
+import { useMemo, useEffect, useState } from "react";
 
-export const CheckoutProduct = ({ product }: { product: BookType }) => {
+export const CheckoutProduct = ({
+  product,
+}: {
+  product: BookType;
+}) => {
+  const [country, setCountry] = useState("US");
+
+  // Read country from cookies on client side
+  useEffect(() => {
+    const getCookie = (name: string) => {
+      const match = document.cookie.match(
+        new RegExp("(?:^|; )" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)")
+      );
+      return match ? match[1] : null;
+    };
+    const storedCountry = getCookie("country");
+    if (storedCountry) {
+      setCountry(storedCountry);
+    }
+  }, []);
+
+  // Format price with proper currency and comma separators
+  const formatPrice = (price: string | number, isNigeria: boolean) => {
+    const numPrice = typeof price === "string" ? parseFloat(price) : price;
+    const currency = isNigeria ? "₦" : "$";
+    return `${currency}${numPrice.toLocaleString()}`;
+  };
+
+  // Calculate display price based on country
+  const displayPrice = useMemo(() => {
+    const isNigeria = country === "NG";
+    const price = isNigeria ? product.price_ngn : product.price_usd;
+    return formatPrice(price, isNigeria);
+  }, [country, product]);
+
   return (
     <Card className="overflow-hidden bg-gradient-card shadow-elegant pt-0">
       <div className="aspect-video w-full overflow-hidden">
@@ -35,7 +70,7 @@ export const CheckoutProduct = ({ product }: { product: BookType }) => {
 
         <div className="flex items-center gap-3">
           <span className="text-3xl font-bold bg-gradient-primary bg-clip-text">
-            {product.displayPrice}
+            {displayPrice}
           </span>
           {product.price_ngn && (
             <>

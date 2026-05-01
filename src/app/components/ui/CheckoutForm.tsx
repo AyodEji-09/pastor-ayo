@@ -58,12 +58,18 @@ export const CheckoutForm = ({
     country: string;
   }
 
+  // Format price with proper currency and comma separators
+  const formatPrice = (price: string | number, isNigeria: boolean) => {
+    const numPrice = typeof price === "string" ? parseFloat(price) : price;
+    const currency = isNigeria ? "₦" : "$";
+    return `${currency}${numPrice.toLocaleString()}`;
+  };
+
   // Calculate the current price based on selected country
   const currentPrice = useMemo(() => {
     const isNigeria = formData.country === "NG";
     const price = isNigeria ? product.price_ngn : product.price_usd;
-    const currency = isNigeria ? "₦" : "$";
-    return `${currency}${price}`;
+    return formatPrice(price, isNigeria);
   }, [formData.country, product]);
 
   // Calculate shipping fee based on selected country
@@ -82,11 +88,10 @@ export const CheckoutForm = ({
   const totalPrice = useMemo(() => {
     const isNigeria = formData.country === "NG";
     const bookPrice = parseFloat(
-      isNigeria ? product.price_ngn : product.price_usd
+      isNigeria ? product.price_ngn : product.price_usd,
     );
     const total = bookPrice + shippingFee;
-    const currency = isNigeria ? "₦" : "$";
-    return `${currency}${total}`;
+    return formatPrice(total, isNigeria);
   }, [formData.country, product, shippingFee]);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
@@ -286,27 +291,35 @@ export const CheckoutForm = ({
             </div>
           </div>
 
-           {/* Order Summary */}
-           <div className="border-t pt-4">
-             <div className="flex justify-between items-center mb-4">
-               <span className="text-muted-foreground">{product.title}</span>
-               <span className="font-semibold">{currentPrice}</span>
-             </div>
-             <div className="flex justify-between items-center mb-4">
-               <span className="text-muted-foreground">Shipping</span>
-               <span className="font-semibold text-success"></span>
-             </div>
-             <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
-               The shipping fee is not included in the total price. For other
-               countries, the shipping fee will be communicated.
-             </span>
-             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
-               <span>Total</span>
-               <span className="bg-gradient-primary bg-clip-text">
-                 {totalPrice}
-               </span>
-             </div>
-           </div>
+          {/* Order Summary */}
+          <div className="border-t pt-4">
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-muted-foreground">{product.title}</span>
+              <span className="font-semibold">{currentPrice}</span>
+            </div>
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-muted-foreground">Shipping</span>
+              <span className="font-semibold text-success">
+                <ul className="list-dis list-inside">
+                  {formData.country === "US" && <li>United States: $5</li>}
+                  {formData.country === "NG" && <li>Lagos: ₦5,000</li>}
+                  {formData.country !== "US" && formData.country !== "NG" && (
+                    <li>Shipping is not free</li>
+                  )}
+                </ul>
+              </span>
+            </div>
+            <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
+              The shipping fee is not included in the total price. For other
+              countries, the shipping fee will be communicated.
+            </span>
+            <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
+              <span>Total</span>
+              <span className="bg-gradient-primary bg-clip-text">
+                {totalPrice}
+              </span>
+            </div>
+          </div>
 
           <Button
             type="submit"
@@ -320,7 +333,7 @@ export const CheckoutForm = ({
                 Processing Payment...
               </div>
             ) : (
-              `Complete Purchase - ${currentPrice}`
+              `Complete Purchase - ${totalPrice}`
             )}
           </Button>
 
