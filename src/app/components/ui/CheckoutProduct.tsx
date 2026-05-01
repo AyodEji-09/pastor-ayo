@@ -7,24 +7,35 @@ import { useMemo, useEffect, useState } from "react";
 
 export const CheckoutProduct = ({
   product,
+  country: propsCountry,
 }: {
   product: BookType;
+  country?: string;
 }) => {
-  const [country, setCountry] = useState("US");
+  const [country, setCountry] = useState(propsCountry || "US");
 
-  // Read country from cookies on client side
+  // Update country when props change (from parent wrapper)
   useEffect(() => {
-    const getCookie = (name: string) => {
-      const match = document.cookie.match(
-        new RegExp("(?:^|; )" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)")
-      );
-      return match ? match[1] : null;
-    };
-    const storedCountry = getCookie("country");
-    if (storedCountry) {
-      setCountry(storedCountry);
+    if (propsCountry) {
+      setCountry(propsCountry);
     }
-  }, []);
+  }, [propsCountry]);
+
+  // Read country from cookies on client side if no prop provided
+  useEffect(() => {
+    if (!propsCountry) {
+      const getCookie = (name: string) => {
+        const match = document.cookie.match(
+          new RegExp("(?:^|; )" + name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "=([^;]*)")
+        );
+        return match ? match[1] : null;
+      };
+      const storedCountry = getCookie("country");
+      if (storedCountry) {
+        setCountry(storedCountry);
+      }
+    }
+  }, [propsCountry]);
 
   // Format price with proper currency and comma separators
   const formatPrice = (price: string | number, isNigeria: boolean) => {

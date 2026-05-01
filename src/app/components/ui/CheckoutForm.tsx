@@ -18,9 +18,11 @@ import { books, BookType } from "@/lib/data";
 export const CheckoutForm = ({
   product,
   country,
+  onCountryChange,
 }: {
   product: BookType;
   country: string;
+  onCountryChange?: (country: string) => void;
 }) => {
   // const product = books.find((b) => slugify(b.title) === book);
   const { toast } = useToast();
@@ -96,6 +98,10 @@ export const CheckoutForm = ({
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
+    // Notify parent when country changes
+    if (field === "country" && onCountryChange) {
+      onCountryChange(value);
+    }
   };
 
   async function handleBuy(formData: FormData, book: BookType): Promise<void> {

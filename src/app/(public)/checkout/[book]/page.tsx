@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
-import { CheckoutProduct } from "../../../components/ui/CheckoutProduct";
-import { CheckoutForm } from "../../../components/ui/CheckoutForm";
+import { CheckoutWrapper } from "../../../components/ui/CheckoutWrapper";
 import { notFound } from "next/navigation";
 import { BookType, books } from "@/lib/data";
 import { getBundleBySlug, SaleBundle } from "@/lib/saleBooks";
@@ -83,17 +82,10 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
           </div>
 
           {/* Main Content */}
-          <div className="grid lg:grid-cols-2 gap-8 animate-slide-up">
-            {/* Product Details */}
-            <div>
-              <CheckoutProduct product={productForComponents} />
-            </div>
-
-            {/* Checkout Form */}
-            <div>
-              <CheckoutForm country={country} product={productForComponents} />
-            </div>
-          </div>
+          <CheckoutWrapper
+            product={productForComponents}
+            initialCountry={country}
+          />
         </div>
       </div>
     </div>
