@@ -123,6 +123,11 @@ export const CheckoutForm = ({
   async function handleBuy(formData: FormData, book: BookType): Promise<void> {
     console.log("buy book");
     try {
+      const isNigeria = formData.country === "NG";
+      const bookPrice = parseFloat(
+        isNigeria ? book.price_ngn : book.price_usd,
+      );
+      
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -130,6 +135,12 @@ export const CheckoutForm = ({
           priceId: book.displayPrice,
           book,
           data: formData,
+          pricing: {
+            bookPrice,
+            shippingFee,
+            taxAmount,
+            totalAmount: bookPrice + shippingFee + taxAmount,
+          },
         }),
       });
 
