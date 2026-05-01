@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useMemo } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,19 +13,18 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Lock, MapPin, User } from "lucide-react";
-import { BookType } from "@/lib/data";
-import { getCountryFromCookie } from "@/lib/cookies";
+import { books, BookType } from "@/lib/data";
 
 export const CheckoutForm = ({
   product,
-  country: detectedCountry,
+  country,
 }: {
   product: BookType;
   country: string;
 }) => {
+  // const product = books.find((b) => slugify(b.title) === book);
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
-  const [displayPrice, setDisplayPrice] = useState<string>("");
   const [formData, setFormData] = useState({
     email: "",
     firstName: "",
@@ -34,38 +33,8 @@ export const CheckoutForm = ({
     city: "",
     state: "",
     zipCode: "",
-    country: "", // Will be set in useEffect
+    country: "US",
   });
-
-  // Update display price when country changes
-  const updateDisplayPrice = useCallback((selectedCountry: string) => {
-    const newDisplayPrice =
-      selectedCountry === "NG"
-        ? `NGN${product.price_ngn}`
-        : `$${product.price_usd}`;
-    setDisplayPrice(newDisplayPrice);
-  }, [product.price_ngn, product.price_usd]);
-
-  // Initialize form country with detected country and calculate display price
-  useEffect(() => {
-    // Priority: use detectedCountry from server, fallback to cookie, then US
-    const countryToUse =
-      detectedCountry && detectedCountry !== "US"
-        ? detectedCountry
-        : getCountryFromCookie();
-    
-    console.log("Initializing checkout form with country:", {
-      detectedCountry,
-      cookieCountry: getCountryFromCookie(),
-      using: countryToUse,
-    });
-
-    setFormData((prev) => ({
-      ...prev,
-      country: countryToUse,
-    }));
-    updateDisplayPrice(countryToUse);
-  }, [detectedCountry, updateDisplayPrice]);
 
   const handleSuccess = () => {
     // navigate("/payment-success", { state: { product } });
@@ -89,13 +58,28 @@ export const CheckoutForm = ({
     country: string;
   }
 
+  // Calculate the current price based on selected country
+  const currentPrice = useMemo(() => {
+    const isNigeria = formData.country === "NG";
+    const price = isNigeria ? product.price_ngn : product.price_usd;
+    const currency = isNigeria ? "₦" : "$";
+    return `${currency}${price}`;
+  }, [formData.country, product]);
+
+  // Get shipping info based on selected country
+  const shippingInfo = useMemo(() => {
+    switch (formData.country) {
+      case "US":
+        return "United States: $5";
+      case "NG":
+        return "Lagos: ₦5000";
+      default:
+        return "Shipping is not free";
+    }
+  }, [formData.country]);
+
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    
-    // If country changed, update display price
-    if (field === "country") {
-      updateDisplayPrice(value);
-    }
   };
 
   async function handleBuy(formData: FormData, book: BookType): Promise<void> {
@@ -105,6 +89,7 @@ export const CheckoutForm = ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          priceId: book.displayPrice,
           book,
           data: formData,
         }),
@@ -294,17 +279,13 @@ export const CheckoutForm = ({
           <div className="border-t pt-4">
             <div className="flex justify-between items-center mb-4">
               <span className="text-muted-foreground">{product.title}</span>
-              <span className="font-semibold">{displayPrice || product.displayPrice}</span>
+              <span className="font-semibold">{currentPrice}</span>
             </div>
             <div className="flex justify-between items-center mb-4">
               <span className="text-muted-foreground">Shipping</span>
               <span className="font-semibold text-success">
                 <ul className="list-dis list-inside">
-                  {formData.country === "US" && <li>United States: $5</li>}
-                  {formData.country === "NG" && <li>Lagos: N5000</li>}
-                  {formData.country !== "US" && formData.country !== "NG" && (
-                    <li>Shipping is not free</li>
-                  )}
+                  <li>{shippingInfo}</li>
                 </ul>
               </span>
             </div>
@@ -315,7 +296,7 @@ export const CheckoutForm = ({
             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
               <span>Total</span>
               <span className="bg-gradient-primary bg-clip-text">
-                {displayPrice || product.displayPrice}
+                {currentPrice}
               </span>
             </div>
           </div>
@@ -332,7 +313,7 @@ export const CheckoutForm = ({
                 Processing Payment...
               </div>
             ) : (
-              `Complete Purchase - ${displayPrice || product.displayPrice}`
+              `Complete Purchase - ${currentPrice}`
             )}
           </Button>
 
