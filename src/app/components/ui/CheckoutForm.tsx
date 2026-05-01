@@ -86,15 +86,31 @@ export const CheckoutForm = ({
     }
   }, [formData.country]);
 
-  // Calculate total price (book + shipping)
+  // Calculate tax (7.5% of book + shipping)
+  const taxAmount = useMemo(() => {
+    const isNigeria = formData.country === "NG";
+    const bookPrice = parseFloat(
+      isNigeria ? product.price_ngn : product.price_usd,
+    );
+    const subtotal = bookPrice + shippingFee;
+    return subtotal * 0.075;
+  }, [formData.country, product, shippingFee]);
+
+  // Calculate total price (book + shipping + tax)
   const totalPrice = useMemo(() => {
     const isNigeria = formData.country === "NG";
     const bookPrice = parseFloat(
       isNigeria ? product.price_ngn : product.price_usd,
     );
-    const total = bookPrice + shippingFee;
+    const total = bookPrice + shippingFee + taxAmount;
     return formatPrice(total, isNigeria);
-  }, [formData.country, product, shippingFee]);
+  }, [formData.country, product, shippingFee, taxAmount]);
+
+  // Format tax display
+  const taxDisplay = useMemo(() => {
+    const isNigeria = formData.country === "NG";
+    return formatPrice(taxAmount, isNigeria);
+  }, [taxAmount, formData.country]);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -297,35 +313,39 @@ export const CheckoutForm = ({
             </div>
           </div>
 
-          {/* Order Summary */}
-          <div className="border-t pt-4">
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-muted-foreground">{product.title}</span>
-              <span className="font-semibold">{currentPrice}</span>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-muted-foreground">Shipping</span>
-              <span className="font-semibold text-success">
-                <ul className="list-dis list-inside">
-                  {formData.country === "US" && <li>United States: $5</li>}
-                  {formData.country === "NG" && <li>Lagos: ₦5,000</li>}
-                  {formData.country !== "US" && formData.country !== "NG" && (
-                    <li>Shipping is not free</li>
-                  )}
-                </ul>
-              </span>
-            </div>
-            <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
-              The shipping fee is not included in the total price. For other
-              countries, the shipping fee will be communicated.
-            </span>
-            <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
-              <span>Total</span>
-              <span className="bg-gradient-primary bg-clip-text">
-                {totalPrice}
-              </span>
-            </div>
-          </div>
+           {/* Order Summary */}
+           <div className="border-t pt-4">
+             <div className="flex justify-between items-center mb-4">
+               <span className="text-muted-foreground">{product.title}</span>
+               <span className="font-semibold">{currentPrice}</span>
+             </div>
+             <div className="flex justify-between items-center mb-4">
+               <span className="text-muted-foreground">Shipping</span>
+               <span className="font-semibold text-success">
+                 <ul className="list-dis list-inside">
+                   {formData.country === "US" && <li>United States: $5</li>}
+                   {formData.country === "NG" && <li>Lagos: ₦5,000</li>}
+                   {formData.country !== "US" && formData.country !== "NG" && (
+                     <li>Shipping is not free</li>
+                   )}
+                 </ul>
+               </span>
+             </div>
+             <div className="flex justify-between items-center mb-4">
+               <span className="text-muted-foreground">Tax (7.5%)</span>
+               <span className="font-semibold">{taxDisplay}</span>
+             </div>
+             <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
+               The shipping fee is not included in the total price. For other
+               countries, the shipping fee will be communicated.
+             </span>
+             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
+               <span>Total</span>
+               <span className="bg-gradient-primary bg-clip-text">
+                 {totalPrice}
+               </span>
+             </div>
+           </div>
 
           <Button
             type="submit"
