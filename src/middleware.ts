@@ -34,7 +34,7 @@ export function middleware(request: NextRequest): NextResponse {
     country = request.geo?.country ?? headerCountry(request) ?? "US";
   }
 
-  console.log({ country, geo: request.geo, existingCountry });
+  console.log({ country, geo: request.geo, existingCountry, isDev: process.env.NODE_ENV === "development" });
   const response = NextResponse.next();
   
   // Set cookie with 1 year expiration (30 * 365 days in seconds)
@@ -51,7 +51,7 @@ export function middleware(request: NextRequest): NextResponse {
 
 export const config = {
   matcher: [
-    // Match all pages to ensure country detection happens everywhere
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    // Match all pages but exclude static files, images, API routes, and favicon
+    "/((?!_next/static|_next/image|favicon.ico|api/).*)",
   ],
 };

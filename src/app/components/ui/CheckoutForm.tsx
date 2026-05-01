@@ -14,6 +14,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Lock, MapPin, User } from "lucide-react";
 import { BookType } from "@/lib/data";
+import { getCountryFromCookie } from "@/lib/cookies";
 
 export const CheckoutForm = ({
   product,
@@ -47,7 +48,18 @@ export const CheckoutForm = ({
 
   // Initialize form country with detected country and calculate display price
   useEffect(() => {
-    const countryToUse = detectedCountry || "US";
+    // Priority: use detectedCountry from server, fallback to cookie, then US
+    const countryToUse =
+      detectedCountry && detectedCountry !== "US"
+        ? detectedCountry
+        : getCountryFromCookie();
+    
+    console.log("Initializing checkout form with country:", {
+      detectedCountry,
+      cookieCountry: getCountryFromCookie(),
+      using: countryToUse,
+    });
+
     setFormData((prev) => ({
       ...prev,
       country: countryToUse,
