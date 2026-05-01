@@ -66,17 +66,28 @@ export const CheckoutForm = ({
     return `${currency}${price}`;
   }, [formData.country, product]);
 
-  // Get shipping info based on selected country
-  const shippingInfo = useMemo(() => {
+  // Calculate shipping fee based on selected country
+  const shippingFee = useMemo(() => {
     switch (formData.country) {
       case "US":
-        return "United States: $5";
+        return 5;
       case "NG":
-        return "Lagos: ₦5000";
+        return 5000;
       default:
-        return "Shipping is not free";
+        return 0;
     }
   }, [formData.country]);
+
+  // Calculate total price (book + shipping)
+  const totalPrice = useMemo(() => {
+    const isNigeria = formData.country === "NG";
+    const bookPrice = parseFloat(
+      isNigeria ? product.price_ngn : product.price_usd
+    );
+    const total = bookPrice + shippingFee;
+    const currency = isNigeria ? "₦" : "$";
+    return `${currency}${total}`;
+  }, [formData.country, product, shippingFee]);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -275,31 +286,27 @@ export const CheckoutForm = ({
             </div>
           </div>
 
-          {/* Order Summary */}
-          <div className="border-t pt-4">
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-muted-foreground">{product.title}</span>
-              <span className="font-semibold">{currentPrice}</span>
-            </div>
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-muted-foreground">Shipping</span>
-              <span className="font-semibold text-success">
-                <ul className="list-dis list-inside">
-                  <li>{shippingInfo}</li>
-                </ul>
-              </span>
-            </div>
-            <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
-              The shipping fee is not included in the total price. For other
-              countries, the shipping fee will be communicated.
-            </span>
-            <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
-              <span>Total</span>
-              <span className="bg-gradient-primary bg-clip-text">
-                {currentPrice}
-              </span>
-            </div>
-          </div>
+           {/* Order Summary */}
+           <div className="border-t pt-4">
+             <div className="flex justify-between items-center mb-4">
+               <span className="text-muted-foreground">{product.title}</span>
+               <span className="font-semibold">{currentPrice}</span>
+             </div>
+             <div className="flex justify-between items-center mb-4">
+               <span className="text-muted-foreground">Shipping</span>
+               <span className="font-semibold text-success"></span>
+             </div>
+             <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
+               The shipping fee is not included in the total price. For other
+               countries, the shipping fee will be communicated.
+             </span>
+             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
+               <span>Total</span>
+               <span className="bg-gradient-primary bg-clip-text">
+                 {totalPrice}
+               </span>
+             </div>
+           </div>
 
           <Button
             type="submit"
