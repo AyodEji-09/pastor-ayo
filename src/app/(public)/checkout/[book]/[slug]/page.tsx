@@ -31,7 +31,7 @@ const PaymentStatus = () => {
   }
 
   return (
-    <div>
+    <div className="px-4 py-8 container mx-auto">
       {slug === "success" && <PaymentSuccess product={product} />}
       {slug === "failure" && <PaymentFailed product={product} />}
     </div>

@@ -1,117 +1,134 @@
 "use client";
+import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BookType } from "@/lib/data";
 import { SaleBundle } from "@/lib/saleBooks";
-import { CheckCircle, Download, Package, Mail } from "lucide-react";
+import { CheckCircle, Download, Mail, Package, Shield } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { openReceiptTemplate } from "./receiptTemplate";
 
 const PaymentSuccess = ({
   product,
+  bookPrice = 0,
+  shippingFee = 0,
+  taxAmount = 0,
+  totalAmount = 0,
 }: {
   product: BookType | SaleBundle | undefined;
+  bookPrice?: number;
+  shippingFee?: number;
+  taxAmount?: number;
+  totalAmount?: number;
 }) => {
   const router = useRouter();
-  const orderNumber = `ORD-${Math.random()
-    .toString(36)
-    .substr(2, 9)
-    .toUpperCase()}`;
+  const searchParams = useSearchParams();
+  const orderNumber = useMemo(
+    () => `ORD-${Math.random().toString(36).slice(2, 11).toUpperCase()}`,
+    [],
+  );
   const estimatedDelivery = new Date(
     Date.now() + 5 * 24 * 60 * 60 * 1000,
   ).toLocaleDateString();
+  const currencyFromQuery = (searchParams.get("currency") || "usd").toLowerCase();
+  const currency = currencyFromQuery === "ngn" ? "NGN" : "USD";
+  const amountMinor = Number(searchParams.get("amount") || 0);
+  const bookFromQuery = Number(searchParams.get("book") || 0);
+  const shippingFromQuery = Number(searchParams.get("shipping") || 0);
+  const taxFromQuery = Number(searchParams.get("tax") || 0);
+  const fallbackBookPrice = Number(
+    currency === "NGN" ? product?.price_ngn ?? 0 : product?.price_usd ?? 0,
+  );
+  const receiptBookPrice =
+    bookFromQuery > 0 ? bookFromQuery : bookPrice > 0 ? bookPrice : fallbackBookPrice;
+  const receiptShipping = shippingFromQuery > 0 ? shippingFromQuery : shippingFee;
+  const receiptTax = taxFromQuery > 0 ? taxFromQuery : taxAmount;
+  const calculatedTotal =
+    totalAmount > 0
+      ? totalAmount
+      : receiptBookPrice + receiptShipping + receiptTax;
+  const receiptTotal = amountMinor > 0 ? amountMinor / 100 : calculatedTotal;
+
+  const formattedAmount = new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(receiptTotal);
+
+  const handleReceiptDownload = () => {
+    openReceiptTemplate({
+      orderNumber,
+      productTitle: product?.title ?? "Product",
+      bookPrice: receiptBookPrice,
+      shippingFee: receiptShipping,
+      taxAmount: receiptTax,
+      totalAmount: receiptTotal,
+      estimatedDelivery,
+      supportEmail: "info@ayodejianifowose.com",
+      supportPhone: "(123) 456-7890",
+      currency,
+    });
+  };
 
   return (
-    <div className="tw-min-h-screen tw-bg-gradient-subtle">
-      <div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
-        <div className="tw-max-w-2xl tw-mx-auto">
-          {/* Success Header */}
-          <div className="tw-text-center tw-mb-8 tw-animate-fade-in">
-            <div className="tw-w-16 tw-h-16 tw-bg-success tw-rounded-full tw-flex tw-items-center tw-justify-center tw-mx-auto tw-mb-4 tw-shadow-elegant">
-              <CheckCircle className="tw-w-8 tw-h-8 tw-text-success-foreground" />
+    <div className="min-h-screen bg-white py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-emerald-600 rounded-full flex items-center justify-center">
+                <CheckCircle className="w-8 h-8 text-white" />
+              </div>
             </div>
-            <h1 className="tw-text-3xl tw-font-bold tw-text-foreground tw-mb-2">
+            <h1 className="text-4xl font-bold text-slate-900 mb-2">
               Payment Successful!
             </h1>
-            <p className="tw-text-muted-foreground">
-              Thank you for your purchase. Your order has been confirmed.
+            <p className="text-base text-slate-600 max-w-xl mx-auto leading-7">
+              Your order has been confirmed. A separate professional receipt can
+              be downloaded below.
             </p>
           </div>
 
-          {/* Order Details */}
-          <Card className="tw-bg-gradient-card tw-shadow-elegant tw-mb-6 tw-animate-slide-up">
-            <div className="tw-p-6">
-              <h2 className="tw-text-xl tw-font-semibold tw-mb-4 tw-flex tw-items-center tw-gap-2">
-                <Package className="tw-w-5 tw-h-5 tw-text-primary" />
-                Order Details
-              </h2>
-
-              <div className="tw-space-y-4">
-                <div className="tw-flex tw-justify-between tw-items-center tw-py-2 tw-border-b">
-                  <span className="tw-text-muted-foreground">Order Number</span>
-                  <span className="tw-font-mono tw-font-semibold">
-                    {orderNumber}
-                  </span>
-                </div>
-
-                <div className="tw-flex tw-justify-between tw-items-center tw-py-2 tw-border-b">
-                  <span className="tw-text-muted-foreground">Product</span>
-                  <span className="tw-font-semibold">{product?.title}</span>
-                </div>
-
-                <div className="tw-flex tw-justify-between tw-items-center tw-py-2 tw-border-b">
-                  <span className="tw-text-muted-foreground">Amount Paid</span>
-                  <span className="tw-font-semibold text-success">
-                    ${product?.price_ngn}
-                  </span>
-                </div>
-
-                <div className="tw-flex tw-justify-between tw-items-center tw-py-2">
-                  <span className="tw-text-muted-foreground">
-                    Estimated Delivery
-                  </span>
-                  <span className="tw-font-semibold">{estimatedDelivery}</span>
-                </div>
-              </div>
+          <Card className="border border-slate-200 shadow-sm mb-8 overflow-hidden">
+            <div className="bg-white px-8 py-5 border-b border-slate-200">
+              <p className="text-xs text-slate-600 uppercase tracking-[0.12em] font-semibold">
+                Order Number
+              </p>
+              <p className="font-mono text-xl font-semibold text-slate-900 mt-1">
+                {orderNumber}
+              </p>
             </div>
-          </Card>
 
-          {/* Next Steps */}
-          <Card className="tw-bg-gradient-card tw-shadow-elegant tw-mb-6 tw-animate-slide-up">
-            <div className="tw-p-6">
-              <h2 className="tw-text-xl tw-font-semibold tw-mb-4">
-                What happens next?
-              </h2>
-
-              <div className="tw-space-y-4">
-                <div className="tw-flex tw-items-start tw-gap-3">
-                  <Mail className="tw-w-5 tw-h-5 tw-text-primary tw-mt-0.5" />
-                  <div>
-                    <h3 className="tw-font-medium">Confirmation Email</h3>
-                    <p className="tw-text-sm tw-text-muted-foreground">
-                      You&apos;ll receive an order confirmation email with
-                      tracking details within the next few minutes.
+            <div className="p-8 sm:p-10">
+              <div className="space-y-7">
+                <div className="flex justify-between items-start pb-6 border-b border-slate-200">
+                  <div className="pr-4">
+                    <p className="text-xs text-slate-500 uppercase tracking-[0.12em] font-semibold mb-2">
+                      Product
+                    </p>
+                    <p className="text-lg font-semibold text-slate-900 leading-7">
+                      {product?.title}
                     </p>
                   </div>
                 </div>
 
-                <div className="tw-flex tw-items-start tw-gap-3">
-                  <Package className="tw-w-5 tw-h-5 tw-text-primary tw-mt-0.5" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                   <div>
-                    <h3 className="tw-font-medium">Processing & Shipping</h3>
-                    <p className="tw-text-sm tw-text-muted-foreground">
-                      Your order will be processed within 1-2 business days and
-                      shipped with tracking information.
+                    <p className="text-xs text-slate-500 uppercase tracking-[0.12em] font-semibold mb-2">
+                      Amount Paid
+                    </p>
+                    <p className="text-2xl font-bold text-slate-900">
+                      {formattedAmount}
                     </p>
                   </div>
-                </div>
-
-                <div className="tw-flex tw-items-start tw-gap-3">
-                  <Download className="tw-w-5 tw-h-5 tw-text-primary tw-mt-0.5" />
                   <div>
-                    <h3 className="tw-font-medium">Digital Resources</h3>
-                    <p className="tw-text-sm tw-text-muted-foreground">
-                      Access user manual, warranty information, and companion
-                      app download links.
+                    <p className="text-xs text-slate-500 uppercase tracking-[0.12em] font-semibold mb-2">
+                      Estimated Delivery
+                    </p>
+                    <p className="text-lg font-semibold text-slate-900">
+                      {estimatedDelivery}
                     </p>
                   </div>
                 </div>
@@ -119,12 +136,66 @@ const PaymentSuccess = ({
             </div>
           </Card>
 
-          {/* Action Buttons */}
-          <div className="tw-flex tw-flex-col sm:tw-flex-row tw-gap-4 atw-nimate-slide-up">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+            <Card className="border border-slate-200 shadow-sm p-6 sm:p-7">
+              <div className="flex justify-center mb-4">
+                <div className="w-11 h-11 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-blue-600" />
+                </div>
+              </div>
+              <h3 className="text-center font-semibold text-slate-900 mb-2 text-lg">
+                Confirmation Email
+              </h3>
+              <p className="text-center text-sm leading-6 text-slate-600">
+                You&apos;ll receive an order confirmation with tracking details
+                within minutes.
+              </p>
+            </Card>
+
+            <Card className="border border-slate-200 shadow-sm p-6 sm:p-7">
+              <div className="flex justify-center mb-4">
+                <div className="w-11 h-11 bg-amber-100 rounded-full flex items-center justify-center">
+                  <Package className="w-6 h-6 text-amber-600" />
+                </div>
+              </div>
+              <h3 className="text-center font-semibold text-slate-900 mb-2 text-lg">
+                Processing
+              </h3>
+              <p className="text-center text-sm leading-6 text-slate-600">
+                We&apos;ll process and prepare your order within 1-2 business
+                days.
+              </p>
+            </Card>
+
+            <Card className="border border-slate-200 shadow-sm p-6 sm:p-7">
+              <div className="flex justify-center mb-4">
+                <div className="w-11 h-11 bg-emerald-100 rounded-full flex items-center justify-center">
+                  <Package className="w-6 h-6 text-emerald-600" />
+                </div>
+              </div>
+              <h3 className="text-center font-semibold text-slate-900 mb-2 text-lg">
+                Fulfillment
+              </h3>
+              <p className="text-center text-sm leading-6 text-slate-600">
+                You will receive updates as your order moves to delivery.
+              </p>
+            </Card>
+          </div>
+
+          <Card className="border border-slate-200 bg-white shadow-sm mb-8 p-6 sm:p-7">
+            <div className="flex items-start gap-3">
+              <Shield className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+              <p className="text-sm leading-6 text-slate-700">
+                Your payment is secure and encrypted. No charges were made until
+                your payment was successful.
+              </p>
+            </div>
+          </Card>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
             <Button
-              variant="secondary"
               size="lg"
-              className="flex-1"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
               onClick={() => router.push("/")}
             >
               Continue Shopping
@@ -132,33 +203,37 @@ const PaymentSuccess = ({
             <Button
               variant="outline"
               size="lg"
-              className="flex-1"
-              onClick={() => window.print()}
+              className="border border-emerald-300 text-emerald-700 hover:bg-emerald-50 font-semibold"
+              onClick={handleReceiptDownload}
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-4 h-4 mr-2" />
               Download Receipt
             </Button>
           </div>
 
-          {/* Support */}
-          <div className="tw-text-center tw-mt-8 tw-p-4 tw-bg-muted/30 tw-rounded-lg">
-            <p className="tw-text-sm tw-text-muted-foreground">
-              Need help? Contact our support team at{" "}
+          <Card className="border border-slate-200 shadow-sm p-7 sm:p-8 bg-white text-center">
+            <h3 className="font-semibold text-slate-900 mb-2 text-lg">
+              Questions?
+            </h3>
+            <p className="text-sm leading-6 text-slate-600 mb-5">
+              Our support team is here to help 24/7
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="mailto:support@example.com"
-                className="tw-text-primary tw-hover:underline"
+                href="mailto:info@ayodejianifowose.com"
+                className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors"
               >
-                support@example.com
-              </a>{" "}
-              or call{" "}
+                Email Support
+              </a>
+              <span className="text-slate-300">•</span>
               <a
                 href="tel:+1234567890"
-                className="tw-text-primary tw-hover:underline"
+                className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors"
               >
-                (123) 456-7890
+                Call (123) 456-7890
               </a>
-            </p>
-          </div>
+            </div>
+          </Card>
         </div>
       </div>
     </div>

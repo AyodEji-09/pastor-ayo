@@ -61,10 +61,16 @@ export const CheckoutForm = ({
   }
 
   // Format price with proper currency and comma separators
+  const roundToTwo = (value: number) => Math.round(value * 100) / 100;
+
   const formatPrice = (price: string | number, isNigeria: boolean) => {
-    const numPrice = typeof price === "string" ? parseFloat(price) : price;
+    const numPrice =
+      typeof price === "string" ? parseFloat(price) : roundToTwo(price);
     const currency = isNigeria ? "₦" : "$";
-    return `${currency}${numPrice.toLocaleString()}`;
+    return `${currency}${numPrice.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
   };
 
   // Calculate the current price based on selected country
@@ -93,7 +99,7 @@ export const CheckoutForm = ({
       isNigeria ? product.price_ngn : product.price_usd,
     );
     const subtotal = bookPrice + shippingFee;
-    return subtotal * 0.075;
+    return roundToTwo(subtotal * 0.075);
   }, [formData.country, product, shippingFee]);
 
   // Calculate total price (book + shipping + tax)
@@ -102,7 +108,7 @@ export const CheckoutForm = ({
     const bookPrice = parseFloat(
       isNigeria ? product.price_ngn : product.price_usd,
     );
-    const total = bookPrice + shippingFee + taxAmount;
+    const total = roundToTwo(bookPrice + shippingFee + taxAmount);
     return formatPrice(total, isNigeria);
   }, [formData.country, product, shippingFee, taxAmount]);
 
@@ -127,6 +133,12 @@ export const CheckoutForm = ({
       const bookPrice = parseFloat(
         isNigeria ? book.price_ngn : book.price_usd,
       );
+      const roundedBookPrice = roundToTwo(bookPrice);
+      const roundedShippingFee = roundToTwo(shippingFee);
+      const roundedTaxAmount = roundToTwo(taxAmount);
+      const roundedTotalAmount = roundToTwo(
+        roundedBookPrice + roundedShippingFee + roundedTaxAmount,
+      );
       
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -136,10 +148,10 @@ export const CheckoutForm = ({
           book,
           data: formData,
           pricing: {
-            bookPrice,
-            shippingFee,
-            taxAmount,
-            totalAmount: bookPrice + shippingFee + taxAmount,
+            bookPrice: roundedBookPrice,
+            shippingFee: roundedShippingFee,
+            taxAmount: roundedTaxAmount,
+            totalAmount: roundedTotalAmount,
           },
         }),
       });
