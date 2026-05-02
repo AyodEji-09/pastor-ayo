@@ -1,5 +1,5 @@
 "use client";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BookType } from "@/lib/data";
@@ -8,6 +8,14 @@ import { CheckCircle, Download, Mail, Package, Shield } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { openReceiptTemplate } from "./receiptTemplate";
+
+type VerifiedSession = {
+  currency: string;
+  amountMinor: number;
+  bookPrice: number;
+  shippingFee: number;
+  taxAmount: number;
+};
 
 const PaymentSuccess = ({
   product,
@@ -24,6 +32,9 @@ const PaymentSuccess = ({
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [verified, setVerified] = useState<VerifiedSession | null>(null);
+  const [verifying, setVerifying] = useState(true);
+  const [verifyError, setVerifyError] = useState<string | null>(null);
   const orderNumber = useMemo(
     () => `ORD-${Math.random().toString(36).slice(2, 11).toUpperCase()}`,
     [],
@@ -50,27 +61,101 @@ const PaymentSuccess = ({
       : receiptBookPrice + receiptShipping + receiptTax;
   const receiptTotal = amountMinor > 0 ? amountMinor / 100 : calculatedTotal;
 
-  const formattedAmount = new Intl.NumberFormat(undefined, {
+  useEffect(() => {
+    const sessionId = searchParams.get("session_id");
+
+    if (!sessionId) {
+      setVerifyError("Missing payment session. Unable to verify payment.");
+      setVerifying(false);
+      return;
+    }
+
+    const verify = async () => {
+      try {
+        const res = await fetch(
+          `/api/checkout/session?session_id=${encodeURIComponent(sessionId)}`,
+        );
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({ message: "Verification failed" }));
+          throw new Error(data?.message || "Verification failed");
+        }
+
+        const data: VerifiedSession = await res.json();
+        setVerified(data);
+      } catch (error) {
+        const message = error instanceof Error ? error.message : "Verification failed";
+        setVerifyError(message);
+      } finally {
+        setVerifying(false);
+      }
+    };
+
+    verify();
+  }, [searchParams]);
+
+  const effectiveCurrency = verified?.currency || currency;
+  const effectiveBook = verified?.bookPrice || receiptBookPrice;
+  const effectiveShipping = verified?.shippingFee || receiptShipping;
+  const effectiveTax = verified?.taxAmount || receiptTax;
+  const effectiveTotal =
+    verified && verified.amountMinor > 0
+      ? verified.amountMinor / 100
+      : receiptTotal;
+
+  const effectiveFormattedAmount = new Intl.NumberFormat(undefined, {
     style: "currency",
-    currency,
+    currency: effectiveCurrency,
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(receiptTotal);
+  }).format(effectiveTotal);
 
   const handleReceiptDownload = () => {
     openReceiptTemplate({
       orderNumber,
       productTitle: product?.title ?? "Product",
-      bookPrice: receiptBookPrice,
-      shippingFee: receiptShipping,
-      taxAmount: receiptTax,
-      totalAmount: receiptTotal,
+      bookPrice: effectiveBook,
+      shippingFee: effectiveShipping,
+      taxAmount: effectiveTax,
+      totalAmount: effectiveTotal,
       estimatedDelivery,
       supportEmail: "info@ayodejianifowose.com",
       supportPhone: "(123) 456-7890",
-      currency,
+      currency: effectiveCurrency,
     });
   };
+
+  if (verifying) {
+    return (
+      <div className="min-h-screen bg-white py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mx-auto">
+            <Card className="border border-slate-200 shadow-sm p-8 text-center">
+              <p className="text-slate-700">Verifying payment...</p>
+            </Card>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (verifyError) {
+    return (
+      <div className="min-h-screen bg-white py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-xl mx-auto">
+            <Card className="border border-rose-200 shadow-sm p-8 text-center">
+              <h2 className="text-xl font-semibold text-slate-900 mb-3">
+                Unable to verify payment
+              </h2>
+              <p className="text-slate-600 mb-6">{verifyError}</p>
+              <Button onClick={() => router.push("/")}>Back to Home</Button>
+            </Card>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white py-12">
@@ -120,7 +205,7 @@ const PaymentSuccess = ({
                       Amount Paid
                     </p>
                     <p className="text-2xl font-bold text-slate-900">
-                      {formattedAmount}
+                      {effectiveFormattedAmount}
                     </p>
                   </div>
                   <div>

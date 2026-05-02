@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   try {
     await addEmailToSendPulse(email);
     return Response.json({ success: true });
-  } catch (err) {
+  } catch {
     return new Response("Failed to subscribe", { status: 500 });
 
   }

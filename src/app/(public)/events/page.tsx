@@ -20,8 +20,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import Image from "next/image";
 import aboutImage from "@/assets/images/aboutpage.jpg";
-import AdPlaceholder from "@/app/components/AdPlaceholder";
-import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 const Events = () => {
   const route = usePathname();
@@ -31,7 +29,7 @@ const Events = () => {
   const [loading, setLoading] = useState(false);
   const [openDate, setOpenDate] = useState(page ? true : false);
   const [location, setLocation] = useState("");
-  const [state, setState] = useState([
+  const [state] = useState([
     {
       startDate: new Date(),
       endDate: addDays(new Date(), page ? 30 : 7),
@@ -44,8 +42,8 @@ const Events = () => {
   const searchMinistryBookings = async () => {
     setLoading(true);
     setBookings([]);
-    const start_date = moment(state[0].startDate).format("YYYY-MM-DD");
-    const end_date = moment(state[0].endDate).format("YYYY-MM-DD");
+    moment(state[0].startDate).format("YYYY-MM-DD");
+    moment(state[0].endDate).format("YYYY-MM-DD");
     try {
       // const res = await Api.post(`/api/bookings/search`, {
       //   start_date,
@@ -55,7 +53,7 @@ const Events = () => {
       setLoading(false);
       setOpenDate(false);
       // setBookings(res.data.data);
-    } catch (error) {
+    } catch {
       setLoading(false);
       setOpenDate(false);
       setBookings([]);

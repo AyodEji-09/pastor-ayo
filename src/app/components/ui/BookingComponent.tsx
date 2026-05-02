@@ -2,7 +2,6 @@
 import { useRef, useState } from "react";
 import { Country, IState, State } from "country-state-city";
 import toast, { Toaster } from "react-hot-toast";
-import { slugify, randomString } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
@@ -116,7 +115,6 @@ export default BookingComponent;
 
 const TabComponent = ({ bookingType }: { bookingType: string }) => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [open, setOpen] = useState(false);
   const checkbox = useRef<HTMLInputElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -204,14 +202,11 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
     }
   };
 
-  const handleSubmit = async (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = validateFields();
     if (!res) return;
     setLoading(true);
-    setError(null);
 
     // try {
     //   const country =
@@ -251,7 +246,7 @@ const TabComponent = ({ bookingType }: { bookingType: string }) => {
   return (
     <main className="my-2 bg-white rounded shadow-sm p-4 text-sm text-gray-500">
       <p className="text-red-500 text-xs">* fields are mandatory</p>
-      <form className="space-y-8 mt-4">
+      <form className="space-y-8 mt-4" onSubmit={handleSubmit}>
         <div className="grid grid-cols-2 gap-4">
           <div className="">
             <label htmlFor="first_name" className="form-label">

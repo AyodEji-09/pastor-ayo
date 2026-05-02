@@ -24,7 +24,7 @@ export const CheckoutWrapper = ({
       {/* Checkout Form */}
       <div>
         <CheckoutForm
-          country={initialCountry}
+          country={country}
           product={product}
           onCountryChange={setCountry}
         />

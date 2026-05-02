@@ -1,50 +1,59 @@
 import { slugify } from "@/lib/utils";
+import { books } from "@/lib/data";
+import { getBundleBySlug } from "@/lib/saleBooks";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
 
 export async function POST(req: Request) {
-  const { data, book, pricing } = await req.json();
-
-  // Use country from form data (client has already selected it)
-  const country = data?.country || "US";
-  const isNigeria = country === "NG";
-  const currency = isNigeria ? "ngn" : "usd";
-  const slug =
-    (book && book.slug && String(book.slug).trim()) || slugify(book.title);
-
-  // Use pricing data from client if available, otherwise calculate
-  let bookPrice: number;
-  let shippingFee: number;
-  let taxAmount: number;
-  let totalAmount: number;
-
-  if (pricing) {
-    bookPrice = Number(pricing.bookPrice || 0);
-    shippingFee = Number(pricing.shippingFee || 0);
-    taxAmount = Number(pricing.taxAmount || 0);
-    totalAmount = Number(pricing.totalAmount || 0);
-  } else {
-    // Fallback calculation
-    bookPrice = parseFloat(isNigeria ? book.price_ngn : book.price_usd);
-    shippingFee = isNigeria ? 5000 : 5;
-    taxAmount = (bookPrice + shippingFee) * 0.075;
-    totalAmount = bookPrice + shippingFee + taxAmount;
-  }
-
-  bookPrice = Number(bookPrice.toFixed(2));
-  shippingFee = Number(shippingFee.toFixed(2));
-  taxAmount = Number(taxAmount.toFixed(2));
-  totalAmount = Number(totalAmount.toFixed(2));
-
-  console.log("📦 Creating Stripe session for:", book.title, {
-    country,
-    totalAmount,
-    currency,
-  });
-
   try {
+    const payload = await req.json();
+    const data = payload?.data;
+    const rawBookSlug = String(payload?.bookSlug || "").trim().toLowerCase();
+
+    if (!rawBookSlug) {
+      return NextResponse.json({ message: "Missing book slug" }, { status: 400 });
+    }
+
+    const country = data?.country || "US";
+    const isNigeria = country === "NG";
+    const currency = isNigeria ? "ngn" : "usd";
+
+    const bundle = getBundleBySlug(rawBookSlug);
+    const legacyBook = books.find((b) => slugify(b.title) === rawBookSlug);
+
+    if (!bundle && !legacyBook) {
+      return NextResponse.json({ message: "Book not found" }, { status: 404 });
+    }
+
+    const slug = bundle ? bundle.slug : slugify(legacyBook!.title);
+    const title = bundle ? bundle.title : legacyBook!.title;
+
+    const bundlePrice = isNigeria
+      ? bundle?.onSale && bundle.sale_price_ngn
+        ? bundle.sale_price_ngn
+        : bundle?.price_ngn
+      : bundle?.onSale && bundle.sale_price_usd
+        ? bundle.sale_price_usd
+        : bundle?.price_usd;
+
+    let bookPrice = Number(
+      bundle
+        ? bundlePrice || 0
+        : isNigeria
+          ? legacyBook!.price_ngn
+          : legacyBook!.price_usd,
+    );
+    let shippingFee = country === "US" ? 5 : country === "NG" ? 5000 : 0;
+    let taxAmount = (bookPrice + shippingFee) * 0.075;
+    let totalAmount = bookPrice + shippingFee + taxAmount;
+
+    bookPrice = Number(bookPrice.toFixed(2));
+    shippingFee = Number(shippingFee.toFixed(2));
+    taxAmount = Number(taxAmount.toFixed(2));
+    totalAmount = Number(totalAmount.toFixed(2));
+
     const amountMinor = Math.round(totalAmount * 100);
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -56,18 +65,21 @@ export async function POST(req: Request) {
             unit_amount: amountMinor, // Stripe expects kobo/cents
             currency,
             product_data: {
-              name: book.title,
+              name: title,
             },
           },
           quantity: 1,
         },
       ],
       metadata: {
-        bookId: book.id,
+        bookSlug: slug,
         email: data?.email,
         country: country,
         totalAmount: amountMinor, // Store as cents
         currency,
+        bookPrice: bookPrice.toFixed(2),
+        shippingFee: shippingFee.toFixed(2),
+        taxAmount: taxAmount.toFixed(2),
       },
     });
 

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,7 +13,33 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Lock, MapPin, User } from "lucide-react";
-import { books, BookType } from "@/lib/data";
+import { BookType } from "@/lib/data";
+import { slugify } from "@/lib/utils";
+
+const roundToTwo = (value: number) => Math.round(value * 100) / 100;
+
+const formatPrice = (price: string | number, isNigeria: boolean) => {
+  const numPrice =
+    typeof price === "string" ? parseFloat(price) : roundToTwo(price);
+  const currency = isNigeria ? "₦" : "$";
+  return `${currency}${numPrice.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
+};
+
+const resolveBasePrice = (product: BookType, country: string) => {
+  const isNigeria = country === "NG";
+  if (product.displayPrice) {
+    const normalized = product.displayPrice.replace(/[^0-9.]/g, "");
+    const parsed = Number(normalized);
+    if (Number.isFinite(parsed) && parsed > 0) {
+      return parsed;
+    }
+  }
+  const parsed = Number(isNigeria ? product.price_ngn : product.price_usd);
+  return Number.isFinite(parsed) ? parsed : 0;
+};
 
 export const CheckoutForm = ({
   product,
@@ -35,19 +61,10 @@ export const CheckoutForm = ({
     city: "",
     state: "",
     zipCode: "",
-    country: "US",
+    country: country || "US",
   });
 
-  const handleSuccess = () => {
-    // navigate("/payment-success", { state: { product } });
-    // router.push("/checkout/success");
-    console.log("success");
-  };
-
-  const handleError = () => {
-    // navigate("/payment-failed", { state: { product } });
-    console.log("error");
-  };
+  const bookSlug = slugify(product.title);
 
   interface FormData {
     email: string;
@@ -60,63 +77,15 @@ export const CheckoutForm = ({
     country: string;
   }
 
-  // Format price with proper currency and comma separators
-  const roundToTwo = (value: number) => Math.round(value * 100) / 100;
-
-  const formatPrice = (price: string | number, isNigeria: boolean) => {
-    const numPrice =
-      typeof price === "string" ? parseFloat(price) : roundToTwo(price);
-    const currency = isNigeria ? "₦" : "$";
-    return `${currency}${numPrice.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })}`;
-  };
-
-  // Calculate the current price based on selected country
-  const currentPrice = useMemo(() => {
-    const isNigeria = formData.country === "NG";
-    const price = isNigeria ? product.price_ngn : product.price_usd;
-    return formatPrice(price, isNigeria);
-  }, [formData.country, product]);
-
-  // Calculate shipping fee based on selected country
-  const shippingFee = useMemo(() => {
-    switch (formData.country) {
-      case "US":
-        return 5;
-      case "NG":
-        return 5000;
-      default:
-        return 0;
-    }
-  }, [formData.country]);
-
-  // Calculate tax (7.5% of book + shipping)
-  const taxAmount = useMemo(() => {
-    const isNigeria = formData.country === "NG";
-    const bookPrice = parseFloat(
-      isNigeria ? product.price_ngn : product.price_usd,
-    );
-    const subtotal = bookPrice + shippingFee;
-    return roundToTwo(subtotal * 0.075);
-  }, [formData.country, product, shippingFee]);
-
-  // Calculate total price (book + shipping + tax)
-  const totalPrice = useMemo(() => {
-    const isNigeria = formData.country === "NG";
-    const bookPrice = parseFloat(
-      isNigeria ? product.price_ngn : product.price_usd,
-    );
-    const total = roundToTwo(bookPrice + shippingFee + taxAmount);
-    return formatPrice(total, isNigeria);
-  }, [formData.country, product, shippingFee, taxAmount]);
-
-  // Format tax display
-  const taxDisplay = useMemo(() => {
-    const isNigeria = formData.country === "NG";
-    return formatPrice(taxAmount, isNigeria);
-  }, [taxAmount, formData.country]);
+  const isNigeria = formData.country === "NG";
+  const basePrice = resolveBasePrice(product, formData.country);
+  const shippingFee =
+    formData.country === "US" ? 5 : formData.country === "NG" ? 5000 : 0;
+  const taxAmount = roundToTwo((basePrice + shippingFee) * 0.075);
+  const totalAmount = roundToTwo(basePrice + shippingFee + taxAmount);
+  const currentPrice = formatPrice(basePrice, isNigeria);
+  const taxDisplay = formatPrice(taxAmount, isNigeria);
+  const totalPrice = formatPrice(totalAmount, isNigeria);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -126,42 +95,34 @@ export const CheckoutForm = ({
     }
   };
 
-  async function handleBuy(formData: FormData, book: BookType): Promise<void> {
+  async function handleBuy(formData: FormData): Promise<void> {
     console.log("buy book");
     try {
-      const isNigeria = formData.country === "NG";
-      const bookPrice = parseFloat(
-        isNigeria ? book.price_ngn : book.price_usd,
-      );
-      const roundedBookPrice = roundToTwo(bookPrice);
-      const roundedShippingFee = roundToTwo(shippingFee);
-      const roundedTaxAmount = roundToTwo(taxAmount);
-      const roundedTotalAmount = roundToTwo(
-        roundedBookPrice + roundedShippingFee + roundedTaxAmount,
-      );
-      
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          priceId: book.displayPrice,
-          book,
+          bookSlug,
           data: formData,
-          pricing: {
-            bookPrice: roundedBookPrice,
-            shippingFee: roundedShippingFee,
-            taxAmount: roundedTaxAmount,
-            totalAmount: roundedTotalAmount,
-          },
         }),
       });
+
+      if (!res.ok) {
+        const payload = await res.json().catch(() => ({ message: "Unable to create checkout session" }));
+        throw new Error(payload?.message || "Unable to create checkout session");
+      }
 
       const data: { url: string } = await res.json();
       console.log({ data });
 
+      if (!data?.url) {
+        throw new Error("Checkout URL not returned");
+      }
+
       window.location.href = data.url; // redirect to Stripe Checkout
     } catch (error) {
       console.log(error);
+      throw error;
     }
   }
 
@@ -173,32 +134,16 @@ export const CheckoutForm = ({
     console.log({ formData });
 
     try {
-      // Simulate payment processing
-      // await new Promise((resolve) => setTimeout(resolve, 2000));
-      await handleBuy(formData, product);
-
-      // Simulate success/failure (80% success rate)
-      const isSuccess = Math.random() > 0.2;
-
-      if (isSuccess) {
-        toast({
-          title: "Payment Successful!",
-          description: "Your order has been processed successfully.",
-        });
-        handleSuccess();
-      } else {
-        throw new Error("Payment failed");
-      }
+      await handleBuy(formData);
     } catch (error) {
       console.log({ error });
 
       toast({
         title: "Payment Failed",
         description:
-          "There was an issue processing your payment. Please try again.",
+          "There was an issue starting checkout. Please try again.",
         variant: "destructive",
       });
-      handleError();
     } finally {
       setIsProcessing(false);
     }

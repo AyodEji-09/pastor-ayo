@@ -1,7 +1,6 @@
 import Nav from "../components/layout/Nav";
 import Footer from "../components/layout/Footer";
 // import AdPlaceholder from "../components/AdPlaceholder";
-import BundlesCarousel from "../components/BundlesCarousel";
 
 export default function RootLayout({
   children,

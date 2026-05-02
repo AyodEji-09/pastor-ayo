@@ -1,7 +1,5 @@
 import UtilityBanner from "@/app/components/layout/UtilityBanner";
 import MusicComponent from "@/app/components/MusicComponent";
-import AdPlaceholder from "@/app/components/AdPlaceholder";
-import BundlesCarousel from "@/app/components/BundlesCarousel";
 import { title } from "@/lib/metaData";
 import { Metadata } from "next";
 

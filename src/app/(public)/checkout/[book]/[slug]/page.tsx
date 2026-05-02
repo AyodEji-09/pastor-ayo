@@ -15,7 +15,6 @@ const PaymentStatus = () => {
     String(book).trim().toLowerCase(),
   );
 
-  console.log({ book, slug, bundle });
   if (bundle) {
     product = bundle;
   } else {
@@ -28,6 +27,10 @@ const PaymentStatus = () => {
       notFound();
     }
     product = legacy;
+  }
+
+  if (slug !== "success" && slug !== "failure") {
+    notFound();
   }
 
   return (
