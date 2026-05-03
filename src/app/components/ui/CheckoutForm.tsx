@@ -30,15 +30,20 @@ const formatPrice = (price: string | number, isNigeria: boolean) => {
 
 const resolveBasePrice = (product: BookType, country: string) => {
   const isNigeria = country === "NG";
+  const parsed = Number(isNigeria ? product.price_ngn : product.price_usd);
+  if (Number.isFinite(parsed) && parsed > 0) {
+    return parsed;
+  }
+
   if (product.displayPrice) {
     const normalized = product.displayPrice.replace(/[^0-9.]/g, "");
-    const parsed = Number(normalized);
-    if (Number.isFinite(parsed) && parsed > 0) {
-      return parsed;
+    const fallback = Number(normalized);
+    if (Number.isFinite(fallback) && fallback > 0) {
+      return fallback;
     }
   }
-  const parsed = Number(isNigeria ? product.price_ngn : product.price_usd);
-  return Number.isFinite(parsed) ? parsed : 0;
+
+  return 0;
 };
 
 export const CheckoutForm = ({
