@@ -26,7 +26,7 @@ const PaymentStatus = () => {
       // Neither bundle nor legacy book found -> 404
       notFound();
     }
-    product = legacy;
+    product = legacy as BookType;
   }
 
   if (slug !== "success" && slug !== "failure") {

@@ -140,6 +140,46 @@ export const blogs = [
 ];
 export const books = [
   {
+    title: "Myths About Sex In Marriage",
+    description: `"Myths about Sex in Marriage," is a guide that shatters the common misconceptions about sex by providing valuable insights and biblical truths to transform our understanding of sex within boundaries of marriage.
+    This book uncovers  the false beliefs about sex, and challenges societal norms, cultural exceptions, and personal insecurities that have silently shaped our perceptions and hindred us from experiencing the fullness of God's design for sexual intimacy in marriage.`,
+    img: "myths-about-sex-in-marriage.jpg",
+    price_ngn: "6000",
+    price_usd: "20.00",
+    // format: [
+    //   {
+    //     type: "Paperback",
+    //     url: "https://www.amazon.com/21-Days-Devotion-Integrity-Children/dp/B0DHY47PGY/ref=monarch_sidesheet_title",
+    //     price: "$25.00",
+    //   },
+    // ],
+    dop: "February 14, 2025",
+    pages: "131 pages",
+    language: "English",
+  },
+  // {
+  //   title: "Trick or Treat, Daddy",
+  //   description: ``,
+  //   img: "trick-or-treat.jpg",
+  //   price_ngn: "6000",
+  //   price_usd: "20.00",
+  //   dop: "February 14, 2025",
+  //   pages: "131 pages",
+  //   language: "English",
+  // },
+  {
+    title: "Mommy, Will Santa Come?",
+    description: `Is Christmas just about presents and Santa? Let's find out! 
+    "Mommy Will Santa Come?" is a special book that helps children understand the true meaning of Christmas. Join the story and learn about the love and kindness that Jesus brings.
+    You can even talk to your mommy and daddy about what Christmas means to you and how you can show love to others. This book is a great way to make Christmas even more special and meaningful!`,
+    img: "mommy-will-santa-come.jpg",
+    price_ngn: "6000",
+    price_usd: "17.99",
+    dop: "February 14, 2025",
+    pages: "131 pages",
+    language: "English",
+  },
+  {
     title: "Tommy too can win",
     description: `"Tommy Can Win Too!" is more than just a short fun story about soccer. It's an opportunity to discuss important life lessons with your child;
     - Believing in oneself
@@ -580,7 +620,7 @@ export const books = [
   {
     title: "BIBLICAL WAYS TO SUSTAIN LOVE AND ROMANCE IN YOUR MARRIAGE",
     description:
-      "Love and Romance are core ingredients for a long and sustaining marriage. However, as time goes on, many couples lose touch with the initial belly fluttering love and romance their relationship began with, causing the marriage to become monotonous. In this book, \"Biblical Ways to Sustain Love and Romance in Your Marriage\", we will explore biblical truths, and draw out practical wisdom from exemplary marriages in the bible to guide us in maintaining love and romance in our marriages. We will find principles on communication, love languages, forgiveness, and various elements and virtues that deepen the love and romance within a marriage. As you read this book, may your marital relationship receive new life. Amen.",
+      'Love and Romance are core ingredients for a long and sustaining marriage. However, as time goes on, many couples lose touch with the initial belly fluttering love and romance their relationship began with, causing the marriage to become monotonous. In this book, "Biblical Ways to Sustain Love and Romance in Your Marriage", we will explore biblical truths, and draw out practical wisdom from exemplary marriages in the bible to guide us in maintaining love and romance in our marriages. We will find principles on communication, love languages, forgiveness, and various elements and virtues that deepen the love and romance within a marriage. As you read this book, may your marital relationship receive new life. Amen.',
     img_url: "https://m.media-amazon.com/images/I/61gLsnoaSJL._SY466_.jpg",
     url: "https://www.amazon.com/dp/B0CVMQDYQJ/ref=monarch_sidesheet",
     url_2: "",
