@@ -1,5 +1,6 @@
 "use client";
 import {
+  DrawerClose,
   Drawer,
   DrawerContent,
   DrawerHeader,
@@ -85,24 +86,27 @@ const Nav = () => {
               <DrawerContent>
                 <DrawerHeader>
                   <div className="logo">
-                    <Link href={"/"}>
-                      <Image src={logo} alt="" className="-20" />
-                    </Link>
+                    <DrawerClose asChild>
+                      <Link href={"/"}>
+                        <Image src={logo} alt="" className="-20" />
+                      </Link>
+                    </DrawerClose>
                   </div>
                 </DrawerHeader>
                 <div className="menu flex flex-col p-4 gap-8">
                   {routes.map((route) => (
-                    <Link
-                      key={route.id}
-                      href={route.path}
-                      className={`${
-                        pathname === route.path
-                          ? "text-primary font-medium"
-                          : "font-regular"
-                      }`}
-                    >
-                      {route.name}
-                    </Link>
+                    <DrawerClose asChild key={route.id}>
+                      <Link
+                        href={route.path}
+                        className={`${
+                          pathname === route.path
+                            ? "text-primary font-medium"
+                            : "font-regular"
+                        }`}
+                      >
+                        {route.name}
+                      </Link>
+                    </DrawerClose>
                   ))}
                 </div>
               </DrawerContent>
