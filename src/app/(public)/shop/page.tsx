@@ -50,7 +50,7 @@ export default function Page() {
       </div>*/}
 
       <div className="container mx-auto px-4 my-5">
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-4 place-items-center">
           {books.map((book, index) => {
             const slug = slugify(book.title);
             return <BookCard key={index} book={book} slug={slug} />;

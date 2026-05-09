@@ -138,6 +138,7 @@ export const blogs = [
       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjcB9MnRMjFahhF-W2neeqnK70sdW-1apRall92P8HLxtmSgNhAdJyw-PBuOazlcj0n63kSoTxrIrmwilFLelKEwESN5hjR_Utlm6jgTjwhmBGxO5sbjVOLHa5XQB-XhfmH3_45hVw58TTKqZNBJ_LkFbpOdjfunLhAPEaZCfI5TCXGyDa1PO-MbTBIyJUZ/s1600/Take-My-Life.webp",
   },
 ];
+
 export const books = [
   {
     title: "Myths About Sex In Marriage",
@@ -157,25 +158,40 @@ export const books = [
     pages: "131 pages",
     language: "English",
   },
-  // {
-  //   title: "Trick or Treat, Daddy",
-  //   description: ``,
-  //   img: "trick-or-treat.jpg",
-  //   price_ngn: "6000",
-  //   price_usd: "20.00",
-  //   dop: "February 14, 2025",
-  //   pages: "131 pages",
-  //   language: "English",
-  // },
+  {
+    title: "Trick or Treat, Daddy?",
+    description: `When Lily sees scary Halloween decorations, she asks an important question: "Trick or Treat, Daddy?"
+    Join Lily on an exciting journey as she learns why God wants His children to choose light over darkness! With her family's help, she discovers how to guard her heart, stand strong in her faith, and find joyful ways to celebrate God's goodness all season long.
+    A heartwarming story that shows children they can be brave, different and proud to follow Jesus!
+    Ages 2-12 • Beautifully Illustrated`,
+    img: "trick-or-treat-daddyI.jpeg",
+    price_ngn: "6000",
+    price_usd: "20.00",
+    dop: "",
+    pages: "131 pages",
+    language: "English",
+  },
   {
     title: "Mommy, Will Santa Come?",
     description: `Is Christmas just about presents and Santa? Let's find out! 
     "Mommy Will Santa Come?" is a special book that helps children understand the true meaning of Christmas. Join the story and learn about the love and kindness that Jesus brings.
     You can even talk to your mommy and daddy about what Christmas means to you and how you can show love to others. This book is a great way to make Christmas even more special and meaningful!`,
     img: "mommy-will-santa-come.jpg",
-    price_ngn: "6000",
+    price_ngn: "8000",
     price_usd: "17.99",
-    dop: "February 14, 2025",
+    dop: "",
+    pages: "131 pages",
+    language: "English",
+  },
+  {
+    title: "How To Consistently Grow In Love With Your Spouse",
+    description: `Marriage is a journey filled with ups and downs. The reality of married life is far from the fairy tales we might have envisioned in our youth. However, it's precisely in the midst of life's challenges and blessings that we have the opportunity to grow and flourish in love.
+    In the book, "HOW TO CONSISTENTLY GROW IN LOVE WITH YOUR SPOUSE,"we'll look into the depths of marriage, guided by light of our faith, and uncover practical and spiritual aspects of nurturing a love that thrives and continually grows.
+    As we explore biblical principles such as effective communication, transparency, support in marriage and many more, may you discover the wisdom and receive the grace to consistently grow in love with your spouse, experiencing the beauty and joys of marriage as designed by God.`,
+    img: "how-to-consistently-grow-in-love-with-your-spouse.jpg",
+    price_ngn: "6000",
+    price_usd: "20.00",
+    dop: "",
     pages: "131 pages",
     language: "English",
   },
