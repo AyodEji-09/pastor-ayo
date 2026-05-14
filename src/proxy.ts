@@ -22,7 +22,7 @@ function headerCountry(request: NextRequest) {
   );
 }
 
-export function middleware(request: NextRequest): NextResponse {
+export function proxy(request: NextRequest): NextResponse {
   const country = request.geo?.country ?? headerCountry(request) ?? "US";
 
   console.log({ country, geo: request.geo });
