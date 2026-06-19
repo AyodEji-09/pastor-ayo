@@ -3,9 +3,6 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "");
 
-const MIN_AMOUNT_USD = 1;
-const MIN_AMOUNT_NGN = 500;
-
 export async function POST(req: Request) {
   try {
     const payload = await req.json();
@@ -14,11 +11,10 @@ export async function POST(req: Request) {
 
     const isNigeria = country === "NG";
     const currency = isNigeria ? "ngn" : "usd";
-    const minAmount = isNigeria ? MIN_AMOUNT_NGN : MIN_AMOUNT_USD;
 
-    if (!Number.isFinite(amount) || amount < minAmount) {
+    if (!Number.isFinite(amount) || amount <= 0) {
       return NextResponse.json(
-        { message: `Minimum support amount is ${minAmount}` },
+        { message: "Please enter a valid amount" },
         { status: 400 },
       );
     }

@@ -31,7 +31,6 @@ const SupportSection = () => {
 
   const isNigeria = country === "NG";
   const currencySymbol = isNigeria ? "₦" : "$";
-  const minAmount = isNigeria ? 500 : 1;
 
   useEffect(() => {
     setCountry(getCountryFromCookie());
@@ -49,10 +48,8 @@ const SupportSection = () => {
     e.preventDefault();
 
     const parsedAmount = Number(amount);
-    if (!Number.isFinite(parsedAmount) || parsedAmount < minAmount) {
-      toast.error(
-        `Please enter an amount of at least ${currencySymbol}${minAmount.toLocaleString()}`,
-      );
+    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0) {
+      toast.error("Please enter a valid amount");
       return;
     }
 
@@ -136,10 +133,8 @@ const SupportSection = () => {
                 </span>
                 <Input
                   id="support-amount"
-                  type="number"
+                  type="text"
                   inputMode="decimal"
-                  min={minAmount}
-                  step={isNigeria ? 1 : 0.01}
                   placeholder="Enter amount"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
@@ -149,10 +144,6 @@ const SupportSection = () => {
                   autoFocus
                 />
               </div>
-              <p className="text-xs text-muted-foreground">
-                Minimum {currencySymbol}
-                {minAmount.toLocaleString()}
-              </p>
             </div>
 
             <DialogFooter>

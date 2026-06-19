@@ -18,6 +18,12 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { ChevronDown } from "lucide-react";
 
 const Nav = () => {
@@ -93,21 +99,52 @@ const Nav = () => {
                     </DrawerClose>
                   </div>
                 </DrawerHeader>
-                <div className="menu flex flex-col p-4 gap-8">
-                  {routes.map((route) => (
-                    <DrawerClose asChild key={route.id}>
-                      <Link
-                        href={route.path}
-                        className={`${
-                          pathname === route.path
-                            ? "text-primary font-medium"
-                            : "font-regular"
-                        }`}
+                <div className="menu flex flex-col p-4 gap-4">
+                  {routes.map((route) =>
+                    route.subRoutes ? (
+                      <Accordion
+                        key={route.id}
+                        type="single"
+                        collapsible
+                        className="w-full"
                       >
-                        {route.name}
-                      </Link>
-                    </DrawerClose>
-                  ))}
+                        <AccordionItem value={route.id} className="border-none">
+                          <AccordionTrigger className="py-2 text-base font-regular hover:no-underline">
+                            {route.name}
+                          </AccordionTrigger>
+                          <AccordionContent className="flex flex-col gap-4 pl-4">
+                            {route.subRoutes.map((subRoute) => (
+                              <DrawerClose asChild key={subRoute.id}>
+                                <Link
+                                  href={subRoute.path}
+                                  className={`${
+                                    pathname === subRoute.path
+                                      ? "text-primary font-medium"
+                                      : "font-regular"
+                                  }`}
+                                >
+                                  {subRoute.name}
+                                </Link>
+                              </DrawerClose>
+                            ))}
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
+                    ) : (
+                      <DrawerClose asChild key={route.id}>
+                        <Link
+                          href={route.path}
+                          className={`${
+                            pathname === route.path
+                              ? "text-primary font-medium"
+                              : "font-regular"
+                          }`}
+                        >
+                          {route.name}
+                        </Link>
+                      </DrawerClose>
+                    ),
+                  )}
                 </div>
               </DrawerContent>
             </Drawer>
