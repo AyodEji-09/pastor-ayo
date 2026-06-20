@@ -44,6 +44,7 @@ const Nav = () => {
         { id: "62", name: "Marriage", path: "/ministry/marriage" },
       ],
     },
+    { id: "7", name: "Support", path: "/support" },
   ];
   return (
     <header className="bg-secondary">

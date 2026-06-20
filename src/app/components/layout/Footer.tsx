@@ -34,6 +34,7 @@ const Footer = () => {
                     <LinkItem href="/about" text="About Us" />
                     <LinkItem href="/contact" text="Contact Us" />
                     <LinkItem href="/bookings" text="Bookings" />
+                    <LinkItem href="/support" text="Support" />
                     <LinkItem href="/" text="Birthday Celebration" />
                   </ul>
                   <ul className="mt-4">
