@@ -141,6 +141,19 @@ export const blogs = [
 
 export const books = [
   {
+    title: "Queen Esther and the Jollof Kingdom",
+    description: `Queen Esther and the Jollof Kingdom is a delightful tale that blends culture, food, and the timeless power
+    of kindness. Through Queen Esther's love for Jollof Rice, children discover how simple acts of sharing can build
+    friedships, heal conflicts and even bring peace to kingdoms With vibrant storytelling and recipes children can try at home.
+    This book invites readers into a world where food is more than a meal - it's a celebration of love, unity, and joy.`,
+    img: "esther-and-the-jollof-kingdom.jpeg",
+    price_ngn: "6000",
+    price_usd: "20.00",
+    // dop: "February 14, 2025",
+    pages: "131 pages",
+    language: "English",
+  },
+  {
     title: "Myths About Sex In Marriage",
     description: `"Myths about Sex in Marriage," is a guide that shatters the common misconceptions about sex by providing valuable insights and biblical truths to transform our understanding of sex within boundaries of marriage.
     This book uncovers  the false beliefs about sex, and challenges societal norms, cultural exceptions, and personal insecurities that have silently shaped our perceptions and hindred us from experiencing the fullness of God's design for sexual intimacy in marriage.`,
@@ -173,7 +186,7 @@ export const books = [
   },
   {
     title: "Mommy, Will Santa Come?",
-    description: `Is Christmas just about presents and Santa? Let's find out! 
+    description: `Is Christmas just about presents and Santa? Let's find out!
     "Mommy Will Santa Come?" is a special book that helps children understand the true meaning of Christmas. Join the story and learn about the love and kindness that Jesus brings.
     You can even talk to your mommy and daddy about what Christmas means to you and how you can show love to others. This book is a great way to make Christmas even more special and meaningful!`,
     img: "mommy-will-santa-come.jpg",
