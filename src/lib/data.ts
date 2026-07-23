@@ -148,7 +148,7 @@ export const books = [
     This book invites readers into a world where food is more than a meal - it's a celebration of love, unity, and joy.`,
     img: "esther-and-the-jollof-kingdom.jpeg",
     price_ngn: "4000",
-    price_usd: "20.00",
+    price_usd: "15.00",
     // dop: "February 14, 2025",
     pages: "131 pages",
     language: "English",
