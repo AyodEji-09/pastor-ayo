@@ -147,7 +147,7 @@ export const books = [
     friedships, heal conflicts and even bring peace to kingdoms With vibrant storytelling and recipes children can try at home.
     This book invites readers into a world where food is more than a meal - it's a celebration of love, unity, and joy.`,
     img: "esther-and-the-jollof-kingdom.jpeg",
-    price_ngn: "6000",
+    price_ngn: "4000",
     price_usd: "20.00",
     // dop: "February 14, 2025",
     pages: "131 pages",
