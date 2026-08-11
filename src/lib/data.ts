@@ -141,6 +141,22 @@ export const blogs = [
 
 export const books = [
   {
+    title: "21 Days Children Devotional on Obedience",
+    description: `This 21-day journey is not just about teaching obedience—it's about building a
+    deeper connection with your child and nurturing their relationship with God. Be
+    patient, encouraging, and open to their questions and reflections. Remember,
+    it's okay if they don't fully grasp every concept right away; the seeds you're
+    planting will grow over time. Each day, as you model love, respect, and
+    obedience, you're helping them understand the beauty of following God's ways.
+    Your involvement and encouragement will make this 21-day journey an
+    unforgettable experience that strengthens their faith and builds strong
+    character rooted in God's LOVE.`,
+    img: "21-DAYS-CHILDREN-DEVOTIONAL-ON-OBEDIENCE.jpg",
+    price_ngn: "10000",
+    price_usd: "25.00",
+    language: "English",
+  },
+  {
     title: "Queen Esther and the Jollof Kingdom",
     description: `Queen Esther and the Jollof Kingdom is a delightful tale that blends culture, food, and the timeless power
     of kindness. Through Queen Esther's love for Jollof Rice, children discover how simple acts of sharing can build
