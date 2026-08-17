@@ -368,8 +368,8 @@ export const books = [
     img_url: "https://m.media-amazon.com/images/I/61EMsAWYt1L._SY466_.jpg",
     url: "https://www.amazon.com/21-Days-Devotion-Integrity-Children/dp/B0DHY47PGY/ref=monarch_sidesheet_title",
     url_2: "",
-    price_ngn: "9000",
-    price_usd: "20.00",
+    price_ngn: "10000",
+    price_usd: "25.00",
     displayPrice: "",
     format: [
       {
@@ -409,14 +409,14 @@ export const books = [
     url: "https://www.amazon.com/21-Days-Devotional-Identity-Children/dp/B0D5LP7BHG/ref=monarch_sidesheet",
     url_2:
       "https://rhbooks.com.ng/product/21-days-children-devotional-on-identity/",
-    price_ngn: "9000",
-    price_usd: "20.00",
+    price_ngn: "10000",
+    price_usd: "25.00",
     displayPrice: "",
     format: [
       {
         type: "Paperback",
         url: "https://www.amazon.com/21-Days-Devotional-Identity-Children/dp/B0D5LP7BHG/ref=monarch_sidesheet",
-        price: "$20.00",
+        price: "$25.00",
       },
     ],
     dop: "June 9, 2024",
