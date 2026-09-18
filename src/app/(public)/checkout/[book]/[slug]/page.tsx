@@ -8,25 +8,28 @@ import { notFound, useParams } from "next/navigation";
 
 const PaymentStatus = () => {
   const { book, slug } = useParams();
-  // const { book, slug } = await params;
   let product: BookType | SaleBundle | undefined;
 
-  const bundle: SaleBundle | undefined = getBundleBySlug(
-    String(book).trim().toLowerCase(),
-  );
+  const isCart = String(book).trim().toLowerCase() === "cart";
 
-  if (bundle) {
-    product = bundle;
-  } else {
-    const legacy = books.find(
-      (b) => slugify(b.title) === String(book).trim().toLowerCase(),
+  if (!isCart) {
+    const bundle: SaleBundle | undefined = getBundleBySlug(
+      String(book).trim().toLowerCase(),
     );
 
-    if (!legacy) {
-      // Neither bundle nor legacy book found -> 404
-      notFound();
+    if (bundle) {
+      product = bundle;
+    } else {
+      const legacy = books.find(
+        (b) => slugify(b.title) === String(book).trim().toLowerCase(),
+      );
+
+      if (!legacy) {
+        // Neither bundle nor legacy book found -> 404
+        notFound();
+      }
+      product = legacy as BookType;
     }
-    product = legacy as BookType;
   }
 
   if (slug !== "success" && slug !== "failure") {
@@ -35,7 +38,9 @@ const PaymentStatus = () => {
 
   return (
     <div className="px-4 py-8 container mx-auto">
-      {slug === "success" && <PaymentSuccess product={product} />}
+      {slug === "success" && (
+        <PaymentSuccess product={product} isCart={isCart} />
+      )}
       {slug === "failure" && <PaymentFailed product={product} />}
     </div>
   );

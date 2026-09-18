@@ -1,51 +1,35 @@
 import { cookies } from "next/headers";
 import { CheckoutWrapper } from "../../../components/ui/CheckoutWrapper";
 import { notFound } from "next/navigation";
-import { BookType, books } from "@/lib/data";
-import { getBundleBySlug, SaleBundle } from "@/lib/saleBooks";
+import { books } from "@/lib/data";
+import { getBundleBySlug } from "@/lib/saleBooks";
 import { slugify } from "@/lib/utils";
+import { ResolvedCartItem } from "@/lib/pricing";
 
 const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
-  // const router = useRouter();
   const { book } = await params;
 
   // Try to find a bundle first (route param may be a bundle slug)
-  const bundle: SaleBundle | undefined = getBundleBySlug(
-    String(book).trim().toLowerCase(),
-  );
+  const bundle = getBundleBySlug(String(book).trim().toLowerCase());
 
   const cookieStore = await cookies();
   const country = cookieStore.get("country")?.value || "US";
 
-  // productForComponents will be a BookType-shaped object used by existing components.
-  let productForComponents: BookType;
+  let item: ResolvedCartItem;
 
   if (bundle) {
-    // Use bundle-provided prices directly (you said prices will be added directly)
-
-    const displayPrice =
-      country === "NG"
-        ? `NGN${bundle.sale_price_ngn}`
-        : `$${bundle.sale_price_usd}`;
-
-    // Map SaleBundle -> legacy BookType shape expected by Checkout components.
-    productForComponents = {
+    item = {
+      slug: bundle.slug,
+      type: "bundle",
       title: bundle.title,
       description: bundle.description ?? "",
-      // bundle cover image
       img: bundle.image ?? undefined,
       img_url: bundle.image_url ?? "",
-      url: "",
-      url_2: "",
       price_ngn: bundle.price_ngn ?? "",
       price_usd: bundle.price_usd ?? "",
-      displayPrice,
-      // Represent bundle members as `format` entries so UI shows them (type=member title)
-      dop: bundle.dop ?? bundle.createdAt ?? "",
-      language: "Mixed",
-    } as BookType;
+      quantity: 1,
+    };
   } else {
-    console.log("Legacy book not found");
     // Fallback: try to find a legacy single book entry in src/lib/data.ts
     const legacy = books.find(
       (b) => slugify(b.title) === String(book).trim().toLowerCase(),
@@ -56,14 +40,17 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
       notFound();
     }
 
-    // Use the legacy book directly and ensure displayPrice is populated from the provided fields
-    const displayPrice =
-      country === "NG" ? `NGN${legacy.price_ngn}` : `$${legacy.price_usd}`;
-
-    productForComponents = {
-      ...legacy,
-      displayPrice,
-    } as BookType;
+    item = {
+      slug: slugify(legacy.title),
+      type: "book",
+      title: legacy.title,
+      description: legacy.description,
+      img: legacy.img ?? undefined,
+      img_url: legacy.img_url ?? "",
+      price_ngn: legacy.price_ngn,
+      price_usd: legacy.price_usd,
+      quantity: 1,
+    };
   }
 
   return (
@@ -82,10 +69,7 @@ const Checkout = async ({ params }: PageProps<"/checkout/[book]">) => {
           </div>
 
           {/* Main Content */}
-          <CheckoutWrapper
-            product={productForComponents}
-            initialCountry={country}
-          />
+          <CheckoutWrapper items={[item]} initialCountry={country} />
         </div>
       </div>
     </div>

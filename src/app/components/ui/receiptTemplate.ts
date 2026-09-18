@@ -1,3 +1,9 @@
+type ReceiptItem = {
+  title: string;
+  quantity: number;
+  unitPrice: string;
+};
+
 type ReceiptTemplateParams = {
   orderNumber: string;
   productTitle: string;
@@ -9,6 +15,7 @@ type ReceiptTemplateParams = {
   supportEmail: string;
   supportPhone: string;
   currency: string;
+  items?: ReceiptItem[];
 };
 
 const formatMoney = (amount: number, currency: string) =>
@@ -38,8 +45,24 @@ export const openReceiptTemplate = ({
   supportEmail,
   supportPhone,
   currency,
+  items,
 }: ReceiptTemplateParams) => {
   const receiptDate = new Date().toLocaleDateString();
+
+  const receiptItems: ReceiptItem[] =
+    items && items.length > 0
+      ? items
+      : [{ title: productTitle, quantity: 1, unitPrice: String(bookPrice) }];
+
+  const itemsRows = receiptItems
+    .map(
+      (item) => `
+          <div class="row">
+            <span>${escapeHtml(item.title)}${item.quantity > 1 ? ` × ${item.quantity}` : ""}</span>
+            <span class="value-strong">${formatMoney(Number(item.unitPrice || 0) * item.quantity, currency)}</span>
+          </div>`,
+    )
+    .join("");
   const html = `<!doctype html>
 <html lang="en">
   <head>
@@ -202,11 +225,8 @@ export const openReceiptTemplate = ({
 
       <section class="body">
         <div class="section">
-          <h2 class="section-title">Item</h2>
-          <div class="row">
-            <span>${escapeHtml(productTitle)}</span>
-            <span class="value-strong">${formatMoney(bookPrice, currency)}</span>
-          </div>
+          <h2 class="section-title">Item${receiptItems.length > 1 ? "s" : ""}</h2>
+          ${itemsRows}
         </div>
 
         <div class="section totals">

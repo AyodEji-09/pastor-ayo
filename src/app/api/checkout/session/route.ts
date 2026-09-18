@@ -15,7 +15,9 @@ export async function GET(req: Request) {
       );
     }
 
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    const session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ["line_items"],
+    });
 
     if (session.payment_status !== "paid") {
       return NextResponse.json(
@@ -28,13 +30,24 @@ export async function GET(req: Request) {
     const amountMinor = Number(session.amount_total || 0);
     const metadata = session.metadata || {};
 
+    const items = (session.line_items?.data || [])
+      .filter((line) => line.description && line.description !== "Shipping" && line.description !== "Tax (7.5%)")
+      .map((line) => ({
+        title: line.description ?? "Book",
+        quantity: line.quantity ?? 1,
+        unitPrice: String(
+          Number(line.amount_total || 0) / (line.quantity ?? 1) / 100,
+        ),
+      }));
+
     return NextResponse.json({
       sessionId: session.id,
       currency,
       amountMinor,
-      bookPrice: Number(metadata.bookPrice || 0),
+      bookPrice: Number(metadata.subtotal || metadata.bookPrice || 0),
       shippingFee: Number(metadata.shippingFee || 0),
       taxAmount: Number(metadata.taxAmount || 0),
+      items,
     });
   } catch (error) {
     console.error("❌ Stripe session verification error", error);

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BookType } from "@/lib/data";
 import { SaleBundle } from "@/lib/saleBooks";
+import { useCart } from "@/lib/cart-context";
 import { CheckCircle, Download, Mail, Package, Shield } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -15,16 +16,19 @@ type VerifiedSession = {
   bookPrice: number;
   shippingFee: number;
   taxAmount: number;
+  items?: { title: string; quantity: number; unitPrice: string }[];
 };
 
 const PaymentSuccess = ({
   product,
+  isCart = false,
   bookPrice = 0,
   shippingFee = 0,
   taxAmount = 0,
   totalAmount = 0,
 }: {
   product: BookType | SaleBundle | undefined;
+  isCart?: boolean;
   bookPrice?: number;
   shippingFee?: number;
   taxAmount?: number;
@@ -32,6 +36,7 @@ const PaymentSuccess = ({
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { clearCart } = useCart();
   const [verified, setVerified] = useState<VerifiedSession | null>(null);
   const [verifying, setVerifying] = useState(true);
   const [verifyError, setVerifyError] = useState<string | null>(null);
@@ -83,6 +88,9 @@ const PaymentSuccess = ({
 
         const data: VerifiedSession = await res.json();
         setVerified(data);
+        if (isCart) {
+          clearCart();
+        }
       } catch (error) {
         const message = error instanceof Error ? error.message : "Verification failed";
         setVerifyError(message);
@@ -92,7 +100,7 @@ const PaymentSuccess = ({
     };
 
     verify();
-  }, [searchParams]);
+  }, [searchParams, isCart, clearCart]);
 
   const effectiveCurrency = verified?.currency || currency;
   const effectiveBook = verified?.bookPrice || receiptBookPrice;
@@ -122,6 +130,15 @@ const PaymentSuccess = ({
       supportEmail: "info@ayodejianifowose.com",
       supportPhone: "(123) 456-7890",
       currency: effectiveCurrency,
+      items: verified?.items?.length
+        ? verified.items
+        : [
+            {
+              title: product?.title ?? "Product",
+              quantity: 1,
+              unitPrice: String(effectiveBook),
+            },
+          ],
     });
   };
 
@@ -189,13 +206,44 @@ const PaymentSuccess = ({
             <div className="p-8 sm:p-10">
               <div className="space-y-7">
                 <div className="flex justify-between items-start pb-6 border-b border-slate-200">
-                  <div className="pr-4">
+                  <div className="pr-4 w-full">
                     <p className="text-xs text-slate-500 uppercase tracking-[0.12em] font-semibold mb-2">
                       Product
                     </p>
-                    <p className="text-lg font-semibold text-slate-900 leading-7">
-                      {product?.title}
-                    </p>
+                    {verified?.items?.length ? (
+                      <div className="space-y-3">
+                        {verified.items.map((item, index) => (
+                          <div
+                            key={index}
+                            className="flex justify-between items-start gap-4"
+                          >
+                            <p className="text-base font-semibold text-slate-900 leading-6 flex-1">
+                              {item.title}
+                              {item.quantity > 1 && (
+                                <span className="text-sm text-slate-500 font-normal">
+                                  {" "}
+                                  × {item.quantity}
+                                </span>
+                              )}
+                            </p>
+                            <p className="text-sm font-semibold text-slate-700 whitespace-nowrap">
+                              {new Intl.NumberFormat(undefined, {
+                                style: "currency",
+                                currency: effectiveCurrency,
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                              }).format(
+                                Number(item.unitPrice || 0) * item.quantity,
+                              )}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-lg font-semibold text-slate-900 leading-7">
+                        {product?.title}
+                      </p>
+                    )}
                   </div>
                 </div>
 

@@ -13,8 +13,11 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { CreditCard, Lock, MapPin, User } from "lucide-react";
-import { BookType } from "@/lib/data";
-import { slugify } from "@/lib/utils";
+import {
+  computeOrderTotals,
+  resolveUnitPrice,
+  type ResolvedCartItem,
+} from "@/lib/pricing";
 
 const roundToTwo = (value: number) => Math.round(value * 100) / 100;
 
@@ -28,34 +31,15 @@ const formatPrice = (price: string | number, isNigeria: boolean) => {
   })}`;
 };
 
-const resolveBasePrice = (product: BookType, country: string) => {
-  const isNigeria = country === "NG";
-  const parsed = Number(isNigeria ? product.price_ngn : product.price_usd);
-  if (Number.isFinite(parsed) && parsed > 0) {
-    return parsed;
-  }
-
-  if (product.displayPrice) {
-    const normalized = product.displayPrice.replace(/[^0-9.]/g, "");
-    const fallback = Number(normalized);
-    if (Number.isFinite(fallback) && fallback > 0) {
-      return fallback;
-    }
-  }
-
-  return 0;
-};
-
 export const CheckoutForm = ({
-  product,
+  items,
   country,
   onCountryChange,
 }: {
-  product: BookType;
+  items: ResolvedCartItem[];
   country: string;
   onCountryChange?: (country: string) => void;
 }) => {
-  // const product = books.find((b) => slugify(b.title) === book);
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
   const [formData, setFormData] = useState({
@@ -69,8 +53,6 @@ export const CheckoutForm = ({
     country: country || "US",
   });
 
-  const bookSlug = slugify(product.title);
-
   interface FormData {
     email: string;
     firstName: string;
@@ -83,14 +65,10 @@ export const CheckoutForm = ({
   }
 
   const isNigeria = formData.country === "NG";
-  const basePrice = resolveBasePrice(product, formData.country);
-  const shippingFee =
-    formData.country === "US" ? 5 : formData.country === "NG" ? 5000 : 0;
-  const taxAmount = roundToTwo((basePrice + shippingFee) * 0.075);
-  const totalAmount = roundToTwo(basePrice + shippingFee + taxAmount);
-  const currentPrice = formatPrice(basePrice, isNigeria);
-  const taxDisplay = formatPrice(taxAmount, isNigeria);
-  const totalPrice = formatPrice(totalAmount, isNigeria);
+  const totals = computeOrderTotals(items, formData.country);
+  const currentTotal = formatPrice(totals.subtotal, isNigeria);
+  const taxDisplay = formatPrice(totals.tax, isNigeria);
+  const totalPrice = formatPrice(totals.total, isNigeria);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -101,13 +79,17 @@ export const CheckoutForm = ({
   };
 
   async function handleBuy(formData: FormData): Promise<void> {
-    console.log("buy book");
+    console.log("buy items");
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          bookSlug,
+          items: items.map((item) => ({
+            slug: item.slug,
+            type: item.type,
+            quantity: item.quantity,
+          })),
           data: formData,
         }),
       });
@@ -286,39 +268,68 @@ export const CheckoutForm = ({
             </div>
           </div>
 
-           {/* Order Summary */}
-           <div className="border-t pt-4">
-             <div className="flex justify-between items-center mb-4">
-               <span className="text-muted-foreground">{product.title}</span>
-               <span className="font-semibold">{currentPrice}</span>
-             </div>
-             <div className="flex justify-between items-center mb-4">
-               <span className="text-muted-foreground">Shipping</span>
-               <span className="font-semibold text-success">
-                 <ul className="list-dis list-inside">
-                   {formData.country === "US" && <li>United States: $5</li>}
-                   {formData.country === "NG" && <li>Lagos: ₦5,000</li>}
-                   {formData.country !== "US" && formData.country !== "NG" && (
-                     <li>Shipping is not free</li>
-                   )}
-                 </ul>
-               </span>
-             </div>
-             <div className="flex justify-between items-center mb-4">
-               <span className="text-muted-foreground">Tax (7.5%)</span>
-               <span className="font-semibold">{taxDisplay}</span>
-             </div>
-             <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
-               The shipping fee is not included in the total price. For other
-               countries, the shipping fee will be communicated.
-             </span>
-             <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
-               <span>Total</span>
-               <span className="bg-gradient-primary bg-clip-text">
-                 {totalPrice}
-               </span>
-             </div>
-           </div>
+          {/* Order Summary */}
+          <div className="border-t pt-4">
+            <div className="space-y-3 mb-4">
+              {items.map((item) => {
+                const unitPrice = resolveUnitPrice(item, formData.country);
+                const lineTotal = unitPrice * item.quantity;
+                return (
+                  <div
+                    key={`${item.type}-${item.slug}`}
+                    className="flex justify-between items-start gap-2"
+                  >
+                    <span className="text-muted-foreground text-sm">
+                      {item.title}
+                      {item.quantity > 1 && (
+                        <span className="text-xs text-muted-foreground/70">
+                          {" "}
+                          × {item.quantity}
+                        </span>
+                      )}
+                    </span>
+                    <span className="font-semibold text-sm whitespace-nowrap">
+                      {formatPrice(lineTotal, isNigeria)}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-muted-foreground">Subtotal</span>
+              <span className="font-semibold">{currentTotal}</span>
+            </div>
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-muted-foreground">Shipping</span>
+              <span className="font-semibold text-success">
+                <ul className="list-dis list-inside">
+                  {formData.country === "US" && (
+                    <li>United States: ${totals.shipping}</li>
+                  )}
+                  {formData.country === "NG" && (
+                    <li>Lagos: ₦{totals.shipping.toLocaleString()}</li>
+                  )}
+                  {formData.country !== "US" && formData.country !== "NG" && (
+                    <li>Shipping is not free</li>
+                  )}
+                </ul>
+              </span>
+            </div>
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-muted-foreground">Tax (7.5%)</span>
+              <span className="font-semibold">{taxDisplay}</span>
+            </div>
+            <span className="text-muted-foreground font-extralight text-sm max-w-[100px]">
+              The shipping fee is not included in the total price. For other
+              countries, the shipping fee will be communicated.
+            </span>
+            <div className="flex justify-between items-center text-lg font-bold border-t pt-4">
+              <span>Total</span>
+              <span className="bg-gradient-primary bg-clip-text">
+                {totalPrice}
+              </span>
+            </div>
+          </div>
 
           <Button
             type="submit"

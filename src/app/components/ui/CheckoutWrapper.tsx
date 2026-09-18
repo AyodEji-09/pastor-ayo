@@ -1,31 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckoutProduct } from "./CheckoutProduct";
 import { CheckoutForm } from "./CheckoutForm";
-import { BookType } from "@/lib/data";
+import { ResolvedCartItem } from "@/lib/pricing";
 
 export const CheckoutWrapper = ({
-  product,
+  items,
   initialCountry,
 }: {
-  product: BookType;
+  items: ResolvedCartItem[];
   initialCountry: string;
 }) => {
   const [country, setCountry] = useState(initialCountry);
+
+  useEffect(() => {
+    if (initialCountry) {
+      setCountry(initialCountry);
+    }
+  }, [initialCountry]);
 
   return (
     <div className="grid lg:grid-cols-2 gap-8 animate-slide-up">
       {/* Product Details */}
       <div>
-        <CheckoutProduct product={product} country={country} />
+        <CheckoutProduct items={items} country={country} />
       </div>
 
       {/* Checkout Form */}
       <div>
         <CheckoutForm
           country={country}
-          product={product}
+          items={items}
           onCountryChange={setCountry}
         />
       </div>

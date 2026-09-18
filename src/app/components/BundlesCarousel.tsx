@@ -4,9 +4,11 @@ import React, { useMemo } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ShoppingCart } from "lucide-react";
 
 import { SaleBundle, listSaleBundles } from "@/lib/saleBooks";
+import { useCart } from "@/lib/cart-context";
 
 /**
  * BundlesCarousel
@@ -14,12 +16,14 @@ import { SaleBundle, listSaleBundles } from "@/lib/saleBooks";
  * - Embla-based fading carousel for book bundles
  * - Respects parent aspect ratio
  * - Autoplays gently with fade transitions
- * - Clickable slides that route to checkout
+ * - "Add to Cart" adds the bundle to the cart; "Buy Now" routes to checkout
  */
 
 export default function BundlesCarousel() {
   // Fetch bundles once — static, memoized, intentional
   const bundles: SaleBundle[] = useMemo(() => listSaleBundles(), []);
+  const { addItem } = useCart();
+  const router = useRouter();
 
   // Embla setup: looping, fading, cinematic autoplay
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
@@ -65,10 +69,9 @@ export default function BundlesCarousel() {
                 height: "100%",
               }}
             >
-              <Link
-                href={`/checkout/${encodeURIComponent(bundle.slug)}`}
-                aria-label={`Buy ${bundle.title}`}
+              <div
                 style={{
+                  position: "relative",
                   display: "block",
                   width: "100%",
                   height: "100%",
@@ -76,15 +79,39 @@ export default function BundlesCarousel() {
               >
                 <div
                   style={{
-                    width: "100%",
-                    height: "100%",
+                    position: "absolute",
+                    inset: 0,
                     backgroundImage: `url(${imageSrc})`,
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "100% 100%",
                   }}
                 />
-              </Link>
+                <div
+                  className="absolute bottom-4 inset-x-0 flex items-center justify-center gap-3 z-10"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    onClick={() => addItem(bundle.slug, "bundle")}
+                    aria-label={`Add ${bundle.title} to cart`}
+                    className="cursor-pointer inline-flex items-center gap-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 text-sm font-medium shadow-lg transition-all"
+                  >
+                    <ShoppingCart className="w-4 h-4" />
+                    Add to Cart
+                  </button>
+                  <button
+                    onClick={() =>
+                      router.push(
+                        `/checkout/${encodeURIComponent(bundle.slug)}`,
+                      )
+                    }
+                    aria-label={`Buy ${bundle.title}`}
+                    className="cursor-pointer inline-flex items-center rounded-md bg-white/90 text-foreground hover:bg-white px-4 py-2 text-sm font-medium shadow-lg transition-all"
+                  >
+                    Buy Now
+                  </button>
+                </div>
+              </div>
             </div>
           );
         })}

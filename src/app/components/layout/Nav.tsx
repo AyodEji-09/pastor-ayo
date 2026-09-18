@@ -24,10 +24,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ShoppingCart } from "lucide-react";
+import { useCart } from "@/lib/cart-context";
 
 const Nav = () => {
   const pathname = usePathname();
+  const { totalQuantity, openCart } = useCart();
   const routes = [
     { id: "1", name: "Home", path: "/home" },
     { id: "2", name: "About", path: "/about" },
@@ -55,6 +57,18 @@ const Nav = () => {
           </Link>
         </div>
         <div className="flex gap-4 items-center">
+          <button
+            onClick={openCart}
+            aria-label="Open cart"
+            className="relative cursor-pointer p-2 text-foreground hover:text-primary transition-colors"
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {totalQuantity > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 bg-primary text-primary-foreground text-[11px] font-semibold rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center">
+                {totalQuantity > 99 ? "99+" : totalQuantity}
+              </span>
+            )}
+          </button>
           <div className="menu md:flex items-center gap-8 hidden">
             {routes.map((route) =>
               route.subRoutes ? (
