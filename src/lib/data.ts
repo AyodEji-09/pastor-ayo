@@ -324,9 +324,9 @@ export const books = [
   },
 
   {
-    title: "The reality of a Christian Marriage",
-    description: `"The Reality of Christian Marriage", offers insight, guadiance and encouragement to help you navigate the unique terrain of Christian matrimony. It investigates enduring truths  and practical wisdom that can help you build a strong, faith-centered, and loving marriage.
-    Throughout this book. we will look into the different aspects of Vhristian marriage, from the importance of setting priorities to the challenges of communication, finance, and intimacy. We will address the balance between individuality and unity, investigat the dynamics of shared ministry, and offer insight into building a harmonious, God-centered marriage.
+    title: "The Reality of Christian Marriage",
+    description: `"The Reality of Christian Marriage", offers insight, guidance and encouragement to help you navigate the unique terrain of Christian matrimony. It investigates enduring truths  and practical wisdom that can help you build a strong, faith-centered, and loving marriage.
+    Throughout this book, we will look into the different aspects of Christian marriage, from the importance of setting priorities to the challenges of communication, finance, and intimacy. We will address the balance between individuality and unity, investigat the dynamics of shared ministry, and offer insight into building a harmonious, God-centered marriage.
     Whether you are newly weds starting on this path or seasoned couples looking to strengthen your bond, this something in these pages for everyone.`,
     img: "the-reality-of-christian-marriage.jpg",
     price_ngn: "10000",
