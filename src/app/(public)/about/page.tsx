@@ -72,13 +72,7 @@ const About = () => {
                 </p>
               </div>
               <p className="lead " style={{ lineHeight: 2 }}>
-                Ayodeji Anifowose is an author, content creator, training
-                facilitator, certified Life/ Marriage coach and Pastor. He holds
-                a bachelor`s degree in Economics and is also a young minister of
-                God, determined to continually groom world changers and teach
-                people the undiluted word of God. As a content creator and
-                marriage counselor, he runs a YouTube channel called Great
-                Father, Great Husband.
+                Ayodeji Anifowose is an author, content creator, training facilitator, certified life and marriage coach, and media professional with a background in Economics. He is passionate about personal development, family life, leadership, communication, and purposeful living.
               </p>
             </div>
             <div className="about__desc bg-white rounded shadow-sm p-2 flex gap-2 items-start">
@@ -92,16 +86,7 @@ const About = () => {
                 </p>
               </div>
               <p className="lead " style={{ lineHeight: 2 }}>
-                Though he has been in ministry for many years, he accepted God`s
-                call as the Lead Pastor at RCCG, Arise Church, Riverside,
-                California in 2022. As part of his calling, gifting and
-                experience, he`s using every opportunity given to open the eyes
-                of the body of Christ. In this current digital age, one of his
-                goals is to maximize social media to propagate the gospel of
-                Jesus Christ. He has a special calling to groom boys into
-                becoming the men God has called them to be. He loves people and
-                is enthusiastic about making an impact in the lives of everyone
-                he meets.
+                Over the years, he has led media and creative projects for private organizations, government institutions, and faith-based organizations, gaining extensive experience in content development, media production, and audience engagement. His work focuses on helping individuals and families build healthier relationships, stronger character, and more intentional lives.
               </p>
             </div>
             <div className="about__desc bg-white rounded shadow-sm p-2 flex gap-2 items-start">
@@ -115,10 +100,35 @@ const About = () => {
                 </p>
               </div>
               <p className="lead " style={{ lineHeight: 2 }}>
-                Ayodeji Anifowose is also a songwriter and has released three
-                songs as a blessing to the world. The songs are available on all
-                digital platforms. He`s blessed with a wonderful wife, Opeyemi
-                and three lovely daughters Esther, Ayomide and Imole.
+                Ayodeji is also the creator of the Great Father, Great Husband platform and YouTube channel, where he shares practical insights on fatherhood, marriage, personal growth, and family development. Through his training sessions, digital content, and public engagements, he is committed to equipping men and women with tools for responsible leadership at home and in society.
+              </p>
+            </div>
+            <div className="about__desc bg-white rounded shadow-sm p-2 flex gap-2 items-start">
+              <div>
+                <p
+                  style={{ padding: "4px", background: "#eae8f6" }}
+                  title="About Me"
+                  className="rounded-full shadow border w-fit text-red-500"
+                >
+                  <FaPodcast />
+                </p>
+              </div>
+              <p className="lead " style={{ lineHeight: 2 }}>
+                In addition to writing and coaching, he is a songwriter whose music is available on major digital streaming platforms.
+              </p>
+            </div>
+            <div className="about__desc bg-white rounded shadow-sm p-2 flex gap-2 items-start">
+              <div>
+                <p
+                  style={{ padding: "4px", background: "#eae8f6" }}
+                  title="About Me"
+                  className="rounded-full shadow border w-fit text-red-500"
+                >
+                  <FaPodcast />
+                </p>
+              </div>
+              <p className="lead " style={{ lineHeight: 2 }}>
+                Ayodeji is married to Yemi Anifowose, and they are blessed with four daughters: Queen Esther, Queen Ayomide, Queen Imole, and Queen Inioluwa. Together, they are committed to raising a family grounded in strong values, learning, and positive impact.
               </p>
             </div>
             <div className="flex flex-wrap lg:gap-4 gap-2 rounded bg-white py-16 shadow-sm p-1 lg:justify-center items-center">

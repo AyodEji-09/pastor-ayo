@@ -23,13 +23,7 @@ const AboutSection = () => {
               <HeaderStyleComponent variant="dark" title="About" />
               <div className="space-y-2">
                 <p className="text-md">
-                  Ayodeji Anifowose is an author, content creator, training
-                  facilitator, certified Life/ Marriage coach and Pastor. He
-                  holds a bachelor`s degree in Economics and is also a young
-                  minister of God, determined to continually groom world
-                  changers and teach people the undiluted word of God. As a
-                  content creator and marriage counselor, he runs a YouTube
-                  channel called Great Father, Great Husband...
+                  Ayodeji Anifowose is an author, content creator, training facilitator, certified life and marriage coach, and media professional with a background in Economics. He is passionate about personal development, family life, leadership, communication, and purposeful living.
                 </p>
               </div>
               <Button
