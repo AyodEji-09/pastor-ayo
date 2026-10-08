@@ -152,7 +152,7 @@ export const books = [
     unforgettable experience that strengthens their faith and builds strong
     character rooted in God's LOVE.`,
     img: "21-DAYS-CHILDREN-DEVOTIONAL-ON-OBEDIENCE.jpg",
-    price_ngn: "10000",
+    price_ngn: "12000",
     price_usd: "25.00",
     language: "English",
   },
@@ -194,7 +194,7 @@ export const books = [
     A heartwarming story that shows children they can be brave, different and proud to follow Jesus!
     Ages 2-12 • Beautifully Illustrated`,
     img: "trick-or-treat-daddyI.jpeg",
-    price_ngn: "6000",
+    price_ngn: "10000",
     price_usd: "20.00",
     dop: "",
     pages: "131 pages",
@@ -206,8 +206,8 @@ export const books = [
     "Mommy Will Santa Come?" is a special book that helps children understand the true meaning of Christmas. Join the story and learn about the love and kindness that Jesus brings.
     You can even talk to your mommy and daddy about what Christmas means to you and how you can show love to others. This book is a great way to make Christmas even more special and meaningful!`,
     img: "mommy-will-santa-come.jpg",
-    price_ngn: "8000",
-    price_usd: "17.99",
+    price_ngn: "10000",
+    price_usd: "18.00",
     dop: "",
     pages: "131 pages",
     language: "English",
@@ -237,7 +237,7 @@ export const books = [
     img_url: "",
     url: "",
     url_2: "",
-    price_ngn: "7000",
+    price_ngn: "8000",
     price_usd: "17.99",
     displayPrice: "",
     format: [
@@ -272,7 +272,7 @@ export const books = [
     title: "Bible Heroes",
     description: `Meet the hidden heroes of the Bible. "Bible heroes for kids" ia an amazing book that brings to life the cool stories and characters of the bible. With fun activities and story ideas, children will become a part of the Bible's adventure! This book is perfect for curious kids who want to explore the bible and have fun at the same time.`,
     img: "bible-heroes.jpg",
-    price_ngn: "7000",
+    price_ngn: "8000",
     price_usd: "20.00",
     format: [
       {
@@ -329,7 +329,7 @@ export const books = [
     Throughout this book, we will look into the different aspects of Christian marriage, from the importance of setting priorities to the challenges of communication, finance, and intimacy. We will address the balance between individuality and unity, investigat the dynamics of shared ministry, and offer insight into building a harmonious, God-centered marriage.
     Whether you are newly weds starting on this path or seasoned couples looking to strengthen your bond, this something in these pages for everyone.`,
     img: "the-reality-of-christian-marriage.jpg",
-    price_ngn: "10000",
+    price_ngn: "6000",
     price_usd: "20.00",
     format: [
       {
@@ -347,7 +347,7 @@ export const books = [
     description: `Before you walk down the isle and say 'I Do', there are many decisions to be made and lessons to be learned. There's a difference between the glitz and glamor of a wedding and a lifetime commitment of a marriage. 'Just Before You Get Married' is here to unravel that distinction, to help you peek beneath the wrapping paper and discover the true treasure that is marriage.
     The wisdom shared in this book, through the exploration of various topics, serves as a guiding light, reminding you to prioritize the depth and strength of your relationship, even amidst the allure of the wedding day.`,
     img: "just-before-you-get-married.jpg",
-    price_ngn: "10000",
+    price_ngn: "6000",
     price_usd: "20.00",
     format: [
       {
@@ -368,7 +368,7 @@ export const books = [
     img_url: "https://m.media-amazon.com/images/I/61EMsAWYt1L._SY466_.jpg",
     url: "https://www.amazon.com/21-Days-Devotion-Integrity-Children/dp/B0DHY47PGY/ref=monarch_sidesheet_title",
     url_2: "",
-    price_ngn: "10000",
+    price_ngn: "12000",
     price_usd: "25.00",
     displayPrice: "",
     format: [
@@ -409,7 +409,7 @@ export const books = [
     url: "https://www.amazon.com/21-Days-Devotional-Identity-Children/dp/B0D5LP7BHG/ref=monarch_sidesheet",
     url_2:
       "https://rhbooks.com.ng/product/21-days-children-devotional-on-identity/",
-    price_ngn: "10000",
+    price_ngn: "1000",
     price_usd: "25.00",
     displayPrice: "",
     format: [
@@ -481,7 +481,7 @@ export const books = [
   {
     url_2: "",
     price_ngn: "6000",
-    price_usd: "14.99",
+    price_usd: "12.99",
     displayPrice: "",
     title: "PARENTING PRINCIPLES",
     description: `Parenting is the most important job in the world. Unfortunately, there is no formal training for it. Parents play a critical role in shaping the lives of their children, and by extension, future generations.
@@ -509,7 +509,7 @@ export const books = [
   {
     url_2: "",
     price_ngn: "6000",
-    price_usd: "14.99",
+    price_usd: "13.99",
     displayPrice: "",
     title: "LOVE: The Essence of Christianity",
     description: `Love’ is a popular concept with various wrong definitions. However, the Bible, which is the ever true and reliable word of God defines and explains what love is. “LOVE, The Essence of Christianity” sheds light on the unconditional love of God. It explains love as a sacrificial act by delving into the sacrificial love of Christ; it explores selflessness, true love and practical examples of sacrificial love. In this book, we will examine LOVE as explained in the bible as the core of Jesus’ message and the foundation of Christianity. As you read this book, may you understand God’s love for you, and become a channel of that love to everyone around you.`,
