@@ -195,7 +195,7 @@ export const books = [
     Ages 2-12 • Beautifully Illustrated`,
     img: "trick-or-treat-daddyI.jpeg",
     price_ngn: "10000",
-    price_usd: "20.00",
+    price_usd: "18.00",
     dop: "",
     pages: "131 pages",
     language: "English",
