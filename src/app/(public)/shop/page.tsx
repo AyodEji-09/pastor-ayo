@@ -11,8 +11,7 @@ import { slugify } from "@/lib/utils";
 import BreadcrumbItem from "antd/es/breadcrumb/BreadcrumbItem";
 import { Content } from "antd/es/layout/layout";
 import Link from "next/link";
-// import AdPlaceholder from "@/app/components/AdPlaceholder";
-// import BundlesCarousel from "@/app/components/BundlesCarousel";
+import BundlesCarousel from "@/app/components/BundlesCarousel";
 
 export const metadata: Metadata = {
   title: "Shop",
@@ -27,7 +26,7 @@ export default function Page() {
 
   return (
     <main>
-      <Content style={{ padding: "16px 48px" }}>
+      <Content className="container mx-auto px-4 py-4">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -42,14 +41,11 @@ export default function Page() {
         </Breadcrumb>
       </Content>
 
-      {/* Top banner ad for the shop page */}
-      {/*<div className="container mx-auto px-4 my-6">
-        <AdPlaceholder variant="banner" className="mx-auto">
-          <BundlesCarousel />
-        </AdPlaceholder>
-      </div>*/}
+      <div className="container mx-auto px-4">
+        <BundlesCarousel />
+      </div>
 
-      <div className="container mx-auto px-4 my-5">
+      <div className="container mx-auto px-4 mt-8 mb-4">
         <div className="grid md:grid-cols-3 gap-4 place-items-center">
           {books.map((book, index) => {
             const slug = slugify(book.title);

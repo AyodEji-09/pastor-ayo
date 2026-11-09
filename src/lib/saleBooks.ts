@@ -40,6 +40,11 @@ export type SaleBundle = {
   description?: string;
   image?: string; // bundle cover (relative path)
   image_url?: string; // bundle cover absolute URL (optional)
+  bannerImages?: { src: string; alt: string }[];
+  bannerDesktopImage?: string;
+  bannerMobileImage?: string;
+  bannerPosition?: string;
+  bannerHeadline?: string;
   price_ngn?: string; // optional explicit bundle base price (if present)
   price_usd?: string; // optional explicit bundle base price (if present)
   sale_price_ngn?: string; // optional explicit discounted bundle price
@@ -58,10 +63,12 @@ export type SaleBundle = {
  * saleBooks list). Fill `img` with relative paths if you store images in `public/`.
  */
 export const saleBundles: SaleBundle[] = [
+  /*
   {
     id: "devotion-on-obedience-bundle",
     slug: "devotion-on-obedience-bundle",
     title: "Devotion on Obedience Bundle",
+    bannerHeadline: "Get all three books",
     description:
       "A curated trio for families: inspirational and child-friendly titles bundled at a special price.",
     image: "21-days-children-devotion-on-obedience-bundle.jpg",
@@ -111,6 +118,26 @@ export const saleBundles: SaleBundle[] = [
     stock: 10,
     dop: "September 2024",
     createdAt: "2024-09-10",
+  },
+  */
+
+  {
+    id: "halloween-christmas-combo",
+    slug: "halloween-christmas-combo",
+    title: "Halloween Combo",
+    bannerHeadline: "Two Heartwarming Stories for Little Readers",
+    description:
+      'A special combo of two exciting children’s books: "Trick or Treat, Daddy?" and "Mommy, Will Santa Come?" Written to spark curiosity, Christian values, and meaningful conversations between parents and children.',
+    image: "halloween-combo-banner.png",
+    image_url: "halloween-combo-banner.png",
+    price_ngn: "20000",
+    price_usd: "36",
+    sale_price_ngn: "18000",
+    sale_price_usd: "30",
+    onSale: true,
+    stock: 50,
+    dop: "October 2024",
+    createdAt: "2024-10-27",
   },
 ];
 
